@@ -7,6 +7,7 @@ import { signOut } from '../actions/auth';
 const axiosClient = () => {
   const { userSession } = store.getState().auth;
   let headers = {};
+
   if (userSession) {
     const { accessToken, tokenType, uid, client } = userSession;
     headers = {
@@ -36,9 +37,11 @@ const axiosClient = () => {
       if (!error.response) {
         return Promise.reject({ errors: ['Connection error'] });
       }
+
       if (error.response.status === 401 && userSession) {
         store.dispatch(signOut());
       }
+
       return Promise.reject(error.response.data);
     }
   );
