@@ -4,7 +4,7 @@ import { persistStore } from 'redux-persist';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
-import rootReducer from '../reducers';
+import rootReducer from 'reducers';
 
 const middleware = [thunk, promise];
 const enhancers = composeWithDevTools(applyMiddleware(...middleware));
