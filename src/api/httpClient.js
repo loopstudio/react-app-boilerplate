@@ -33,16 +33,16 @@ const axiosClient = () => {
 
   client.interceptors.response.use(
     (response) => response,
-    (error) => {
-      if (!error.response) {
+    ({ response }) => {
+      if (!response) {
         return Promise.reject({ errors: ['Connection error'] });
       }
 
-      if (error.response.status === 401 && userSession) {
+      if (response.status === 401 && userSession) {
         store.dispatch(signOut());
       }
 
-      return Promise.reject(error.response.data);
+      return Promise.reject(response.data);
     }
   );
 
