@@ -16,7 +16,7 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <ProtectedRoute path="/" exact component={Home} />
-            <Route path="/sign-in" component={SignIn} />
+            <Route path="/sign-in" exact component={SignIn} />
             <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
