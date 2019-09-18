@@ -11,12 +11,12 @@ const initialState = {
   userSession: null,
 };
 
-const signUpFulfilled = (state, { data }) => ({
+const signUpFulfilled = (state, { data: { user } }) => ({
   ...state,
-  user: data.user,
+  user,
 });
 
-const signInFulfilled = (state, { headers, data }) => {
+const signInFulfilled = (state, { headers, data: { user } }) => {
   const {
     'access-token': accessToken,
     'token-type': tokenType,
@@ -26,7 +26,7 @@ const signInFulfilled = (state, { headers, data }) => {
 
   return {
     ...state,
-    user: data.user,
+    user,
     userSession: { accessToken, tokenType, client, uid },
   };
 };

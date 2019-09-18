@@ -11,7 +11,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(params) =>
+      render={(params) => (
         authenticated ? (
           <Component {...params} />
         ) : (
@@ -19,7 +19,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
             to={{ pathname: '/sign-in', state: { from: params.location } }}
           />
         )
-      }
+      )}
     />
   );
 };
