@@ -7,6 +7,7 @@ import Home from 'components/Home';
 import NoMatch from 'components/NoMatch';
 import ProtectedRoute from 'components/ProtectedRoute';
 import SignIn from 'components/SignIn';
+import SignUp from 'components/SignUp';
 import { persistor, store } from 'store';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           <Switch>
             <ProtectedRoute path="/" exact component={Home} />
             <Route path="/sign-in" exact component={SignIn} />
+            <Route path="/sign-up" exact component={SignUp} />
             <Route component={NoMatch} />
           </Switch>
         </BrowserRouter>
