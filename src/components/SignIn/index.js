@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import Form from './Form';
 
 const SignIn = ({ location }) => {
@@ -10,7 +10,17 @@ const SignIn = ({ location }) => {
     ({ auth: { userSession } }) => userSession !== null
   );
 
-  return authenticated ? <Redirect to={from} /> : <Form />;
+  if (authenticated) {
+    return <Redirect to={from} />;
+  }
+
+  return (
+    <>
+      <h1>Sign In</h1>
+      <Form />
+      <Link to="/sign-up">Sign up</Link>
+    </>
+  );
 };
 
 SignIn.propTypes = {
