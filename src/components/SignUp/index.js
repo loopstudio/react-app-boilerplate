@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+
 import Form from './Form';
 
 const SignUp = ({ location }) => {
