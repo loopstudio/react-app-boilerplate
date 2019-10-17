@@ -5,7 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import Form from './Form';
 
-const SignIn = ({ location }) => {
+const SignUp = ({ location }) => {
   const { from } = location.state || { from: { pathname: '/' } };
   const authenticated = useSelector(
     ({ auth: { userSession } }) => userSession !== null
@@ -17,14 +17,14 @@ const SignIn = ({ location }) => {
 
   return (
     <>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <Form />
-      <Link to="/sign-up">Sign up</Link>
+      <Link to="/sign-in">Sign in</Link>
     </>
   );
 };
 
-SignIn.propTypes = {
+SignUp.propTypes = {
   location: PropTypes.shape({
     state: PropTypes.shape({
       from: PropTypes.shape({
@@ -34,4 +34,4 @@ SignIn.propTypes = {
   }).isRequired,
 };
 
-export default SignIn;
+export default SignUp;
