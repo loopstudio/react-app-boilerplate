@@ -4,7 +4,7 @@ import { ActionType } from 'redux-promise-middleware';
 
 import Types from 'actions/types';
 
-const { Fulfilled } = ActionType;
+const { Fulfilled, Pending } = ActionType;
 
 const initialState = {
   user: null,
@@ -48,7 +48,7 @@ const signOutFulfilled = () => ({
 const handlers = {
   [`${Types.SIGN_UP}_${Fulfilled}`]: signUpFulfilled,
   [`${Types.SIGN_IN}_${Fulfilled}`]: signInFulfilled,
-  [`${Types.SIGN_OUT}_${Fulfilled}`]: signOutFulfilled,
+  [`${Types.SIGN_OUT}_${Pending}`]: signOutFulfilled,
 };
 
 const authReducer = (state = initialState, { type, payload }) => {
