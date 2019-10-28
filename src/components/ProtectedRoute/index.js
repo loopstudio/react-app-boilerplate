@@ -1,34 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ children, ...rest }) => {
   const authenticated = useSelector(
     ({ auth: { userSession } }) => userSession !== null
   );
 
-  return (
-    <Route
-      {...rest}
-      render={(params) => (
-        authenticated ? (
-          <Component {...params} />
-        ) : (
-          <Redirect
-            to={{ pathname: '/sign-in', state: { from: params.location } }}
-          />
-        )
-      )}
-    />
+  const location = useLocation();
+
+  return authenticated ? (
+    <Route {...rest}>{children}</Route>
+  ) : (
+    <Redirect to={{ pathname: '/sign-in', state: { from: location } }} />
   );
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]).isRequired,
+  children: PropTypes.element.isRequired,
 };
 
 export default ProtectedRoute;

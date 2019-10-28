@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, useLocation } from 'react-router-dom';
 
 import Form from './Form';
 
-const SignIn = ({ location }) => {
+const SignIn = () => {
+  const location = useLocation();
   const { from } = location.state || { from: { pathname: '/' } };
   const authenticated = useSelector(
     ({ auth: { userSession } }) => userSession !== null
@@ -22,16 +22,6 @@ const SignIn = ({ location }) => {
       <Link to="/sign-up">Sign up</Link>
     </>
   );
-};
-
-SignIn.propTypes = {
-  location: PropTypes.shape({
-    state: PropTypes.shape({
-      from: PropTypes.shape({
-        pathname: PropTypes.string,
-      }),
-    }),
-  }).isRequired,
 };
 
 export default SignIn;
