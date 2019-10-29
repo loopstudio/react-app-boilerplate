@@ -1,7 +1,13 @@
 import axiosClient from './httpClient';
 
-export const signUp = (user) => axiosClient().post('/auth', user);
+export const signUp = (user) => {
+  return axiosClient().post('/auth', user);
+};
 
-export const signIn = (credentials) => axiosClient().post('/auth/sign_in', credentials);
+export const signIn = (credentials) => {
+  return axiosClient().post('/auth/sign_in', credentials);
+};
 
-export const signOut = () => axiosClient().delete('/auth/sign_out');
+export const signOut = () => {
+  return axiosClient().delete('/auth/sign_out');
+};
