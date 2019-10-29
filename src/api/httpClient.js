@@ -9,13 +9,8 @@ const axiosClient = () => {
   let headers = {};
 
   if (userSession) {
-    const { accessToken, tokenType, uid, client } = userSession;
-    headers = {
-      'access-token': accessToken,
-      'token-type': tokenType,
-      uid,
-      client,
-    };
+    const { accessToken, uid, client } = userSession;
+    headers = { client, uid, 'access-token': accessToken };
   }
 
   const client = axios.create({
