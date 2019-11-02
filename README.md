@@ -80,6 +80,12 @@ This is an opinionated boilerplate code for starting a new react web project.
 3. Modify the environment variables files in root folder(.env.dev, .env.staging and .env.prod).
 4. Start the dev server: `yarn start` command.
 
+### Using Docker
+In case you prefer using docker with docker-compose for development purposes, you could just type
+`docker-compose up` and the development server should be started, serving the appliaction at `localhost:3001`.
+
+Changes on the code should be reflected right away, since the running application is syncronized with your local code. By default docker-compose will load the .env.development file to set the environment variables.
+
 ## Running the Test Suite
 1. Run the `yarn test` command.
 
