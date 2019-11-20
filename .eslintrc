@@ -2,7 +2,9 @@
   "env": {
     "es6": true,
     "jest": true,
-    "browser": true
+    "browser": true,
+    "commonjs": true,
+    "serviceworker": true
   },
   "extends": [
     "airbnb",
@@ -30,6 +32,7 @@
   "rules": {
     "no-console": "warn",
     "import/no-cycle": "off",
+    "import/default": "off",
     "prefer-promise-reject-errors": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
