@@ -72,7 +72,7 @@ This is an opinionated boilerplate code for starting a new react web project.
 ### Testing:
 - [jest](https://jestjs.io/): a delightful JavaScript Testing Framework with a focus on simplicity.
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro): a very light-weight solution for testing React components.
-- [cypress](https://www.cypress.io/): automated integration tests.
+- [cypress](https://www.cypress.io/): automated integration tests. This tool isn't installed in our project, but we recommend to use it. You can install it running `yarn add cypress --dev`. For more information about the configuration you can read [this guide](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
 
 ## Getting Started
 1. Clone this repository and navigate to the folder.
