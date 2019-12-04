@@ -1,0 +1,30 @@
+.screen {
+  composes: bg-red-400 min-h-screen from '../../styles.css';
+  display: grid;
+  grid-template-areas:
+    '. . .'
+    '. form .'
+    '. . .';
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  composes: w-full max-w-xs container from '../../styles.css';
+  grid-area: form;
+  display: grid;
+  grid-template-areas:
+    '. title .'
+    'form form form'
+    '. link .';
+}
+
+.title {
+  composes: text-3xl from '../../styles.css';
+  grid-area: title;
+}
+
+.link {
+  grid-area: link;
+  text-align: center;
+}
