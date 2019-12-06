@@ -1,5 +1,7 @@
+@value tailwind: '../../tailwind.css';
+
 .screen {
-  composes: bg-red-400 min-h-screen from '../../styles.css';
+  composes: bg-red-400 min-h-screen from tailwind;
   display: grid;
   grid-template-areas:
     '. . .'
@@ -10,7 +12,7 @@
 }
 
 .container {
-  composes: w-full max-w-xs container from '../../styles.css';
+  composes: w-full max-w-xs container from tailwind;
   grid-area: form;
   display: grid;
   grid-template-areas:
@@ -20,7 +22,7 @@
 }
 
 .title {
-  composes: text-3xl from '../../styles.css';
+  composes: text-3xl from tailwind;
   grid-area: title;
 }
 

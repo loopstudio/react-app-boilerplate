@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.input-focus:focus {
+  @apply outline-none border-red-200;
+}
+
+.button-hover:hover {
+  @apply bg-red-600;
+}
