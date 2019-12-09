@@ -1,13 +1,13 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
-import Home from 'components/Home';
-import NoMatch from 'components/NoMatch';
 import ProtectedRoute from 'components/ProtectedRoute';
-import SignIn from 'components/SignIn';
-import SignUp from 'components/SignUp';
+import HomePage from 'pages/HomePage';
+import NoMatchPage from 'pages/NoMatchPage';
+import SignInPage from 'pages/SignInPage';
+import SignUpPage from 'pages/SignUpPage';
 import { persistor, store } from 'store';
 
 const App = () => {
@@ -17,16 +17,16 @@ const App = () => {
         <BrowserRouter>
           <Switch>
             <ProtectedRoute path="/" exact>
-              <Home />
+              <HomePage />
             </ProtectedRoute>
             <Route path="/sign-in" exact>
-              <SignIn />
+              <SignInPage />
             </Route>
             <Route path="/sign-up" exact>
-              <SignUp />
+              <SignUpPage />
             </Route>
             <Route>
-              <NoMatch />
+              <NoMatchPage />
             </Route>
           </Switch>
         </BrowserRouter>

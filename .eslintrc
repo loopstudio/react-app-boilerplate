@@ -3,18 +3,20 @@
     "es6": true,
     "jest": true,
     "browser": true,
-    "commonjs": true,
-    "serviceworker": true
+    "commonjs": true
   },
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",
     "prettier/react",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react"
   ],
   "plugins": ["react-hooks"],
   "settings": {
+    "import/ignore": ["/testUtils"],
     "import/resolver": {
       "node": {
         "moduleDirectory": ["node_modules", "src/"]
@@ -32,8 +34,8 @@
   "rules": {
     "no-console": "warn",
     "import/no-cycle": "off",
-    "import/default": "off",
-    "prefer-promise-reject-errors": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/prefer-default-export": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",

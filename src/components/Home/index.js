@@ -8,7 +8,6 @@ const Home = () => {
 
   const handleSignOut = () => {
     dispatch(signOut()).catch(({ errors }) => {
-      // eslint-disable-next-line no-alert
       alert(errors);
     });
   };
