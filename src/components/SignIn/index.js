@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import Form from './Form';
-import style from './index.module.css';
+import style from './index.module.scss';
 
 const SignIn = () => {
   const location = useLocation();

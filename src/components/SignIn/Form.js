@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { signIn } from 'actions/auth';
-import styles from './Form.module.css';
+import styles from './Form.module.scss';
 
 const Form = () => {
   const dispatch = useDispatch();

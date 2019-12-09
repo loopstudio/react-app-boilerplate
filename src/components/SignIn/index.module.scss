@@ -1,7 +1,7 @@
-@value tailwind: '../../tailwind.css';
+@import '../../tailwind';
 
 .screen {
-  composes: bg-red-400 min-h-screen from tailwind;
+  @extend .bg-red-400, .min-h-screen;
   display: grid;
   grid-template-areas:
     '. . .'
@@ -12,7 +12,7 @@
 }
 
 .container {
-  composes: w-full max-w-xs container from tailwind;
+  @extend .w-full, .max-w-xs, .container;
   grid-area: form;
   display: grid;
   grid-template-areas:
@@ -22,7 +22,7 @@
 }
 
 .title {
-  composes: text-3xl from tailwind;
+  @extend .text-3xl;
   grid-area: title;
 }
 
