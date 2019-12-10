@@ -6,7 +6,6 @@
   grid-area: form;
   justify-content: center;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
   row-gap: 2em;
   grid-template-areas:
     'email email email'

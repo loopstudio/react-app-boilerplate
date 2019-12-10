@@ -27,7 +27,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:styles": "postcss src/tailwind.base.css -o src/tailwind.css --watch",
     "build:styles": "postcss src/tailwind.base.css -o src/tailwind.css",
     "prebuild": "yarn build:styles",
     "prestart": "yarn build:styles"

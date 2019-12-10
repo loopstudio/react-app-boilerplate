@@ -1,7 +1,7 @@
 @import '../../tailwind';
 
 .screen {
-  @extend .bg-red-400, .min-h-screen;
+  @extend .bg-red-400, .min-h-screen, .min-w-full;
   display: grid;
   grid-template-areas:
     '. . .'
@@ -12,7 +12,7 @@
 }
 
 .container {
-  @extend .w-full, .max-w-xs, .container;
+  @extend .w-full, .max-w-xs;
   grid-area: form;
   display: grid;
   grid-template-areas:
