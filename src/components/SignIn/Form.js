@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 import { signIn } from 'actions/auth';
+import styles from './Form.module.scss';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -44,23 +45,35 @@ const Form = () => {
   const { isLoading, hasErrors } = formStatus;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       {isLoading && <p>Loading...</p>}
       {hasErrors && <p>There was an error.</p>}
-      <label>Email</label>
-      <input name="email" value={email} onChange={handleChange} />
-      {touched.email && errors.email}
-      <label>Password</label>
-      <input
-        name="password"
-        value={password}
-        type="password"
-        onChange={handleChange}
-      />
-      {touched.password && errors.password}
-      <button type="submit" disabled={isLoading}>
-        Sign in
-      </button>
+      <div className={styles.email}>
+        <label className={styles.label}>Email</label>
+        <input
+          name="email"
+          value={email}
+          onChange={handleChange}
+          className={styles.input}
+        />
+        {touched.email && errors.email}
+      </div>
+      <div className={styles.password}>
+        <label className={styles.label}>Password</label>
+        <input
+          name="password"
+          value={password}
+          type="password"
+          onChange={handleChange}
+          className={styles.input}
+        />
+        {touched.password && errors.password}
+      </div>
+      <div className={styles.submit}>
+        <button type="submit" disabled={isLoading} className={styles.button}>
+          Sign in
+        </button>
+      </div>
     </form>
   );
 };

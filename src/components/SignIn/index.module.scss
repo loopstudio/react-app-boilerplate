@@ -1,0 +1,32 @@
+@import '../../tailwind';
+
+.screen {
+  @extend .bg-red-400, .min-h-screen, .min-w-full;
+  display: grid;
+  grid-template-areas:
+    '. . .'
+    '. form .'
+    '. . .';
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  @extend .w-full, .max-w-xs;
+  grid-area: form;
+  display: grid;
+  grid-template-areas:
+    '. title .'
+    'form form form'
+    '. link .';
+}
+
+.title {
+  @extend .text-3xl;
+  grid-area: title;
+}
+
+.link {
+  grid-area: link;
+  text-align: center;
+}
