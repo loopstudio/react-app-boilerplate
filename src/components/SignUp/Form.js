@@ -1,77 +1,124 @@
 import React, { useState } from 'react';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
 
+const initialValues = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  password: '',
+};
+
+const validationSchema = object().shape({
+  email: string()
+    .email('Invalid email')
+    .required('Required'),
+  firstName: string().required('Required'),
+  lastName: string().required('Required'),
+  password: string()
+    .min(8, 'Password too short, minimum length is 8 characters')
+    .required('Required'),
+});
+
 const Form = () => {
+  const dispatch = useDispatch();
+
   const [formStatus, setFormStatus] = useState({
     hasErrors: false,
     isLoading: false,
   });
 
-  const dispatch = useDispatch();
+  const onSubmit = async (values) => {
+    setFormStatus({ hasErrors: false, isLoading: true });
 
-  const SignUpSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Invalid email')
-      .required('Required'),
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    password: Yup.string()
-      .min(8, 'Password too short, minimum length is 8 characters')
-      .required('Required'),
-  });
+    try {
+      await dispatch(signUp(values));
+    } catch (error) {
+      setFormStatus({ hasErrors: true, isLoading: false });
+    }
+  };
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      firstName: '',
-      lastName: '',
-      password: '',
-    },
-    validationSchema: SignUpSchema,
-    onSubmit: (values) => {
-      setFormStatus({ hasErrors: false, isLoading: true });
-      dispatch(signUp(values)).catch(() => {
-        setFormStatus({ hasErrors: true, isLoading: false });
-      });
-    },
-  });
-
-  const {
-    values: { email, firstName, lastName, password },
-    handleChange,
-    handleSubmit,
-    errors,
-    touched,
-  } = formik;
   const { isLoading, hasErrors } = formStatus;
 
   return (
-    <form onSubmit={handleSubmit}>
-      {isLoading && <p>Loading...</p>}
-      {hasErrors && <p>There was an error.</p>}
-      <label>Email</label>
-      <input name="email" value={email} onChange={handleChange} />
-      {touched.email && errors.email}
-      <label>First Name</label>
-      <input name="firstName" value={firstName} onChange={handleChange} />
-      {touched.firstName && errors.firstName}
-      <label>Last Name</label>
-      <input name="lastName" value={lastName} onChange={handleChange} />
-      {touched.lastName && errors.lastName}
-      <label>Password</label>
-      <input
-        name="password"
-        value={password}
-        type="password"
-        onChange={handleChange}
-      />
-      {touched.password && errors.password}
-      <button type="submit">Sign up</button>
-    </form>
+    <Formik
+      validateOnMount
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {({
+        errors,
+        handleChange,
+        handleSubmit,
+        isValid,
+        touched,
+        values: { email, firstName, lastName, password },
+      }) => (
+        <form data-testid="signup-form" onSubmit={handleSubmit}>
+          {isLoading && <p>Loading...</p>}
+          {hasErrors && <p>There was an error.</p>}
+          <label htmlFor="email-field">
+            Email
+            <input
+              htmlFor="email-field"
+              type="email"
+              name="email"
+              data-testid="email-input"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
+          {touched.email && errors.email}
+          <label htmlFor="fistName-field">
+            First Name
+            <input
+              htmlFor="fistName-field"
+              type="text"
+              name="firstName"
+              data-testid="firstName-input"
+              value={firstName}
+              onChange={handleChange}
+            />
+          </label>
+          {touched.firstName && errors.firstName}
+          <label htmlFor="lastName-field">
+            Last Name
+            <input
+              htmlFor="lastName-field"
+              type="text"
+              name="lastName"
+              data-testid="lastName-input"
+              value={lastName}
+              onChange={handleChange}
+            />
+          </label>
+          {touched.lastName && errors.lastName}
+          <label htmlFor="password-field">
+            Password
+            <input
+              htmlFor="password-field"
+              name="password"
+              type="password"
+              data-testid="password-input"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
+          {touched.password && errors.password}
+          <button
+            type="submit"
+            data-testid="submit-button"
+            disabled={!isValid || isLoading}
+          >
+            Sign up
+          </button>
+        </form>
+      )}
+    </Formik>
   );
 };
 

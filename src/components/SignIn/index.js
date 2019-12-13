@@ -2,17 +2,16 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
+import { checkAuthentication } from 'selectors/auth';
 import Form from './Form';
 import style from './index.module.scss';
 
 const SignIn = () => {
-  const location = useLocation();
-  const { from } = location.state || { from: { pathname: '/' } };
-  const authenticated = useSelector(
-    ({ auth: { userSession } }) => userSession !== null
-  );
+  const { state } = useLocation();
+  const { from } = state || { from: { pathname: '/' } };
+  const isAuthenticated = useSelector(checkAuthentication);
 
-  if (authenticated) {
+  if (isAuthenticated) {
     return <Redirect to={from} />;
   }
 
