@@ -110,44 +110,15 @@ into the project.
 
 #### For new Contributors
 
-1. Clone the repo and create a branch
-
-   ```bash
-   git clone https://github.com/LoopStudio/react-app-boilerplate
-   cd react-app-boilerplate
-   git checkout -b <type>/<branch-name>
-   ```
-
-2. Make sure to update, or add to the tests when appropriate. Patches and
+1. Make sure to update, or add to the tests when appropriate. Patches and
    features will not be accepted without tests. Run `npm test` to check that
    all tests pass after you've made changes. Look for a `Testing` section in
    the project’s README for more information.
 
-3. If you added or changed a feature, make sure to document it accordingly in
+2. If you added or changed a feature, make sure to document it accordingly in
    the `README.md` file.
 
-4. Push your topic branch up to our repo
-
-   ```bash
-   git push origin <type>/<branch-name>
-   ```
-
-5. Open a Pull Request using your branch with a clear title and description.
-
-Optionally, you can help us with these things. But don’t worry if they are too
-complicated, we can help you out and teach you as we go :)
-
-1. Update your branch to the latest changes in the origin master branch. You
-   can do that locally with
-
-   ```bash
-   git pull --rebase origin master
-   ```
-
-   Afterwards force push your changes to your remote feature branch.
-
-2. Once a pull request is good to go, you can tidy up your commit messages using
-   Git's [interactive rebase](https://help.github.com/articles/interactive-rebase).
+3. Open a Pull Request using your branch with a clear title and description.
 
 ## Maintainers
 
@@ -180,11 +151,11 @@ complicated, we can help you out and teach you as we go :)
 
 This section lists the labels we use to help us track and manage issues and pull requests.
 
-[GitHub search](https://help.github.com/articles/searching-issues/) makes it easy to use labels for finding groups of issues or pull requests you're interested in. For example, you might be interested in [open issues across `LoopStudio`'s repos and which are labeled as bugs, but still need to be reliably reproduced](https://github.com/search?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+user%3Aloopstudio+label%3Abug+label%3Aneeds-reproduction) or perhaps [open pull requests in `LoopStudio/react-app-boilerplate` which haven't been reviewed yet](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3ALoopStudio%2Freact-app-boilerplate+comments%3A0). To help you find issues and pull requests, each label is listed with search links for finding open items with that label in `LoopStudio/react-app-boilerplate` only and also across all LoopStudio's repositories. We encourage you to read about [other search filters](https://help.github.com/articles/searching-issues/) which will help you write more focused queries.
+[GitHub search](https://help.github.com/articles/searching-issues/) makes it easy to use labels for finding groups of issues or pull requests you're interested in. For example, you might be interested in [open issues](https://github.com/search?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+user%3Aloopstudio+label%3Abug+label%3Aneeds-reproduction) across `LoopStudio`'s repos and which are labeled as bugs, but still need to be reliably reproduced or perhaps [open pull requests](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3ALoopStudio%2Freact-app-boilerplate+comments%3A0) in `LoopStudio/react-app-boilerplate` which haven't been reviewed yet. To help you find issues and pull requests, each label is listed with search links for finding open items with that label in `LoopStudio/react-app-boilerplate` only and also across all LoopStudio's repositories. We encourage you to read about [other search filters](https://help.github.com/articles/searching-issues/) which will help you write more focused queries.
 
 The labels are loosely grouped by their purpose, but it's not required that every issue have a label from every group or that an issue can't have more than one label from the same group.
 
-Please open an issue on `LoopStudio/loop-studio-guides` if you have suggestions for new labels, and if you notice some labels are missing on some repositories, then please open an issue on that repository.
+Please open an issue on our [style guides repo](https://github.com/LoopStudio/loop-studio-guides) if you have suggestions for new labels, and if you notice some labels are missing on some repositories, then please open an issue on that repository.
 
 #### Type of Issue and Issue State
 
@@ -233,8 +204,6 @@ Please open an issue on `LoopStudio/loop-studio-guides` if you have suggestions 
 ## Community
 
 We gather together once a month to discuss about industry trends, best practices and, of course, this project, in what we decided to call **Loop's React Tech Council**.
-
-You can also chat with us in our Slack channel: **#react**
 
 [search-react-app-boilerplate-repo-label-enhancement]: https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3ALoopStudio%2Freact%2Dapp%2Dboilerplate+label%3Aenhancement
 [search-loopstudio-org-label-enhancement]: https://github.com/search?q=is%3Aopen+is%3Aissue+user%3Aloopstudio+label%3Aenhancement
