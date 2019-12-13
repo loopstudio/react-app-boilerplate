@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MainLayout = ({ children }) => {
-  return <>{children}</>;
+  return children;
 };
 
 MainLayout.propTypes = {
