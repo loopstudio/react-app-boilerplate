@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
@@ -18,10 +19,12 @@ const SignIn = () => {
   return (
     <div className={style.screen}>
       <div className={style.container}>
-        <h1 className={style.title}>Sign In</h1>
+        <h1 className={style.title}>
+          <FormattedMessage id="common.signIn" />
+        </h1>
         <Form />
         <Link to="/sign-up" className={style.link}>
-          Sign up
+          <FormattedMessage id="common.signUp" />
         </Link>
       </div>
     </div>

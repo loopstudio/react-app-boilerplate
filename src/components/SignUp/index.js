@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { useSelector } from 'react-redux';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
@@ -16,9 +17,13 @@ const SignUp = () => {
 
   return (
     <>
-      <h1>Sign Up</h1>
+      <h1>
+        <FormattedMessage id="common.signUp" />
+      </h1>
       <Form />
-      <Link to="/sign-in">Sign in</Link>
+      <Link to="/sign-in">
+        <FormattedMessage id="common.signIn" />
+      </Link>
     </>
   );
 };

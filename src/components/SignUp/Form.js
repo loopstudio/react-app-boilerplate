@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Formik } from 'formik';
+import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
@@ -62,7 +63,7 @@ const Form = () => {
           {isLoading && <p>Loading...</p>}
           {hasErrors && <p>There was an error.</p>}
           <label htmlFor="email-field">
-            Email
+            <FormattedMessage id="common.email" />
             <input
               htmlFor="email-field"
               type="email"
@@ -74,7 +75,7 @@ const Form = () => {
           </label>
           {touched.email && errors.email}
           <label htmlFor="fistName-field">
-            First Name
+            <FormattedMessage id="common.firstName" />
             <input
               htmlFor="fistName-field"
               type="text"
@@ -86,7 +87,7 @@ const Form = () => {
           </label>
           {touched.firstName && errors.firstName}
           <label htmlFor="lastName-field">
-            Last Name
+            <FormattedMessage id="common.lastName" />
             <input
               htmlFor="lastName-field"
               type="text"
@@ -98,7 +99,7 @@ const Form = () => {
           </label>
           {touched.lastName && errors.lastName}
           <label htmlFor="password-field">
-            Password
+            <FormattedMessage id="common.password" />
             <input
               htmlFor="password-field"
               name="password"
