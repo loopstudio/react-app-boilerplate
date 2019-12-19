@@ -19,7 +19,8 @@ const App = () => {
   // Currently retrieving the locale from the browser but
   // it should come from the database and stored in redux
   const [currentLocale, setCurrentLocale] = useState(navigator.language);
-  const currentAppLocale = AppLocale[currentLocale];
+  const currentAppLocale =
+    currentLocale in AppLocale ? AppLocale[currentLocale] : AppLocale.en;
 
   const onChangeLocaleSelect = (event) => {
     const {
