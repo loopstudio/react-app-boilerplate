@@ -9,7 +9,7 @@
     "flat": "^5.0.0",
     "humps": "^2.0.1",
     "node-sass": "^4.13.0",
-    "postcss-cli": "^7.0.0",
+    "postcss-cli": "^7.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
