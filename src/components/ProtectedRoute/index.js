@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Redirect, Route, useLocation } from 'react-router-dom';
 
-import { checkAuthentication } from 'selectors/auth';
+import { useAuthentication } from 'hooks/auth';
 
 const ProtectedRoute = ({ children, ...rest }) => {
   const location = useLocation();
-  const isAuthenticated = useSelector(checkAuthentication);
+  const { isAuthenticated } = useAuthentication();
 
   return isAuthenticated ? (
     <Route {...rest}>{children}</Route>

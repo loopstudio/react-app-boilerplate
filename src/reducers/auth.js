@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import { ActionType } from 'redux-promise-middleware';
 
 import Types from 'actions/types';
+import createReducer from 'reducers/createReducer';
 
 const { Fulfilled, Pending } = ActionType;
 
@@ -33,11 +34,7 @@ const handlers = {
   [`${Types.SIGN_OUT}_${Pending}`]: signOut,
 };
 
-const authReducer = (state = initialState, { type, payload }) => {
-  const handler = handlers[type];
-
-  return handler ? handler(state, payload) : state;
-};
+const authReducer = createReducer(initialState, handlers);
 
 const authPersistConfig = {
   storage,
