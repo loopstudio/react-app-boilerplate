@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "autoprefixer": "^9.7.3",
+    "autoprefixer": "^9.7.4",
     "axios": "^0.19.1",
     "formik": "2.1.2",
     "flat": "^5.0.0",
