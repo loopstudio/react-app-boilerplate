@@ -4123,10 +4123,10 @@ eslint-plugin-import@^2.20.0:
     read-pkg-up "^2.0.0"
     resolve "^1.12.0"
 
-eslint-plugin-jest-dom@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest-dom/-/eslint-plugin-jest-dom-1.4.2.tgz#7d5c9f50d60e45ee2cb610d6e032043f56eea670"
-  integrity sha512-9Ut1yPW8DiRYxqjXSu1YPE7D6jzgTprHNoEVRdiPQ2LtgG5Gq3bBPfRnHR03DDp4lracNFA+YPjmETN7TBZTCA==
+eslint-plugin-jest-dom@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest-dom/-/eslint-plugin-jest-dom-2.0.0.tgz#025f15e60ed8e9aa514286237d1076fc79487719"
+  integrity sha512-3YDeaCD+PNIpxRi5pJRaLEYMsRjStF67NfUzIs8AfdvhTFJpm16de3oo326JS+rZngM4OXLjGgZff8V3Ik/waQ==
   dependencies:
     requireindex "~1.2.0"
 
