@@ -6,11 +6,19 @@ import { store } from 'store';
 
 const axiosClient = () => {
   const { userSession } = store.getState().auth;
-  let headers = {};
+  let headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  };
 
   if (userSession) {
     const { accessToken, uid, client } = userSession;
-    headers = { client, uid, 'access-token': accessToken };
+    headers = {
+      ...headers,
+      client,
+      uid,
+      'access-token': accessToken,
+    };
   }
 
   const client = axios.create({
