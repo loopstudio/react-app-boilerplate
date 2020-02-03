@@ -3,7 +3,8 @@
     "es6": true,
     "jest": true,
     "browser": true,
-    "commonjs": true
+    "commonjs": true,
+    "serviceworker": true
   },
   "extends": [
     "airbnb",
@@ -40,6 +41,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "no-throw-literal": "warn"
   }
 }

@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import NoMatch from './index';
 
 test('shows a "404 Not found" message', () => {
-  const { getByText } = render(<NoMatch />);
+  const { queryByText } = render(<NoMatch />);
 
-  expect(getByText('404 Not found')).toBeInTheDocument();
+  expect(queryByText('404 Not found')).toBeInTheDocument();
 });

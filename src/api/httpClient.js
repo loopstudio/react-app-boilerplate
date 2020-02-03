@@ -38,14 +38,14 @@ const axiosClient = () => {
     (response) => response,
     ({ response }) => {
       if (!response) {
-        return Promise.reject({ errors: ['Connection error'] });
+        throw { errors: ['Connection error'] };
       }
 
       if (response.status === 401 && userSession) {
         store.dispatch(signOut());
       }
 
-      return Promise.reject(response.data);
+      throw response.data;
     }
   );
 
