@@ -64,6 +64,6 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "eslint-plugin-testing-library": "^2.2.1",
     "prettier": "^1.19.1",
-    "tailwindcss": "^1.1.4"
+    "tailwindcss": "^1.2.0"
   }
 }
