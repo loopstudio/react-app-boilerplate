@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
+import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
-import HomePage from 'pages/HomePage';
-import NoMatchPage from 'pages/NoMatchPage';
-import SignInPage from 'pages/SignInPage';
-import SignUpPage from 'pages/SignUpPage';
 import { persistor, store } from 'store';
 import AppLocale from './languageProvider';
 
 import style from './App.module.scss';
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const NoMatchPage = lazy(() => import('pages/NoMatchPage'));
+const SignInPage = lazy(() => import('pages/SignInPage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage'));
 
 const App = () => {
   // Currently retrieving the locale from the browser but
@@ -46,20 +48,22 @@ const App = () => {
             <option value="es">spanish</option>
           </select>
           <BrowserRouter>
-            <Switch>
-              <ProtectedRoute path="/" exact>
-                <HomePage />
-              </ProtectedRoute>
-              <Route path="/sign-in" exact>
-                <SignInPage />
-              </Route>
-              <Route path="/sign-up" exact>
-                <SignUpPage />
-              </Route>
-              <Route>
-                <NoMatchPage />
-              </Route>
-            </Switch>
+            <Suspense fallback={<Loading />}>
+              <Switch>
+                <ProtectedRoute path="/" exact>
+                  <HomePage />
+                </ProtectedRoute>
+                <Route path="/sign-in" exact>
+                  <SignInPage />
+                </Route>
+                <Route path="/sign-up" exact>
+                  <SignUpPage />
+                </Route>
+                <Route>
+                  <NoMatchPage />
+                </Route>
+              </Switch>
+            </Suspense>
           </BrowserRouter>
         </IntlProvider>
       </PersistGate>
