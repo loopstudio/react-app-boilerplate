@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
+import ErrorBoundary from 'components/ErrorBoundary';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
@@ -48,22 +49,24 @@ const App = () => {
             <option value="es">spanish</option>
           </select>
           <BrowserRouter>
-            <Suspense fallback={<Loading />}>
-              <Switch>
-                <ProtectedRoute path="/" exact>
-                  <HomePage />
-                </ProtectedRoute>
-                <Route path="/sign-in" exact>
-                  <SignInPage />
-                </Route>
-                <Route path="/sign-up" exact>
-                  <SignUpPage />
-                </Route>
-                <Route>
-                  <NoMatchPage />
-                </Route>
-              </Switch>
-            </Suspense>
+            <ErrorBoundary>
+              <Suspense fallback={<Loading />}>
+                <Switch>
+                  <ProtectedRoute path="/" exact>
+                    <HomePage />
+                  </ProtectedRoute>
+                  <Route path="/sign-in" exact>
+                    <SignInPage />
+                  </Route>
+                  <Route path="/sign-up" exact>
+                    <SignUpPage />
+                  </Route>
+                  <Route>
+                    <NoMatchPage />
+                  </Route>
+                </Switch>
+              </Suspense>
+            </ErrorBoundary>
           </BrowserRouter>
         </IntlProvider>
       </PersistGate>
