@@ -1,32 +1,64 @@
 @import '../../tailwind';
 
 .screen {
-  @extend .bg-red-400, .min-h-screen, .min-w-full;
-  display: grid;
-  grid-template-areas:
-    '. . .'
-    '. form .'
-    '. . .';
-  justify-content: center;
-  align-items: center;
+  @extend 
+    .bg-gray-200,
+    .min-h-screen,
+    .min-w-full,
+    .relative;
 }
 
-.container {
-  @extend .w-full, .max-w-xs;
-  grid-area: form;
-  display: grid;
-  grid-template-areas:
-    '. title .'
-    'form form form'
-    '. link .';
+.signInContainer {
+  @extend 
+    .bg-white,
+    .flex-col,
+    .flex,
+    .mb-4,
+    .px-12,
+    .py-16,
+    .rounded,
+    .shadow-lg;
+}
+
+.viewContainer {
+  @extend 
+    .absolute,
+    .max-w-sm;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .title {
-  @extend .text-3xl;
+  @extend 
+    .font-light,
+    .mb-20,
+    .self-center,
+    .text-2xl,
+    .text-3xl,
+    .text-gray-500;
   grid-area: title;
 }
 
 .link {
+  @extend 
+    .text-left,
+    .text-gray-500;
   grid-area: link;
-  text-align: center;
+  grid-column: 1/3;
+  grid-row: 3;
+}
+
+.legend {
+  @extend .text-gray-500;
+}
+
+.legendContainer {
+  @extend .text-center;
+}
+
+.signUp {
+  @extend 
+    .ml-2,
+    .text-indigo-400;
 }
