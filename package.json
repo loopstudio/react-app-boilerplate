@@ -37,6 +37,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "jest": {
+    "resetMocks": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -42,6 +42,7 @@
     "react/jsx-filename-extension": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-throw-literal": "warn"
+    "no-throw-literal": "off",
+    "prefer-promise-reject-errors": "off"
   }
 }
