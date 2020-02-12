@@ -7,10 +7,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
 import AppLocale from 'languageProvider';
-import { store } from 'store';
+import createStore from 'testUtils/store';
 
 const Wrapper = ({ children }) => (
-  <Provider store={store}>
+  <Provider store={createStore()}>
     <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
       <BrowserRouter>{children}</BrowserRouter>
     </IntlProvider>
