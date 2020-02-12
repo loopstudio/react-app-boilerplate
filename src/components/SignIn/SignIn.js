@@ -17,14 +17,24 @@ const SignIn = () => {
 
   return (
     <div className={style.screen}>
-      <div className={style.container}>
-        <h1 className={style.title}>
-          <FormattedMessage id="common.signIn" />
-        </h1>
-        <Form />
-        <Link to="/sign-up" className={style.link}>
-          <FormattedMessage id="common.signUp" />
-        </Link>
+      <div className={style.viewContainer}>
+        <div className={style.signInContainer}>
+          <h1 className={style.title}>
+            <FormattedMessage id="common.signIn" />
+          </h1>
+          <Form />
+        </div>
+
+        <div className={style.legendContainer}>
+          <span className={style.legend}>
+            <FormattedMessage id="common.dontHaveAccountQuestion" />
+          </span>
+          <Link to="/sign-up" className={style.link}>
+            <span className={style.signUp}>
+              <FormattedMessage id="common.createAccount" />
+            </span>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -6,5 +6,7 @@ export default {
     lastName: 'Last Name',
     signIn: 'Sign in',
     signUp: 'Sign up',
+    dontHaveAccountQuestion: "Don't have an account?",
+    createAccount: 'Create one here',
   },
 };

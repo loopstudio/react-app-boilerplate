@@ -63,7 +63,9 @@ const Form = () => {
           {hasErrors && <p>There was an error.</p>}
           <div className={styles.email}>
             <label htmlFor="email-field" className={styles.label}>
-              <FormattedMessage id="common.email" />
+              <span className={styles.span}>
+                <FormattedMessage id="common.email" />
+              </span>
               <input
                 htmlFor="email-field"
                 name="email"
@@ -78,7 +80,9 @@ const Form = () => {
           </div>
           <div className={styles.password}>
             <label htmlFor="password-field" className={styles.label}>
-              <FormattedMessage id="common.password" />
+              <span className={styles.span}>
+                <FormattedMessage id="common.password" />
+              </span>
               <input
                 htmlFor="password-field"
                 name="password"

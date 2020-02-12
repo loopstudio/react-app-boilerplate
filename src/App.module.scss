@@ -1,3 +1,7 @@
+html {
+  font-family: 'Lato', sans-serif;
+}
+
 .localeSelect {
   height: 45px;
   outline: none;
@@ -5,4 +9,5 @@
   right: 10px;
   top: 10px;
   width: 100px;
+  z-index: 1;
 }
