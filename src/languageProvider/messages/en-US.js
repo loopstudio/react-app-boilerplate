@@ -8,5 +8,6 @@ export default {
     signUp: 'Sign up',
     dontHaveAccountQuestion: "Don't have an account?",
     createAccount: 'Create one here',
+    alreadyHaveAnAccount: 'Already have an account?',
   },
 };

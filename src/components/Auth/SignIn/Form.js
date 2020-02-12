@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signIn } from 'actions/auth';
-import styles from './Form.module.scss';
+import styles from '../Form.module.scss';
 
 const initialValues = {
   email: '',
@@ -21,47 +21,29 @@ const validationSchema = object().shape({
 
 const Form = () => {
   const dispatch = useDispatch();
-
-  const [formStatus, setFormStatus] = useState({
-    hasErrors: false,
-    isLoading: false,
-  });
+  const [hasErrors, setHasErrors] = useState(false);
 
   const onSubmit = async (values) => {
-    setFormStatus({ hasErrors: false, isLoading: true });
-
     try {
       await dispatch(signIn(values));
     } catch (error) {
-      setFormStatus({ hasErrors: true, isLoading: false });
+      setHasErrors(true);
     }
   };
 
-  const { isLoading, hasErrors } = formStatus;
-
   return (
     <Formik
-      validateOnMount
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({
-        errors,
-        handleChange,
-        handleSubmit,
-        isValid,
-        touched,
-        values: { email, password },
-      }) => (
+      {({ errors, handleChange, values, isValid, handleSubmit }) => (
         <form
           data-testid="signin-form"
           onSubmit={handleSubmit}
           className={styles.form}
         >
-          {isLoading && <p>Loading...</p>}
-          {hasErrors && <p>There was an error.</p>}
-          <div className={styles.email}>
+          <div className={`${errors.email ? styles.invalid : styles.valid}`}>
             <label htmlFor="email-field" className={styles.label}>
               <span className={styles.span}>
                 <FormattedMessage id="common.email" />
@@ -71,14 +53,14 @@ const Form = () => {
                 name="email"
                 type="email"
                 data-testid="email-input"
-                value={email}
-                onChange={handleChange}
                 className={styles.input}
+                onChange={handleChange}
+                value={values.email}
               />
             </label>
-            {touched.email && errors.email}
+            <span className={styles.error}>{errors.email}</span>
           </div>
-          <div className={styles.password}>
+          <div className={`${errors.password ? styles.invalid : styles.valid}`}>
             <label htmlFor="password-field" className={styles.label}>
               <span className={styles.span}>
                 <FormattedMessage id="common.password" />
@@ -88,23 +70,24 @@ const Form = () => {
                 name="password"
                 type="password"
                 data-testid="password-input"
-                value={password}
-                onChange={handleChange}
                 className={styles.input}
+                onChange={handleChange}
+                value={values.password}
               />
             </label>
-            {touched.password && errors.password}
+            <span className={styles.error}>{errors.password}</span>
           </div>
           <div className={styles.submit}>
             <button
               type="submit"
               data-testid="submit-button"
-              disabled={!isValid || isLoading}
               className={styles.button}
+              disabled={!isValid}
             >
               <FormattedMessage id="common.signIn" />
             </button>
           </div>
+          {hasErrors && <p>There was an error.</p>}
         </form>
       )}
     </Formik>
