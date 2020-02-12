@@ -8,7 +8,7 @@
     .relative;
 }
 
-.signInContainer {
+.authContainer {
   @extend 
     .bg-white,
     .flex-col,
@@ -17,7 +17,8 @@
     .px-12,
     .py-16,
     .rounded,
-    .shadow-lg;
+    .shadow-lg,
+    .max-w-sm;
 }
 
 .viewContainer {
@@ -57,7 +58,8 @@
   @extend .text-center;
 }
 
-.signUp {
+.signUp,
+.signIn {
   @extend 
     .ml-2,
     .text-indigo-400;

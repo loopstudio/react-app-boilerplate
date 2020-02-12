@@ -1,29 +1,12 @@
 @import '../../tailwind';
 
 .form {
-  display: grid;
-  grid-area: form;
-  justify-content: center;
-  align-items: center;
-  row-gap: 1em;
-  grid-template-areas:
-    'email email email'
-    'password password password'
-    'submit submit submit';
-  grid-template-rows: 6em 6em 6em;
-  grid-row-gap: 0rem;
-}
-
-.email {
-  grid-area: email;
-}
-
-.password {
-  grid-area: password;
+  display: flex;
+  flex-direction: column;
 }
 
 .submit {
-  grid-area: submit;
+  @extend .my-10;
 }
 
 .label {
@@ -32,7 +15,7 @@
     .text-gray-500,
     .text-sm,
     .font-normal,
-    .mb-1;
+    .mb-3;
 }
 
 .span {
@@ -56,6 +39,25 @@
   }
 }
 
+.invalid {
+  @extend .mb-3;
+  > label {
+    @extend .mb-1;
+  }
+  > label > input {
+    @extend .border-red-600;
+    &:focus {
+      @extend .outline-none, .border-red-600;
+    }
+  }
+}
+
+.valid {
+  > label > input {
+    @extend .border-gray-300;
+  }
+}
+
 .button {
   @extend 
     .bg-indigo-500,
@@ -71,4 +73,16 @@
   &:hover {
     @extend .bg-indigo-600;
   }
+
+  &:disabled {
+    @extend .bg-indigo-200, .shadow-none;
+    &:hover {
+      @extend .bg-indigo-200;
+    }
+  }
+}
+
+.error {
+  @extend 
+    .text-red-600;
 }

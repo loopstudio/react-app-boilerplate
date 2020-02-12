@@ -4,7 +4,7 @@ import { Link, Redirect, useLocation } from 'react-router-dom';
 
 import { useAuthentication } from 'hooks/auth';
 import Form from './Form';
-import style from './SignIn.module.scss';
+import style from '../Auth.module.scss';
 
 const SignIn = () => {
   const { state } = useLocation();
@@ -18,7 +18,7 @@ const SignIn = () => {
   return (
     <div className={style.screen}>
       <div className={style.viewContainer}>
-        <div className={style.signInContainer}>
+        <div className={style.authContainer}>
           <h1 className={style.title}>
             <FormattedMessage id="common.signIn" />
           </h1>
