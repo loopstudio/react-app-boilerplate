@@ -8,11 +8,7 @@
     .relative;
 }
 
-<<<<<<< HEAD:src/components/AuthWrapper/Auth.module.scss
 .authWrapper {
-=======
-.authContainer {
->>>>>>> Add signup styles:src/components/Auth/Auth.module.scss
   @extend 
     .bg-white,
     .flex-col,
@@ -69,12 +65,10 @@
   @extend .text-center;
 }
 
-<<<<<<< HEAD:src/components/AuthWrapper/Auth.module.scss
-=======
-.signUp,
-.signIn {
-  @extend 
-    .ml-2,
-    .text-indigo-400;
-}
->>>>>>> Add signup styles:src/components/Auth/Auth.module.scss
+// TODO: check
+// .signUp,
+// .signIn {
+//   @extend 
+//     .ml-2,
+//     .text-indigo-400;
+// }

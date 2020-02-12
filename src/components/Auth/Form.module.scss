@@ -1,0 +1,88 @@
+@import '../../tailwind';
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit {
+  @extend .my-10;
+}
+
+.label {
+  @extend 
+    .block,
+    .text-gray-500,
+    .text-sm,
+    .font-normal,
+    .mb-3;
+}
+
+.span {
+  @extend 
+    .mb-2,
+    .block;
+}
+
+.input {
+  @extend
+    .bg-gray-100,
+    .border,
+    .leading-tight,
+    .px-3,
+    .py-3,
+    .rounded,
+    .text-gray-700,
+    .w-64;
+  &:focus {
+    @extend .outline-none, .border-gray-300;
+  }
+}
+
+.invalid {
+  @extend .mb-3;
+  > label {
+    @extend .mb-1;
+  }
+  > label > input {
+    @extend .border-red-600;
+    &:focus {
+      @extend .outline-none, .border-red-600;
+    }
+  }
+}
+
+.valid {
+  > label > input {
+    @extend .border-gray-300;
+  }
+}
+
+.button {
+  @extend 
+    .bg-indigo-500,
+    .font-bold, 
+    .px-4, 
+    .py-2, 
+    .rounded-full,
+    .text-white, 
+    .tracking-wide, 
+    .uppercase,
+    .w-full;
+  box-shadow: 0rem 0rem 1.5rem .4rem rgba(102, 126, 234, 0.6);
+  &:hover {
+    @extend .bg-indigo-600;
+  }
+
+  &:disabled {
+    @extend .bg-indigo-200, .shadow-none;
+    &:hover {
+      @extend .bg-indigo-200;
+    }
+  }
+}
+
+.error {
+  @extend 
+    .text-red-600;
+}
