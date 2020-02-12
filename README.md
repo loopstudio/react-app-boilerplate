@@ -69,6 +69,9 @@ This is an opinionated boilerplate code for starting a new react web project.
 ### Type checking:
 - [prop-types](https://github.com/facebook/prop-types): Runtime type checking for React props and similar objects.
 
+### Datetime:
+- [dayjs](https://github.com/iamkun/dayjs): A minimalist JavaScript library that parses, validates, manipulates, and displays dates and times for modern browsers with a largely Moment.js-compatible API. This tool isn't installed in our project, but we recommend to use it, you can install it running `yarn add dayjs`.
+
 ### Testing:
 - [jest](https://jestjs.io/): a delightful JavaScript Testing Framework with a focus on simplicity.
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro): a very light-weight solution for testing React components.
