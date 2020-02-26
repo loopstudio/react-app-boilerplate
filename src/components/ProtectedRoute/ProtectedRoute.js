@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route, useLocation } from 'react-router-dom';
-
 import { useAuthentication } from 'hooks/auth';
 
 const ProtectedRoute = ({ children, ...rest }) => {
