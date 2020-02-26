@@ -1,6 +1,9 @@
-# React App Boilerplate
 
-This is an opinionated boilerplate code for starting a new react web project.
+![react app banner](https://user-images.githubusercontent.com/7807521/75348990-9eb6e300-5882-11ea-856d-fb11f426b602.png)
+
+<p align="center"><strong>An opinionated boilerplate code for starting a new react web project.</strong></p>
+
+<sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
 
 ## Table of Contents
 
