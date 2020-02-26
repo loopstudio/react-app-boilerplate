@@ -6,15 +6,16 @@ import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
 import ErrorBoundary from 'components/ErrorBoundary';
+import LanguageSelector from 'components/LanguageSelector';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
 import AppLocale from './languageProvider';
 
-import style from './App.module.scss';
-
+const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const NoMatchPage = lazy(() => import('pages/NoMatchPage'));
+const SettingsPage = lazy(() => import('pages/SettingsPage'));
 const SignInPage = lazy(() => import('pages/SignInPage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage'));
 
@@ -39,27 +40,36 @@ const App = () => {
           locale={currentLocale}
           messages={flatten(currentAppLocale.messages)}
         >
-          <select
-            name="localeSelect"
-            value={currentLocale}
-            className={style.localeSelect}
-            onChange={onChangeLocaleSelect}
-          >
-            <option value="en">english</option>
-            <option value="es">spanish</option>
-          </select>
           <BrowserRouter>
             <ErrorBoundary>
               <Suspense fallback={<Loading />}>
                 <Switch>
+                  <ProtectedRoute path="/settings" exact>
+                    <SettingsPage />
+                  </ProtectedRoute>
                   <ProtectedRoute path="/" exact>
                     <HomePage />
                   </ProtectedRoute>
-                  <Route path="/sign-in" exact>
+                  <Route path="/sign-in">
+                    <LanguageSelector
+                      onChangeLocaleSelect={onChangeLocaleSelect}
+                      currentLocale={currentAppLocale}
+                    />
                     <SignInPage />
                   </Route>
-                  <Route path="/sign-up" exact>
+                  <Route path="/sign-up">
+                    <LanguageSelector
+                      onChangeLocaleSelect={onChangeLocaleSelect}
+                      currentLocale={currentAppLocale}
+                    />
                     <SignUpPage />
+                  </Route>
+                  <Route path="/forgot-password" exact>
+                    <LanguageSelector
+                      onChangeLocaleSelect={onChangeLocaleSelect}
+                      currentLocale={currentAppLocale}
+                    />
+                    <ForgotPasswordPage />
                   </Route>
                   <Route>
                     <NoMatchPage />

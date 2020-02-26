@@ -8,7 +8,7 @@
     .relative;
 }
 
-.authContainer {
+.authWrapper {
   @extend 
     .bg-white,
     .flex-col,
@@ -37,7 +37,8 @@
     .self-center,
     .text-2xl,
     .text-3xl,
-    .text-gray-500;
+    .text-gray-500,
+    .text-center;
   grid-area: title;
 }
 
@@ -48,6 +49,12 @@
   grid-area: link;
   grid-column: 1/3;
   grid-row: 3;
+
+  > span {
+    @extend 
+      .ml-2,
+      .text-indigo-400;
+  }
 }
 
 .legend {
@@ -58,9 +65,3 @@
   @extend .text-center;
 }
 
-.signUp,
-.signIn {
-  @extend 
-    .ml-2,
-    .text-indigo-400;
-}

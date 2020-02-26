@@ -12,6 +12,14 @@ class AuthService {
   static signOut = () => {
     return axiosClient().delete('/users/sign_out');
   };
+
+  static resetPassword = (email) => {
+    return axiosClient().post('/users/password', { email });
+  };
+
+  static updatePassword = (password) => {
+    return axiosClient().put('/users/password', { password });
+  };
 }
 
 export default AuthService;
