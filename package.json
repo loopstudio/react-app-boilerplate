@@ -5,8 +5,8 @@
   "dependencies": {
     "autoprefixer": "^9.7.4",
     "axios": "^0.19.2",
-    "formik": "2.1.4",
     "flat": "^5.0.0",
+    "formik": "2.1.4",
     "humps": "^2.0.1",
     "node-sass": "^4.13.1",
     "postcss-cli": "^7.1.0",
@@ -55,7 +55,6 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.1",
-    "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "^6.10.0",
