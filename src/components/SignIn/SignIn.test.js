@@ -9,10 +9,7 @@ import {
   wait,
 } from 'testUtils';
 import { mockSignInSuccess, mockSignInFailure } from 'testUtils/mocks/auth';
-import fakeAuthService from 'api/AuthService';
 import SignIn from '.';
-
-jest.mock('api/AuthService');
 
 const fakeCredentials = {
   email: 'user@example.com',
@@ -21,7 +18,7 @@ const fakeCredentials = {
 
 describe('SignIn', () => {
   it('should submit correctly', async () => {
-    mockSignInSuccess();
+    const mockedRequest = mockSignInSuccess(fakeCredentials);
 
     const { getByTestId, history } = renderWithRouter(<SignIn />, {
       route: '/sign-in',
@@ -43,13 +40,12 @@ describe('SignIn', () => {
       fireEvent.click(submitButton);
     });
 
-    expect(fakeAuthService.signIn).toHaveBeenCalledTimes(1);
-    expect(fakeAuthService.signIn).toHaveBeenCalledWith(fakeCredentials);
+    expect(mockedRequest.isDone()).toBeTruthy();
     expect(history.location.pathname).toMatch('/');
   });
 
   it('should show error on response failure', async () => {
-    mockSignInFailure();
+    const mockedRequest = mockSignInFailure(fakeCredentials);
 
     const { getByTestId, queryByText } = render(<SignIn />);
     const submitButton = getByTestId('submit-button');
@@ -69,9 +65,11 @@ describe('SignIn', () => {
       fireEvent.click(submitButton);
     });
 
-    expect(fakeAuthService.signIn).toHaveBeenCalledTimes(1);
-    expect(fakeAuthService.signIn).toHaveBeenCalledWith(fakeCredentials);
-    expect(queryByText('There was an error.')).toBeInTheDocument();
+    expect(mockedRequest.isDone()).toBeTruthy();
+
+    await wait(() => {
+      expect(queryByText('There was an error.')).toBeInTheDocument();
+    });
   });
 
   it('should disable the submit button for invalid values', async () => {
