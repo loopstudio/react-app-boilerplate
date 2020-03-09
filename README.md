@@ -5,7 +5,6 @@
 <sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
 
 ## Table of Contents
-
 - [Project Structure](#project-structure)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
@@ -109,6 +108,7 @@ If you want to split your component in pieces for readability, maintainability, 
 
 - [jest](https://jestjs.io/): a delightful JavaScript Testing Framework with a focus on simplicity.
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro): a very light-weight solution for testing React components.
+- [nock](https://github.com/nock/nock): HTTP server mocking and expectations library for Node.js
 - [cypress](https://www.cypress.io/): automated integration tests. This tool isn't installed in our project, but we recommend to use it. You can install it running `yarn add cypress --dev`. For more information about the configuration you can read [this guide](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
 
 ### Styling:

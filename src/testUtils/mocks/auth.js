@@ -1,51 +1,52 @@
-import fakeAuthService from 'api/AuthService';
+import humps from 'humps';
+import baseMock from './base';
 
 const userResponse = {
-  data: {
-    user: {
-      id: 1,
-      first_name: 'Thomas',
-      last_name: 'Shelby',
-      email: 'tommy@shelbyltd.com',
+  body: {
+    data: {
+      user: {
+        id: 1,
+        first_name: 'User',
+        last_name: 'Example',
+        email: 'user@example.com',
+      },
     },
   },
   headers: {
-    uid: 'tommy@shelbyltd.com',
+    uid: 'user@example.com',
     client: 'client',
     'access-token': 'token',
   },
 };
 
-export const mockSignUpSuccess = () => {
-  fakeAuthService.signUp.mockImplementation(() =>
-    Promise.resolve(userResponse)
-  );
+export const mockSignUpSuccess = (user) => {
+  return baseMock
+    .post('/users', humps.decamelizeKeys({ user }))
+    .reply(200, userResponse.body, userResponse.headers);
 };
 
-export const mockSignUpFailure = () => {
-  fakeAuthService.signUp.mockImplementation(() =>
-    Promise.reject({
-      data: {
-        attributes_errors: {
-          email: 'has already been taken',
-        },
+export const mockSignUpFailure = (user) => {
+  return baseMock.post('/users', humps.decamelizeKeys({ user })).reply(422, {
+    data: {
+      attributes_errors: {
+        email: 'has already been taken',
       },
-    })
-  );
+    },
+  });
 };
 
-export const mockSignInSuccess = () => {
-  fakeAuthService.signIn.mockImplementation(() =>
-    Promise.resolve(userResponse)
-  );
+export const mockSignInSuccess = (credentials) => {
+  return baseMock
+    .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
+    .reply(200, userResponse.body, userResponse.headers);
 };
 
-export const mockSignInFailure = () => {
-  fakeAuthService.signIn.mockImplementation(() =>
-    Promise.reject({
+export const mockSignInFailure = (credentials) => {
+  return baseMock
+    .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
+    .reply(403, {
       data: {
         errors: ['The credentials are not valid'],
       },
-    })
-  );
+    });
 };
