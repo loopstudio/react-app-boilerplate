@@ -1,7 +1,13 @@
 import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
-import { fillInput, fireEvent, render, wait } from 'testUtils';
+import {
+  fillInput,
+  fireEvent,
+  render,
+  renderWithRouter,
+  wait,
+} from 'testUtils';
 import { mockSignInSuccess, mockSignInFailure } from 'testUtils/mocks/auth';
 import fakeAuthService from 'api/AuthService';
 import SignIn from '.';
@@ -17,7 +23,9 @@ describe('SignIn', () => {
   it('should submit correctly', async () => {
     mockSignInSuccess();
 
-    const { getByTestId } = render(<SignIn />);
+    const { getByTestId, history } = renderWithRouter(<SignIn />, {
+      route: '/sign-in',
+    });
     const submitButton = getByTestId('submit-button');
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
@@ -37,6 +45,7 @@ describe('SignIn', () => {
 
     expect(fakeAuthService.signIn).toHaveBeenCalledTimes(1);
     expect(fakeAuthService.signIn).toHaveBeenCalledWith(fakeCredentials);
+    expect(history.location.pathname).toMatch('/');
   });
 
   it('should show error on response failure', async () => {
