@@ -43,10 +43,24 @@
 
 ```
 ├── MyComponent
-│   ├── index.js
-│   ├── MyComponent.js
-│   ├── MyComponent.module.scss
-│   ├── MyComponent.test.js
+│ ├── index.js
+│ ├── MyComponent.js
+│ ├── MyComponent.module.scss
+│ ├── MyComponent.test.js
+```
+
+### Optional
+
+If you want to split your component in pieces for readability, maintainability, or any other reason you could put the secondary components in the same folder. This is only for cases where these secondary components are only used inside MyComponent. If later they want to be used in other places they should be extracted to their own folder inside components.
+
+```
+├── MyComponent
+│ ├── index.js
+│ ├── MyComponent.js
+│ ├── MyComponent.module.scss
+│ ├── MyComponent.test.js
+│ ├── SecondaryComponent.js
+│ ├── SecondaryComponent.module.scss
 ```
 
 ## Features
