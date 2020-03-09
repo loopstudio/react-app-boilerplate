@@ -8,9 +8,9 @@ import styles from './AuthLayout.module.scss';
 const AuthLayout = ({ children, noHeader }) => (
   <>
     {!noHeader && <Navbar />}
-    <div className={noHeader ? styles.noHeader : styles.authContainer}>
+    <main className={noHeader ? styles.noHeader : styles.authContainer}>
       {children}
-    </div>
+    </main>
   </>
 );
 

@@ -6,7 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
 import ErrorBoundary from 'components/ErrorBoundary';
-import LanguageSelector from 'components/LanguageSelector';
+import Footer from 'components/Footer';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
@@ -51,25 +51,25 @@ const App = () => {
                     <HomePage />
                   </ProtectedRoute>
                   <Route path="/sign-in">
-                    <LanguageSelector
+                    <SignInPage />
+                    <Footer
                       onChangeLocaleSelect={onChangeLocaleSelect}
                       currentLocale={currentAppLocale}
                     />
-                    <SignInPage />
                   </Route>
                   <Route path="/sign-up">
-                    <LanguageSelector
+                    <SignUpPage />
+                    <Footer
                       onChangeLocaleSelect={onChangeLocaleSelect}
                       currentLocale={currentAppLocale}
                     />
-                    <SignUpPage />
                   </Route>
                   <Route path="/forgot-password" exact>
-                    <LanguageSelector
+                    <ForgotPasswordPage />
+                    <Footer
                       onChangeLocaleSelect={onChangeLocaleSelect}
                       currentLocale={currentAppLocale}
                     />
-                    <ForgotPasswordPage />
                   </Route>
                   <Route>
                     <NoMatchPage />
