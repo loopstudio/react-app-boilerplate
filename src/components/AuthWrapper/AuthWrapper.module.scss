@@ -3,9 +3,11 @@
 .screen {
   @extend 
     .bg-gray-200,
-    .min-h-screen,
-    .min-w-full,
-    .relative;
+    .flex,
+    .flex-col,
+    .justify-center,
+    .min-w-full;
+  min-height: inherit;
 }
 
 .authWrapper {
@@ -13,21 +15,19 @@
     .bg-white,
     .flex-col,
     .flex,
+    .max-w-sm,
     .mb-4,
     .px-12,
     .py-16,
     .rounded,
-    .shadow-lg,
-    .max-w-sm;
+    .shadow-lg;
 }
 
 .viewContainer {
   @extend 
-    .absolute,
-    .max-w-sm;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+    .flex,
+    .flex-col,
+    .items-center;
 }
 
 .title {
@@ -45,16 +45,12 @@
 .link {
   @extend 
     .text-left,
-    .text-gray-500;
+    .text-gray-500,
+    .ml-2,
+    .text-indigo-400;
   grid-area: link;
   grid-column: 1/3;
   grid-row: 3;
-
-  > span {
-    @extend 
-      .ml-2,
-      .text-indigo-400;
-  }
 }
 
 .legend {
@@ -64,11 +60,3 @@
 .legendContainer {
   @extend .text-center;
 }
-
-// TODO: check
-// .signUp,
-// .signIn {
-//   @extend 
-//     .ml-2,
-//     .text-indigo-400;
-// }

@@ -11,7 +11,7 @@ export default {
     alreadyHaveAnAccount: 'Already have an account?',
     forgotPassword: 'Forgot password?',
     forgotPasswordLegend:
-      'Enter your username and we’ll help you reset your password',
+      'Enter your email and we’ll help you reset your password',
     resetPassword: 'Reset Password',
     newPassword: 'New Password',
     updatePassword: 'Update Password',

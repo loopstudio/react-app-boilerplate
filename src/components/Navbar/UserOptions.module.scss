@@ -1,0 +1,58 @@
+@import '../../tailwind';
+
+.inlineMenu {
+  @extend 
+    .flex,
+    .items-center,
+    .justify-around,
+    .text-indigo-500;
+
+  & > button { 
+    @extend 
+      .cursor-pointer,
+      .ml-3;
+
+    &:hover, &:focus {
+      @extend .text-indigo-400;
+    }
+
+    &:focus {
+      @extend .outline-none;
+    }
+  }
+}
+
+.avatar {
+  @extend 
+    .block,
+    .border,
+    .border-white,
+    .h-12,
+    .overflow-hidden,
+    .rounded-full,
+    .w-12;
+
+  &:focus {
+    @extend 
+      .border-white,
+      .outline-none; 
+  } 
+}
+
+.buttonStyle {
+  &:focus {
+    @extend .outline-none;
+  }
+}
+
+.desktop {
+  @extend
+    .hidden,
+    .md\:block;
+}
+
+.mobile {
+  @extend
+    .flex,
+    .md\:hidden;
+}

@@ -14,6 +14,7 @@ export default {
       'Escribe tu email y te ayudaremos a recuperar tu contraseña',
     resetPassword: 'Recuperar Contraseña',
     newPassword: 'Nueva Contraseña',
+    updatePassword: 'Actualizar Contraseña',
     accountSettings: 'Ajustes de cuenta',
     signOut: 'Cerrar Sesión',
     errorMessage: 'Ha ocurrido un error',

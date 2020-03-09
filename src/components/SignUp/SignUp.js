@@ -6,7 +6,7 @@ import AuthWrapper from 'components/AuthWrapper';
 import { useAuthentication } from 'hooks/auth';
 import Form from './Form';
 
-import style from '../AuthWrapper/Auth.module.scss';
+import style from '../AuthWrapper/AuthWrapper.module.scss';
 
 const SignUp = () => {
   const { state } = useLocation();
@@ -26,9 +26,7 @@ const SignUp = () => {
             <FormattedMessage id="common.alreadyHaveAnAccount" />
           </span>
           <Link to="/sign-in" className={style.link}>
-            <span className={style.signUp}>
-              <FormattedMessage id="common.signIn" />
-            </span>
+            <FormattedMessage id="common.signIn" />
           </Link>
         </>
       )}

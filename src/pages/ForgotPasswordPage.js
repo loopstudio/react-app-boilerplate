@@ -5,7 +5,7 @@ import AuthWrapper from 'components/AuthWrapper';
 import Form from 'components/ForgotPassword/Form';
 import MainLayout from 'layouts/MainLayout';
 
-const HomePage = () => {
+const ForgotPasswordPage = () => {
   const intl = useIntl();
 
   return (
@@ -17,4 +17,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ForgotPasswordPage;

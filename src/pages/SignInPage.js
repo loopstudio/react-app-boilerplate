@@ -5,7 +5,7 @@ import AuthLayout from 'layouts/AuthLayout';
 
 const SignInPage = () => {
   return (
-    <AuthLayout>
+    <AuthLayout noHeader>
       <SignIn />
     </AuthLayout>
   );

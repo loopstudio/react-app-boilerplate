@@ -5,19 +5,19 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
-import LanguageSelector from 'components/LanguageSelector';
 import ErrorBoundary from 'components/ErrorBoundary';
+import LanguageSelector from 'components/LanguageSelector';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
 import AppLocale from './languageProvider';
 
+const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const NoMatchPage = lazy(() => import('pages/NoMatchPage'));
 const SettingsPage = lazy(() => import('pages/SettingsPage'));
 const SignInPage = lazy(() => import('pages/SignInPage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage'));
-const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 
 const App = () => {
   // Currently retrieving the locale from the browser but

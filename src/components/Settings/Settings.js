@@ -33,7 +33,7 @@ const Settings = () => {
   return (
     <div className={styles.settingsContent}>
       <div className={styles.settingsContainer}>
-        <Title type="h2">
+        <Title type="h2" className={styles.title}>
           <FormattedMessage id="common.accountSettings" />
         </Title>
         <Formik

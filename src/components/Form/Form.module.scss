@@ -38,12 +38,12 @@
     .text-gray-700,
     .w-64;
   &:focus {
-    @extend .outline-none, .border-gray-300;
+    @extend .border-gray-300, .outline-none;
   }
 }
 
 .label {
-  @extend .block, .text-gray-500, .text-sm, .font-normal, .mb-3;
+  @extend .block, .font-normal, .mb-3, .text-gray-500, .text-sm;
 }
 
 .labelContainer {
@@ -61,14 +61,14 @@
 .button {
   @extend .bg-indigo-500,
     .font-bold,
+    .my-10,
     .px-4,
     .py-2,
     .rounded-full,
     .text-white,
     .tracking-wide,
     .uppercase,
-    .w-full,
-    .my-10;
+    .w-full;
   box-shadow: 0rem 0rem 1.5rem 0.4rem rgba(102, 126, 234, 0.6);
   &:hover {
     @extend .bg-indigo-600;

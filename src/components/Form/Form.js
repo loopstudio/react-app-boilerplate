@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import FormInput from './Input';
 import FormButton from './Button';
 
-const Form = ({ onSubmit, children, ...props }) => {
-  return (
-    <form {...props} onSubmit={onSubmit}>
-      {children}
-    </form>
-  );
-};
+const Form = ({ onSubmit, children, ...props }) => (
+  <form {...props} onSubmit={onSubmit}>
+    {children}
+  </form>
+);
 
 Form.displayName = 'CustomForm';
 Form.Input = FormInput;
