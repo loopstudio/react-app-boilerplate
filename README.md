@@ -119,8 +119,7 @@ If you want to split your component in pieces for readability, maintainability, 
 
 ### Deployment:
 
-- [netlify](https://www.netlify.com/): "The fastest way to
-build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. In addition, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
+- [netlify](https://www.netlify.com/): "The fastest way to build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. In addition, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
 
 ## Getting Started
 
