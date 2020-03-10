@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.1",
     "autoprefixer": "^9.7.4",
     "axios": "^0.19.2",
     "flat": "^5.0.0",
