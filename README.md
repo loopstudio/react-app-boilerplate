@@ -122,6 +122,13 @@ If you want to split your component in pieces for readability, maintainability, 
 
 - [netlify](https://www.netlify.com/): "The fastest way to build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. In addition, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
 
+### Error Monitoring:
+
+  **NOTE: These tools are not enabled by default. For instructions on how to set them up, please visit their respective vendor website**
+  
+- [sentry](https://github.com/getsentry/sentry-javascript#installation-and-usage): Sentry provides self-hosted and cloud-based error monitoring that helps all software teams discover, triage, and prioritize errors in real-time.
+- [sentry + logrocket](https://docs.logrocket.com/docs/sentry): Add a LogRocket session recording URL to every Sentry exception report. The integration of both of this tools allows us to access a video recording of the exact moment a user encountered an error including network events and console output.
+
 ## Getting Started
 
 1. Clone this repository and navigate to the folder.
