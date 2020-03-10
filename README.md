@@ -87,6 +87,10 @@ If you want to split your component in pieces for readability, maintainability, 
 - [redux-thunk](https://github.com/reduxjs/redux-thunk): as a power-up for the 'redux-promise-middleware'.
 - [redux-devtools-extension](http://extension.remotedev.io/): useful tool for debugging.
 
+### Immutability helper:
+
+- [immer](https://immerjs.github.io/immer): provides an easy way to work with immutable state.
+
 ### API Requests:
 
 - [axios](https://github.com/axios/axios): HTTP client.

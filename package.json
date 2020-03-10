@@ -8,6 +8,7 @@
     "flat": "^5.0.0",
     "formik": "2.1.4",
     "humps": "^2.0.1",
+    "immer": "^6.0.1",
     "node-sass": "^4.13.1",
     "postcss-cli": "^7.1.0",
     "prop-types": "^15.7.2",
