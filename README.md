@@ -117,6 +117,11 @@ If you want to split your component in pieces for readability, maintainability, 
 - [css-modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet): CSS-Modules helps us to have a more component-based styling avoiding possible conflicts and pollutants of the style across the app.
 - [tailwind](https://tailwindcss.com/docs/utility-first): Improves development speed by simplifying the syntax and giving us a single place to set CSS property-related values.
 
+### Deployment:
+
+- [netlify](https://www.netlify.com/): "The fastest way to
+build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. In addition, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
+
 ## Getting Started
 
 1. Clone this repository and navigate to the folder.
