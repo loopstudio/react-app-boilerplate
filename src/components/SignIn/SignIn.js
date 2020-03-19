@@ -1,42 +1,41 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
+import AuthWrapper from 'components/AuthWrapper';
 import { useAuthentication } from 'hooks/auth';
 import Form from './Form';
-import style from './SignIn.module.scss';
+
+import styles from '../AuthWrapper/Auth.module.scss';
 
 const SignIn = () => {
   const { state } = useLocation();
   const { from } = state || { from: { pathname: '/' } };
   const { isAuthenticated } = useAuthentication();
+  const intl = useIntl();
 
   if (isAuthenticated) {
     return <Redirect to={from} />;
   }
 
   return (
-    <div className={style.screen}>
-      <div className={style.viewContainer}>
-        <div className={style.signInContainer}>
-          <h1 className={style.title}>
-            <FormattedMessage id="common.signIn" />
-          </h1>
-          <Form />
-        </div>
-
-        <div className={style.legendContainer}>
-          <span className={style.legend}>
+    <AuthWrapper
+      renderLegend={() => (
+        <>
+          <span className={styles.legend}>
             <FormattedMessage id="common.dontHaveAccountQuestion" />
           </span>
-          <Link to="/sign-up" className={style.link}>
-            <span className={style.signUp}>
-              <FormattedMessage id="common.createAccount" />
+          <Link to="/sign-up" className={styles.link}>
+            <span className={styles.signUp}>
+              <FormattedMessage id="common.signUp" />
             </span>
           </Link>
-        </div>
-      </div>
-    </div>
+        </>
+      )}
+      title={intl.messages['common.signIn']}
+    >
+      <Form />
+    </AuthWrapper>
   );
 };
 

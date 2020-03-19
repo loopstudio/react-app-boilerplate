@@ -68,7 +68,7 @@ describe('SignIn', () => {
     expect(mockedRequest.isDone()).toBeTruthy();
 
     await wait(() => {
-      expect(queryByText('There was an error.')).toBeInTheDocument();
+      expect(queryByText('There was an error')).toBeInTheDocument();
     });
   });
 

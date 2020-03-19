@@ -1,0 +1,110 @@
+@import '../../tailwind';
+
+.nav {
+  @extend 
+    .bg-indigo-500,
+    .flex-wrap,
+    .flex,
+    .items-center,
+    .justify-between,
+    .p-4;
+}
+
+.logo {
+  @extend 
+    .flex-shrink-0, 
+    .flex,
+    .items-center, 
+    .mr-6,
+    .text-white;
+}
+
+.brand {
+  @extend 
+    .font-semibold, 
+    .text-xl, 
+    .tracking-tight;
+}
+
+.profile {
+  @extend 
+    .block, 
+    .relative;
+}
+
+.menu {
+  @extend 
+    .flex,
+    .text-sm;
+}
+
+.menuItem {
+  @extend 
+    .block, 
+    .mr-4,
+    .mt-4; 
+
+  &:hover {
+    @extend .text-white;
+  }
+}
+
+.avatar {
+  @extend 
+    .block,
+    .border-2,
+    .border-gray-600,
+    .h-12,
+    .overflow-hidden,
+    .rounded-full,
+    .w-12;
+
+  &:focus {
+    @extend 
+      .border-white,
+      .outline-none; 
+  }
+}
+
+.profileMenu {
+  @extend 
+    .absolute,
+    .bg-white,
+    .hidden,
+    .mt-2,
+    .py-2,
+    .rounded-lg,
+    .shadow-xl,
+    .w-48;
+  right: 0;
+
+  button {
+    @extend 
+      .block, 
+      .px-4, 
+      .py-2, 
+      .text-gray-800, 
+      .w-full;
+
+    &:hover {
+      @extend 
+        .bg-indigo-500,
+        .text-white;
+    }
+  }
+}
+
+.profileWrapper {
+  @extend 
+    .bg-transparent,
+    .absolute,
+    .cursor-pointer;
+  top: -5px;
+  height: 4rem;
+  width: 3rem;
+  padding-top: 3rem;
+
+  &:hover > div {
+    @extend .block;
+  }
+}

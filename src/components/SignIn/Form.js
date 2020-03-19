@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { Formik } from 'formik';
-import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signIn } from 'actions/auth';
-import styles from './Form.module.scss';
+import Form from 'components/Form';
 
 const initialValues = {
   email: '',
@@ -19,96 +19,60 @@ const validationSchema = object().shape({
   password: string().required('Required'),
 });
 
-const Form = () => {
+const SignInForm = () => {
   const dispatch = useDispatch();
-
-  const [formStatus, setFormStatus] = useState({
-    hasErrors: false,
-    isLoading: false,
-  });
+  const [hasErrors, setHasErrors] = useState(false);
+  const intl = useIntl();
 
   const onSubmit = async (values) => {
-    setFormStatus({ hasErrors: false, isLoading: true });
-
     try {
       await dispatch(signIn(values));
     } catch (error) {
-      setFormStatus({ hasErrors: true, isLoading: false });
+      setHasErrors(true);
     }
   };
 
-  const { isLoading, hasErrors } = formStatus;
-
   return (
     <Formik
-      validateOnMount
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({
-        errors,
-        handleChange,
-        handleSubmit,
-        isValid,
-        touched,
-        values: { email, password },
-      }) => (
-        <form
-          data-testid="signin-form"
-          onSubmit={handleSubmit}
-          className={styles.form}
-        >
-          {isLoading && <p>Loading...</p>}
-          {hasErrors && <p>There was an error.</p>}
-          <div className={styles.email}>
-            <label htmlFor="email-field" className={styles.label}>
-              <span className={styles.span}>
-                <FormattedMessage id="common.email" />
-              </span>
-              <input
-                htmlFor="email-field"
-                name="email"
-                type="email"
-                data-testid="email-input"
-                value={email}
-                onChange={handleChange}
-                className={styles.input}
-              />
-            </label>
-            {touched.email && errors.email}
-          </div>
-          <div className={styles.password}>
-            <label htmlFor="password-field" className={styles.label}>
-              <span className={styles.span}>
-                <FormattedMessage id="common.password" />
-              </span>
-              <input
-                htmlFor="password-field"
-                name="password"
-                type="password"
-                data-testid="password-input"
-                value={password}
-                onChange={handleChange}
-                className={styles.input}
-              />
-            </label>
-            {touched.password && errors.password}
-          </div>
-          <div className={styles.submit}>
-            <button
-              type="submit"
-              data-testid="submit-button"
-              disabled={!isValid || isLoading}
-              className={styles.button}
-            >
-              <FormattedMessage id="common.signIn" />
-            </button>
-          </div>
-        </form>
+      {({ errors, handleChange, values, isValid, handleSubmit }) => (
+        <Form data-testid="signin-form" onSubmit={handleSubmit}>
+          <Form.Input
+            id="email"
+            error={errors.email}
+            value={values.email}
+            onChange={handleChange}
+            name="email"
+            type="email"
+            data-testid="email-input"
+          />
+          <Form.Input
+            id="password"
+            error={errors.password}
+            value={values.password}
+            onChange={handleChange}
+            name="password"
+            type="password"
+            helpLinkPath="/forgot-password"
+            helpMessage={intl.messages['common.forgotPassword']}
+            data-testid="password-input"
+          />
+          <Form.Button
+            text={intl.messages['common.signIn']}
+            isDisabled={!isValid}
+          />
+          {hasErrors && (
+            <p>
+              <FormattedMessage id="common.errorMessage" />
+            </p>
+          )}
+        </Form>
       )}
     </Formik>
   );
 };
 
-export default Form;
+export default SignInForm;

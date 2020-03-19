@@ -1,0 +1,9 @@
+@import '../../tailwind';
+
+.localeSelect {
+  @extend .absolute, .outline-none, .z-10;
+  height: 45px;
+  right: 10px;
+  top: 10px;
+  width: 100px;
+}

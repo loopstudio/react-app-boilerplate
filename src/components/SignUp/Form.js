@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import { useIntl, FormattedMessage } from 'react-intl';
 import { Formik } from 'formik';
-import { FormattedMessage } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
+import Form from 'components/Form';
 
 const initialValues = {
   email: '',
@@ -24,103 +25,70 @@ const validationSchema = object().shape({
     .required('Required'),
 });
 
-const Form = () => {
+const SignUpForm = () => {
   const dispatch = useDispatch();
-
-  const [formStatus, setFormStatus] = useState({
-    hasErrors: false,
-    isLoading: false,
-  });
+  const [hasError, setHasError] = useState(false);
+  const intl = useIntl();
 
   const onSubmit = async (values) => {
-    setFormStatus({ hasErrors: false, isLoading: true });
-
     try {
       await dispatch(signUp(values));
     } catch (error) {
-      setFormStatus({ hasErrors: true, isLoading: false });
+      setHasError(true);
     }
   };
 
-  const { isLoading, hasErrors } = formStatus;
-
   return (
     <Formik
-      validateOnMount
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({
-        errors,
-        handleChange,
-        handleSubmit,
-        isValid,
-        touched,
-        values: { email, firstName, lastName, password },
-      }) => (
-        <form data-testid="signup-form" onSubmit={handleSubmit}>
-          {isLoading && <p>Loading...</p>}
-          {hasErrors && <p>There was an error.</p>}
-          <label htmlFor="email-field">
-            <FormattedMessage id="common.email" />
-            <input
-              htmlFor="email-field"
-              type="email"
-              name="email"
-              data-testid="email-input"
-              value={email}
-              onChange={handleChange}
-            />
-          </label>
-          {touched.email && errors.email}
-          <label htmlFor="fistName-field">
-            <FormattedMessage id="common.firstName" />
-            <input
-              htmlFor="fistName-field"
-              type="text"
-              name="firstName"
-              data-testid="firstName-input"
-              value={firstName}
-              onChange={handleChange}
-            />
-          </label>
-          {touched.firstName && errors.firstName}
-          <label htmlFor="lastName-field">
-            <FormattedMessage id="common.lastName" />
-            <input
-              htmlFor="lastName-field"
-              type="text"
-              name="lastName"
-              data-testid="lastName-input"
-              value={lastName}
-              onChange={handleChange}
-            />
-          </label>
-          {touched.lastName && errors.lastName}
-          <label htmlFor="password-field">
-            <FormattedMessage id="common.password" />
-            <input
-              htmlFor="password-field"
-              name="password"
-              type="password"
-              data-testid="password-input"
-              value={password}
-              onChange={handleChange}
-            />
-          </label>
-          {touched.password && errors.password}
-          <button
-            type="submit"
-            data-testid="submit-button"
-            disabled={!isValid || isLoading}
-          >
-            Sign up
-          </button>
-        </form>
+      {({ errors, handleChange, isValid, values, handleSubmit }) => (
+        <Form data-testid="signup-form" onSubmit={handleSubmit}>
+          <Form.Input
+            id="email"
+            error={errors.email}
+            value={values.email}
+            onChange={handleChange}
+            name="email"
+            type="email"
+            data-testid="email-input"
+          />
+          <Form.Input
+            id="firstName"
+            error={errors.firstName}
+            value={values.firstName}
+            onChange={handleChange}
+            name="firstName"
+            data-testid="firstName-input"
+          />
+          <Form.Input
+            id="lastName"
+            error={errors.lastName}
+            value={values.lastName}
+            onChange={handleChange}
+            name="lastName"
+            data-testid="lastName-input"
+          />
+          <Form.Input
+            id="password"
+            error={errors.password}
+            value={values.password}
+            onChange={handleChange}
+            name="password"
+            type="password"
+            data-testid="password-input"
+          />
+          <Form.Button
+            text={intl.messages['common.signUp']}
+            isDisabled={!isValid}
+          />
+          {hasError && <FormattedMessage id="common.errorMessage" />}
+        </Form>
       )}
     </Formik>
   );
 };
 
-export default Form;
+export default SignUpForm;

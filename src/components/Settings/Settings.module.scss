@@ -1,0 +1,52 @@
+@import '../../tailwind';
+
+.settingsContent {
+  @extend 
+    .bg-gray-200,
+    .flex;
+  min-height: calc(100vh - 70px);
+}
+
+.settingsContainer {
+  @extend 
+    .bg-white,
+    .w-1\/2;
+  margin: 10px 15px;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.settingsForm {
+  @extend .mt-6;
+}
+
+.button {
+  @extend 
+    .bg-indigo-500,
+    .font-bold, 
+    .px-4, 
+    .py-2, 
+    .rounded-full,
+    .text-white, 
+    .tracking-wide, 
+    .uppercase,
+    .w-64;
+  &:hover {
+    @extend .bg-indigo-600;
+  }
+
+  &:disabled {
+    @extend .bg-indigo-200, .shadow-none;
+    &:hover {
+      @extend .bg-indigo-200;
+    }
+  }
+}
+
+.error {
+  @extend .text-red-700;
+}
+
+.success {
+  @extend .text-green-700;
+}
