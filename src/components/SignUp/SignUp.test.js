@@ -6,7 +6,7 @@ import {
   fireEvent,
   render,
   renderWithRouter,
-  wait,
+  waitFor,
 } from 'testUtils';
 import { mockSignUpSuccess, mockSignUpFailure } from 'testUtils/mocks/auth';
 import SignUp from '.';
@@ -25,31 +25,32 @@ describe('SignUp', () => {
     const { getByTestId, history } = renderWithRouter(<SignUp />, {
       route: '/sign-up',
     });
+
     const email = getByTestId('email-input');
     const firstName = getByTestId('firstName-input');
     const lastName = getByTestId('lastName-input');
     const password = getByTestId('password-input');
     const submitButton = getByTestId('submit-button');
 
-    await wait(() => {
-      fillInput(email, fakeUser.email);
-      fillInput(firstName, fakeUser.firstName);
-      fillInput(lastName, fakeUser.lastName);
-      fillInput(password, fakeUser.password);
+    fillInput(email, fakeUser.email);
+    fillInput(firstName, fakeUser.firstName);
+    fillInput(lastName, fakeUser.lastName);
+    fillInput(password, fakeUser.password);
+
+    await waitFor(() => {
+      expect(submitButton).toBeEnabled();
+      expect(email.value).toBe(fakeUser.email);
+      expect(firstName.value).toBe(fakeUser.firstName);
+      expect(lastName.value).toBe(fakeUser.lastName);
+      expect(password.value).toBe(fakeUser.password);
     });
 
-    expect(submitButton).toBeEnabled();
-    expect(email.value).toBe(fakeUser.email);
-    expect(firstName.value).toBe(fakeUser.firstName);
-    expect(lastName.value).toBe(fakeUser.lastName);
-    expect(password.value).toBe(fakeUser.password);
+    fireEvent.click(submitButton);
 
-    await wait(() => {
-      fireEvent.click(submitButton);
+    await waitFor(() => {
+      expect(mockedRequest.isDone()).toBeTruthy();
+      expect(history.location.pathname).toMatch('/');
     });
-
-    expect(mockedRequest.isDone()).toBeTruthy();
-    expect(history.location.pathname).toMatch('/');
   });
 
   it('should show error on response failure', async () => {
@@ -62,26 +63,23 @@ describe('SignUp', () => {
     const password = getByTestId('password-input');
     const submitButton = getByTestId('submit-button');
 
-    await wait(() => {
-      fillInput(email, fakeUser.email);
-      fillInput(firstName, fakeUser.firstName);
-      fillInput(lastName, fakeUser.lastName);
-      fillInput(password, fakeUser.password);
+    fillInput(email, fakeUser.email);
+    fillInput(firstName, fakeUser.firstName);
+    fillInput(lastName, fakeUser.lastName);
+    fillInput(password, fakeUser.password);
+
+    await waitFor(() => {
+      expect(submitButton).toBeEnabled();
+      expect(email.value).toBe(fakeUser.email);
+      expect(firstName.value).toBe(fakeUser.firstName);
+      expect(lastName.value).toBe(fakeUser.lastName);
+      expect(password.value).toBe(fakeUser.password);
     });
 
-    expect(submitButton).toBeEnabled();
-    expect(email.value).toBe(fakeUser.email);
-    expect(firstName.value).toBe(fakeUser.firstName);
-    expect(lastName.value).toBe(fakeUser.lastName);
-    expect(password.value).toBe(fakeUser.password);
+    fireEvent.click(submitButton);
 
-    await wait(() => {
-      fireEvent.click(submitButton);
-    });
-
-    expect(mockedRequest.isDone()).toBeTruthy();
-
-    await wait(() => {
+    await waitFor(() => {
+      expect(mockedRequest.isDone()).toBeTruthy();
       expect(queryByText('There was an error')).toBeInTheDocument();
     });
   });
@@ -91,10 +89,10 @@ describe('SignUp', () => {
     const email = getByTestId('email-input');
     const submitButton = getByTestId('submit-button');
 
-    await wait(() => {
-      fillInput(email, 'invalid');
-    });
+    fillInput(email, 'invalid');
 
-    expect(submitButton).toBeDisabled();
+    await waitFor(() => {
+      expect(submitButton).toBeDisabled();
+    });
   });
 });
