@@ -15,9 +15,7 @@ const initialValues = {
 };
 
 const validationSchema = object().shape({
-  email: string()
-    .email('Invalid email')
-    .required('Required'),
+  email: string().email('Invalid email').required('Required'),
   firstName: string().required('Required'),
   lastName: string().required('Required'),
   password: string()
