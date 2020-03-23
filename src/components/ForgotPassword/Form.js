@@ -13,9 +13,7 @@ const initialValues = {
 };
 
 const validationSchema = object().shape({
-  email: string()
-    .email('Invalid email')
-    .required('Required'),
+  email: string().email('Invalid email').required('Required'),
 });
 
 const ForgotPasswordForm = () => {
