@@ -19,34 +19,30 @@ const userResponse = {
   },
 };
 
-export const mockSignUpSuccess = (user) => {
-  return baseMock
+export const mockSignUpSuccess = (user) =>
+  baseMock
     .post('/users', humps.decamelizeKeys({ user }))
     .reply(200, userResponse.body, userResponse.headers);
-};
 
-export const mockSignUpFailure = (user) => {
-  return baseMock.post('/users', humps.decamelizeKeys({ user })).reply(422, {
+export const mockSignUpFailure = (user) =>
+  baseMock.post('/users', humps.decamelizeKeys({ user })).reply(422, {
     data: {
       attributes_errors: {
         email: 'has already been taken',
       },
     },
   });
-};
 
-export const mockSignInSuccess = (credentials) => {
-  return baseMock
+export const mockSignInSuccess = (credentials) =>
+  baseMock
     .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
     .reply(200, userResponse.body, userResponse.headers);
-};
 
-export const mockSignInFailure = (credentials) => {
-  return baseMock
+export const mockSignInFailure = (credentials) =>
+  baseMock
     .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
     .reply(403, {
       data: {
         errors: ['The credentials are not valid'],
       },
     });
-};

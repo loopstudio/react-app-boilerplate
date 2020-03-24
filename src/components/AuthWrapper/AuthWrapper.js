@@ -5,23 +5,21 @@ import Title from 'components/Title';
 
 import styles from './Auth.module.scss';
 
-const AuthWrapper = ({ title, children, renderLegend }) => {
-  return (
-    <div className={styles.screen}>
-      <div className={styles.viewContainer}>
-        <div className={styles.authWrapper}>
-          <Title type="h1" className={styles.title}>
-            {title}
-          </Title>
-          {children}
-        </div>
-        {renderLegend && (
-          <div className={styles.legendContainer}>{renderLegend()}</div>
-        )}
+const AuthWrapper = ({ title, children, renderLegend }) => (
+  <div className={styles.screen}>
+    <div className={styles.viewContainer}>
+      <div className={styles.authWrapper}>
+        <Title type="h1" className={styles.title}>
+          {title}
+        </Title>
+        {children}
       </div>
+      {renderLegend && (
+        <div className={styles.legendContainer}>{renderLegend()}</div>
+      )}
     </div>
-  );
-};
+  </div>
+);
 
 AuthWrapper.defaultProps = {
   title: '',

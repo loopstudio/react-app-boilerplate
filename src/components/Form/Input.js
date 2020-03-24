@@ -6,26 +6,24 @@ import { FormattedMessage } from 'react-intl';
 import styles from './Form.module.scss';
 
 const FormInput = React.forwardRef(
-  ({ error, helpLinkPath, helpMessage, id, name, ...rest }, ref) => {
-    return (
-      <div className={error ? styles.invalid : styles.valid}>
-        <label htmlFor={id} className={styles.label}>
-          <div className={styles.labelContainer}>
-            <span className={styles.span}>
-              <FormattedMessage id={`common.${name}`} />
-            </span>
-            {helpLinkPath && (
-              <Link className={styles.link} to={helpLinkPath}>
-                {helpMessage}
-              </Link>
-            )}
-          </div>
-          <input {...rest} name={name} className={styles.input} ref={ref} />
-        </label>
-        <span className={styles.error}>{error}</span>
-      </div>
-    );
-  }
+  ({ error, helpLinkPath, helpMessage, id, name, ...rest }, ref) => (
+    <div className={error ? styles.invalid : styles.valid}>
+      <label htmlFor={id} className={styles.label}>
+        <div className={styles.labelContainer}>
+          <span className={styles.span}>
+            <FormattedMessage id={`common.${name}`} />
+          </span>
+          {helpLinkPath && (
+            <Link className={styles.link} to={helpLinkPath}>
+              {helpMessage}
+            </Link>
+          )}
+        </div>
+        <input {...rest} name={name} className={styles.input} ref={ref} />
+      </label>
+      <span className={styles.error}>{error}</span>
+    </div>
+  )
 );
 
 FormInput.defaultProps = {

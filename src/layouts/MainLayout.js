@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 
-const MainLayout = ({ children }) => {
-  return children;
-};
+const MainLayout = ({ children }) => children;
 
 MainLayout.propTypes = {
   children: PropTypes.element.isRequired,

@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 
-const AuthLayout = ({ children }) => {
-  return children;
-};
+const AuthLayout = ({ children }) => children;
 
 AuthLayout.propTypes = {
   children: PropTypes.element.isRequired,
