@@ -6,7 +6,7 @@ import {
   fireEvent,
   render,
   renderWithRouter,
-  wait,
+  waitFor,
 } from 'testUtils';
 import { mockSignInSuccess, mockSignInFailure } from 'testUtils/mocks/auth';
 import SignIn from '.';
@@ -27,21 +27,21 @@ describe('SignIn', () => {
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
-    await wait(() => {
-      fillInput(email, fakeCredentials.email);
-      fillInput(password, fakeCredentials.password);
+    fillInput(email, fakeCredentials.email);
+    fillInput(password, fakeCredentials.password);
+
+    await waitFor(() => {
+      expect(submitButton).toBeEnabled();
+      expect(email.value).toBe(fakeCredentials.email);
+      expect(password.value).toBe(fakeCredentials.password);
     });
 
-    expect(submitButton).toBeEnabled();
-    expect(email.value).toBe(fakeCredentials.email);
-    expect(password.value).toBe(fakeCredentials.password);
+    fireEvent.click(submitButton);
 
-    await wait(() => {
-      fireEvent.click(submitButton);
+    await waitFor(() => {
+      expect(mockedRequest.isDone()).toBeTruthy();
+      expect(history.location.pathname).toMatch('/');
     });
-
-    expect(mockedRequest.isDone()).toBeTruthy();
-    expect(history.location.pathname).toMatch('/');
   });
 
   it('should show error on response failure', async () => {
@@ -52,22 +52,19 @@ describe('SignIn', () => {
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
-    await wait(() => {
-      fillInput(email, fakeCredentials.email);
-      fillInput(password, fakeCredentials.password);
+    fillInput(email, fakeCredentials.email);
+    fillInput(password, fakeCredentials.password);
+
+    await waitFor(() => {
+      expect(submitButton).toBeEnabled();
+      expect(email.value).toBe(fakeCredentials.email);
+      expect(password.value).toBe(fakeCredentials.password);
     });
 
-    expect(submitButton).toBeEnabled();
-    expect(email.value).toBe(fakeCredentials.email);
-    expect(password.value).toBe(fakeCredentials.password);
+    fireEvent.click(submitButton);
 
-    await wait(() => {
-      fireEvent.click(submitButton);
-    });
-
-    expect(mockedRequest.isDone()).toBeTruthy();
-
-    await wait(() => {
+    await waitFor(() => {
+      expect(mockedRequest.isDone()).toBeTruthy();
       expect(queryByText('There was an error')).toBeInTheDocument();
     });
   });
@@ -77,10 +74,10 @@ describe('SignIn', () => {
     const submitButton = getByTestId('submit-button');
     const email = getByTestId('email-input');
 
-    await wait(() => {
-      fillInput(email, 'invalid');
-    });
+    fillInput(email, 'invalid');
 
-    expect(submitButton).toBeDisabled();
+    await waitFor(() => {
+      expect(submitButton).toBeDisabled();
+    });
   });
 });
