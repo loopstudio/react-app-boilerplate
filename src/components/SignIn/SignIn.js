@@ -2,11 +2,11 @@ import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Link, Redirect, useLocation } from 'react-router-dom';
 
-import AuthWrapper from 'components/AuthWrapper';
 import { useAuthentication } from 'hooks/auth';
+import AuthWrapper from '../AuthWrapper';
 import Form from './Form';
 
-import styles from '../AuthWrapper/Auth.module.scss';
+import styles from '../AuthWrapper/AuthWrapper.module.scss';
 
 const SignIn = () => {
   const { state } = useLocation();
@@ -26,9 +26,7 @@ const SignIn = () => {
             <FormattedMessage id="common.dontHaveAccountQuestion" />
           </span>
           <Link to="/sign-up" className={styles.link}>
-            <span className={styles.signUp}>
-              <FormattedMessage id="common.signUp" />
-            </span>
+            <FormattedMessage id="common.signUp" />
           </Link>
         </>
       )}

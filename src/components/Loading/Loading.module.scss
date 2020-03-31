@@ -3,8 +3,8 @@
 .content {
   @extend
     .bg-gray-100,
+    .min-h-screen,
     .p-6,
     .text-center,
     .text-gray-600;
-  min-height: inherit;
 }

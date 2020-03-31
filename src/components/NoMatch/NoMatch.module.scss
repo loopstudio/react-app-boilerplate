@@ -6,5 +6,5 @@
     .p-6,
     .text-center,
     .text-gray-600;
-  min-height: inherit;
+  min-height: calc(100vh - 4rem);
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Loading = () => <div>Loading...</div>;
+import style from './Loading.module.scss';
+
+const Loading = () => <div className={style.content}>Loading...</div>;
 
 export default Loading;
