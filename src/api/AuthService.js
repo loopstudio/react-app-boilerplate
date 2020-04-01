@@ -1,25 +1,18 @@
 import axiosClient from './httpClient';
 
 class AuthService {
-  static signUp = (user) => {
-    return axiosClient().post('/users', { user });
-  };
+  static signUp = (user) => axiosClient().post('/users', { user });
 
-  static signIn = (credentials) => {
-    return axiosClient().post('/users/sign_in', { user: credentials });
-  };
+  static signIn = (credentials) =>
+    axiosClient().post('/users/sign_in', { user: credentials });
 
-  static signOut = () => {
-    return axiosClient().delete('/users/sign_out');
-  };
+  static signOut = () => axiosClient().delete('/users/sign_out');
 
-  static resetPassword = (email) => {
-    return axiosClient().post('/users/password', { email });
-  };
+  static resetPassword = (email) =>
+    axiosClient().post('/users/password', { email });
 
-  static updatePassword = (password) => {
-    return axiosClient().put('/users/password', { password });
-  };
+  static updatePassword = (password) =>
+    axiosClient().put('/users/password', { password });
 }
 
 export default AuthService;
