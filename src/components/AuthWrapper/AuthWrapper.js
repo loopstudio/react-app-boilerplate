@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Title from 'components/Title';
 
-import styles from './Auth.module.scss';
+import styles from './AuthWrapper.module.scss';
 
 const AuthWrapper = ({ title, children, renderLegend }) => (
   <div className={styles.screen}>

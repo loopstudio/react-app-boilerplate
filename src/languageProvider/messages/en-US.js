@@ -11,7 +11,7 @@ export default {
     alreadyHaveAnAccount: 'Already have an account?',
     forgotPassword: 'Forgot password?',
     forgotPasswordLegend:
-      'Enter your username and we’ll help you reset your password',
+      'Enter your email and we’ll help you reset your password',
     resetPassword: 'Reset Password',
     newPassword: 'New Password',
     updatePassword: 'Update Password',
@@ -20,5 +20,9 @@ export default {
     errorMessage: 'There was an error',
     resetPasswordSuccess: 'An email has been sent with your new password',
     changePasswordSuccess: 'You password has been changed successfully',
+    pageNotFoundTitle: '404',
+    pageNotFoundLegend:
+      "It seems like the page you are looking for doesn't exist",
+    goBackHome: 'Go back home',
   },
 };

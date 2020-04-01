@@ -3,29 +3,48 @@
 .settingsContent {
   @extend 
     .bg-gray-200,
-    .flex;
-  min-height: calc(100vh - 70px);
+    .flex,
+    .flex-col;
+  min-height: inherit;
 }
 
 .settingsContainer {
   @extend 
+    .flex,
+    .flex-col,
+    .items-center,
     .bg-white,
-    .w-1\/2;
-  margin: 10px 15px;
-  padding: 2rem;
+    .p-8,
+    .w-auto;
   border-radius: 5px;
+  margin: 10px auto;
+}
+
+.title {
+  @extend 
+    .font-light,
+    .mb-10,
+    .md\:mb-20,
+    .self-center,
+    .text-2xl,
+    .text-3xl,
+    .text-center,
+    .text-gray-500;
+  grid-area: title;
 }
 
 .settingsForm {
   @extend .mt-6;
+  width: fit-content;
 }
 
 .button {
   @extend 
     .bg-indigo-500,
     .font-bold, 
+    .my-4, 
     .px-4, 
-    .py-2, 
+    .py-2,
     .rounded-full,
     .text-white, 
     .tracking-wide, 

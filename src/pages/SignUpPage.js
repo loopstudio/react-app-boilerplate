@@ -4,7 +4,7 @@ import SignUp from 'components/SignUp';
 import AuthLayout from 'layouts/AuthLayout';
 
 const SignUpPage = () => (
-  <AuthLayout>
+  <AuthLayout noHeader>
     <SignUp />
   </AuthLayout>
 );

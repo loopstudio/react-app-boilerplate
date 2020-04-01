@@ -1,0 +1,10 @@
+@import '../../tailwind';
+
+.mainContainer {
+  @extend .pt-16;
+  min-height: calc(100vh - 4rem);
+}
+
+.noHeader {
+  min-height: 100vh;
+}

@@ -4,7 +4,7 @@ import SignIn from 'components/SignIn';
 import AuthLayout from 'layouts/AuthLayout';
 
 const SignInPage = () => (
-  <AuthLayout>
+  <AuthLayout noHeader>
     <SignIn />
   </AuthLayout>
 );
