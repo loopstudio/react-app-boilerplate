@@ -5,7 +5,7 @@ import MainLayout from 'layouts/MainLayout';
 
 const NoMatchPage = () => {
   return (
-    <MainLayout>
+    <MainLayout noHeader>
       <NoMatch />
     </MainLayout>
   );

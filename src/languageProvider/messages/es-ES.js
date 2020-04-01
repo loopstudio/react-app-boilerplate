@@ -20,5 +20,8 @@ export default {
     errorMessage: 'Ha ocurrido un error',
     resetPasswordSuccess: 'Se ha enviado un correo con tu nueva contraseña',
     changePasswordSuccess: 'Tu contraseña ha sido cambiada con éxito',
+    pageNotFoundTitle: '404',
+    pageNotFoundLegend: 'Parece que la página que estás buscando no existe',
+    goBackHome: 'Volver al inicio',
   },
 };
