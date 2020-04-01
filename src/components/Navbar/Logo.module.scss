@@ -1,18 +1,18 @@
 @import '../../tailwind';
 
 .logo {
-  @extend 
-    .flex-shrink-0, 
+  @extend
+    .flex-shrink-0,
     .flex,
-    .items-center, 
+    .items-center,
     .mr-6,
     .text-indigo-400;
 }
 
 .brand {
-  @extend 
+  @extend
     .cursor-pointer,
-    .font-medium, 
-    .text-xl, 
+    .font-medium,
+    .text-xl,
     .tracking-tight;
 }

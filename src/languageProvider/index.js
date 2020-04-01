@@ -1,7 +1,7 @@
 import enUSLanguage from './entries/en-US';
 import esESLanguage from './entries/es-ES';
 
-/* 
+/*
   • How to get messages from react-intl programmatically
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
       import { useIntl } from 'react-intl'
@@ -37,7 +37,7 @@ import esESLanguage from './entries/es-ES';
 
       <FormattedMessage id="signin">
         {msg => <h1>{msg}<h1>}
-      </FormattedMessage>    
+      </FormattedMessage>
 
       // messages file
       export default {
@@ -45,8 +45,8 @@ import esESLanguage from './entries/es-ES';
         singIn: 'Sign in'
         ...
       }
-    
-  • How to pass variables to messages from react-intl in JSX 
+
+  • How to pass variables to messages from react-intl in JSX
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
       const name = 'Patrick';
       <FormattedMessage
@@ -57,7 +57,7 @@ import esESLanguage from './entries/es-ES';
       // messages file
       export default {
         ...
-        welcome: 'Hello {name}!, welcome to your dashboard', 
+        welcome: 'Hello {name}!, welcome to your dashboard',
         ...
       }
 

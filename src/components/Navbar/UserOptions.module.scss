@@ -1,14 +1,14 @@
 @import '../../tailwind';
 
 .inlineMenu {
-  @extend 
+  @extend
     .flex,
     .items-center,
     .justify-around,
     .text-indigo-500;
 
-  & > button { 
-    @extend 
+  & > button {
+    @extend
       .cursor-pointer,
       .ml-3;
 
@@ -23,7 +23,7 @@
 }
 
 .avatar {
-  @extend 
+  @extend
     .block,
     .border,
     .border-white,
@@ -33,10 +33,10 @@
     .w-12;
 
   &:focus {
-    @extend 
+    @extend
       .border-white,
-      .outline-none; 
-  } 
+      .outline-none;
+  }
 }
 
 .buttonStyle {

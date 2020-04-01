@@ -14,7 +14,7 @@
 }
 
 .wrapper {
-  @extend 
+  @extend
     .flex,
     .flex-col,
     .justify-center,
@@ -27,7 +27,7 @@
 }
 
 .goBackHome {
-  @extend 
+  @extend
     .bg-indigo-500,
     .font-bold,
     .my-10,
