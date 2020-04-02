@@ -24,5 +24,6 @@ export default {
     pageNotFoundLegend:
       "It seems like the page you are looking for doesn't exist",
     goBackHome: 'Go back home',
+    selectLanguage: 'Select language',
   },
 };

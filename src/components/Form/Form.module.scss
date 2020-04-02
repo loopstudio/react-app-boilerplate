@@ -43,7 +43,7 @@
 }
 
 .label {
-  @extend .block, .font-normal, .mb-3, .text-gray-500, .text-sm;
+  @extend .block, .font-normal, .mb-3, .text-gray-700, .text-sm;
 }
 
 .labelContainer {
@@ -51,15 +51,15 @@
 }
 
 .link {
-  @extend .text-blue-400;
+  @extend .text-blue-700;
 
   &:hover {
-    @extend .text-blue-500;
+    @extend .text-blue-800;
   }
 }
 
 .button {
-  @extend .bg-indigo-500,
+  @extend .bg-indigo-600,
     .font-bold,
     .my-10,
     .px-4,
@@ -71,7 +71,7 @@
     .w-full;
   box-shadow: 0rem 0rem 1.5rem 0.4rem rgba(102, 126, 234, 0.6);
   &:hover {
-    @extend .bg-indigo-600;
+    @extend .bg-indigo-700;
   }
 
   &:disabled {

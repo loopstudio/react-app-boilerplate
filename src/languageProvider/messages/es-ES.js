@@ -23,5 +23,6 @@ export default {
     pageNotFoundTitle: '404',
     pageNotFoundLegend: 'Parece que la página que estás buscando no existe',
     goBackHome: 'Volver al inicio',
+    selectLanguage: 'Seleccionar idioma',
   },
 };

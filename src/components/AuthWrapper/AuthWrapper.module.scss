@@ -1,7 +1,7 @@
 @import '../../tailwind';
 
 .screen {
-  @extend 
+  @extend
     .bg-gray-200,
     .flex,
     .flex-col,
@@ -11,7 +11,7 @@
 }
 
 .authWrapper {
-  @extend 
+  @extend
     .bg-white,
     .flex-col,
     .flex,
@@ -24,37 +24,36 @@
 }
 
 .viewContainer {
-  @extend 
+  @extend
     .flex,
     .flex-col,
     .items-center;
 }
 
 .title {
-  @extend 
+  @extend
     .font-light,
     .mb-20,
     .self-center,
     .text-2xl,
     .text-3xl,
-    .text-gray-500,
+    .text-gray-700,
     .text-center;
   grid-area: title;
 }
 
 .link {
-  @extend 
+  @extend
     .text-left,
-    .text-gray-500,
     .ml-2,
-    .text-indigo-400;
+    .text-indigo-700;
   grid-area: link;
   grid-column: 1/3;
   grid-row: 3;
 }
 
 .legend {
-  @extend .text-gray-500;
+  @extend .text-gray-700;
 }
 
 .legendContainer {

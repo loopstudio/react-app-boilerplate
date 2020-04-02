@@ -8,9 +8,9 @@ import styles from './MainLayout.module.scss';
 const MainLayout = ({ children, noHeader }) => (
   <>
     {!noHeader && <Navbar />}
-    <div className={noHeader ? styles.noHeader : styles.mainContainer}>
+    <main className={noHeader ? styles.noHeader : styles.mainContainer}>
       {children}
-    </div>
+    </main>
   </>
 );
 
