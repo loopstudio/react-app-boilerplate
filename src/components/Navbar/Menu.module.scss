@@ -2,7 +2,7 @@
 
 .menu {
   @extend
-    .absolute, 
+    .absolute,
     .cursor-pointer,
     .bg-indigo-500,
     .flex,
@@ -26,20 +26,20 @@
   &:hover > div {
     @extend .md\:block;
   }
-  
-  & > button { 
-    @extend 
-      .md\:block, 
-      .md\:px-4, 
-      .md\:py-2, 
-      .md\:text-gray-600, 
+
+  & > button {
+    @extend
+      .md\:block,
+      .md\:px-4,
+      .md\:py-2,
+      .md\:text-gray-600,
       .md\:text-right,
       .md\:text-sm,
       .md\:w-full,
       .py-1;
 
     &:hover, &:focus {
-      @extend 
+      @extend
         .bg-indigo-400,
         .md\:bg-gray-300;
     }
@@ -50,9 +50,9 @@
   }
 
   &::after {
-    @extend 
+    @extend
       .md\:absolute,
-      .md\:bg-white, 
+      .md\:bg-white,
       .md\:border,
       .md\:border-gray-300,
       .md\:border-b-0,

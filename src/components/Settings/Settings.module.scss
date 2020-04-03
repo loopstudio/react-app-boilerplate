@@ -1,7 +1,7 @@
 @import '../../tailwind';
 
 .settingsContent {
-  @extend 
+  @extend
     .bg-gray-200,
     .flex,
     .flex-col;
@@ -9,7 +9,7 @@
 }
 
 .settingsContainer {
-  @extend 
+  @extend
     .flex,
     .flex-col,
     .items-center,
@@ -21,7 +21,7 @@
 }
 
 .title {
-  @extend 
+  @extend
     .font-light,
     .mb-10,
     .md\:mb-20,
@@ -39,15 +39,15 @@
 }
 
 .button {
-  @extend 
+  @extend
     .bg-indigo-500,
-    .font-bold, 
-    .my-4, 
-    .px-4, 
+    .font-bold,
+    .my-4,
+    .px-4,
     .py-2,
     .rounded-full,
-    .text-white, 
-    .tracking-wide, 
+    .text-white,
+    .tracking-wide,
     .uppercase,
     .w-64;
   &:hover {
