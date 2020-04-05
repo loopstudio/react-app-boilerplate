@@ -12,6 +12,7 @@
     "flat": "^5.0.0",
     "formik": "2.1.4",
     "humps": "^2.0.1",
+    "husky": "^4.2.3",
     "immer": "^6.0.3",
     "node-sass": "^4.13.1",
     "postcss-cli": "^7.1.0",
@@ -37,7 +38,8 @@
     "eject": "react-scripts eject",
     "build:styles": "postcss src/tailwind.base.css -o src/tailwind.css",
     "prebuild": "yarn build:styles",
-    "prestart": "yarn build:styles"
+    "prestart": "yarn build:styles",
+    "pre-push": "eslint ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -76,5 +78,10 @@
     "prettier": "^2.0.2",
     "react-axe": "^3.4.1",
     "tailwindcss": "^1.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "yarn pre-push"
+    }
   }
 }
