@@ -1,7 +1,14 @@
 import React from 'react';
 
-import style from './Loading.module.scss';
+import styles from './Loading.module.scss';
 
-const Loading = () => <div className={style.content}>Loading...</div>;
+const Loading = () => {
+  return (
+    <div className={styles.spinner}>
+      <div className={styles.doubleBounce1} />
+      <div className={styles.doubleBounce2} />
+    </div>
+  );
+};
 
 export default Loading;

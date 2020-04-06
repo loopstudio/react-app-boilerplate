@@ -12,6 +12,8 @@ import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
 import AppLocale from './languageProvider';
 
+import styles from './App.module.scss';
+
 const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 const HomePage = lazy(() => import('pages/HomePage'));
 const NoMatchPage = lazy(() => import('pages/NoMatchPage'));
@@ -42,7 +44,13 @@ const App = () => {
         >
           <BrowserRouter>
             <ErrorBoundary>
-              <Suspense fallback={<Loading />}>
+              <Suspense
+                fallback={
+                  <div className={styles.loaderWrapper}>
+                    <Loading />
+                  </div>
+                }
+              >
                 <Switch>
                   <ProtectedRoute path="/settings" exact>
                     <SettingsPage />
