@@ -1,16 +1,18 @@
 import React, { lazy, Suspense, useState } from 'react';
 import { IntlProvider } from 'react-intl';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import flatten from 'flat';
 
+import AppLocale from 'languageProvider';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Footer from 'components/Footer';
+import icons from 'assets/icons';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
 import { persistor, store } from 'store';
-import AppLocale from './languageProvider';
 
 import styles from './App.module.scss';
 
@@ -20,6 +22,8 @@ const NoMatchPage = lazy(() => import('pages/NoMatchPage'));
 const SettingsPage = lazy(() => import('pages/SettingsPage'));
 const SignInPage = lazy(() => import('pages/SignInPage'));
 const SignUpPage = lazy(() => import('pages/SignUpPage'));
+
+library.add(icons);
 
 const App = () => {
   // Currently retrieving the locale from the browser but

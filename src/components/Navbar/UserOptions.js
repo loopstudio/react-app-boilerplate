@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthentication } from 'hooks/auth';
 import Button from './Button';
@@ -38,7 +37,7 @@ const RightItem = () => {
             onClick={toggleNavMenu}
             type="button"
           >
-            <FontAwesomeIcon color="#7f9cf5" icon={faBars} size="lg" />
+            <FontAwesomeIcon color="#7f9cf5" icon="bars" size="lg" />
           </button>
           <div className={styles.desktop}>
             <div className={styles.inlineMenu}>
