@@ -120,7 +120,8 @@ If you want to split your component in pieces for readability, maintainability, 
 - [sass](https://sass-lang.com/guide): "CSS with superpowers", superpowers which allow us for a cleaner syntax when extending or importing variables while using CSS modules.
 - [css-modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet): CSS-Modules helps us to have a more component-based styling avoiding possible conflicts and pollutants of the style across the app.
 - [tailwind](https://tailwindcss.com/docs/utility-first): Improves development speed by simplifying the syntax and giving us a single place to set CSS property-related values.
-- [font-awesome](https://fontawesome.com/): A comprehensive icon library. Currently the free version of Font Awesome is added by default to the boilerplate. To upgrade and use the pro version sign in to your Font Awesome account and follow the instructions on this [link](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro)
+- [font-awesome](https://fontawesome.com/): A comprehensive icon library. Currently the free version of Font Awesome is added by default to the boilerplate. To upgrade and use the pro version sign in to your Font Awesome account and follow the instructions on this [link](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
+Imported icons are encouraged to be stored in `assets/icons`, and inkoved as a string in each component.
 
 ### Deployment:
 
@@ -129,7 +130,7 @@ If you want to split your component in pieces for readability, maintainability, 
 ### Error Monitoring:
 
   **NOTE: These tools are not enabled by default. For instructions on how to set them up, please visit their respective vendor website**
-  
+
 - [sentry](https://github.com/getsentry/sentry-javascript#installation-and-usage): Sentry provides self-hosted and cloud-based error monitoring that helps all software teams discover, triage, and prioritize errors in real-time.
 - [sentry + logrocket](https://docs.logrocket.com/docs/sentry): Add a LogRocket session recording URL to every Sentry exception report. The integration of both of this tools allows us to access a video recording of the exact moment a user encountered an error including network events and console output.
 
