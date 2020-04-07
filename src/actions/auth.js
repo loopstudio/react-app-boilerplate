@@ -15,3 +15,13 @@ export const signOut = () => ({
   type: Types.SIGN_OUT,
   payload: AuthService.signOut(),
 });
+
+export const updateUser = (user) => ({
+  type: Types.UPDATE_USER,
+  payload: AuthService.updateUser(user),
+});
+
+export const setGuestLocale = (locale) => ({
+  type: Types.SET_GUEST_LOCALE,
+  payload: locale,
+});

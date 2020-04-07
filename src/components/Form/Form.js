@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FormInput from './Input';
+import FormSelect from './Select';
 import FormButton from './Button';
 
 const Form = ({ onSubmit, children, ...props }) => (
@@ -12,6 +13,7 @@ const Form = ({ onSubmit, children, ...props }) => (
 
 Form.displayName = 'CustomForm';
 Form.Input = FormInput;
+Form.Select = FormSelect;
 Form.Button = FormButton;
 
 Form.propTypes = {

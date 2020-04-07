@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 import styles from './AuthLayout.module.scss';
 
@@ -11,6 +12,7 @@ const AuthLayout = ({ children, noHeader }) => (
     <main className={noHeader ? styles.noHeader : styles.authContainer}>
       {children}
     </main>
+    <Footer />
   </>
 );
 

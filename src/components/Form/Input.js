@@ -6,12 +6,12 @@ import { FormattedMessage } from 'react-intl';
 import styles from './Form.module.scss';
 
 const FormInput = React.forwardRef(
-  ({ error, helpLinkPath, helpMessage, id, name, ...rest }, ref) => (
+  ({ error, helpLinkPath, helpMessage, id, name, label, ...rest }, ref) => (
     <div className={error ? styles.invalid : styles.valid}>
       <label htmlFor={id} className={styles.label}>
         <div className={styles.labelContainer}>
           <span className={styles.span}>
-            <FormattedMessage id={`common.${name}`} />
+            {label || <FormattedMessage id={`common.${name}`} />}
           </span>
           {helpLinkPath && (
             <Link className={styles.link} to={helpLinkPath}>
@@ -32,6 +32,7 @@ FormInput.defaultProps = {
   type: 'text',
   helpLinkPath: '',
   helpMessage: '',
+  label: null,
 };
 
 FormInput.propTypes = {
@@ -43,6 +44,7 @@ FormInput.propTypes = {
   helpLinkPath: PropTypes.string,
   id: PropTypes.string.isRequired,
   helpMessage: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default FormInput;

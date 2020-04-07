@@ -30,7 +30,7 @@ const SignUpForm = () => {
 
   const onSubmit = async (values) => {
     try {
-      await dispatch(signUp(values));
+      await dispatch(signUp({ locale: intl.locale, ...values }));
     } catch (error) {
       setHasError(true);
     }

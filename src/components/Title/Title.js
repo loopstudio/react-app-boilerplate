@@ -17,7 +17,8 @@ Title.defaultProps = {
 
 Title.propTypes = {
   type: PropTypes.oneOf(['h1', 'h2', 'h3']),
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   className: PropTypes.string,
 };
 

@@ -16,6 +16,7 @@ const fakeUser = {
   firstName: 'User',
   lastName: 'Example',
   password: 'password',
+  locale: 'en',
 };
 
 describe('SignUp', () => {

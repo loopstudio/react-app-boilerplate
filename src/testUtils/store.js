@@ -7,4 +7,9 @@ import rootReducer from 'reducers';
 export const middleware = [thunk, promise];
 export const enhancers = applyMiddleware(...middleware);
 
-export default () => createStore(rootReducer, enhancers);
+const createStoreHelper = (initialState) =>
+  initialState
+    ? createStore(rootReducer, initialState, enhancers)
+    : createStore(rootReducer, enhancers);
+
+export default createStoreHelper;
