@@ -2,6 +2,9 @@
 
 <p align="center"><strong>An opinionated boilerplate code for starting a new react web project.</strong></p>
 
+[![CircleCI](https://circleci.com/gh/LoopStudio/react-app-boilerplate/tree/master.svg?style=svg&circle-token=03106a8fdc29c610993e05cfd18e6a20b44eaeb0)](https://circleci.com/gh/LoopStudio/react-app-boilerplate/tree/master)
+[![codebeat badge](https://codebeat.co/badges/5890d071-b0fb-4623-ab4a-d6a15556a766)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-react-app-boilerplate-master)
+
 <sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
 
 ## Table of Contents
