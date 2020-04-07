@@ -2,6 +2,9 @@
 
 <p align="center"><strong>An opinionated boilerplate code for starting a new react web project.</strong></p>
 
+[![CircleCI](https://circleci.com/gh/LoopStudio/react-app-boilerplate/tree/master.svg?style=svg&circle-token=03106a8fdc29c610993e05cfd18e6a20b44eaeb0)](https://circleci.com/gh/LoopStudio/react-app-boilerplate/tree/master)
+[![codebeat badge](https://codebeat.co/badges/5890d071-b0fb-4623-ab4a-d6a15556a766)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-react-app-boilerplate-master)
+
 <sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
 
 ## Table of Contents
@@ -129,7 +132,7 @@ If you want to split your component in pieces for readability, maintainability, 
 ### Error Monitoring:
 
   **NOTE: These tools are not enabled by default. For instructions on how to set them up, please visit their respective vendor website**
-  
+
 - [sentry](https://github.com/getsentry/sentry-javascript#installation-and-usage): Sentry provides self-hosted and cloud-based error monitoring that helps all software teams discover, triage, and prioritize errors in real-time.
 - [sentry + logrocket](https://docs.logrocket.com/docs/sentry): Add a LogRocket session recording URL to every Sentry exception report. The integration of both of this tools allows us to access a video recording of the exact moment a user encountered an error including network events and console output.
 
