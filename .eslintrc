@@ -1,6 +1,6 @@
 {
   "env": {
-    "es6": true,
+    "es2020": true,
     "jest": true,
     "browser": true,
     "commonjs": true,
@@ -8,14 +8,14 @@
   },
   "extends": [
     "airbnb",
-    "plugin:prettier/recommended",
-    "prettier/react",
+    "react-app",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:jest-dom/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
+    "plugin:prettier/recommended",
+    "prettier/react"
   ],
-  "plugins": ["react-hooks"],
   "settings": {
     "import/ignore": ["/testUtils"],
     "import/resolver": {
@@ -25,13 +25,6 @@
     }
   },
   "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2019,
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "rules": {
     "no-console": "warn",
     "import/no-cycle": "off",
@@ -40,9 +33,6 @@
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "no-throw-literal": "off",
-    "prefer-promise-reject-errors": "off"
+    "no-throw-literal": "off"
   }
 }
