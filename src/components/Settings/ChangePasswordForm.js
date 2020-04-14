@@ -25,7 +25,8 @@ const ChangePasswordForm = () => {
       await AuthService.updatePassword(password);
       setIsResponseSuccess(true);
     } catch ({ errors, attributesErrors }) {
-      if (attributesErrors) setErrors(attributesErrors);
+      if (attributesErrors)
+        setErrors({ password: attributesErrors?.password?.[0] });
       if (errors?.length > 0) setFieldError('general', errors[0]);
     }
   };

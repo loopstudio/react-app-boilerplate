@@ -28,5 +28,7 @@ export default {
     goBackHome: 'Volver al inicio',
     selectLanguage: 'Seleccionar idioma',
     selectOption: 'Seleccionar una opción',
+    errorBoundaryMessage: 'Ha ocurrido un error',
+    reportError: 'Reportar error',
   },
 };

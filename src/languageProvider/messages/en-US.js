@@ -29,5 +29,7 @@ export default {
     goBackHome: 'Go back home',
     selectLanguage: 'Select language',
     selectOption: 'Select an option',
+    errorBoundaryMessage: 'An error occurred',
+    reportError: 'Report error',
   },
 };
