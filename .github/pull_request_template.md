@@ -19,4 +19,4 @@ Provide a good description of the problem this PR is trying to address.
 #### :play_or_pause_button: Demo:
 * Include a video or picture.
 
-@loopstudio-dev/react-devs
+@loopstudio/react-devs
