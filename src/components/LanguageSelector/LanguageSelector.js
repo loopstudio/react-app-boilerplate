@@ -1,29 +1,31 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { setGuestLocale } from 'actions/auth';
 
 import style from './LanguageSelector.module.scss';
 
-const LanguageSelector = ({ currentLocale, onChangeLocaleSelect }) => {
+const LanguageSelector = () => {
   const intl = useIntl();
+  const dispatch = useDispatch();
+
+  const handleChange = (event) => {
+    dispatch(setGuestLocale(event.target.value));
+  };
 
   return (
     <select
       aria-label={intl.messages['common.selectLanguage']}
       name="localeSelect"
-      value={currentLocale}
+      value={intl.locale}
       className={style.localeSelect}
-      onChange={onChangeLocaleSelect}
+      onChange={handleChange}
     >
-      <option value="en">english</option>
-      <option value="es">spanish</option>
+      <option value="en">English</option>
+      <option value="es">Español</option>
     </select>
   );
-};
-
-LanguageSelector.propTypes = {
-  currentLocale: PropTypes.object.isRequired,
-  onChangeLocaleSelect: PropTypes.func.isRequired,
 };
 
 export default LanguageSelector;

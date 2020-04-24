@@ -1,7 +1,10 @@
 import React, { StrictMode } from 'react';
 import ReactDOM, { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import App from 'App';
+import { persistor, store } from 'store';
 import * as serviceWorker from 'serviceWorker';
 
 if (process.env.NODE_ENV !== 'production') {
@@ -10,7 +13,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </StrictMode>,
   document.getElementById('root')
 );

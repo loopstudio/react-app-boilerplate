@@ -1,20 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import LanguageSelector from 'components/LanguageSelector';
 
-const Footer = ({ onChangeLocaleSelect, currentAppLocale }) => (
+const Footer = () => (
   <footer>
-    <LanguageSelector
-      onChangeLocaleSelect={onChangeLocaleSelect}
-      currentLocale={currentAppLocale}
-    />
+    <LanguageSelector />
   </footer>
 );
-
-Footer.propTypes = {
-  currentAppLocale: PropTypes.object.isRequired,
-  onChangeLocaleSelect: PropTypes.func.isRequired,
-};
 
 export default Footer;

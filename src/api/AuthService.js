@@ -12,7 +12,9 @@ class AuthService {
     axiosClient().post('/users/password', { email });
 
   static updatePassword = (password) =>
-    axiosClient().put('/users/password', { password });
+    axiosClient().patch('/users/password', { password });
+
+  static updateUser = (user) => axiosClient().patch('/users', { user });
 }
 
 export default AuthService;

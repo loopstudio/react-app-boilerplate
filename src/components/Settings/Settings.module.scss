@@ -24,23 +24,26 @@
   @extend
     .font-light,
     .mb-10,
-    .md\:mb-20,
     .self-center,
     .text-2xl,
     .text-3xl,
     .text-center,
-    .text-gray-500;
+    .text-gray-700;
   grid-area: title;
 }
 
 .settingsForm {
-  @extend .mt-6;
+  @extend
+    .mt-6,
+    .flex,
+    .flex-col,
+    .items-center;
   width: fit-content;
 }
 
 .button {
   @extend
-    .bg-indigo-500,
+    .bg-indigo-600,
     .font-bold,
     .my-4,
     .px-4,

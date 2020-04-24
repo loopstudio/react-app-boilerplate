@@ -10,19 +10,19 @@ import { createMemoryHistory } from 'history';
 import AppLocale from 'languageProvider';
 import createStore from 'testUtils/store';
 
-const Wrapper = ({ children }) => (
-  <Provider store={createStore()}>
-    <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </IntlProvider>
-  </Provider>
-);
+const renderWithProviders = (ui, { state = null, ...options } = {}) => {
+  const Wrapper = ({ children }) => (
+    <Provider store={createStore(state)}>
+      <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </IntlProvider>
+    </Provider>
+  );
 
-Wrapper.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+  Wrapper.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
 
-const renderWithProviders = (ui, options) => {
   return render(ui, { wrapper: Wrapper, ...options });
 };
 

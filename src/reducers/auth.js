@@ -12,12 +12,16 @@ const { Fulfilled, Pending } = ActionType;
 const initialState = {
   user: null,
   userSession: null,
+  guestLocale: navigator.language.substr(0, 2),
 };
 
-const updateUser = (draftState, action) => {
-  const { client, uid, 'access-token': accessToken } = action.headers;
+const updateUser = (draftState, payload) => {
+  const {
+    headers: { client, uid, 'access-token': accessToken },
+    data,
+  } = payload;
 
-  draftState.user = action.data.user;
+  draftState.user = data.user;
   draftState.userSession = {
     accessToken,
     client,
@@ -25,22 +29,20 @@ const updateUser = (draftState, action) => {
   };
 };
 
-const signUpFulfilled = (draftState, action) => {
-  updateUser(draftState, action);
-};
-
-const signInFulfilled = (draftState, action) => {
-  updateUser(draftState, action);
-};
-
 const signOut = () => ({
   ...initialState,
 });
 
+const setGuestLocale = (draftState, payload) => {
+  draftState.guestLocale = payload;
+};
+
 const handlers = {
-  [`${Types.SIGN_UP}_${Fulfilled}`]: signUpFulfilled,
-  [`${Types.SIGN_IN}_${Fulfilled}`]: signInFulfilled,
+  [`${Types.SIGN_UP}_${Fulfilled}`]: updateUser,
+  [`${Types.SIGN_IN}_${Fulfilled}`]: updateUser,
+  [`${Types.UPDATE_USER}_${Fulfilled}`]: updateUser,
   [`${Types.SIGN_OUT}_${Pending}`]: signOut,
+  [Types.SET_GUEST_LOCALE]: setGuestLocale,
 };
 
 const authReducer = createReducer(initialState, handlers);
