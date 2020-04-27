@@ -40,12 +40,6 @@
     "prestart": "yarn build:styles",
     "pre-push": "eslint ."
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "jest": {
-    "resetMocks": true
-  },
   "browserslist": {
     "production": [
       ">0.2%",
