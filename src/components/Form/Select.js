@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
+
+import Label from './Label';
 
 import styles from './Form.module.scss';
 
@@ -25,16 +26,12 @@ const FormSelect = React.forwardRef(
     return (
       <div className={error ? styles.invalid : styles.valid}>
         <label htmlFor={id} className={styles.label}>
-          <div className={styles.labelContainer}>
-            <span className={styles.span}>
-              {label || <FormattedMessage id={`common.${name}`} />}
-            </span>
-            {helpLinkPath && (
-              <Link className={styles.link} to={helpLinkPath}>
-                {helpMessage}
-              </Link>
-            )}
-          </div>
+          <Label
+            name={name}
+            helpLinkPath={helpLinkPath}
+            helpMessage={helpMessage}
+            label={label}
+          />
           <select
             {...rest}
             aria-label={intl.messages[`common.${name}`]}
