@@ -28,7 +28,7 @@
     "redux-persist": "^6.0.0",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.28.3"
+    "yup": "^0.28.4"
   },
   "scripts": {
     "start": "react-scripts start",
