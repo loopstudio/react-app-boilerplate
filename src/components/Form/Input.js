@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+
+import Label from './Label';
 
 import styles from './Form.module.scss';
 
@@ -9,16 +9,12 @@ const FormInput = React.forwardRef(
   ({ error, helpLinkPath, helpMessage, id, name, label, ...rest }, ref) => (
     <div className={error ? styles.invalid : styles.valid}>
       <label htmlFor={id} className={styles.label}>
-        <div className={styles.labelContainer}>
-          <span className={styles.span}>
-            {label || <FormattedMessage id={`common.${name}`} />}
-          </span>
-          {helpLinkPath && (
-            <Link className={styles.link} to={helpLinkPath}>
-              {helpMessage}
-            </Link>
-          )}
-        </div>
+        <Label
+          name={name}
+          helpLinkPath={helpLinkPath}
+          helpMessage={helpMessage}
+          label={label}
+        />
         <input {...rest} name={name} className={styles.input} ref={ref} />
       </label>
       <span className={styles.error}>{error}</span>
