@@ -4,52 +4,51 @@ import humps from 'humps';
 import { signOut } from 'actions/auth';
 import { store } from 'store';
 
-const axiosClient = () => {
-  const { userSession } = store.getState().auth;
-  let headers = {
+const httpClient = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-  };
+  },
+  transformRequest: [
+    (data) => humps.decamelizeKeys(data),
+    ...axios.defaults.transformRequest,
+  ],
+  transformResponse: [
+    ...axios.defaults.transformResponse,
+    (data) => humps.camelizeKeys(data),
+  ],
+});
+
+httpClient.interceptors.request.use((config) => {
+  const { userSession } = store.getState().auth;
 
   if (userSession) {
     const { accessToken, uid, client } = userSession;
-    headers = {
-      ...headers,
+
+    Object.assign(config.headers, {
       client,
       uid,
       'access-token': accessToken,
-    };
+    });
   }
 
-  const client = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-    headers,
-    transformRequest: [
-      (data) => humps.decamelizeKeys(data),
-      ...axios.defaults.transformRequest,
-    ],
-    transformResponse: [
-      ...axios.defaults.transformResponse,
-      (data) => humps.camelizeKeys(data),
-    ],
-  });
+  return config;
+});
 
-  client.interceptors.response.use(
-    (response) => response,
-    ({ response }) => {
-      if (!response) {
-        throw { errors: ['Connection error'] };
-      }
-
-      if (response.status === 401 && userSession) {
-        store.dispatch(signOut());
-      }
-
-      throw response.data;
+httpClient.interceptors.response.use(
+  (response) => response,
+  ({ response }) => {
+    if (!response) {
+      throw { errors: ['Connection error'] };
     }
-  );
 
-  return client;
-};
+    if (response.status === 401) {
+      store.dispatch(signOut());
+    }
 
-export default axiosClient;
+    throw response.data;
+  }
+);
+
+export default httpClient;
