@@ -36,7 +36,6 @@ const FormSelect = React.forwardRef(
             {...rest}
             aria-label={intl.messages[`common.${name}`]}
             name={name}
-            value={value}
             className={styles.input}
             ref={ref}
           >
@@ -48,7 +47,7 @@ const FormSelect = React.forwardRef(
             ))}
           </select>
         </label>
-        <span className={styles.error}>{error}</span>
+        <span className={styles.error}>{error?.message}</span>
       </div>
     );
   }

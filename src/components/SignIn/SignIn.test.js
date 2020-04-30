@@ -69,15 +69,18 @@ describe('SignIn', () => {
     });
   });
 
-  it('should disable the submit button for invalid values', async () => {
-    const { getByTestId } = render(<SignIn />);
+  it('should show errors for invalid values', async () => {
+    const { getByTestId, queryByText } = render(<SignIn />);
     const submitButton = getByTestId('submit-button');
     const email = getByTestId('email-input');
 
     fillInput(email, 'invalid');
 
+    fireEvent.click(submitButton);
+
     await waitFor(() => {
-      expect(submitButton).toBeDisabled();
+      expect(queryByText('Invalid email')).toBeInTheDocument();
+      expect(queryByText('Required')).toBeInTheDocument();
     });
   });
 });

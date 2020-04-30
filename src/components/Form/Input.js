@@ -25,32 +25,31 @@ const FormInput = React.forwardRef(
           ref={ref}
         />
       </label>
-      <span className={styles.error}>{error}</span>
+      <span className={styles.error}>{error?.message}</span>
     </div>
   )
 );
 
 FormInput.defaultProps = {
   className: '',
-  error: '',
+  error: null,
   helpLinkPath: '',
   helpMessage: '',
   label: null,
   type: 'text',
-  value: '',
 };
 
 FormInput.propTypes = {
   className: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
   helpLinkPath: PropTypes.string,
   helpMessage: PropTypes.string,
   id: PropTypes.string.isRequired,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
-  value: PropTypes.string,
 };
 
 export default FormInput;

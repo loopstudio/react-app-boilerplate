@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Formik } from 'formik';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
 import Form from 'components/Form';
 
-const initialValues = {
+const defaultValues = {
   email: '',
   firstName: '',
   lastName: '',
@@ -28,6 +28,11 @@ const SignUpForm = () => {
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
 
+  const { handleSubmit, register, errors } = useForm({
+    validationSchema,
+    defaultValues,
+  });
+
   const onSubmit = async (values) => {
     try {
       await dispatch(signUp({ locale: intl.locale, ...values }));
@@ -37,55 +42,40 @@ const SignUpForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ errors, handleChange, isValid, values, handleSubmit }) => (
-        <Form data-testid="signup-form" onSubmit={handleSubmit}>
-          <Form.Input
-            id="email"
-            error={errors.email}
-            value={values.email}
-            onChange={handleChange}
-            name="email"
-            type="email"
-            data-testid="email-input"
-          />
-          <Form.Input
-            id="firstName"
-            error={errors.firstName}
-            value={values.firstName}
-            onChange={handleChange}
-            name="firstName"
-            data-testid="firstName-input"
-          />
-          <Form.Input
-            id="lastName"
-            error={errors.lastName}
-            value={values.lastName}
-            onChange={handleChange}
-            name="lastName"
-            data-testid="lastName-input"
-          />
-          <Form.Input
-            id="password"
-            error={errors.password}
-            value={values.password}
-            onChange={handleChange}
-            name="password"
-            type="password"
-            data-testid="password-input"
-          />
-          <Form.Button
-            text={intl.messages['common.signUp']}
-            isDisabled={!isValid}
-          />
-          {hasError && <FormattedMessage id="common.errorMessage" />}
-        </Form>
-      )}
-    </Formik>
+    <Form data-testid="signup-form" onSubmit={handleSubmit(onSubmit)}>
+      <Form.Input
+        id="email"
+        error={errors.email}
+        name="email"
+        type="email"
+        data-testid="email-input"
+        ref={register}
+      />
+      <Form.Input
+        id="firstName"
+        error={errors.firstName}
+        name="firstName"
+        data-testid="firstName-input"
+        ref={register}
+      />
+      <Form.Input
+        id="lastName"
+        error={errors.lastName}
+        name="lastName"
+        data-testid="lastName-input"
+        ref={register}
+      />
+      <Form.Input
+        id="password"
+        error={errors.password}
+        name="password"
+        type="password"
+        data-testid="password-input"
+        ref={register}
+      />
+      <Form.Button text={intl.messages['common.signUp']} />
+      {hasError && <FormattedMessage id="common.errorMessage" />}
+    </Form>
   );
 };
 
