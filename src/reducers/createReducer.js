@@ -1,4 +1,4 @@
-/* eslint-disable  import/no-named-as-default */
+/* eslint-disable import/no-named-as-default */
 import produce from 'immer';
 
 export default (initialState, handlers) => {

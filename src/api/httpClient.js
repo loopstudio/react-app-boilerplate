@@ -1,7 +1,7 @@
 import axios from 'axios';
 import humps from 'humps';
 
-import { signOut } from 'actions/auth';
+import { clearSession } from 'actions/auth';
 import { store } from 'store';
 
 const httpClient = axios.create({
@@ -25,12 +25,7 @@ httpClient.interceptors.request.use((config) => {
 
   if (userSession) {
     const { accessToken, uid, client } = userSession;
-
-    Object.assign(config.headers, {
-      client,
-      uid,
-      'access-token': accessToken,
-    });
+    Object.assign(config.headers, { client, uid, 'access-token': accessToken });
   }
 
   return config;
@@ -38,16 +33,16 @@ httpClient.interceptors.request.use((config) => {
 
 httpClient.interceptors.response.use(
   (response) => response,
-  ({ response }) => {
-    if (!response) {
+  (error) => {
+    if (!error.response) {
       throw { errors: ['Connection error'] };
     }
 
-    if (response.status === 401) {
-      store.dispatch(signOut());
+    if (error.response.status === 401) {
+      store.dispatch(clearSession());
     }
 
-    throw response.data;
+    throw error.response.data;
   }
 );
 

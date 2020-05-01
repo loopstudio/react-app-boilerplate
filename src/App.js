@@ -1,15 +1,15 @@
 import React, { lazy, Suspense } from 'react';
 import { IntlProvider } from 'react-intl';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import flatten from 'flat';
 
 import icons from 'assets/icons';
-import AppLocale from 'languageProvider';
+import AppLocale from 'locales';
 import ErrorBoundary from 'components/ErrorBoundary';
 import Loading from 'components/Loading';
 import ProtectedRoute from 'components/ProtectedRoute';
+import { useLocale } from 'hooks/locale';
 
 import styles from './App.module.scss';
 
@@ -23,17 +23,11 @@ const SignUpPage = lazy(() => import('pages/SignUpPage'));
 library.add(icons);
 
 const App = () => {
-  const currentLocale = useSelector(
-    ({ auth: { user, guestLocale } }) => user?.locale || guestLocale
-  );
-  const currentAppLocale =
-    currentLocale in AppLocale ? AppLocale[currentLocale] : AppLocale.en;
+  const { locale } = useLocale();
+  const appLocale = locale in AppLocale ? AppLocale[locale] : AppLocale.en;
 
   return (
-    <IntlProvider
-      locale={currentLocale}
-      messages={flatten(currentAppLocale.messages)}
-    >
+    <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
       <BrowserRouter>
         <ErrorBoundary>
           <Suspense
