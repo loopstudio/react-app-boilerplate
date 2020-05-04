@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
-import AppLocale from 'languageProvider';
+import AppLocale from 'locales';
 import createStore from 'testUtils/store';
 
 const renderWithProviders = (ui, { state = null, ...options } = {}) => {

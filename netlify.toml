@@ -1,7 +1,11 @@
 [build]
   base = ""
-  publish = "/build"
+  publish = "build"
   command = "yarn build"
+
+[context.production.environment]
+  YARN_VERSION = "1.22.4"
+  NODE_VERSION = "12.16.3"
 
 [[redirects]]
   from = "/*"
