@@ -12,14 +12,16 @@ const defaultValues = {
   email: '',
 };
 
-const validationSchema = object().shape({
-  email: string().email('Invalid email').required('Required'),
-});
-
 const ForgotPasswordForm = () => {
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
-
   const intl = useIntl();
+
+  const validationSchema = object().shape({
+    email: string()
+      .email(intl.messages['common.invalidEmail'])
+      .required(intl.messages['common.required']),
+  });
+
   const { handleSubmit, register, errors, setError } = useForm({
     validationSchema,
     defaultValues,

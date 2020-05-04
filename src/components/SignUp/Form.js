@@ -14,19 +14,21 @@ const defaultValues = {
   password: '',
 };
 
-const validationSchema = object().shape({
-  email: string().email('Invalid email').required('Required'),
-  firstName: string().required('Required'),
-  lastName: string().required('Required'),
-  password: string()
-    .min(8, 'Password too short, minimum length is 8 characters')
-    .required('Required'),
-});
-
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const [hasError, setHasError] = useState(false);
   const intl = useIntl();
+
+  const validationSchema = object().shape({
+    email: string()
+      .email(intl.messages['common.invalidEmail'])
+      .required(intl.messages['common.required']),
+    firstName: string().required(intl.messages['common.required']),
+    lastName: string().required(intl.messages['common.required']),
+    password: string()
+      .min(8, intl.messages['common.shortPassword'])
+      .required(intl.messages['common.required']),
+  });
 
   const { handleSubmit, register, errors } = useForm({
     validationSchema,
