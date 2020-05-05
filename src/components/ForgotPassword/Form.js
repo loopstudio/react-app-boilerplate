@@ -42,6 +42,7 @@ const ForgotPasswordForm = () => {
             <FormattedMessage id="common.forgotPasswordLegend" />
           </p>
           <Form.Input
+            className={styles.emailInput}
             id="email"
             name="email"
             type="email"
