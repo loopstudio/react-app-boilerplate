@@ -22,8 +22,12 @@ const LanguageSelector = () => {
       className={style.localeSelect}
       onChange={handleChange}
     >
-      <option value="en">English</option>
-      <option value="es">Español</option>
+      <option aria-label="English" value="en">
+        English
+      </option>
+      <option aria-label="Español" value="es">
+        Español
+      </option>
     </select>
   );
 };

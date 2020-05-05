@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 const Button = ({ onClick, formattedMessageId }) => (
-  <button onClick={onClick} type="button">
+  <button data-testid="generic-button" onClick={onClick} type="button">
     <FormattedMessage id={formattedMessageId} />
   </button>
 );

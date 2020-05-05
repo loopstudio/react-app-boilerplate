@@ -53,9 +53,7 @@ const RightItem = () => {
           </div>
         </>
       )}
-      {navOpen && (
-        <Menu isAuthenticated={isAuthenticated} redirectTo={handleRedirectTo} />
-      )}
+      {navOpen && <Menu isAuthenticated={isAuthenticated} />}
     </>
   );
 };

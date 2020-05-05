@@ -9,7 +9,11 @@ const AuthWrapper = ({ title, children, renderLegend }) => (
   <div className={styles.screen}>
     <div className={styles.viewContainer}>
       <div className={styles.authWrapper}>
-        <Title type="h1" className={styles.title}>
+        <Title
+          type="h1"
+          className={styles.title}
+          data-testid="authentication-title"
+        >
           {title}
         </Title>
         {children}
