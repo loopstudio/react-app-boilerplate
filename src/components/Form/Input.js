@@ -6,7 +6,10 @@ import Label from './Label';
 import styles from './Form.module.scss';
 
 const FormInput = React.forwardRef(
-  ({ error, helpLinkPath, helpMessage, id, name, label, ...rest }, ref) => (
+  (
+    { error, helpLinkPath, helpMessage, id, name, label, className, ...rest },
+    ref
+  ) => (
     <div className={error ? styles.invalid : styles.valid}>
       <label htmlFor={id} className={styles.label}>
         <Label
@@ -15,7 +18,12 @@ const FormInput = React.forwardRef(
           helpMessage={helpMessage}
           label={label}
         />
-        <input {...rest} name={name} className={styles.input} ref={ref} />
+        <input
+          {...rest}
+          name={name}
+          className={`${styles.input} ${className}`}
+          ref={ref}
+        />
       </label>
       <span className={styles.error}>{error}</span>
     </div>
@@ -23,24 +31,26 @@ const FormInput = React.forwardRef(
 );
 
 FormInput.defaultProps = {
+  className: '',
   error: '',
-  value: '',
-  type: 'text',
   helpLinkPath: '',
   helpMessage: '',
   label: null,
+  type: 'text',
+  value: '',
 };
 
 FormInput.propTypes = {
+  className: PropTypes.string,
   error: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  helpLinkPath: PropTypes.string,
+  helpMessage: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string,
   name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
   value: PropTypes.string,
-  helpLinkPath: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  helpMessage: PropTypes.string,
-  label: PropTypes.string,
 };
 
 export default FormInput;
