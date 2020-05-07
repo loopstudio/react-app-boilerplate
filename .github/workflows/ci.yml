@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - 'master'
+      - 'develop'
+  push:
+    branches:
+      - 'master'
+      - 'develop'
+      - /^release.*/
+
+jobs:
+  build:
+    name: Run tests and linters
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Restore cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            node-modules-
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run linters
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test
