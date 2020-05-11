@@ -58,9 +58,6 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(firstName.value).toBe(fakeSettingsData.firstName);
-      expect(lastName.value).toBe(fakeSettingsData.lastName);
-      expect(locale.value).toBe(fakeSettingsData.locale);
     });
 
     fireEvent.click(submitButton);
@@ -90,9 +87,6 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(firstName.value).toBe(fakeSettingsData.firstName);
-      expect(lastName.value).toBe(fakeSettingsData.lastName);
-      expect(locale.value).toBe(fakeSettingsData.locale);
     });
 
     fireEvent.click(submitButton);
@@ -131,7 +125,6 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(password.value).toBe(fakePassword);
     });
 
     fireEvent.click(submitButton);
@@ -157,7 +150,6 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(password.value).toBe(fakeInvalidPassword);
     });
 
     fireEvent.click(submitButton);
@@ -178,10 +170,6 @@ describe('Settings', () => {
     const submitButton = getByTestId('submit-password-button');
 
     fillInput(password, fakeInvalidPassword);
-
-    await waitFor(() => {
-      expect(password.value).toBe(fakeInvalidPassword);
-    });
 
     fireEvent.click(submitButton);
 

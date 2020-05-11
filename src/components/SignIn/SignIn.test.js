@@ -32,8 +32,6 @@ describe('SignIn', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(email.value).toBe(fakeCredentials.email);
-      expect(password.value).toBe(fakeCredentials.password);
     });
 
     fireEvent.click(submitButton);
@@ -57,8 +55,6 @@ describe('SignIn', () => {
 
     await waitFor(() => {
       expect(submitButton).toBeEnabled();
-      expect(email.value).toBe(fakeCredentials.email);
-      expect(password.value).toBe(fakeCredentials.password);
     });
 
     fireEvent.click(submitButton);
