@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useIntl, FormattedMessage } from 'react-intl';
-import { Formik } from 'formik';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signIn } from 'actions/auth';
 import Form from 'components/Form';
 
-const initialValues = {
+const defaultValues = {
   email: '',
   password: '',
 };
@@ -22,6 +22,11 @@ const SignInForm = () => {
   const [hasErrors, setHasErrors] = useState(false);
   const intl = useIntl();
 
+  const { handleSubmit, register, errors } = useForm({
+    validationSchema,
+    defaultValues,
+  });
+
   const onSubmit = async (values) => {
     try {
       await dispatch(signIn(values));
@@ -31,45 +36,32 @@ const SignInForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ errors, handleChange, values, isValid, handleSubmit }) => (
-        <Form data-testid="signin-form" onSubmit={handleSubmit}>
-          <Form.Input
-            id="email"
-            error={errors.email}
-            value={values.email}
-            onChange={handleChange}
-            name="email"
-            type="email"
-            data-testid="email-input"
-          />
-          <Form.Input
-            id="password"
-            error={errors.password}
-            value={values.password}
-            onChange={handleChange}
-            name="password"
-            type="password"
-            helpLinkPath="/forgot-password"
-            helpMessage={intl.messages['common.forgotPassword']}
-            data-testid="password-input"
-          />
-          <Form.Button
-            text={intl.messages['common.signIn']}
-            isDisabled={!isValid}
-          />
-          {hasErrors && (
-            <p>
-              <FormattedMessage id="common.errorMessage" />
-            </p>
-          )}
-        </Form>
+    <Form data-testid="signin-form" onSubmit={handleSubmit(onSubmit)}>
+      <Form.Input
+        id="email"
+        error={errors.email}
+        name="email"
+        type="email"
+        data-testid="email-input"
+        ref={register}
+      />
+      <Form.Input
+        id="password"
+        error={errors.password}
+        name="password"
+        type="password"
+        helpLinkPath="/forgot-password"
+        helpMessage={intl.messages['common.forgotPassword']}
+        data-testid="password-input"
+        ref={register}
+      />
+      <Form.Button text={intl.messages['common.signIn']} />
+      {hasErrors && (
+        <p>
+          <FormattedMessage id="common.errorMessage" />
+        </p>
       )}
-    </Formik>
+    </Form>
   );
 };
 

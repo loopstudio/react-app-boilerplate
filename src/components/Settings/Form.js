@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
+import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useIntl, FormattedMessage } from 'react-intl';
 
@@ -22,75 +22,71 @@ const SettingsForm = () => {
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
   const { user } = useAuthentication();
 
-  const onSubmit = async (attributes, { setErrors, setFieldError }) => {
-    try {
-      await dispatch(updateUser(attributes));
-      setIsResponseSuccess(true);
-    } catch ({ errors, attributesErrors }) {
-      if (attributesErrors) setErrors(attributesErrors);
-      if (errors?.length > 0) setFieldError('general', errors[0]);
-    }
-  };
-
-  const initialValues = {
+  const defaultValues = {
     firstName: user.firstName,
     lastName: user.lastName,
     locale: user.locale,
   };
 
+  const { handleSubmit, register, errors, setError } = useForm({
+    validationSchema,
+    defaultValues,
+  });
+
+  const onSubmit = async (attributes) => {
+    try {
+      await dispatch(updateUser(attributes));
+      setIsResponseSuccess(true);
+    } catch ({ errors: error }) {
+      if (error?.length > 0) {
+        setError('general', 'custom', error[0]);
+      }
+    }
+  };
+
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ errors, handleChange, values, isValid, handleSubmit }) => (
-        <Form className={styles.settingsForm} onSubmit={handleSubmit}>
-          <Form.Input
-            id="firstName"
-            value={values.firstName}
-            error={errors.firstName}
-            name="firstName"
-            onChange={handleChange}
-            data-testid="firstName-input"
-          />
-          <Form.Input
-            id="lastName"
-            value={values.lastName}
-            error={errors.lastName}
-            name="lastName"
-            onChange={handleChange}
-            data-testid="lastName-input"
-          />
-          <Form.Select
-            id="locale"
-            value={values.locale}
-            error={errors.locale}
-            name="locale"
-            type="password"
-            onChange={handleChange}
-            options={[
-              { value: 'en', label: 'English' },
-              { value: 'es', label: 'Español' },
-            ]}
-            data-testid="locale-input"
-          />
-          <Form.Button
-            type="submit"
-            data-testid="submit-settings-button"
-            className={styles.button}
-            disabled={!isValid}
-            text={intl.messages['common.updateSettings']}
-          />
-          {errors.general && <p className={styles.error}>{errors.general}</p>}
-          {isResponseSuccess && (
-            <p className={styles.success}>
-              <FormattedMessage id="common.updateSettingsSuccess" />
-            </p>
-          )}
-        </Form>
+    <Form className={styles.settingsForm} onSubmit={handleSubmit(onSubmit)}>
+      <Form.Input
+        id="firstName"
+        error={errors.firstName}
+        name="firstName"
+        data-testid="firstName-input"
+        ref={register}
+      />
+      <Form.Input
+        id="lastName"
+        error={errors.lastName}
+        name="lastName"
+        data-testid="lastName-input"
+        ref={register}
+      />
+      <Form.Select
+        id="locale"
+        error={errors.locale}
+        name="locale"
+        type="password"
+        options={[
+          { value: 'en', label: 'English' },
+          { value: 'es', label: 'Español' },
+        ]}
+        data-testid="locale-input"
+        ref={register}
+      />
+      <Form.Button
+        type="submit"
+        data-testid="submit-settings-button"
+        className={styles.button}
+        text={intl.messages['common.updateSettings']}
+      />
+      {errors?.general && (
+        <p className={styles.error}>{errors.general.message}</p>
       )}
-    </Formik>
+      {isResponseSuccess && (
+        <p className={styles.success}>
+          <FormattedMessage id="common.updateSettingsSuccess" />
+        </p>
+      )}
+    </Form>
   );
 };
 
