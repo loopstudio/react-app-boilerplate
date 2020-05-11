@@ -38,10 +38,6 @@ describe('SignUp', () => {
     fillInput(lastName, fakeUser.lastName);
     fillInput(password, fakeUser.password);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -65,10 +61,6 @@ describe('SignUp', () => {
     fillInput(lastName, fakeUser.lastName);
     fillInput(password, fakeUser.password);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -77,7 +69,7 @@ describe('SignUp', () => {
     });
   });
 
-  it('should disable the submit button for invalid values', async () => {
+  it('should show errors for invalid values', async () => {
     const { getByTestId, queryByText } = render(<SignUp />);
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');

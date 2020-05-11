@@ -30,10 +30,6 @@ describe('SignIn', () => {
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -52,10 +48,6 @@ describe('SignIn', () => {
 
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
-
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-    });
 
     fireEvent.click(submitButton);
 
