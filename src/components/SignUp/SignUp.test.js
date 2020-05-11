@@ -78,14 +78,21 @@ describe('SignUp', () => {
   });
 
   it('should disable the submit button for invalid values', async () => {
-    const { getByTestId } = render(<SignUp />);
+    const { getByTestId, queryByText } = render(<SignUp />);
     const email = getByTestId('email-input');
+    const password = getByTestId('password-input');
     const submitButton = getByTestId('submit-button');
 
     fillInput(email, 'invalid');
+    fillInput(password, 'invalid');
+
+    fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(submitButton).toBeDisabled();
+      expect(queryByText('Invalid email')).toBeInTheDocument();
+      expect(
+        queryByText('Password too short, minimum length is 8 characters')
+      ).toBeInTheDocument();
     });
   });
 });

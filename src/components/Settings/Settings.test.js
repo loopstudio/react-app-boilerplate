@@ -97,8 +97,8 @@ describe('Settings', () => {
     });
   });
 
-  it('should disable the submit button for invalid account settings values', async () => {
-    const { getByTestId } = render(<Settings />, {
+  it('should show errors for invalid account settings values', async () => {
+    const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
     const firstName = getByTestId('firstName-input');
@@ -106,8 +106,10 @@ describe('Settings', () => {
 
     fillInput(firstName, '');
 
+    fireEvent.click(submitButton);
+
     await waitFor(() => {
-      expect(submitButton).toBeDisabled();
+      expect(queryByText('Required')).toBeInTheDocument();
     });
   });
 
@@ -118,7 +120,7 @@ describe('Settings', () => {
       state: fakeState,
     });
 
-    const password = getByTestId('password-input');
+    const password = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
     fillInput(password, fakePassword);
@@ -143,7 +145,7 @@ describe('Settings', () => {
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
-    const password = getByTestId('password-input');
+    const password = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
     fillInput(password, fakeInvalidPassword);
@@ -162,19 +164,19 @@ describe('Settings', () => {
     });
   });
 
-  it('should disable the submit button for invalid new password values', async () => {
-    const { getByTestId } = render(<Settings />, {
+  it('should show error for empty new password values', async () => {
+    const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
-    const password = getByTestId('password-input');
+    const password = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, fakeInvalidPassword);
+    fillInput(password, '');
 
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-      expect(submitButton).toBeDisabled();
+      expect(queryByText('Required')).toBeInTheDocument();
     });
   });
 });
