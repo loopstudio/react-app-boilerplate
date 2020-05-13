@@ -17,7 +17,7 @@ const fakeSettingsData = {
 };
 
 const fakePassword = 'password';
-const fakeInvalidPassword = 'password';
+const fakeInvalidPassword = 'pass';
 
 const fakeState = {
   auth: {
@@ -56,13 +56,6 @@ describe('Settings', () => {
     fillInput(lastName, fakeSettingsData.lastName);
     fillInput(locale, fakeSettingsData.locale);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-      expect(firstName.value).toBe(fakeSettingsData.firstName);
-      expect(lastName.value).toBe(fakeSettingsData.lastName);
-      expect(locale.value).toBe(fakeSettingsData.locale);
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -87,13 +80,6 @@ describe('Settings', () => {
     fillInput(firstName, fakeSettingsData.firstName);
     fillInput(lastName, fakeSettingsData.lastName);
     fillInput(locale, fakeSettingsData.locale);
-
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-      expect(firstName.value).toBe(fakeSettingsData.firstName);
-      expect(lastName.value).toBe(fakeSettingsData.lastName);
-      expect(locale.value).toBe(fakeSettingsData.locale);
-    });
 
     fireEvent.click(submitButton);
 
@@ -131,11 +117,6 @@ describe('Settings', () => {
 
     fillInput(password, fakePassword);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-      expect(password.value).toBe(fakePassword);
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -156,10 +137,6 @@ describe('Settings', () => {
     const submitButton = getByTestId('submit-password-button');
 
     fillInput(password, fakeInvalidPassword);
-
-    await waitFor(() => {
-      expect(password.value).toBe(fakeInvalidPassword);
-    });
 
     fireEvent.click(submitButton);
 

@@ -38,14 +38,6 @@ describe('SignUp', () => {
     fillInput(lastName, fakeUser.lastName);
     fillInput(password, fakeUser.password);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-      expect(email.value).toBe(fakeUser.email);
-      expect(firstName.value).toBe(fakeUser.firstName);
-      expect(lastName.value).toBe(fakeUser.lastName);
-      expect(password.value).toBe(fakeUser.password);
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -69,14 +61,6 @@ describe('SignUp', () => {
     fillInput(lastName, fakeUser.lastName);
     fillInput(password, fakeUser.password);
 
-    await waitFor(() => {
-      expect(submitButton).toBeEnabled();
-      expect(email.value).toBe(fakeUser.email);
-      expect(firstName.value).toBe(fakeUser.firstName);
-      expect(lastName.value).toBe(fakeUser.lastName);
-      expect(password.value).toBe(fakeUser.password);
-    });
-
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -85,7 +69,7 @@ describe('SignUp', () => {
     });
   });
 
-  it('should disable the submit button for invalid values', async () => {
+  it('should show errors for invalid values', async () => {
     const { getByTestId, queryByText } = render(<SignUp />);
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
