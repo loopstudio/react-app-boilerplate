@@ -12,15 +12,17 @@ const defaultValues = {
   password: '',
 };
 
-const validationSchema = object().shape({
-  email: string().email('Invalid email').required('Required'),
-  password: string().required('Required'),
-});
-
 const SignInForm = () => {
   const dispatch = useDispatch();
   const [hasErrors, setHasErrors] = useState(false);
   const intl = useIntl();
+
+  const validationSchema = object().shape({
+    email: string()
+      .email(intl.messages['common.invalidEmail'])
+      .required(intl.messages['common.required']),
+    password: string().required(intl.messages['common.required']),
+  });
 
   const { handleSubmit, register, errors } = useForm({
     validationSchema,
