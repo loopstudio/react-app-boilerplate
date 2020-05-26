@@ -30,7 +30,7 @@ const SignUpForm = () => {
       .required(intl.messages['common.required']),
   });
 
-  const { handleSubmit, register, errors } = useForm({
+  const formMethods = useForm({
     validationSchema,
     defaultValues,
   });
@@ -44,38 +44,23 @@ const SignUpForm = () => {
   };
 
   return (
-    <Form data-testid="signup-form" onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      data-testid="signup-form"
+      onSubmit={onSubmit}
+      formMethods={formMethods}
+    >
+      <Form.Input name="email" type="email" data-testid="email-input" />
+      <Form.Input name="firstName" data-testid="firstName-input" />
+      <Form.Input name="lastName" data-testid="lastName-input" />
       <Form.Input
-        id="email"
-        error={errors.email}
-        name="email"
-        type="email"
-        data-testid="email-input"
-        ref={register}
-      />
-      <Form.Input
-        id="firstName"
-        error={errors.firstName}
-        name="firstName"
-        data-testid="firstName-input"
-        ref={register}
-      />
-      <Form.Input
-        id="lastName"
-        error={errors.lastName}
-        name="lastName"
-        data-testid="lastName-input"
-        ref={register}
-      />
-      <Form.Input
-        id="password"
-        error={errors.password}
         name="password"
         type="password"
         data-testid="password-input"
-        ref={register}
       />
-      <Form.Button text={intl.messages['common.signUp']} />
+      <Form.Button
+        data-testid="submit-button"
+        text={intl.messages['common.signUp']}
+      />
       {hasError && <FormattedMessage id="common.errorMessage" />}
     </Form>
   );

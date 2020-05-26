@@ -14,6 +14,7 @@ const defaultValues = {
 
 const ForgotPasswordForm = () => {
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
+  const [error, setError] = useState('');
   const intl = useIntl();
 
   const validationSchema = object().shape({
@@ -22,7 +23,7 @@ const ForgotPasswordForm = () => {
       .required(intl.messages['common.required']),
   });
 
-  const { handleSubmit, register, errors, setError } = useForm({
+  const formMethods = useForm({
     validationSchema,
     defaultValues,
   });
@@ -32,28 +33,23 @@ const ForgotPasswordForm = () => {
     try {
       await AuthService.resetPassword(email);
       setIsResponseSuccess(true);
-    } catch ({ errors: err }) {
-      setError('general', 'custom', err[0]);
+    } catch ({ errors }) {
+      setError(errors?.[0]);
     }
   };
 
   return (
-    <Form data-testid="forgot-password-form" onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      data-testid="forgot-password-form"
+      onSubmit={onSubmit}
+      formMethods={formMethods}
+    >
       <p className={styles.resetPasswordLegend}>
         <FormattedMessage id="common.forgotPasswordLegend" />
       </p>
-      <Form.Input
-        className={styles.emailInput}
-        id="email"
-        name="email"
-        type="email"
-        error={errors.email}
-        ref={register}
-      />
+      <Form.Input className={styles.emailInput} name="email" type="email" />
       <Form.Button text={intl.messages['common.resetPassword']} />
-      {errors?.general && (
-        <p className={styles.error}>{errors.general.message}</p>
-      )}
+      {error && <p className={styles.error}>{error}</p>}
       {isResponseSuccess && (
         <p className={styles.success}>
           <FormattedMessage id="common.resetPasswordSuccess" />

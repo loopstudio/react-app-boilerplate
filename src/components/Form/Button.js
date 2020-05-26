@@ -8,7 +8,6 @@ const FormButton = React.forwardRef(
     <button
       ref={ref}
       type="submit"
-      data-testid="submit-button"
       className={`${styles.button} ${className}`}
       disabled={isDisabled}
       {...rest}

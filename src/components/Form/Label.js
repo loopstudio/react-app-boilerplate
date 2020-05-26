@@ -8,7 +8,7 @@ import styles from './Form.module.scss';
 const Label = ({ helpLinkPath, helpMessage, name, label }) => (
   <div className={styles.labelContainer}>
     <span className={styles.span}>
-      {label || <FormattedMessage id={`common.${name}`} />}
+      {label ?? <FormattedMessage id={`common.${name}`} />}
     </span>
     {helpLinkPath && (
       <Link className={styles.link} to={helpLinkPath}>

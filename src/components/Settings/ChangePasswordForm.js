@@ -20,7 +20,7 @@ const ChangePasswordForm = () => {
   const intl = useIntl();
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
-  const { handleSubmit, register, errors, setError } = useForm({
+  const { setError, ...formMethods } = useForm({
     validationSchema,
     defaultValues,
   });
@@ -38,24 +38,24 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <Form className={styles.settingsForm} onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      formMethods={formMethods}
+      className={styles.settingsForm}
+      onSubmit={onSubmit}
+    >
       <Form.Input
-        id="password"
         label={intl.messages['common.newPassword']}
-        error={errors.password}
         name="password"
         type="password"
         data-testid="password-input-settings"
-        ref={register}
       />
       <Form.Button
-        type="submit"
         data-testid="submit-password-button"
         className={styles.button}
         text={intl.messages['common.updatePassword']}
       />
-      {errors?.general && (
-        <p className={styles.error}>{errors.general.message}</p>
+      {formMethods.errors?.general && (
+        <p className={styles.error}>{formMethods.errors.general.message}</p>
       )}
       {isResponseSuccess && (
         <p className={styles.success}>
