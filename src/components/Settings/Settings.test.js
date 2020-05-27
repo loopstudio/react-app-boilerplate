@@ -143,7 +143,7 @@ describe('Settings', () => {
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
       expect(
-        queryByText('is too short (minimum is 6 characters)')
+        queryByText('Is too short (minimum is 6 characters)')
       ).toBeInTheDocument();
     });
   });

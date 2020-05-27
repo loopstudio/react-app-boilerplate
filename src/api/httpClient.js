@@ -35,14 +35,14 @@ httpClient.interceptors.response.use(
   (response) => response,
   (error) => {
     if (!error.response) {
-      throw { errors: ['Connection error'] };
+      return Promise.reject({ errors: ['Connection error'] });
     }
 
     if (error.response.status === 401) {
       store.dispatch(clearSession());
     }
 
-    throw error.response.data;
+    return Promise.reject(error.response.data);
   }
 );
 

@@ -65,7 +65,7 @@ describe('SignUp', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('There was an error')).toBeInTheDocument();
+      expect(queryByText('Has already been taken')).toBeInTheDocument();
     });
   });
 

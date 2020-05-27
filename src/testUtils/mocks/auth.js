@@ -25,7 +25,7 @@ export const mockSignUpSuccess = (user) =>
 export const mockSignUpFailure = (user) =>
   baseMock.post('/users', humps.decamelizeKeys({ user })).reply(422, {
     attributes_errors: {
-      email: 'has already been taken',
+      email: ['has already been taken'],
     },
   });
 

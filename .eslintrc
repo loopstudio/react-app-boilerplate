@@ -33,6 +33,6 @@
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",
-    "no-throw-literal": "off"
+    "prefer-promise-reject-errors": "off"
   }
 }
