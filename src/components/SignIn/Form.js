@@ -24,7 +24,7 @@ const SignInForm = () => {
     password: string().required(intl.messages['common.required']),
   });
 
-  const { handleSubmit, register, errors } = useForm({
+  const formMethods = useForm({
     validationSchema,
     defaultValues,
   });
@@ -38,26 +38,23 @@ const SignInForm = () => {
   };
 
   return (
-    <Form data-testid="signin-form" onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      data-testid="signin-form"
+      onSubmit={onSubmit}
+      formMethods={formMethods}
+    >
+      <Form.Input name="email" type="email" data-testid="email-input" />
       <Form.Input
-        id="email"
-        error={errors.email}
-        name="email"
-        type="email"
-        data-testid="email-input"
-        ref={register}
-      />
-      <Form.Input
-        id="password"
-        error={errors.password}
         name="password"
         type="password"
         helpLinkPath="/forgot-password"
         helpMessage={intl.messages['common.forgotPassword']}
         data-testid="password-input"
-        ref={register}
       />
-      <Form.Button text={intl.messages['common.signIn']} />
+      <Form.Button
+        data-testid="submit-button"
+        text={intl.messages['common.signIn']}
+      />
       {hasErrors && (
         <p>
           <FormattedMessage id="common.errorMessage" />

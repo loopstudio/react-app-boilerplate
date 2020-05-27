@@ -28,7 +28,7 @@ const SettingsForm = () => {
     locale: user.locale,
   };
 
-  const { handleSubmit, register, errors, setError } = useForm({
+  const { setError, ...formMethods } = useForm({
     validationSchema,
     defaultValues,
   });
@@ -45,41 +45,28 @@ const SettingsForm = () => {
   };
 
   return (
-    <Form className={styles.settingsForm} onSubmit={handleSubmit(onSubmit)}>
-      <Form.Input
-        id="firstName"
-        error={errors.firstName}
-        name="firstName"
-        data-testid="firstName-input"
-        ref={register}
-      />
-      <Form.Input
-        id="lastName"
-        error={errors.lastName}
-        name="lastName"
-        data-testid="lastName-input"
-        ref={register}
-      />
+    <Form
+      formMethods={formMethods}
+      className={styles.settingsForm}
+      onSubmit={onSubmit}
+    >
+      <Form.Input name="firstName" data-testid="firstName-input" />
+      <Form.Input name="lastName" data-testid="lastName-input" />
       <Form.Select
-        id="locale"
-        error={errors.locale}
         name="locale"
-        type="password"
         options={[
           { value: 'en', label: 'English' },
           { value: 'es', label: 'Español' },
         ]}
         data-testid="locale-input"
-        ref={register}
       />
       <Form.Button
-        type="submit"
         data-testid="submit-settings-button"
         className={styles.button}
         text={intl.messages['common.updateSettings']}
       />
-      {errors?.general && (
-        <p className={styles.error}>{errors.general.message}</p>
+      {formMethods.errors?.general && (
+        <p className={styles.error}>{formMethods.errors.general.message}</p>
       )}
       {isResponseSuccess && (
         <p className={styles.success}>
