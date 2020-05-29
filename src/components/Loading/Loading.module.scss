@@ -1,7 +1,7 @@
 @import '../../tailwind';
 
 .wrapper {
-  @extend .flex, .h-screen, .items-center;
+  @extend .flex, .items-center;
 }
 
 .spinner {

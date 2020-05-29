@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
+import PropTypes from 'prop-types';
 
 import Form from 'components/Form';
+import Loading from 'components/Loading';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
+import { RESET_PASSWORD_STEPS } from './ForgotPassword';
 
 import styles from './ForgotPassword.module.scss';
 
-const ForgotPasswordForm = () => {
+const EmailForm = ({ onStepChange }) => {
+  const [loading, setLoading] = useState(false);
   const intl = useIntl();
-  const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const validationSchema = object().shape({
     email: string()
@@ -22,32 +25,35 @@ const ForgotPasswordForm = () => {
   const formMethods = useForm({ validationSchema });
 
   const onSubmit = async ({ email }) => {
+    setLoading(true);
+
     try {
-      await AuthService.resetPassword(email);
-      setIsResponseSuccess(true);
-    } catch (error) {
-      handleErrors(error, formMethods.setError);
+      await AuthService.getVerificationCode(email);
+      onStepChange(RESET_PASSWORD_STEPS.emailSent);
+    } catch (errors) {
+      handleErrors(errors, formMethods.setError);
+      setLoading(false);
     }
   };
 
   return (
     <Form
-      data-testid="forgot-password-form"
+      data-testid="forgot-password-email-form"
       onSubmit={onSubmit}
       formMethods={formMethods}
     >
       <p className={styles.resetPasswordLegend}>
         <FormattedMessage id="common.forgotPasswordLegend" />
       </p>
-      <Form.Input className={styles.emailInput} name="email" type="email" />
+      <Form.Input className={styles.formInput} name="email" type="email" />
       <Form.Button text={intl.messages['common.resetPassword']} />
-      {isResponseSuccess && (
-        <p className={styles.success}>
-          <FormattedMessage id="common.resetPasswordSuccess" />
-        </p>
-      )}
+      {loading && <Loading />}
     </Form>
   );
 };
 
-export default ForgotPasswordForm;
+EmailForm.propTypes = {
+  onStepChange: PropTypes.func.isRequired,
+};
+
+export default EmailForm;

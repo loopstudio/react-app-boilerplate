@@ -6,8 +6,12 @@ export function handleErrors({ attributesErrors, errors }, setError) {
   }
 
   if (attributesErrors && Object.keys(attributesErrors).length) {
+    const filteredErrors = Object.keys(attributesErrors).filter(
+      (fieldName) => attributesErrors[fieldName].length
+    );
+
     setError(
-      Object.keys(attributesErrors).map((fieldName) => ({
+      filteredErrors.map((fieldName) => ({
         message: capitalize(attributesErrors[fieldName][0]),
         name: fieldName,
       }))

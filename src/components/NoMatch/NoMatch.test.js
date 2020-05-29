@@ -12,7 +12,7 @@ describe('NoMatch', () => {
 
     expect(queryByText('404')).toBeInTheDocument();
     expect(
-      queryByText("It seems like the page you are looking for doesn't exist")
+      queryByText('It seems like the page you are looking for doesn’t exist')
     ).toBeInTheDocument();
   });
 });

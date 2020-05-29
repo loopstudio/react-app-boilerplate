@@ -13,7 +13,7 @@ class AuthService {
     return httpClient.delete('/users/sign_out');
   }
 
-  static resetPassword(email) {
+  static getVerificationCode(email) {
     return httpClient.post('/users/password', { email });
   }
 
@@ -23,6 +23,14 @@ class AuthService {
 
   static updateUser(user) {
     return httpClient.patch('/users', { user });
+  }
+
+  static verifyToken(token) {
+    return httpClient.get(`users/password/edit?reset_password_token=${token}`);
+  }
+
+  static resetPassword(password, resetPasswordToken) {
+    return httpClient.put('/users/password', { password, resetPasswordToken });
   }
 }
 
