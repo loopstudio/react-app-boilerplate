@@ -10,6 +10,7 @@ const httpClient = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },
+  params: {},
   transformRequest: [
     (data) => humps.decamelizeKeys(data),
     ...axios.defaults.transformRequest,
@@ -21,11 +22,22 @@ const httpClient = axios.create({
 });
 
 httpClient.interceptors.request.use((config) => {
-  const { userSession } = store.getState().auth;
+  const { userSession, guestLocale } = store.getState().auth;
 
   if (userSession) {
     const { accessToken, uid, client } = userSession;
-    Object.assign(config.headers, { client, uid, 'access-token': accessToken });
+    Object.assign(config.headers, {
+      client,
+      uid,
+      'access-token': accessToken,
+    });
+  } else {
+    // Waiting for https://github.com/axios/axios/issues/2190
+    /* eslint-disable no-param-reassign */
+    config.params = config.params || {};
+    Object.assign(config.params, {
+      locale: guestLocale,
+    });
   }
 
   return config;
