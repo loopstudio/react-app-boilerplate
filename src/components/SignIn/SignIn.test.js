@@ -53,7 +53,7 @@ describe('SignIn', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('There was an error')).toBeInTheDocument();
+      expect(queryByText('The credentials are not valid')).toBeInTheDocument();
     });
   });
 

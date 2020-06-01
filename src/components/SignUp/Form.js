@@ -1,45 +1,35 @@
-import React, { useState } from 'react';
-import { useIntl, FormattedMessage } from 'react-intl';
+import React from 'react';
+import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
 import Form from 'components/Form';
-
-const defaultValues = {
-  email: '',
-  firstName: '',
-  lastName: '',
-  password: '',
-};
+import { handleErrors } from 'helpers/errors';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const [hasError, setHasError] = useState(false);
   const intl = useIntl();
 
   const validationSchema = object().shape({
     email: string()
-      .email(intl.messages['common.invalidEmail'])
-      .required(intl.messages['common.required']),
+      .required(intl.messages['common.required'])
+      .email(intl.messages['common.invalidEmail']),
     firstName: string().required(intl.messages['common.required']),
     lastName: string().required(intl.messages['common.required']),
     password: string()
-      .min(8, intl.messages['common.shortPassword'])
-      .required(intl.messages['common.required']),
+      .required(intl.messages['common.required'])
+      .min(8, intl.messages['common.shortPassword']),
   });
 
-  const formMethods = useForm({
-    validationSchema,
-    defaultValues,
-  });
+  const formMethods = useForm({ validationSchema });
 
   const onSubmit = async (values) => {
     try {
       await dispatch(signUp({ locale: intl.locale, ...values }));
     } catch (error) {
-      setHasError(true);
+      handleErrors(error, formMethods.setError);
     }
   };
 
@@ -61,7 +51,6 @@ const SignUpForm = () => {
         data-testid="submit-button"
         text={intl.messages['common.signUp']}
       />
-      {hasError && <FormattedMessage id="common.errorMessage" />}
     </Form>
   );
 };

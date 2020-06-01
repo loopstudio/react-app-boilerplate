@@ -3,38 +3,30 @@ import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 
-import Form from 'components/Form';
 import AuthService from 'api/AuthService';
+import Form from 'components/Form';
+import { handleErrors } from 'helpers/errors';
 
 import styles from './ForgotPassword.module.scss';
 
-const defaultValues = {
-  email: '',
-};
-
 const ForgotPasswordForm = () => {
-  const [isResponseSuccess, setIsResponseSuccess] = useState(false);
-  const [error, setError] = useState('');
   const intl = useIntl();
+  const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const validationSchema = object().shape({
     email: string()
-      .email(intl.messages['common.invalidEmail'])
-      .required(intl.messages['common.required']),
+      .required(intl.messages['common.required'])
+      .email(intl.messages['common.invalidEmail']),
   });
 
-  const formMethods = useForm({
-    validationSchema,
-    defaultValues,
-  });
+  const formMethods = useForm({ validationSchema });
 
   const onSubmit = async ({ email }) => {
-    setIsResponseSuccess(false);
     try {
       await AuthService.resetPassword(email);
       setIsResponseSuccess(true);
-    } catch ({ errors }) {
-      setError(errors?.[0]);
+    } catch (error) {
+      handleErrors(error, formMethods.setError);
     }
   };
 
@@ -49,7 +41,6 @@ const ForgotPasswordForm = () => {
       </p>
       <Form.Input className={styles.emailInput} name="email" type="email" />
       <Form.Button text={intl.messages['common.resetPassword']} />
-      {error && <p className={styles.error}>{error}</p>}
       {isResponseSuccess && (
         <p className={styles.success}>
           <FormattedMessage id="common.resetPasswordSuccess" />

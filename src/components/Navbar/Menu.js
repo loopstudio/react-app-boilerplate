@@ -10,10 +10,14 @@ import styles from './Menu.module.scss';
 const Menu = ({ isAuthenticated, redirectTo }) => {
   const dispatch = useDispatch();
 
-  const handleSignOut = () => {
-    dispatch(signOut()).catch(({ errors }) => {
-      alert(errors);
-    });
+  const handleSignOut = async () => {
+    try {
+      await dispatch(signOut());
+    } catch ({ errors }) {
+      if (errors?.length) {
+        alert(errors[0]);
+      }
+    }
   };
 
   return (
