@@ -20,13 +20,13 @@ const userResponse = {
 export const mockSignUpSuccess = (user) =>
   baseMock
     .post('/users', humps.decamelizeKeys({ user }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockSignUpFailure = (user) =>
   baseMock
     .post('/users', humps.decamelizeKeys({ user }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(422, {
       attributes_errors: {
         email: ['has already been taken'],
@@ -36,13 +36,13 @@ export const mockSignUpFailure = (user) =>
 export const mockSignInSuccess = (credentials) =>
   baseMock
     .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockSignInFailure = (credentials) =>
   baseMock
     .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(403, {
       errors: ['The credentials are not valid'],
     });
@@ -56,7 +56,7 @@ export const mockUpdateUserSuccess = (user) =>
 export const mockUpdateUserFailure = (user) =>
   baseMock
     .patch('/users', humps.decamelizeKeys({ user }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(400, {
       errors: ['Some scary error'],
     });
@@ -64,13 +64,13 @@ export const mockUpdateUserFailure = (user) =>
 export const mockUpdatePasswordSuccess = (password) =>
   baseMock
     .patch('/users/password', humps.decamelizeKeys({ password }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockUpdatePasswordFailure = (password) =>
   baseMock
     .patch('/users/password', humps.decamelizeKeys({ password }))
-    .query({ guestLocale: 'en' })
+    .query({ locale: 'en' })
     .reply(400, {
       attributes_errors: {
         password: ['is too short (minimum is 6 characters)'],
