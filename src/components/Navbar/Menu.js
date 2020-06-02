@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { signOut } from 'actions/auth';
 import Button from './Button';
 
 import styles from './Menu.module.scss';
 
-const Menu = ({ isAuthenticated, redirectTo }) => {
+const Menu = ({ isAuthenticated }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSignOut = async () => {
     try {
@@ -26,7 +28,7 @@ const Menu = ({ isAuthenticated, redirectTo }) => {
         <>
           <Button
             formattedMessageId="common.accountSettings"
-            onClick={() => redirectTo('/settings')}
+            onClick={() => history.push('/settings')}
           />
           <Button formattedMessageId="common.signOut" onClick={handleSignOut} />
         </>
@@ -34,11 +36,11 @@ const Menu = ({ isAuthenticated, redirectTo }) => {
         <>
           <Button
             formattedMessageId="common.signIn"
-            onClick={() => redirectTo('/sign-in')}
+            onClick={() => history.push('/sign-in')}
           />
           <Button
             formattedMessageId="common.signUp"
-            onClick={() => redirectTo('/sign-up')}
+            onClick={() => history.push('/sign-up')}
           />
         </>
       )}
@@ -48,12 +50,10 @@ const Menu = ({ isAuthenticated, redirectTo }) => {
 
 Menu.propTypes = {
   isAuthenticated: PropTypes.bool,
-  redirectTo: PropTypes.func,
 };
 
 Menu.defaultProps = {
   isAuthenticated: false,
-  redirectTo: () => {},
 };
 
 export default Menu;

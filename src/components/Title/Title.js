@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 
 import style from './Title.module.scss';
 
-const Title = ({ type, children, className }) =>
+const Title = ({ type, children, className, ...rest }) =>
   React.createElement(
     type,
-    { className: `${style[type]} ${className}` },
+    {
+      className: `${style[type]} ${className}`,
+      ...rest,
+    },
     children
   );
 
