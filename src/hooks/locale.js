@@ -1,10 +1,4 @@
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-export const useLocale = () => {
-  return useSelector(
-    ({ auth: { user, guestLocale } }) => ({
-      locale: user?.locale || guestLocale,
-    }),
-    shallowEqual
-  );
-};
+export const useLocale = () =>
+  useSelector(({ auth: { user, guestLocale } }) => user?.locale || guestLocale);

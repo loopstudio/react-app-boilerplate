@@ -6,15 +6,15 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import Form from 'components/Form';
 import { handleErrors } from 'helpers/errors';
-import { useAuthentication } from 'hooks/auth';
+import { useUser } from 'hooks/auth';
 import { updateUser } from 'actions/auth';
 
 import styles from './Settings.module.scss';
 
 const SettingsForm = () => {
-  const intl = useIntl();
   const dispatch = useDispatch();
-  const { user } = useAuthentication();
+  const intl = useIntl();
+  const user = useUser();
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const defaultValues = {

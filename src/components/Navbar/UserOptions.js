@@ -12,8 +12,7 @@ const AVATAR_PLACEHOLDER = 'https://i.pravatar.cc/150?img=41';
 
 const RightItem = () => {
   const history = useHistory();
-  const { isAuthenticated } = useAuthentication();
-
+  const isAuthenticated = useAuthentication();
   const [navOpen, setNavOpen] = useState(false);
 
   const handleRedirectTo = (path) => history.push(path);

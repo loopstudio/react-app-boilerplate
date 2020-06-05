@@ -6,7 +6,7 @@ import { useAuthentication } from 'hooks/auth';
 
 const ProtectedRoute = ({ children, ...rest }) => {
   const location = useLocation();
-  const { isAuthenticated } = useAuthentication();
+  const isAuthenticated = useAuthentication();
 
   return isAuthenticated ? (
     <Route {...rest}>{children}</Route>

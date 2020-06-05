@@ -8,7 +8,7 @@ export const clearSession = () => ({
 
 export const setGuestLocale = (locale) => ({
   type: Types.SET_GUEST_LOCALE,
-  payload: locale,
+  payload: { locale },
 });
 
 export const signIn = (credentials) => ({

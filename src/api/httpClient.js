@@ -1,43 +1,27 @@
 import axios from 'axios';
-import humps from 'humps';
+import applyCaseMiddleware from 'axios-case-converter';
 
 import { clearSession } from 'actions/auth';
 import { store } from 'store';
 
-const httpClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-  },
-  params: {},
-  transformRequest: [
-    (data) => humps.decamelizeKeys(data),
-    ...axios.defaults.transformRequest,
-  ],
-  transformResponse: [
-    ...axios.defaults.transformResponse,
-    (data) => humps.camelizeKeys(data),
-  ],
-});
+const httpClient = applyCaseMiddleware(
+  axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: { accept: 'application/json' },
+    params: {},
+  })
+);
 
 httpClient.interceptors.request.use((config) => {
-  const { userSession, guestLocale } = store.getState().auth;
+  const { guestLocale, session } = store.getState().auth;
 
-  if (userSession) {
-    const { accessToken, uid, client } = userSession;
-    Object.assign(config.headers, {
-      client,
-      uid,
-      'access-token': accessToken,
-    });
+  if (session) {
+    Object.assign(config.headers, session);
   } else {
     // Waiting for https://github.com/axios/axios/issues/2190
     /* eslint-disable no-param-reassign */
     config.params = config.params || {};
-    Object.assign(config.params, {
-      locale: guestLocale,
-    });
+    Object.assign(config.params, { locale: guestLocale });
   }
 
   return config;
