@@ -11,7 +11,7 @@ import style from '../AuthWrapper/AuthWrapper.module.scss';
 const SignUp = () => {
   const { state } = useLocation();
   const { from } = state || { from: { pathname: '/' } };
-  const { isAuthenticated } = useAuthentication();
+  const isAuthenticated = useAuthentication();
   const intl = useIntl();
 
   if (isAuthenticated) {

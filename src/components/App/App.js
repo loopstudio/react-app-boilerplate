@@ -23,7 +23,7 @@ const SignUpPage = lazy(() => import('pages/SignUpPage'));
 library.add(icons);
 
 const App = () => {
-  const { locale } = useLocale();
+  const locale = useLocale();
   const appLocale = locale in AppLocale ? AppLocale[locale] : AppLocale.en;
 
   return (

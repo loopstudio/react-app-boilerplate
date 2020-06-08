@@ -10,28 +10,28 @@ import createReducer from 'reducers/createReducer';
 const { Fulfilled, Rejected } = ActionType;
 
 const initialState = {
-  user: null,
-  userSession: null,
   guestLocale: navigator.language.substr(0, 2),
+  session: null,
+  user: null,
 };
 
 const clearSession = (draftState) => {
+  draftState.session = null;
   draftState.user = null;
-  draftState.userSession = null;
 };
 
 const setGuestLocale = (draftState, payload) => {
-  draftState.guestLocale = payload;
+  draftState.guestLocale = payload.locale;
 };
 
 const updateUser = (draftState, payload) => {
   const {
-    headers: { client, uid, 'access-token': accessToken },
+    headers: { accessToken, client, uid },
     data,
   } = payload;
 
+  draftState.session = { accessToken, client, uid };
   draftState.user = data.user;
-  draftState.userSession = { accessToken, client, uid };
 };
 
 const handlers = {

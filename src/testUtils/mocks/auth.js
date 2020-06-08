@@ -1,4 +1,4 @@
-import humps from 'humps';
+import { decamelizeKeys } from 'helpers/decamelize';
 import baseMock from './base';
 
 const userResponse = {
@@ -11,21 +11,21 @@ const userResponse = {
     },
   },
   headers: {
-    uid: 'user@example.com',
-    client: 'client',
-    'access-token': 'token',
+    'Access-Token': 'token',
+    Uid: 'user@example.com',
+    Client: 'client',
   },
 };
 
 export const mockSignUpSuccess = (user) =>
   baseMock
-    .post('/users', humps.decamelizeKeys({ user }))
+    .post('/users', decamelizeKeys({ user }))
     .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockSignUpFailure = (user) =>
   baseMock
-    .post('/users', humps.decamelizeKeys({ user }))
+    .post('/users', decamelizeKeys({ user }))
     .query({ locale: 'en' })
     .reply(422, {
       attributes_errors: {
@@ -35,13 +35,13 @@ export const mockSignUpFailure = (user) =>
 
 export const mockSignInSuccess = (credentials) =>
   baseMock
-    .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
+    .post('/users/sign_in', decamelizeKeys({ user: credentials }))
     .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockSignInFailure = (credentials) =>
   baseMock
-    .post('/users/sign_in', humps.decamelizeKeys({ user: credentials }))
+    .post('/users/sign_in', decamelizeKeys({ user: credentials }))
     .query({ locale: 'en' })
     .reply(403, {
       errors: ['The credentials are not valid'],
@@ -49,13 +49,13 @@ export const mockSignInFailure = (credentials) =>
 
 export const mockUpdateUserSuccess = (user) =>
   baseMock
-    .patch('/users', humps.decamelizeKeys({ user }))
+    .patch('/users', decamelizeKeys({ user }))
     .query(true)
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockUpdateUserFailure = (user) =>
   baseMock
-    .patch('/users', humps.decamelizeKeys({ user }))
+    .patch('/users', decamelizeKeys({ user }))
     .query({ locale: 'en' })
     .reply(400, {
       errors: ['Some scary error'],
@@ -63,13 +63,13 @@ export const mockUpdateUserFailure = (user) =>
 
 export const mockUpdatePasswordSuccess = (password) =>
   baseMock
-    .patch('/users/password', humps.decamelizeKeys({ password }))
+    .patch('/users/password', decamelizeKeys({ password }))
     .query({ locale: 'en' })
     .reply(200, userResponse.data, userResponse.headers);
 
 export const mockUpdatePasswordFailure = (password) =>
   baseMock
-    .patch('/users/password', humps.decamelizeKeys({ password }))
+    .patch('/users/password', decamelizeKeys({ password }))
     .query({ locale: 'en' })
     .reply(400, {
       attributes_errors: {
