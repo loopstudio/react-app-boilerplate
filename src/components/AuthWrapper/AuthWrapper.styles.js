@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
 export const Screen = styled.div`
   background: ${(props) => props.theme.color.gray200};
@@ -43,13 +42,4 @@ export const LegendContainer = styled.div`
 
 export const Legend = styled.span`
   color: ${(props) => props.theme.color.gray700};
-`;
-
-export const NavigationLink = styled(Link)`
-  color: ${(props) => props.theme.color.indigo700};
-  grid-area: link;
-  grid-column: 1/3;
-  grid-row: 3;
-  margin-left: 0.5rem;
-  text-align: left;
 `;
