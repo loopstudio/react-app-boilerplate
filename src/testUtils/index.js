@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import { ThemeProvider } from 'emotion-theming';
+import theme from 'theme';
 
 import AppLocale from 'locales';
 import configureStore from 'store';
@@ -18,7 +20,9 @@ const renderWithProviders = (ui, { state = {}, ...options } = {}) => {
   const Wrapper = ({ children }) => (
     <Provider store={store}>
       <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
-        <BrowserRouter>{children}</BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>{children}</BrowserRouter>
+        </ThemeProvider>
       </IntlProvider>
     </Provider>
   );
