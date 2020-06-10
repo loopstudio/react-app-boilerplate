@@ -99,7 +99,7 @@ If you want to split your component in pieces for readability, maintainability, 
 ### API Requests:
 
 - [axios](https://github.com/axios/axios): HTTP client.
-- [humps](https://github.com/domchristie/humps): converts camelCase to snake_case and vice versa.
+- [axios-case-converter](https://github.com/domchristie/humps): axios interceptor that converts snake_case/camelCase.
 
 ### Routing:
 
@@ -176,6 +176,7 @@ Sublime:
 VSCode:
 - [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - A port of [DotENV](https://github.com/zaynali53/DotENV) for vscode.
 - [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight) - This extension styles css/web colors found in your document.
+- [VSCode Styled Components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) - Syntax highlighting and IntelliSense for styled-components or emotion.
 
 Sublime:
 - [DotENV](https://packagecontrol.io/packages/DotENV) - SublimeText Syntax Highlighting support for Environment (.env) Files
