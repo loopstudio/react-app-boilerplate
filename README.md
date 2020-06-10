@@ -1,4 +1,4 @@
-![react app banner]()
+![react app banner](https://user-images.githubusercontent.com/15303963/84329475-1e7b6b80-ab5b-11ea-828d-9249c79ab522.png)
 
 <p align="center"><strong>An opinionated boilerplate code for starting a new react web project.</strong></p>
 
