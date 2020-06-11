@@ -64,7 +64,7 @@
 
 ### Optional
 
-If you want to split your component in pieces for readability, maintainability, or any other reason you could put the secondary components in the same folder. This is only for cases where these secondary components are only used inside MyComponent. If later they want to be used in other places they should be extracted to their own folder inside components.
+If you want to split your component into pieces for readability, maintainability, or any other reason you could put the secondary components in the same folder. This is only for cases where these secondary components are only used inside MyComponent. If later they want to be used in other places they should be extracted to their folder inside components.
 
 ```
 ├── MyComponent
@@ -80,7 +80,7 @@ If you want to split your component in pieces for readability, maintainability, 
 
 1. Based on [create-react-app](https://create-react-app.dev/)
 2. Powerful but simple routing system based on protected and public routes.
-3. The httpClient provides status code errors handling, and camelCase to snake_case automatic conversion.
+3. The httpClient provides status code errors handling and camelCase to snake_case automatic conversion.
 4. Async actions and store hydration.
 5. Internationalization.
 6. [Absolute imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports).
@@ -89,7 +89,7 @@ If you want to split your component in pieces for readability, maintainability, 
 ## Prerequisites
 
 1. Install [Node.js](https://nodejs.org/en/) 10.16.3 or greater.
-2. Install [Yarn](https://yarnpkg.com/lang/en/) as package manager.
+2. Install [Yarn](https://yarnpkg.com/lang/en/) as a package manager.
 
 ## List of Packages
 
@@ -128,26 +128,26 @@ If you want to split your component in pieces for readability, maintainability, 
 - [jest](https://jestjs.io/): a delightful JavaScript Testing Framework with a focus on simplicity.
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro): a very light-weight solution for testing React components.
 - [nock](https://github.com/nock/nock): HTTP server mocking and expectations library for Node.js
-- [cypress](https://www.cypress.io/): automated integration tests. This tool isn't installed in our project, but we recommend to use it. You can install it running `yarn add cypress --dev`. For more information about the configuration you can read [this guide](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
+- [cypress](https://www.cypress.io/): automated integration tests. This tool isn't installed in our project, but we recommend to use it. You can install it running `yarn add cypress --dev`. For more information about the configuration, you can read [this guide](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
 
 ### Styling:
 
 - [sass](https://sass-lang.com/guide): "CSS with superpowers", superpowers which allow us for a cleaner syntax when extending or importing variables while using CSS modules.
 - [css-modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet): CSS-Modules helps us to have a more component-based styling avoiding possible conflicts and pollutants of the style across the app.
 - [tailwind](https://tailwindcss.com/docs/utility-first): Improves development speed by simplifying the syntax and giving us a single place to set CSS property-related values.
-- [font-awesome](https://fontawesome.com/): A comprehensive icon library. Currently the free version of Font Awesome is added by default to the boilerplate. To upgrade and use the pro version sign in to your Font Awesome account and follow the instructions on this [link](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
-Imported icons are encouraged to be stored in `assets/icons`, and inkoved as a string in each component.
+- [font-awesome](https://fontawesome.com/): A comprehensive icon library. Currently, the free version of Font Awesome is added by default to the boilerplate. To upgrade and use the pro version sign in to your Font Awesome account and follow the instructions on this [link](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
+Imported icons are encouraged to be stored in `assets/icons`, and invoked as a string in each component.
 
 ### Deployment:
 
-- [netlify](https://www.netlify.com/): "The fastest way to build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. In addition, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
+- [netlify](https://www.netlify.com/): "The fastest way to build the fastest sites". We recommend Netlify as a hosting solution. The free plan is very generous and meets the basic needs of any standard project. Also, it is dead simple to set up and use. For more information, you can dig into the [official docs](https://docs.netlify.com/).
 
 ### Error Monitoring:
 
   **NOTE: These tools are not enabled by default. For instructions on how to set them up, please visit their respective vendor website**
 
 - [sentry](https://github.com/getsentry/sentry-javascript#installation-and-usage): Sentry provides self-hosted and cloud-based error monitoring that helps all software teams discover, triage, and prioritize errors in real-time.
-- [sentry + logrocket](https://docs.logrocket.com/docs/sentry): Add a LogRocket session recording URL to every Sentry exception report. The integration of both of this tools allows us to access a video recording of the exact moment a user encountered an error including network events and console output.
+- [sentry + logrocket](https://docs.logrocket.com/docs/sentry): Add a LogRocket session recording URL to every Sentry exception report. The integration of both of these tools allows us to access a video recording of the exact moment a user encountered an error including network events and console output.
 
 
 ## Recommended Extensions
@@ -155,7 +155,7 @@ Imported icons are encouraged to be stored in `assets/icons`, and inkoved as a s
 ### Style / Linting
 
 VSCode:
-- [Prettier](https://github.com/prettier/prettier-vscode): An opinionated code formatter.
+- [Prettier](https://github.com/prettier/prettier-vscode) - An opinionated code formatter.
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Integrates [ESLint](http://eslint.org/) into VS Code.
 
 Sublime:
@@ -184,8 +184,8 @@ Sublime:
 ### Syntax Highlighting
 
 VSCode:
-- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - A port of [DotENV](https://github.com/zaynali53/DotENV) for vscode.
-- [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight) - This extension styles css/web colors found in your document.
+- [DotENV](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv) - A port of [DotENV](https://github.com/zaynali53/DotENV) for VSCode.
+- [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight) - This extension styles CSS/web colors found in your document.
 - [VSCode Styled Components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components) - Syntax highlighting and IntelliSense for styled-components or emotion.
 
 Sublime:
@@ -195,7 +195,7 @@ Sublime:
 ### Snippets
 
 VSCode:
-- [ES7 React/Redux/GraphQL/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) - This extension provides you JavaScript and React/Redux snippets in ES7 with Babel plugin features for vscode.
+- [ES7 React/Redux/GraphQL/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) - This extension provides you JavaScript and React/Redux snippets in ES7 with Babel plugin features for VSCode.
 
 Sublime:
 - [ES7 React/Redux/GraphQL/React-Native snippets](https://packagecontrol.io/packages/Sublime%20ES7%20React%20Redux%20ReactNative%20JS%20snippets) - Sublime ES7 React/Redux/React-Native/JS snippets.
