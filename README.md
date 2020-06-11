@@ -6,7 +6,7 @@
 [![Codebeat Badge](https://codebeat.co/badges/6382173b-82aa-4fe5-9087-87d53bd5595e)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-react-app-boilerplate-master)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5ead8491-1da0-4eaa-8739-fdc8971d1d07/deploy-status)](https://app.netlify.com/sites/react-app-boilerplate/deploys)
 
-<sub> Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a> </sub>
+<sub>Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a></sub>
 
 ## Table of Contents
 - [Project Structure](#project-structure)
@@ -16,30 +16,39 @@
 - [Recommended Extensions](#recommended-extensions)
 - [Getting Started](#getting-started)
 - [Running the Test Suite](#running-the-test-suite)
-- [Contributing](#contributing)
+- [Contributing](CONTRIBUTING.md)
 - [Credits](#credits)
 
 ## Project Structure
 
 ```
 .
-├── README.md
-├── jsconfig.json
-├── package.json
+├── .github/
 ├── public/
 ├── src
-│   ├── App.js
-│   ├── App.test.js
 │   ├── actions/
-│   ├── api/
 │   ├── assets/
 │   ├── components/
-│   ├── index.css
-│   ├── index.js
+│   ├── helpers/
+│   ├── hooks/
+│   ├── layouts/
+│   ├── locales/
+│   ├── pages/
 │   ├── reducers/
-│   ├── serviceWorker.js
+│   ├── services/
 │   ├── store/
-│   └── utils/
+│   ├── testUtils/
+│   ├── index.js
+│   └── serviceWorker.js
+├── .env
+├── .gitignore
+├── .eslintrc
+├── .prettierrc
+├── CONTRIBUTING.md
+├── jsconfig.json
+├── netlify.toml
+├── package.json
+├── README.md
 └── yarn.lock
 ```
 
@@ -73,8 +82,9 @@ If you want to split your component in pieces for readability, maintainability, 
 2. Powerful but simple routing system based on protected and public routes.
 3. The httpClient provides status code errors handling, and camelCase to snake_case automatic conversion.
 4. Async actions and store hydration.
-5. [Absolut imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports).
-6. Environment-specific routes and settings provided through the built-in [environment variables](https://create-react-app.dev/docs/adding-custom-environment-variables) system provided by CRA.
+5. Internationalization.
+6. [Absolute imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports).
+7. Environment-specific routes and settings provided through the built-in [environment variables](https://create-react-app.dev/docs/adding-custom-environment-variables) system provided by CRA.
 
 ## Prerequisites
 
@@ -203,6 +213,6 @@ Sublime:
 
 ## Credits
 
-React App Boilerplate is maintained by [Loopstudio](https://loopstudio.dev).
+React App Boilerplate is maintained by [LoopStudio](https://loopstudio.dev).
 
 [<img src='https://loopstudio.dev/wp-content/uploads/2019/05/logoblack.png' width='300'/>](https://loopstudio.dev)
