@@ -51,7 +51,7 @@
 }
 
 .link {
-  @extend .text-blue-700;
+  @extend .text-blue-700, .mb-1;
 
   &:hover {
     @extend .text-blue-800;
