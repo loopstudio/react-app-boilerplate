@@ -30,17 +30,17 @@ First off, thank you for considering contributing to our React App Boilerplate. 
 
 ### Why is this important?
 
-Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
+Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open-source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
 ### What sort of contributions are we looking for?
 
-LoopStudio's React App Boilerplate is an open source project and we love to receive contributions from our community — you! There are many ways to contribute, from improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into the boilerplate itself.
+LoopStudio's React App Boilerplate is an open-source project and we love to receive contributions from our community — you! There are many ways to contribute, from improving the documentation, submitting bug reports and feature requests or writing code which can be incorporated into the boilerplate itself.
 
 ## Styleguide
 
 ### React Style Guide
 
-We use our custom ESLint file to lint the code, so please make sure you setup the necessary tools in your preferred text editor.
+We use our custom ESLint file to lint the code, so please make sure you set up the necessary tools in your preferred text editor.
 Pull Requests that do not adhere to our linting rules will be rejected.
 
 ## How can I contribute?
@@ -59,12 +59,11 @@ Good bug reports are extremely helpful - thank you!
 
 Guidelines for bug reports:
 
-1. **Use the GitHub issue search** &mdash; check if the issue has already been
-   reported.
+1. **Use the GitHub issue search** &mdash; check if the issue has already been reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the `master` branch in the repository.
 
-3. **Isolate the problem** &mdash; ideally create a reduced test case.
+3. **Isolate the problem** &mdash; ideally, create a reduced test case.
 
 A good bug report shouldn't leave others needing to chase you up for more
 information. Please try to be as detailed as possible in your report. What is
@@ -104,7 +103,7 @@ help. They should remain focused in scope and avoid containing unrelated
 commits.
 
 **Please ask first** before embarking on any significant pull request (e.g.
-implementing features, refactoring code), otherwise you risk spending a lot of
+implementing features, refactoring code), otherwise, you risk spending a lot of
 time working on something that the team might not want to merge
 into the project.
 
@@ -153,7 +152,7 @@ This section lists the labels we use to help us track and manage issues and pull
 
 [GitHub search](https://help.github.com/articles/searching-issues/) makes it easy to use labels for finding groups of issues or pull requests you're interested in. For example, you might be interested in [open issues](https://github.com/search?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+user%3Aloopstudio+label%3Abug+label%3Aneeds-reproduction) across `LoopStudio`'s repos and which are labeled as bugs, but still need to be reliably reproduced or perhaps [open pull requests](https://github.com/search?q=is%3Aopen+is%3Apr+repo%3ALoopStudio%2Freact-app-boilerplate+comments%3A0) in `LoopStudio/react-app-boilerplate` which haven't been reviewed yet. To help you find issues and pull requests, each label is listed with search links for finding open items with that label in `LoopStudio/react-app-boilerplate` only and also across all LoopStudio's repositories. We encourage you to read about [other search filters](https://help.github.com/articles/searching-issues/) which will help you write more focused queries.
 
-The labels are loosely grouped by their purpose, but it's not required that every issue have a label from every group or that an issue can't have more than one label from the same group.
+The labels are loosely grouped by their purpose, but it's not required that every issue has a label from every group or that an issue can't have more than one label from the same group.
 
 Please open an issue on our [style guides repo](https://github.com/LoopStudio/loop-studio-guides) if you have suggestions for new labels, and if you notice some labels are missing on some repositories, then please open an issue on that repository.
 
@@ -203,7 +202,7 @@ Please open an issue on our [style guides repo](https://github.com/LoopStudio/lo
 
 ## Community
 
-We gather together once a month to discuss about industry trends, best practices and, of course, this project, in what we decided to call **Loop's React Tech Council**.
+We gather together once a month to discuss industry trends, best practices, and, of course, this project, in what we decided to call **Loop's React Tech Council**.
 
 [search-react-app-boilerplate-repo-label-enhancement]: https://github.com/search?q=is%3Aopen+is%3Aissue+repo%3ALoopStudio%2Freact%2Dapp%2Dboilerplate+label%3Aenhancement
 [search-loopstudio-org-label-enhancement]: https://github.com/search?q=is%3Aopen+is%3Aissue+user%3Aloopstudio+label%3Aenhancement
