@@ -1,4 +1,4 @@
-import AuthService from 'api/AuthService';
+import AuthService from 'services/AuthService';
 import Types from './types';
 
 export const clearSession = () => ({
