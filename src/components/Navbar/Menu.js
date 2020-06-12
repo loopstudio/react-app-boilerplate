@@ -15,6 +15,7 @@ const Menu = ({ isAuthenticated }) => {
   const handleSignOut = async () => {
     try {
       await dispatch(signOut());
+      history.replace('/sign-in');
     } catch ({ errors }) {
       if (errors?.length) {
         alert(errors[0]);

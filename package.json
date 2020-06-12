@@ -31,6 +31,7 @@
     "yup": "^0.29.1"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
@@ -75,6 +76,7 @@
     "nock": "^12.0.3",
     "prettier": "^2.0.5",
     "react-axe": "^3.4.1",
+    "source-map-explorer": "^2.4.2",
     "tailwindcss": "^1.4.6"
   },
   "husky": {

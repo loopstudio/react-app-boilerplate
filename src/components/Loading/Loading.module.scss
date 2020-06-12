@@ -1,21 +1,17 @@
 @import '../../tailwind';
 
-.spinner { 
-  @extend 
-    .relative,
-    .h-10,
-    .w-10,
-    .m-auto;
+.wrapper {
+  @extend .flex, .h-screen, .items-center;
+}
+
+.spinner {
+  @extend .relative, .h-10, .w-10, .m-auto;
 }
 
 .doubleBounce1,
 .doubleBounce2 {
-  @extend 
-    .absolute,
-    .bg-indigo-600,
-    .h-full,
-    .w-full;
-  animation: bounce 2.0s infinite ease-in-out;
+  @extend .absolute, .bg-indigo-600, .h-full, .w-full;
+  animation: bounce 2s infinite ease-in-out;
   border-radius: 50%;
   left: 0;
   opacity: 0.6;
@@ -23,13 +19,15 @@
 }
 
 .doubleBounce2 {
-  animation-delay: -1.0s;
+  animation-delay: -1s;
 }
 
 @keyframes bounce {
-  0%, 100% { 
-    transform: scale(0.0);
-  } 50% { 
-    transform: scale(1.0);
+  0%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
   }
 }

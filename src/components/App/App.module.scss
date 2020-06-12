@@ -1,20 +1,3 @@
-html {
-  font-family: 'Lato', sans-serif;
-}
-
-.localeSelect {
-  height: 45px;
-  outline: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 100px;
-  z-index: 1;
-}
-
-.loaderWrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: transform(-50%, -50%);
+body {
+  font-family: 'Open Sans', sans-serif;
 }
