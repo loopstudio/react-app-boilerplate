@@ -1,15 +1,13 @@
 import React from 'react';
 
-import styles from './Logo.module.scss';
+import { LogoContainer, Brand } from './NavBar.styles';
 
 const PRODUCT_NAME = 'LoopStudio';
 
 const Logo = () => (
-  <div className={styles.logo}>
-    <a href="/" className={styles.brand}>
-      {PRODUCT_NAME}
-    </a>
-  </div>
+  <LogoContainer>
+    <Brand href="/">{PRODUCT_NAME}</Brand>
+  </LogoContainer>
 );
 
 export default Logo;

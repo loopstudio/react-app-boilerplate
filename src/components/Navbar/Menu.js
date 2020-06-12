@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { signOut } from 'actions/auth';
 import Button from './Button';
 
-import styles from './Menu.module.scss';
+import { MenuContainer } from './NavBar.styles';
 
 const Menu = ({ isAuthenticated }) => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Menu = ({ isAuthenticated }) => {
   };
 
   return (
-    <div className={styles.menu}>
+    <MenuContainer>
       {isAuthenticated ? (
         <>
           <Button
@@ -44,7 +44,7 @@ const Menu = ({ isAuthenticated }) => {
           />
         </>
       )}
-    </div>
+    </MenuContainer>
   );
 };
 
