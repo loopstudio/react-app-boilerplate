@@ -3,15 +3,15 @@ import React from 'react';
 import Logo from './Logo';
 import UserOptions from './UserOptions';
 
-import styles from './Navbar.module.scss';
+import { Nav, NavContent } from './NavBar.styles';
 
 const Navbar = () => (
-  <nav className={styles.nav}>
-    <div className={styles.navContent}>
+  <Nav>
+    <NavContent>
       <Logo />
       <UserOptions />
-    </div>
-  </nav>
+    </NavContent>
+  </Nav>
 );
 
 export default Navbar;
