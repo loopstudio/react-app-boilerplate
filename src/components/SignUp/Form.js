@@ -2,6 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
@@ -11,6 +12,7 @@ import { handleErrors } from 'helpers/errors';
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
+  const history = useHistory();
 
   const validationSchema = object().shape({
     email: string()
@@ -28,6 +30,7 @@ const SignUpForm = () => {
   const onSubmit = async (values) => {
     try {
       await dispatch(signUp({ locale: intl.locale, ...values }));
+      history.replace('/');
     } catch (error) {
       handleErrors(error, formMethods.setError);
     }

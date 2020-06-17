@@ -1,20 +1,29 @@
 import httpClient from './httpClient';
 
 class AuthService {
-  static signUp = (user) => httpClient.post('/users', { user });
+  static signUp(user) {
+    return httpClient.post('/users', { user });
+  }
 
-  static signIn = (credentials) =>
-    httpClient.post('/users/sign_in', { user: credentials });
+  static signIn(user) {
+    return httpClient.post('/users/sign_in', { user });
+  }
 
-  static signOut = () => httpClient.delete('/users/sign_out');
+  static signOut() {
+    return httpClient.delete('/users/sign_out');
+  }
 
-  static resetPassword = (email) =>
-    httpClient.post('/users/password', { email });
+  static resetPassword(email) {
+    return httpClient.post('/users/password', { email });
+  }
 
-  static updatePassword = (password) =>
-    httpClient.patch('/users/password', { password });
+  static updatePassword(password) {
+    return httpClient.patch('/users/password', { password });
+  }
 
-  static updateUser = (user) => httpClient.patch('/users', { user });
+  static updateUser(user) {
+    return httpClient.patch('/users', { user });
+  }
 }
 
 export default AuthService;

@@ -60,17 +60,18 @@
 
 .button {
   @extend .bg-indigo-600,
-    .font-bold,
+    .font-medium,
     .mt-10,
     .mb-6,
     .px-4,
     .py-2,
-    .rounded-full,
+    .rounded,
     .text-white,
     .tracking-wide,
     .uppercase,
-    .w-full;
-  box-shadow: 0rem 0rem 1.5rem 0.4rem rgba(102, 126, 234, 0.6);
+    .w-full,
+    .shadow;
+
   &:hover {
     @extend .bg-indigo-700;
   }

@@ -78,13 +78,15 @@ If you want to split your component into pieces for readability, maintainability
 
 ## Features
 
-1. Based on [create-react-app](https://create-react-app.dev/)
-2. Powerful but simple routing system based on protected and public routes.
-3. The httpClient provides status code errors handling and camelCase to snake_case automatic conversion.
-4. Async actions and store hydration.
-5. Internationalization.
-6. [Absolute imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports).
-7. Environment-specific routes and settings provided through the built-in [environment variables](https://create-react-app.dev/docs/adding-custom-environment-variables) system provided by CRA.
+1. Based on [create-react-app](https://create-react-app.dev/).
+2. Code splitting and prefetching.
+3. Errors handling.
+4. The httpClient provides status code errors handling and camelCase to snake_case automatic conversion.
+5. Async actions and store hydration.
+6. Internationalization.
+7. Concurrent Mode ready.
+8. [Absolute imports](https://create-react-app.dev/docs/importing-a-component/#absolute-imports).
+9. Environment-specific settings provided through the built-in [environment variables](https://create-react-app.dev/docs/adding-custom-environment-variables) system provided by CRA.
 
 ## Prerequisites
 
