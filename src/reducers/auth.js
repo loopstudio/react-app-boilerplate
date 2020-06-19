@@ -36,6 +36,7 @@ const updateUser = (draftState, payload) => {
 
 const handlers = {
   [Types.CLEAR_SESSION]: clearSession,
+  [`${Types.RESET_PASSWORD}_${Fulfilled}`]: updateUser,
   [Types.SET_GUEST_LOCALE]: setGuestLocale,
   [`${Types.SIGN_IN}_${Fulfilled}`]: updateUser,
   [`${Types.SIGN_OUT}_${Fulfilled}`]: clearSession,

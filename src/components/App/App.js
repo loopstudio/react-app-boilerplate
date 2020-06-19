@@ -11,7 +11,7 @@ import { useAuthentication } from 'hooks/auth';
 import { useLocale } from 'hooks/locale';
 import AppLocale from 'locales';
 
-import './App.module.scss';
+import styles from './App.module.scss';
 
 const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
 const AuthenticatedApp = lazy(() =>
@@ -29,7 +29,7 @@ const App = () => {
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
       <BrowserRouter>
         <ErrorBoundary>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading className={styles.loading} />}>
             {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
           </Suspense>
         </ErrorBoundary>

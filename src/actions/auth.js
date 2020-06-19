@@ -6,6 +6,11 @@ export const clearSession = () => ({
   payload: null,
 });
 
+export const resetPassword = ({ password, token }) => ({
+  type: Types.RESET_PASSWORD,
+  payload: AuthService.resetPassword(password, token),
+});
+
 export const setGuestLocale = (locale) => ({
   type: Types.SET_GUEST_LOCALE,
   payload: { locale },

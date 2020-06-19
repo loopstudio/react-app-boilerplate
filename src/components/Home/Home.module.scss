@@ -8,3 +8,10 @@
     .text-gray-700;
   min-height: inherit;
 }
+
+.success {
+  @extend
+    .pb-4,
+    .text-center,
+    .text-green-800;
+}
