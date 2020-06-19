@@ -17,10 +17,6 @@ class AuthService {
     return httpClient.post('/users/password', { email });
   }
 
-  static updatePassword(password) {
-    return httpClient.patch('/users/password', { password });
-  }
-
   static updateUser(user) {
     return httpClient.patch('/users', { user });
   }

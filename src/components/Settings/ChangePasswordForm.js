@@ -21,7 +21,7 @@ const ChangePasswordForm = () => {
 
   const onSubmit = async ({ password }) => {
     try {
-      await AuthService.updatePassword(password);
+      await AuthService.updateUser({ password });
       setIsResponseSuccess(true);
     } catch (error) {
       handleErrors(error, formMethods.setError);
