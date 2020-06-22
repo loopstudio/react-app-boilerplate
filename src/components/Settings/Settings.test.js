@@ -5,8 +5,6 @@ import { fillInput, fireEvent, render, waitFor } from 'testUtils';
 import {
   mockUpdateUserSuccess,
   mockUpdateUserFailure,
-  mockUpdatePasswordSuccess,
-  mockUpdatePasswordFailure,
 } from 'testUtils/mocks/auth';
 import Settings from '.';
 
@@ -16,8 +14,13 @@ const fakeSettingsData = {
   locale: 'es',
 };
 
-const fakePassword = 'password';
-const fakeInvalidPassword = 'pass';
+const fakePasswordData = {
+  password: 'password',
+};
+
+const fakeInvalidPasswordData = {
+  password: 'pass',
+};
 
 const fakeState = {
   auth: {
@@ -106,7 +109,7 @@ describe('Settings', () => {
   });
 
   it('should submit new password correctly', async () => {
-    const mockedRequest = mockUpdatePasswordSuccess(fakePassword);
+    const mockedRequest = mockUpdateUserSuccess(fakePasswordData);
 
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
@@ -115,7 +118,7 @@ describe('Settings', () => {
     const password = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, fakePassword);
+    fillInput(password, fakePasswordData.password);
 
     fireEvent.click(submitButton);
 
@@ -128,7 +131,7 @@ describe('Settings', () => {
   });
 
   it('should show error on update password response failure', async () => {
-    const mockedRequest = mockUpdatePasswordFailure(fakeInvalidPassword);
+    const mockedRequest = mockUpdateUserFailure(fakeInvalidPasswordData);
 
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
@@ -136,15 +139,13 @@ describe('Settings', () => {
     const password = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, fakeInvalidPassword);
+    fillInput(password, fakeInvalidPasswordData.password);
 
     fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(
-        queryByText('Is too short (minimum is 6 characters)')
-      ).toBeInTheDocument();
+      expect(queryByText('Some scary error')).toBeInTheDocument();
     });
   });
 

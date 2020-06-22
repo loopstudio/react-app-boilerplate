@@ -60,19 +60,3 @@ export const mockUpdateUserFailure = (user) =>
     .reply(400, {
       errors: ['Some scary error'],
     });
-
-export const mockUpdatePasswordSuccess = (password) =>
-  baseMock
-    .patch('/users/password', decamelizeKeys({ password }))
-    .query({ locale: 'en' })
-    .reply(200, userResponse.data, userResponse.headers);
-
-export const mockUpdatePasswordFailure = (password) =>
-  baseMock
-    .patch('/users/password', decamelizeKeys({ password }))
-    .query({ locale: 'en' })
-    .reply(400, {
-      attributes_errors: {
-        password: ['is too short (minimum is 6 characters)'],
-      },
-    });
