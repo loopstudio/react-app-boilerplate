@@ -37,6 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "test:coverage": "react-scripts test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "lint": "eslint .",
     "eject": "react-scripts eject",
     "build:styles": "postcss src/tailwind.base.css -o src/tailwind.css",
