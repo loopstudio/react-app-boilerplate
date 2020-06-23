@@ -1,11 +1,12 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
 
-import AuthWrapper from '../AuthWrapper';
+import AuthWrapper from 'components/AuthWrapper';
+import {
+  Legend,
+  NavigationLink,
+} from 'components/AuthWrapper/AuthWrapper.styles';
 import Form from './Form';
-
-import styles from '../AuthWrapper/AuthWrapper.module.scss';
 
 const SignIn = () => {
   const intl = useIntl();
@@ -14,12 +15,12 @@ const SignIn = () => {
     <AuthWrapper
       renderLegend={() => (
         <>
-          <span className={styles.legend}>
+          <Legend>
             <FormattedMessage id="common.dontHaveAccountQuestion" />
-          </span>
-          <Link to="/sign-up" className={styles.link}>
+          </Legend>
+          <NavigationLink to="/sign-up">
             <FormattedMessage id="common.signUp" />
-          </Link>
+          </NavigationLink>
         </>
       )}
       title={intl.messages['common.signIn']}

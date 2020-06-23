@@ -6,7 +6,7 @@ import FormButton from './Button';
 import FormInput from './Input';
 import FormSelect from './Select';
 
-import styles from './Form.module.scss';
+import { Error } from './Form.styles';
 
 const Form = ({ children, formMethods, onSubmit, ...props }) => {
   const { errors, handleSubmit } = formMethods;
@@ -16,9 +16,7 @@ const Form = ({ children, formMethods, onSubmit, ...props }) => {
       <form {...props} onSubmit={handleSubmit(onSubmit)}>
         {children}
       </form>
-      {errors?.general && (
-        <p className={styles.error}>{errors.general.message}</p>
-      )}
+      {errors?.general && <Error>{errors.general.message}</Error>}
     </FormContext>
   );
 };
