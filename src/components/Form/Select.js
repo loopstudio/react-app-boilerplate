@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { useFormContext } from 'react-hook-form';
 
-import Label from './Label';
+import InputLabel from './InputLabel';
 
-import styles from './Form.module.scss';
+import { Error, InputContainer, Select } from './Form.styles';
 
 const FormSelect = ({
   helpLinkPath,
@@ -21,32 +21,30 @@ const FormSelect = ({
   const error = errors[name];
 
   return (
-    <div className={error ? styles.invalid : styles.valid}>
-      <label htmlFor={id ?? name} className={styles.label}>
-        <Label
-          name={name}
-          helpLinkPath={helpLinkPath}
-          helpMessage={helpMessage}
-          label={label}
-        />
-        <select
-          {...rest}
-          id={id ?? name}
-          aria-label={intl.messages[`common.${name}`]}
-          name={name}
-          className={styles.input}
-          ref={register}
-        >
-          <option value="">{intl.messages['common.selectOption']}</option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <span className={styles.error}>{error?.message}</span>
-    </div>
+    <InputContainer hasError={Boolean(error)}>
+      <InputLabel
+        helpLinkPath={helpLinkPath}
+        helpMessage={helpMessage}
+        htmlFor={id ?? name}
+        label={label}
+        name={name}
+      />
+      <Select
+        {...rest}
+        id={id ?? name}
+        aria-label={intl.messages[`common.${name}`]}
+        name={name}
+        ref={register}
+      >
+        <option value="">{intl.messages['common.selectOption']}</option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </Select>
+      <Error>{error?.message}</Error>
+    </InputContainer>
   );
 };
 

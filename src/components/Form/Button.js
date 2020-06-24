@@ -1,31 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Form.module.scss';
+import { Button } from './Form.styles';
 
-const FormButton = React.forwardRef(
-  ({ isDisabled, text, className, ...rest }, ref) => (
-    <button
-      ref={ref}
-      type="submit"
-      className={`${styles.button} ${className}`}
-      disabled={isDisabled}
-      {...rest}
-    >
-      {text}
-    </button>
-  )
-);
+const FormButton = React.forwardRef(({ isDisabled, text, ...rest }, ref) => (
+  <Button ref={ref} type="submit" disabled={isDisabled} {...rest}>
+    {text}
+  </Button>
+));
 
 FormButton.defaultProps = {
   isDisabled: false,
-  className: '',
 };
 
 FormButton.propTypes = {
   isDisabled: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
 export default FormButton;
