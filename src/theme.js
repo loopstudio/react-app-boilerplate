@@ -1,4 +1,4 @@
-export default {
+const theme = {
   borderRadius: {
     none: '0',
     sm: '0.125rem',
@@ -8,6 +8,7 @@ export default {
     full: '9999px',
   },
   boxShadow: {
+    base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
     darkMd:
       '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
     darkLg:
@@ -18,13 +19,20 @@ export default {
   },
   color: {
     black: '#000000',
-    white: '#FFFFFF',
+    blue700: '#2b6cb0',
+    blue800: '#2c5282',
+    gray100: '#F7FAFC',
     gray200: '#EDF2F7',
     gray300: '#E2E8F0',
     gray600: '#718096',
     gray700: '#4A5568',
+    indigo200: '#c3dafe',
     indigo400: '#7F9CF5',
     indigo500: '#667EEA',
+    indigo600: '#5a67d8',
+    indigo700: '#4c51bf',
+    red600: '#E53E3E',
+    white: '#FFFFFF',
   },
   fontSize: {
     xs: '0.75rem',
@@ -47,3 +55,5 @@ export default {
     widest: '0.1rem',
   },
 };
+
+export default theme;
