@@ -2,46 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 
-import Label from './Label';
+import InputLabel from './InputLabel';
 
-import styles from './Form.module.scss';
+import { Error, Input, InputContainer } from './Form.styles';
 
-const FormInput = ({
-  helpLinkPath,
-  helpMessage,
-  id,
-  name,
-  label,
-  className,
-  ...rest
-}) => {
+const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
   const { register, errors } = useFormContext();
   const error = errors[name];
 
   return (
-    <div className={error ? styles.invalid : styles.valid}>
-      <label htmlFor={id ?? name} className={styles.label}>
-        <Label
-          name={name}
-          helpLinkPath={helpLinkPath}
-          helpMessage={helpMessage}
-          label={label}
-        />
-        <input
-          {...rest}
-          id={id ?? name}
-          name={name}
-          className={`${styles.input} ${className}`}
-          ref={register}
-        />
-      </label>
-      <span className={styles.error}>{error?.message}</span>
-    </div>
+    <InputContainer hasError={Boolean(error)}>
+      <InputLabel
+        helpLinkPath={helpLinkPath}
+        helpMessage={helpMessage}
+        htmlFor={id ?? name}
+        label={label}
+        name={name}
+      />
+      <Input {...rest} id={id ?? name} name={name} ref={register} />
+      <Error>{error?.message}</Error>
+    </InputContainer>
   );
 };
 
 FormInput.defaultProps = {
-  className: '',
   helpLinkPath: '',
   helpMessage: '',
   id: null,
@@ -50,7 +34,6 @@ FormInput.defaultProps = {
 };
 
 FormInput.propTypes = {
-  className: PropTypes.string,
   helpLinkPath: PropTypes.string,
   helpMessage: PropTypes.string,
   id: PropTypes.string,
