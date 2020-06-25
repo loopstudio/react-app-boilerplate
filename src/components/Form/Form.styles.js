@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
+export const FormContent = styled.form`
+  ${(props) => props.styles};
+`;
+
 export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
   border-radius: ${(props) => props.theme.borderRadius.base};
@@ -29,6 +33,7 @@ export const Button = styled.button`
       background-color: ${(props) => props.theme.color.indigo200};
     }
   }
+  ${(props) => props.styles};
 `;
 
 export const Error = styled.span`
