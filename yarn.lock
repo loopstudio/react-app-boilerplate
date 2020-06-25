@@ -10776,10 +10776,10 @@ react-app-polyfill@^1.0.6:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
-react-axe@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/react-axe/-/react-axe-3.5.2.tgz#09b25d7e169a64b680d921de9a735c4d66689e0d"
-  integrity sha512-uEgCO0lg3e2iseKi+pWiyJO6T63b4K7EN7PD2y73Dz++A7o1DKD5Cw1+fRDlcDeqNYUVM8bFF7jFYtEOxJpQkg==
+react-axe@^3.5.3:
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/react-axe/-/react-axe-3.5.3.tgz#38dac84e20cdf3e09e5752eb405b30c5ac845fa8"
+  integrity sha512-WDKAoLVsC6rsmYboXThY7OnVDaQOOOecySHJJjggn1cFOJyWtzNh2uiV3oSxoAolONGTi22G9zKDxw53g/8Vqg==
   dependencies:
     axe-core "^3.5.0"
     requestidlecallback "^0.3.0"
