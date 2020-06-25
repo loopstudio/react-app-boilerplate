@@ -26,6 +26,7 @@ const theme = {
     gray300: '#E2E8F0',
     gray600: '#718096',
     gray700: '#4A5568',
+    green700: '#2f855a',
     indigo200: '#c3dafe',
     indigo400: '#7F9CF5',
     indigo500: '#667EEA',
