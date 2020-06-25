@@ -8,7 +8,7 @@ import Form from 'components/Form';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 
-import styles from './Settings.module.scss';
+import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
 
 const ChangePasswordForm = () => {
   const intl = useIntl();
@@ -35,11 +35,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <Form
-      formMethods={formMethods}
-      className={styles.settingsForm}
-      onSubmit={onSubmit}
-    >
+    <Form formMethods={formMethods} onSubmit={onSubmit} styles={formStyles}>
       <Form.Input
         label={intl.messages['common.currentPassword']}
         name="currentPassword"
@@ -54,13 +50,13 @@ const ChangePasswordForm = () => {
       />
       <Form.Button
         data-testid="submit-password-button"
-        className={styles.button}
+        styles={buttonStyles}
         text={intl.messages['common.updatePassword']}
       />
       {isResponseSuccess && (
-        <p className={styles.success}>
+        <SuccessText>
           <FormattedMessage id="common.changePasswordSuccess" />
-        </p>
+        </SuccessText>
       )}
     </Form>
   );

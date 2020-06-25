@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { object, string } from 'yup';
 import { useIntl, FormattedMessage } from 'react-intl';
+import { object, string } from 'yup';
 
 import Form from 'components/Form';
 import { handleErrors } from 'helpers/errors';
 import { useUser } from 'hooks/auth';
 import { updateUser } from 'actions/auth';
 
-import styles from './Settings.module.scss';
+import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
 
 const SettingsForm = () => {
   const dispatch = useDispatch();
@@ -45,11 +45,7 @@ const SettingsForm = () => {
   };
 
   return (
-    <Form
-      formMethods={formMethods}
-      className={styles.settingsForm}
-      onSubmit={onSubmit}
-    >
+    <Form formMethods={formMethods} onSubmit={onSubmit} styles={formStyles}>
       <Form.Input name="firstName" data-testid="firstName-input" />
       <Form.Input name="lastName" data-testid="lastName-input" />
       <Form.Select
@@ -62,13 +58,13 @@ const SettingsForm = () => {
       />
       <Form.Button
         data-testid="submit-settings-button"
-        className={styles.button}
+        styles={buttonStyles}
         text={intl.messages['common.updateSettings']}
       />
       {isResponseSuccess && (
-        <p className={styles.success}>
+        <SuccessText>
           <FormattedMessage id="common.updateSettingsSuccess" />
-        </p>
+        </SuccessText>
       )}
     </Form>
   );
