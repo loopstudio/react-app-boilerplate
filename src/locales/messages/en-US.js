@@ -6,6 +6,7 @@ export default {
     confirm: 'Submit',
     confirmPassword: 'Confirm password',
     createAccount: 'Create one here',
+    currentPassword: 'Current Password',
     dontHaveAccountQuestion: 'Don’t have an account?',
     email: 'Email',
     errorBoundaryMessage: 'An error occurred',

@@ -31,7 +31,7 @@ const PasswordForm = ({ token }) => {
     validationSchema,
   });
 
-  const onSubmit = async ({ password, confirmPassword }) => {
+  const onSubmit = async ({ password }) => {
     setLoading(true);
 
     try {
