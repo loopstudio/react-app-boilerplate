@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import style from './Title.module.scss';
+import { StyledTitle } from './Title.styles';
 
-const Title = ({ type, children, className, ...rest }) =>
-  React.createElement(
-    type,
-    {
-      className: `${style[type]} ${className}`,
-      ...rest,
-    },
-    children
-  );
+const Title = ({ type, children, className, ...rest }) => (
+  <StyledTitle as={type} className={className} {...rest}>
+    {children}
+  </StyledTitle>
+);
 
 Title.defaultProps = {
   type: 'h1',
