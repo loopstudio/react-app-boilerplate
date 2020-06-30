@@ -15,11 +15,10 @@ const fakeSettingsData = {
 };
 
 const fakePasswordData = {
-  password: 'password',
-};
-
-const fakeInvalidPasswordData = {
-  password: 'pass',
+  user: {
+    password: 'password1234',
+  },
+  passwordCheck: 'oldPass',
 };
 
 const fakeState = {
@@ -43,7 +42,7 @@ const fakeState = {
 };
 
 describe('Settings', () => {
-  it('should submit account settings correctly', async () => {
+  it('confirms when account settings were changed successfully', async () => {
     const mockedRequest = mockUpdateUserSuccess(fakeSettingsData);
 
     const { getByTestId, queryByText } = render(<Settings />, {
@@ -69,7 +68,7 @@ describe('Settings', () => {
     });
   });
 
-  it('should show error on account settings response failure', async () => {
+  it('renders API errors when changing account settings', async () => {
     const mockedRequest = mockUpdateUserFailure(fakeSettingsData);
 
     const { getByTestId, queryByText } = render(<Settings />, {
@@ -92,7 +91,7 @@ describe('Settings', () => {
     });
   });
 
-  it('should show errors for invalid account settings values', async () => {
+  it('requires the first name when changing account settings', async () => {
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
@@ -108,17 +107,22 @@ describe('Settings', () => {
     });
   });
 
-  it('should submit new password correctly', async () => {
-    const mockedRequest = mockUpdateUserSuccess(fakePasswordData);
+  it('confirms when the password was changed successfully', async () => {
+    const mockedRequest = mockUpdateUserSuccess(
+      fakePasswordData.user,
+      fakePasswordData.passwordCheck
+    );
 
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const password = getByTestId('password-input-settings');
+    const currentPasswordInput = getByTestId('current-password-input-settings');
+    const newPasswordInput = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, fakePasswordData.password);
+    fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
+    fillInput(newPasswordInput, fakePasswordData.user.password);
 
     fireEvent.click(submitButton);
 
@@ -130,16 +134,22 @@ describe('Settings', () => {
     });
   });
 
-  it('should show error on update password response failure', async () => {
-    const mockedRequest = mockUpdateUserFailure(fakeInvalidPasswordData);
+  it('renders API errors when changing the password', async () => {
+    const mockedRequest = mockUpdateUserFailure(
+      fakePasswordData.user,
+      fakePasswordData.passwordCheck
+    );
 
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
-    const password = getByTestId('password-input-settings');
+
+    const currentPasswordInput = getByTestId('current-password-input-settings');
+    const newPasswordInput = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, fakeInvalidPasswordData.password);
+    fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
+    fillInput(newPasswordInput, fakePasswordData.user.password);
 
     fireEvent.click(submitButton);
 
@@ -149,19 +159,62 @@ describe('Settings', () => {
     });
   });
 
-  it('should show error for empty new password values', async () => {
+  it('requires a new password when changing the password', async () => {
     const { getByTestId, queryByText } = render(<Settings />, {
       state: fakeState,
     });
-    const password = getByTestId('password-input-settings');
+
+    const currentPasswordInput = getByTestId('current-password-input-settings');
+    const newPasswordInput = getByTestId('password-input-settings');
     const submitButton = getByTestId('submit-password-button');
 
-    fillInput(password, '');
+    fillInput(currentPasswordInput, '');
+    fillInput(newPasswordInput, fakePasswordData.user.password);
 
     fireEvent.click(submitButton);
 
     await waitFor(() => {
       expect(queryByText('Required')).toBeInTheDocument();
+    });
+  });
+
+  it('requires the new password when changing the password', async () => {
+    const { getByTestId, queryByText } = render(<Settings />, {
+      state: fakeState,
+    });
+
+    const currentPasswordInput = getByTestId('current-password-input-settings');
+    const newPasswordInput = getByTestId('password-input-settings');
+    const submitButton = getByTestId('submit-password-button');
+
+    fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
+    fillInput(newPasswordInput, '');
+
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(queryByText('Required')).toBeInTheDocument();
+    });
+  });
+
+  it('requires the current password to be at least 8 chars', async () => {
+    const { getByTestId, queryByText } = render(<Settings />, {
+      state: fakeState,
+    });
+
+    const currentPasswordInput = getByTestId('current-password-input-settings');
+    const newPasswordInput = getByTestId('password-input-settings');
+    const submitButton = getByTestId('submit-password-button');
+
+    fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
+    fillInput(newPasswordInput, 'pass');
+
+    fireEvent.click(submitButton);
+
+    await waitFor(() => {
+      expect(
+        queryByText('Password too short, minimum length is 8 characters')
+      ).toBeInTheDocument();
     });
   });
 });

@@ -17,12 +17,12 @@ class AuthService {
     return httpClient.post('/users/password', { email });
   }
 
-  static updateUser(user) {
-    return httpClient.patch('/users', { user });
+  static updateUser(user, passwordCheck) {
+    return httpClient.patch('/user', { user, passwordCheck });
   }
 
-  static verifyToken(token) {
-    return httpClient.get(`users/password/edit?reset_password_token=${token}`);
+  static verifyToken(resetPasswordToken) {
+    return httpClient.get('users/password/edit', { resetPasswordToken });
   }
 
   static resetPassword(password, resetPasswordToken) {

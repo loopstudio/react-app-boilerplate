@@ -24,7 +24,7 @@ const setGuestLocale = (draftState, payload) => {
   draftState.guestLocale = payload.locale;
 };
 
-const updateUser = (draftState, payload) => {
+const setUser = (draftState, payload) => {
   const {
     headers: { accessToken, client, uid },
     data,
@@ -34,14 +34,18 @@ const updateUser = (draftState, payload) => {
   draftState.user = data.user;
 };
 
+const updateUser = (draftState, payload) => {
+  draftState.user = payload.data.user;
+};
+
 const handlers = {
   [Types.CLEAR_SESSION]: clearSession,
-  [`${Types.RESET_PASSWORD}_${Fulfilled}`]: updateUser,
+  [`${Types.RESET_PASSWORD}_${Fulfilled}`]: setUser,
   [Types.SET_GUEST_LOCALE]: setGuestLocale,
-  [`${Types.SIGN_IN}_${Fulfilled}`]: updateUser,
+  [`${Types.SIGN_IN}_${Fulfilled}`]: setUser,
   [`${Types.SIGN_OUT}_${Fulfilled}`]: clearSession,
   [`${Types.SIGN_OUT}_${Rejected}`]: clearSession,
-  [`${Types.SIGN_UP}_${Fulfilled}`]: updateUser,
+  [`${Types.SIGN_UP}_${Fulfilled}`]: setUser,
   [`${Types.UPDATE_USER}_${Fulfilled}`]: updateUser,
 };
 
