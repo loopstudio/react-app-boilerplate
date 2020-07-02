@@ -22,7 +22,9 @@ class AuthService {
   }
 
   static verifyToken(resetPasswordToken) {
-    return httpClient.get('users/password/edit', { resetPasswordToken });
+    return httpClient.get('users/password/edit', {
+      params: { resetPasswordToken },
+    });
   }
 
   static resetPassword(password, resetPasswordToken) {
