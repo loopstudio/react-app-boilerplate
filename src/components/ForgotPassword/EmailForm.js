@@ -10,7 +10,7 @@ import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 import { RESET_PASSWORD_STEPS } from './ForgotPassword';
 
-import styles from './ForgotPassword.module.scss';
+import { inputStyles, Legend } from './ForgotPassword.styles';
 
 const EmailForm = ({ onStepChange }) => {
   const [loading, setLoading] = useState(false);
@@ -42,10 +42,10 @@ const EmailForm = ({ onStepChange }) => {
       onSubmit={onSubmit}
       formMethods={formMethods}
     >
-      <p className={styles.resetPasswordLegend}>
+      <Legend>
         <FormattedMessage id="common.forgotPasswordLegend" />
-      </p>
-      <Form.Input className={styles.formInput} name="email" type="email" />
+      </Legend>
+      <Form.Input styles={inputStyles} name="email" type="email" />
       <Form.Button text={intl.messages['common.resetPassword']} />
       {loading && <Loading />}
     </Form>
