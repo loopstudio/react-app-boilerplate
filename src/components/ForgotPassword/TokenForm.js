@@ -11,7 +11,7 @@ import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 import { RESET_PASSWORD_STEPS } from './ForgotPassword';
 
-import styles from './ForgotPassword.module.scss';
+import { Legend, inputStyles, LinkButton } from './ForgotPassword.styles';
 
 const TokenForm = ({ onStepChange, onSaveToken }) => {
   const [loading, setLoading] = useState(false);
@@ -49,17 +49,16 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
       onSubmit={onSubmit}
       formMethods={formMethods}
     >
-      <p className={styles.resetPasswordLegend}>
+      <Legend>
         <FormattedMessage id="common.forgotPasswordEmailSent" />
-      </p>
-      <Form.Input className={styles.formInput} name="token" type="number" />
-      <button
+      </Legend>
+      <Form.Input styles={inputStyles} name="token" type="number" />
+      <LinkButton
         type="button"
         onClick={() => onStepChange(RESET_PASSWORD_STEPS.initial)}
-        className={styles.link}
       >
         <FormattedMessage id="common.forgotPasswordEmailResend" />
-      </button>
+      </LinkButton>
       <Form.Button text={intl.messages['common.next']} />
       {loading && <Loading />}
     </Form>

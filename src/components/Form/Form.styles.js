@@ -68,6 +68,8 @@ export const Input = styled.input`
     border-color: ${(props) => props.theme.color.gray300};
     outline: 0;
   }
+
+  ${(props) => props.styles};
 `;
 
 export const InputContainer = styled.div`
