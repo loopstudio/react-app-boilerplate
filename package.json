@@ -7,7 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.5",
     "axios": "^0.19.2",
     "axios-case-converter": "^0.6.0",
     "flat": "^5.0.0",
