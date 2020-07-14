@@ -8,11 +8,15 @@ import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 
 import AppLocale from 'locales';
-import createStore from 'testUtils/store';
+import configureStore from 'store';
+import httpClient, { applyMiddlewares } from 'services/httpClient';
 
-const renderWithProviders = (ui, { state = null, ...options } = {}) => {
+const renderWithProviders = (ui, { state = {}, ...options } = {}) => {
+  const { store } = configureStore({ initialState: state, persist: false });
+  applyMiddlewares(httpClient, store);
+
   const Wrapper = ({ children }) => (
-    <Provider store={createStore(state)}>
+    <Provider store={store}>
       <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
         <BrowserRouter>{children}</BrowserRouter>
       </IntlProvider>

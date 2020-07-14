@@ -52,17 +52,13 @@ export const mockUpdateUserSuccess = (user, passwordCheck) => {
 
   return baseMock
     .patch('/user', decamelizeKeys(body))
-    .query(true)
     .reply(200, userResponse.data);
 };
 
 export const mockUpdateUserFailure = (user, passwordCheck) => {
   const body = passwordCheck ? { user, passwordCheck } : { user };
 
-  return baseMock
-    .patch('/user', decamelizeKeys(body))
-    .query({ locale: 'en' })
-    .reply(400, {
-      errors: ['Some scary error'],
-    });
+  return baseMock.patch('/user', decamelizeKeys(body)).reply(400, {
+    errors: ['Some scary error'],
+  });
 };
