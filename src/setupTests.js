@@ -1,4 +1,5 @@
 import httpAdapter from 'axios/lib/adapters/http';
+
 import httpClient from 'services/httpClient';
 
 beforeAll(() => {
