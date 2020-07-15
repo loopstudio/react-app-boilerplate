@@ -32,7 +32,7 @@ const fakeState = {
       createdAt: '2020-04-21T21:20:35.663-04:00',
       updatedAt: '2020-04-21T22:22:56.291-04:00',
     },
-    userSession: {
+    session: {
       uid: 'jane.doe@example.com',
       client: 'client',
       accessToken: 'token',
