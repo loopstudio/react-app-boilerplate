@@ -1,5 +1,6 @@
 import axios from 'axios';
 import applyCaseMiddleware from 'axios-case-converter';
+
 import authMiddleware from './middlewares/auth';
 
 const httpClient = axios.create({
