@@ -28,11 +28,8 @@ export const Button = styled.button`
   &:disabled {
     background-color: ${(props) => props.theme.color.indigo200};
     box-shadow: ${(props) => props.theme.boxShadow.none};
-
-    &:hover {
-      background-color: ${(props) => props.theme.color.indigo200};
-    }
   }
+
   ${(props) => props.styles};
 `;
 

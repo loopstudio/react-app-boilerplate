@@ -12,6 +12,7 @@ import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
 
 const ChangePasswordForm = () => {
   const intl = useIntl();
+  const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const validationSchema = object().shape({
@@ -24,6 +25,7 @@ const ChangePasswordForm = () => {
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async ({ password, currentPassword }) => {
+    setIsLoading(true);
     try {
       await AuthService.updateUser({ password }, currentPassword);
       setIsResponseSuccess(true);
@@ -31,6 +33,8 @@ const ChangePasswordForm = () => {
     } catch (error) {
       setIsResponseSuccess(false);
       handleErrors(error, formMethods.setError);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,6 +53,7 @@ const ChangePasswordForm = () => {
         data-testid="password-input-settings"
       />
       <Form.Button
+        isLoading={isLoading}
         data-testid="submit-password-button"
         styles={buttonStyles}
         text={intl.messages['common.updatePassword']}
