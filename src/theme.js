@@ -15,6 +15,7 @@ const theme = {
       '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
     darkXl:
       '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    indigo: '0 0 1.5rem 0.1rem rgba(102, 126, 234, 0.6)',
     none: 'none',
   },
   color: {
@@ -48,6 +49,7 @@ const theme = {
     x5l: '2.25rem',
     x6l: '3rem',
     x7l: '4rem',
+    x8l: '6rem',
   },
   letterSpacing: {
     tighter: '-0.05rem',
