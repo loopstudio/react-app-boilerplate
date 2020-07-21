@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import queryString from 'query-string';
 
-import style from './Home.module.scss';
+import { Content, SuccessText } from './Home.styles';
 
 const Home = () => {
   const { location } = useHistory();
@@ -12,14 +12,14 @@ const Home = () => {
     queryString.parse(location.search)?.resetPassword === 'success';
 
   return (
-    <div className={style.content}>
+    <Content>
       {resetPasswordSuccess && (
-        <p className={style.success}>
+        <SuccessText>
           <FormattedMessage id="common.resetPasswordSuccess" />
-        </p>
+        </SuccessText>
       )}
       <h1>Hello World</h1>
-    </div>
+    </Content>
   );
 };
 
