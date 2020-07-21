@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
@@ -23,7 +24,7 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
   });
 
   const formMethods = useForm({
-    validationSchema,
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = async ({ token }) => {

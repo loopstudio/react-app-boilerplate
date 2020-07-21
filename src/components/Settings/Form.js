@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers';
 import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
@@ -29,7 +30,10 @@ const SettingsForm = () => {
     locale: string().nullable().required(intl.messages['common.required']),
   });
 
-  const formMethods = useForm({ defaultValues, validationSchema });
+  const formMethods = useForm({
+    defaultValues,
+    resolver: yupResolver(validationSchema),
+  });
 
   const onSubmit = async (attributes) => {
     try {
