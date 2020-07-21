@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { setGuestLocale } from 'actions/auth';
 
-import style from './LanguageSelector.module.scss';
+import { Select } from './LanguageSelector.styles';
 
 const LanguageSelector = () => {
   const intl = useIntl();
@@ -15,11 +15,10 @@ const LanguageSelector = () => {
   };
 
   return (
-    <select
+    <Select
       aria-label={intl.messages['common.selectLanguage']}
       name="localeSelect"
       value={intl.locale}
-      className={style.localeSelect}
       onChange={handleChange}
     >
       <option aria-label="English" value="en">
@@ -28,7 +27,7 @@ const LanguageSelector = () => {
       <option aria-label="Español" value="es">
         Español
       </option>
-    </select>
+    </Select>
   );
 };
 
