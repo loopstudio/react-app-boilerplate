@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
@@ -22,7 +23,7 @@ const EmailForm = ({ onStepChange }) => {
       .email(intl.messages['common.invalidEmail']),
   });
 
-  const formMethods = useForm({ validationSchema });
+  const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async ({ email }) => {
     setLoading(true);

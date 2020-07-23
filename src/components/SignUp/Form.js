@@ -1,4 +1,5 @@
 import React from 'react';
+import { yupResolver } from '@hookform/resolvers';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -25,7 +26,7 @@ const SignUpForm = () => {
       .min(8, intl.messages['common.shortPassword']),
   });
 
-  const formMethods = useForm({ validationSchema });
+  const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async (values) => {
     try {

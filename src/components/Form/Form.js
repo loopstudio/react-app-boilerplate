@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormContext } from 'react-hook-form';
+import { FormProvider } from 'react-hook-form';
 
 import FormButton from './Button';
 import FormInput from './Input';
@@ -12,14 +12,14 @@ const Form = ({ children, formMethods, onSubmit, ...props }) => {
   const { errors, handleSubmit } = formMethods;
 
   return (
-    <FormContext {...formMethods}>
+    <FormProvider {...formMethods}>
       <form {...props} onSubmit={handleSubmit(onSubmit)}>
         {children}
       </form>
       {errors?.general && (
         <p className={styles.error}>{errors.general.message}</p>
       )}
-    </FormContext>
+    </FormProvider>
   );
 };
 

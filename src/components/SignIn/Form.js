@@ -1,6 +1,7 @@
 import React from 'react';
-import { useIntl } from 'react-intl';
+import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
+import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
@@ -21,7 +22,7 @@ const SignInForm = () => {
     password: string().required(intl.messages['common.required']),
   });
 
-  const formMethods = useForm({ validationSchema });
+  const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async (values) => {
     try {
