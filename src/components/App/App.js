@@ -3,6 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { BrowserRouter } from 'react-router-dom';
 import flatten from 'flat';
+import { Global } from '@emotion/core';
 
 import icons from 'assets/icons';
 import ErrorBoundary from 'components/ErrorBoundary';
@@ -11,7 +12,7 @@ import { useAuthentication } from 'hooks/auth';
 import { useLocale } from 'hooks/locale';
 import AppLocale from 'locales';
 
-import styles from './App.module.scss';
+import { loadingStyles, globalStyles } from './App.styles';
 
 const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
 const AuthenticatedApp = lazy(() =>
@@ -28,8 +29,9 @@ const App = () => {
   return (
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
       <BrowserRouter>
+        <Global styles={globalStyles} />
         <ErrorBoundary>
-          <Suspense fallback={<Loading className={styles.loading} />}>
+          <Suspense fallback={<Loading styles={loadingStyles} />}>
             {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
           </Suspense>
         </ErrorBoundary>
