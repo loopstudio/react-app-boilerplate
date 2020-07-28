@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Loading from '../Loading';
 
-import { Button } from './Form.styles';
+import { Button, loadingStyles } from './Form.styles';
 
 const FormButton = React.forwardRef(
   ({ isDisabled, isLoading, text, ...rest }, ref) => (
@@ -13,7 +13,7 @@ const FormButton = React.forwardRef(
       disabled={isDisabled || isLoading}
       {...rest}
     >
-      {isLoading ? <Loading /> : text}
+      {isLoading ? <Loading styles={loadingStyles} /> : text}
     </Button>
   )
 );
