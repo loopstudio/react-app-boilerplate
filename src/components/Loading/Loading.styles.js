@@ -4,6 +4,7 @@ import { css, keyframes } from '@emotion/core';
 export const Wrapper = styled.div`
   align-items: center;
   display: flex;
+  ${(props) => props.styles};
 `;
 
 export const Spinner = styled.div`
