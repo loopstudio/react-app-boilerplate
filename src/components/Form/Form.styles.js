@@ -98,8 +98,8 @@ export const LabelContent = styled.div`
 `;
 
 export const loadingStyles = css`
-  margin-top: -7px;
-  margin-bottom: -7px;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 `;
 
 export const Select = styled.select`
