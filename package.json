@@ -71,7 +71,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
-    "eslint-plugin-testing-library": "^3.3.2",
+    "eslint-plugin-testing-library": "^3.4.0",
     "history": "^5.0.0",
     "husky": "^4.2.5",
     "jest-environment-jsdom-sixteen": "^1.0.3",
