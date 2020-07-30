@@ -5075,6 +5075,11 @@ fast-levenshtein@~2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
+fast-memoize@^2.5.2:
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/fast-memoize/-/fast-memoize-2.5.2.tgz#79e3bb6a4ec867ea40ba0e7146816f6cdce9b57e"
+  integrity sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==
+
 fastq@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/fastq/-/fastq-1.6.0.tgz#4ec8a38f4ac25f21492673adb7eae9cfef47d1c2"
@@ -6056,11 +6061,6 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
-intl-format-cache@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-4.3.1.tgz#484d31a9872161e6c02139349b259a6229ade377"
-  integrity sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==
-
 intl-messageformat-parser@^5.3.7:
   version "5.3.7"
   resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-5.3.7.tgz#96d93cc1856048ee8e09193951f1e1ba69073204"
@@ -6068,12 +6068,12 @@ intl-messageformat-parser@^5.3.7:
   dependencies:
     "@formatjs/intl-numberformat" "^5.3.3"
 
-intl-messageformat@^9.1.7:
-  version "9.1.7"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.1.7.tgz#a9452fc002bf4e36f61d8bbdfbe58b9af07f5fd7"
-  integrity sha512-ASm4uT84F6szEK5bvmyNhwFyLKQy+7W6uXxMg1CaQZHHhZSJI0hsh4mlrfy7aCqn1+A7WTUPGVmzUGfFhdoGAw==
+intl-messageformat@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.2.0.tgz#13576d7ce7c25dede3bc8915b9a50749791c779f"
+  integrity sha512-mdASJPZpKfhbM//NLNIETArWgVL06j5M9ZdhgiKBO4XayS4GQHnXW+zVUE5iAwHcGZIKzvdWCj4D4kmNzUmEzA==
   dependencies:
-    intl-format-cache "^4.3.1"
+    fast-memoize "^2.5.2"
     intl-messageformat-parser "^5.3.7"
 
 invariant@^2.2.2, invariant@^2.2.4:
@@ -9481,10 +9481,10 @@ react-hook-form@^6.1.2:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.1.2.tgz#f7c670d6bdb6f164deea0d5ccda2cf83e9c05c0c"
   integrity sha512-olOI7LlC3zPEhEFOgRBRoeqAJ4+lguQ1K2kmt07eBfLyMzdMY32Rzjn8zsFovf369NHy3Bf87rBMWJ5ti+h8DQ==
 
-react-intl@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.4.3.tgz#fa82d11bf253e47daf63d333854e04c8081d484f"
-  integrity sha512-KFHMLiYmvWUQPJf7ZAlU7nz77Mud8DUYd6i+P4n2Sy2qOJhAl+x0NUFnjY6Jh/UkyLBtVYj0JgxtODiRa1wX9w==
+react-intl@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.4.4.tgz#7fdadfe77f67be57dc560fd9c2b9a9759acceccb"
+  integrity sha512-R1xVaBtPGYvskHLByxf0uxDhmZZq6BfUCqdHX2EOAZ9071vQncl1y4Dwlp2bbIYC8wI/RcYMdNsD3SdTsrnErw==
   dependencies:
     "@formatjs/intl-datetimeformat" "^2.2.1"
     "@formatjs/intl-displaynames" "^3.1.7"
@@ -9493,9 +9493,9 @@ react-intl@^5.4.3:
     "@formatjs/intl-relativetimeformat" "^7.0.0"
     "@formatjs/intl-utils" "^3.8.2"
     "@types/hoist-non-react-statics" "^3.3.1"
+    fast-memoize "^2.5.2"
     hoist-non-react-statics "^3.3.2"
-    intl-format-cache "^4.3.1"
-    intl-messageformat "^9.1.7"
+    intl-messageformat "^9.2.0"
     intl-messageformat-parser "^5.3.7"
     shallow-equal "^1.2.1"
 
