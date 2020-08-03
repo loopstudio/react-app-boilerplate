@@ -1515,10 +1515,10 @@
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
 
-"@formatjs/intl-datetimeformat@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-2.2.1.tgz#378f4fadfb8b12241a94aa0198dcefcd8dee40bd"
-  integrity sha512-Q2SySFYz3poa7+G8uX7K5FWzamoAzCsOHGxRgw1cJxDvnT4UUGHptZ7ajnvOpC2X4pzLJo0yGX17DjHrV2tohA==
+"@formatjs/intl-datetimeformat@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-2.3.0.tgz#a0e58135164f9c23db451ea0cc48c9eed0268152"
+  integrity sha512-wPlVtqPJjXyEIHO05JZ8G+t9fV00ho2cL8BCaDlT8vJQ1V2fnBp3cx7jlKpKCV7wNZm3yEebTATv0e0T3WisWw==
   dependencies:
     "@formatjs/intl-getcanonicallocales" "^1.3.1"
     "@formatjs/intl-utils" "^3.8.2"
@@ -9491,12 +9491,12 @@ react-hook-form@^6.2.0:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.2.0.tgz#867457525066e519db26d9c8b074fe0b075e41a1"
   integrity sha512-MZcVbTvif1wl8eJWGwdDebgFyrjma0R6m/eCY636WCAR6gDD/0i8XO0mvTF4DrelTf5e7L5OXJqT562PDGIzGg==
 
-react-intl@^5.4.4:
-  version "5.4.4"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.4.4.tgz#7fdadfe77f67be57dc560fd9c2b9a9759acceccb"
-  integrity sha512-R1xVaBtPGYvskHLByxf0uxDhmZZq6BfUCqdHX2EOAZ9071vQncl1y4Dwlp2bbIYC8wI/RcYMdNsD3SdTsrnErw==
+react-intl@^5.4.5:
+  version "5.4.5"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.4.5.tgz#5f81241d01da3a7a3133931606594bcea1783e74"
+  integrity sha512-XFs4Q70p17AVSLYBMopgNtWe537+U6SuXM1is7b9ThqZnZkAXqhJcXUA/0OsDFSIDilQ82NvVO1NAgEBXkRBFQ==
   dependencies:
-    "@formatjs/intl-datetimeformat" "^2.2.1"
+    "@formatjs/intl-datetimeformat" "^2.3.0"
     "@formatjs/intl-displaynames" "^3.1.7"
     "@formatjs/intl-listformat" "^4.0.0"
     "@formatjs/intl-numberformat" "^5.3.3"
