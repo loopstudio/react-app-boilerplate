@@ -1,9 +1,6 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
-
-export const FormContent = styled.form`
-  ${(props) => props.styles};
-`;
 
 export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
@@ -28,11 +25,8 @@ export const Button = styled.button`
   &:disabled {
     background-color: ${(props) => props.theme.color.indigo200};
     box-shadow: ${(props) => props.theme.boxShadow.none};
-
-    &:hover {
-      background-color: ${(props) => props.theme.color.indigo200};
-    }
   }
+
   ${(props) => props.styles};
 `;
 
@@ -41,6 +35,10 @@ export const Error = styled.span`
   display: block;
   font-size: ${(props) => props.theme.fontSize.sm};
   max-width: fit-content;
+`;
+
+export const FormContent = styled.form`
+  ${(props) => props.styles};
 `;
 
 export const HelpLink = styled(Link)`
@@ -97,6 +95,11 @@ export const Label = styled.label`
 export const LabelContent = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const loadingStyles = css`
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 `;
 
 export const Select = styled.select`
