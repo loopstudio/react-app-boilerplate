@@ -16,6 +16,7 @@ const SettingsForm = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const user = useUser();
+  const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const defaultValues = {
@@ -36,11 +37,14 @@ const SettingsForm = () => {
   });
 
   const onSubmit = async (attributes) => {
+    setIsLoading(true);
     try {
       await dispatch(updateUser(attributes));
       setIsResponseSuccess(true);
     } catch (error) {
       handleErrors(error, formMethods.setError);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -57,6 +61,7 @@ const SettingsForm = () => {
         data-testid="locale-input"
       />
       <Form.Button
+        isLoading={isLoading}
         data-testid="submit-settings-button"
         styles={buttonStyles}
         text={intl.messages['common.updateSettings']}
