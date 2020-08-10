@@ -21,7 +21,7 @@ describe('SignIn', () => {
     const mockedRequest = mockSignInSuccess(fakeCredentials);
 
     const { getByTestId, history } = renderWithRouter(<SignIn />, {
-      route: '/sign-in',
+      history: ['/sign-in'],
     });
     const submitButton = getByTestId('submit-button');
     const email = getByTestId('email-input');
