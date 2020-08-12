@@ -3,7 +3,7 @@ import flatten from 'flat';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { ThemeProvider } from 'emotion-theming';
@@ -15,7 +15,7 @@ import httpClient, { applyMiddlewares } from 'services/httpClient';
 
 const renderWithProviders = (
   ui,
-  { state = {}, history = ['/'], ...options } = {}
+  { state = {}, history = createMemoryHistory(), ...options } = {}
 ) => {
   const { store } = configureStore({ initialState: state, persist: false });
   applyMiddlewares(httpClient, store);
@@ -24,7 +24,7 @@ const renderWithProviders = (
     <Provider store={store}>
       <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
         <ThemeProvider theme={theme}>
-          <MemoryRouter initialEntries={history}>{children}</MemoryRouter>
+          <Router history={history}>{children}</Router>
         </ThemeProvider>
       </IntlProvider>
     </Provider>
@@ -37,11 +37,12 @@ const renderWithProviders = (
   return render(ui, { wrapper: Wrapper, ...options });
 };
 
-function renderWithRouter(ui, options) {
-  const history = createMemoryHistory({ initialEntries: options.history });
+function renderWithRouter(ui, { history, ...options }) {
+  const historyData = createMemoryHistory({ initialEntries: history });
+
   return {
-    ...renderWithProviders(ui, options),
-    history,
+    ...renderWithProviders(ui, { history: historyData, ...options }),
+    history: historyData,
   };
 }
 

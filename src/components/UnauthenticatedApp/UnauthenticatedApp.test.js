@@ -30,10 +30,10 @@ describe('Unauthenticated App', () => {
   });
 
   it('redirects to the Sign in Page when an unknown route is used', () => {
-    const { getByTestId } = renderWithRouter(<UnauthenticatedApp />, {
+    const { history } = renderWithRouter(<UnauthenticatedApp />, {
       history: ['/no-match'],
     });
 
-    expect(getByTestId('signin-form')).toBeInTheDocument();
+    expect(history.location.pathname).toBe('/sign-in');
   });
 });
