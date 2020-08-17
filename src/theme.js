@@ -52,6 +52,9 @@ const theme = {
     x7l: '4rem',
     x8l: '6rem',
   },
+  height: {
+    header: '4rem',
+  },
   letterSpacing: {
     tighter: '-0.05rem',
     tight: '-0.025rem',

@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 
 import Navbar from 'components/Navbar';
 
-import styles from './MainLayout.module.scss';
+import { MainContainer } from './MainLayout.styles';
 
 const MainLayout = ({ children, noHeader }) => (
   <>
     {!noHeader && <Navbar />}
-    <main className={noHeader ? styles.noHeader : styles.mainContainer}>
-      {children}
-    </main>
+    <MainContainer noHeader={noHeader}>{children}</MainContainer>
   </>
 );
 

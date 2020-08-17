@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
   align-items: center;
-  background-color: ${(props) => props.theme.color.white};
-  box-shadow: ${(props) => props.theme.boxShadow.darkMd};
+  background-color: ${({ theme }) => theme.color.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.darkMd};
   display: flex;
   flex-wrap: wrap;
-  height: 4rem;
+  height: ${({ theme }) => theme.height.header};
   justify-content: space-between;
   padding: 0 1rem;
   position: fixed;
