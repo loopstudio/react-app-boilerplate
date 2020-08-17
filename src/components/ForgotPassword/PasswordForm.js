@@ -12,7 +12,7 @@ import Form from 'components/Form';
 import Loading from 'components/Loading';
 import { handleErrors } from 'helpers/errors';
 
-import styles from './ForgotPassword.module.scss';
+import { Legend, inputStyles } from './ForgotPassword.styles';
 
 const PasswordForm = ({ token }) => {
   const [loading, setLoading] = useState(false);
@@ -53,19 +53,11 @@ const PasswordForm = ({ token }) => {
       onSubmit={onSubmit}
       formMethods={formMethods}
     >
-      <p className={styles.resetPasswordLegend}>
+      <Legend>
         <FormattedMessage id="common.forgotPasswordChange" />
-      </p>
-      <Form.Input
-        className={styles.formInput}
-        name="password"
-        type="password"
-      />
-      <Form.Input
-        className={styles.formInput}
-        name="confirmPassword"
-        type="password"
-      />
+      </Legend>
+      <Form.Input styles={inputStyles} name="password" type="password" />
+      <Form.Input styles={inputStyles} name="confirmPassword" type="password" />
       <Form.Button text={intl.messages['common.next']} />
       {loading && <Loading />}
     </Form>

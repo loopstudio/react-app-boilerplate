@@ -1,28 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Title from 'components/Title';
-
-import styles from './AuthWrapper.module.scss';
+import {
+  AuthContainer,
+  AuthTitle,
+  LegendContainer,
+  Screen,
+  ViewContainer,
+} from './AuthWrapper.styles';
 
 const AuthWrapper = ({ title, children, renderLegend }) => (
-  <div className={styles.screen}>
-    <div className={styles.viewContainer}>
-      <div className={styles.authWrapper}>
-        <Title
-          type="h1"
-          className={styles.title}
-          data-testid="authentication-title"
-        >
-          {title}
-        </Title>
+  <Screen>
+    <ViewContainer>
+      <AuthContainer>
+        <AuthTitle data-testid="authentication-title">{title}</AuthTitle>
         {children}
-      </div>
-      {renderLegend && (
-        <div className={styles.legendContainer}>{renderLegend()}</div>
-      )}
-    </div>
-  </div>
+      </AuthContainer>
+      {renderLegend && <LegendContainer>{renderLegend()}</LegendContainer>}
+    </ViewContainer>
+  </Screen>
 );
 
 AuthWrapper.defaultProps = {

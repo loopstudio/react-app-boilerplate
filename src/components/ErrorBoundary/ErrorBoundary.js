@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import styles from './ErrorBoundary.module.scss';
+import {
+  Content,
+  ErrorMessage,
+  Legend,
+  ReportButton,
+  Wrapper,
+} from './ErrorBoundary.styles';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -27,26 +33,25 @@ class ErrorBoundary extends React.Component {
 
     if (hasError)
       return (
-        <main className={styles.content}>
-          <div className={styles.wrapper}>
-            <p className={styles.legend}>
+        <Content>
+          <Wrapper>
+            <Legend>
               <FormattedMessage id="common.errorBoundaryMessage" />
-            </p>
+            </Legend>
             {isDevelopmentMode && (
               <>
-                <p className={styles.errorMessage}>{message}</p>
-                <a
+                <ErrorMessage>{message}</ErrorMessage>
+                <ReportButton
                   href="https://github.com/LoopStudio/react-app-boilerplate/issues/new"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.btnReportIssue}
                 >
                   <FormattedMessage id="common.reportError" />
-                </a>
+                </ReportButton>
               </>
             )}
-          </div>
-        </main>
+          </Wrapper>
+        </Content>
       );
 
     return children;

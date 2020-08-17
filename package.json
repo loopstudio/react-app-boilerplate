@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -11,11 +13,12 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.19.2",
     "axios-case-converter": "^0.6.0",
+    "emotion": "^10.0.27",
+    "emotion-theming": "^10.0.27",
     "flat": "^5.0.2",
     "immer": "^7.0.7",
     "md5": "^2.3.0",
     "node-sass": "^4.14.1",
-    "postcss-cli": "^7.1.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.1",
     "react": "^16.13.1",
@@ -41,9 +44,6 @@
     "test:coverage": "react-scripts test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "lint": "eslint .",
     "eject": "react-scripts eject",
-    "build:styles": "postcss src/tailwind.base.css -o src/tailwind.css",
-    "prebuild": "yarn build:styles",
-    "prestart": "yarn build:styles",
     "pre-push": "eslint ."
   },
   "browserslist": {
@@ -79,8 +79,7 @@
     "nock": "^13.0.4",
     "prettier": "^2.0.5",
     "react-axe": "^3.5.3",
-    "source-map-explorer": "^2.4.2",
-    "tailwindcss": "^1.4.6"
+    "source-map-explorer": "^2.4.2"
   },
   "husky": {
     "hooks": {

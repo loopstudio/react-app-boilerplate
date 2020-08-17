@@ -1,31 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Form.module.scss';
+import Loading from '../Loading';
+
+import { Button, loadingStyles } from './Form.styles';
 
 const FormButton = React.forwardRef(
-  ({ isDisabled, text, className, ...rest }, ref) => (
-    <button
+  ({ isDisabled, isLoading, text, ...rest }, ref) => (
+    <Button
       ref={ref}
       type="submit"
-      className={`${styles.button} ${className}`}
-      disabled={isDisabled}
+      disabled={isDisabled || isLoading}
       {...rest}
     >
-      {text}
-    </button>
+      {isLoading ? <Loading styles={loadingStyles} /> : text}
+    </Button>
   )
 );
 
 FormButton.defaultProps = {
   isDisabled: false,
-  className: '',
+  isLoading: false,
 };
 
 FormButton.propTypes = {
   isDisabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
   text: PropTypes.string.isRequired,
-  className: PropTypes.string,
 };
 
 export default FormButton;

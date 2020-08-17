@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
@@ -14,6 +14,7 @@ const SignInForm = () => {
   const dispatch = useDispatch();
   const intl = useIntl();
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
 
   const validationSchema = object().shape({
     email: string()
@@ -25,10 +26,12 @@ const SignInForm = () => {
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = async (values) => {
+    setIsLoading(true);
     try {
       await dispatch(signIn(values));
       history.replace('/');
     } catch (error) {
+      setIsLoading(false);
       handleErrors(error, formMethods.setError);
     }
   };
@@ -48,6 +51,7 @@ const SignInForm = () => {
         data-testid="password-input"
       />
       <Form.Button
+        isLoading={isLoading}
         data-testid="submit-button"
         text={intl.messages['common.signIn']}
       />

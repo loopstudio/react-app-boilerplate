@@ -7,7 +7,12 @@ import { useAuthentication, useUser } from 'hooks/auth';
 import Button from './Button';
 import Menu from './Menu';
 
-import styles from './UserOptions.module.scss';
+import {
+  Avatar,
+  InlineMenu,
+  DesktopDisplay,
+  MobileButton,
+} from './NavBar.styles';
 
 const AVATAR_PLACEHOLDER = 'https://i.pravatar.cc/150?img=41';
 
@@ -27,24 +32,16 @@ const RightItem = () => {
   return (
     <>
       {isAuthenticated ? (
-        <button
-          className={`${styles.buttonStyle} ${styles.avatar}`}
-          onClick={toggleNavMenu}
-          type="button"
-        >
+        <Avatar onClick={toggleNavMenu} type="button">
           <img alt="avatar" src={gravatarURL} />
-        </button>
+        </Avatar>
       ) : (
         <>
-          <button
-            className={`${styles.buttonStyle} ${styles.mobile}`}
-            onClick={toggleNavMenu}
-            type="button"
-          >
+          <MobileButton onClick={toggleNavMenu} type="button">
             <FontAwesomeIcon color="#7f9cf5" icon="bars" size="lg" />
-          </button>
-          <div className={styles.desktop}>
-            <div className={styles.inlineMenu}>
+          </MobileButton>
+          <DesktopDisplay>
+            <InlineMenu>
               <Button
                 formattedMessageId="common.signIn"
                 onClick={() => handleRedirectTo('/sign-in')}
@@ -53,8 +50,8 @@ const RightItem = () => {
                 formattedMessageId="common.signUp"
                 onClick={() => handleRedirectTo('/sign-up')}
               />
-            </div>
-          </div>
+            </InlineMenu>
+          </DesktopDisplay>
         </>
       )}
       {navOpen && <Menu isAuthenticated={isAuthenticated} />}

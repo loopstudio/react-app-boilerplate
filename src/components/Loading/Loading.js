@@ -1,23 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Loading.module.scss';
+import {
+  Wrapper,
+  Spinner,
+  DoubleBounce,
+  DoubleBounceWithDelay,
+} from './Loading.styles';
 
-const Loading = ({ className }) => (
-  <div className={`${styles.wrapper} ${className}`}>
-    <div className={styles.spinner}>
-      <div className={styles.doubleBounce1} />
-      <div className={styles.doubleBounce2} />
-    </div>
-  </div>
+const Loading = ({ styles }) => (
+  <Wrapper styles={styles}>
+    <Spinner>
+      <DoubleBounce />
+      <DoubleBounceWithDelay />
+    </Spinner>
+  </Wrapper>
 );
 
 Loading.defaultProps = {
-  className: '',
+  styles: {},
 };
 
 Loading.propTypes = {
-  className: PropTypes.string,
+  styles: PropTypes.object,
 };
 
 export default Loading;
