@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/tabindex-no-positive */
 import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers';
 import { useForm } from 'react-hook-form';
@@ -39,20 +40,26 @@ const SignInForm = () => {
   return (
     <Form
       data-testid="signin-form"
-      onSubmit={onSubmit}
       formMethods={formMethods}
+      onSubmit={onSubmit}
     >
-      <Form.Input name="email" type="email" data-testid="email-input" />
       <Form.Input
-        name="password"
-        type="password"
+        data-testid="email-input"
+        name="email"
+        tabIndex="1"
+        type="email"
+      />
+      <Form.Input
+        data-testid="password-input"
         helpLinkPath="/forgot-password"
         helpMessage={intl.messages['common.forgotPassword']}
-        data-testid="password-input"
+        name="password"
+        tabIndex="2"
+        type="password"
       />
       <Form.Button
-        isLoading={isLoading}
         data-testid="submit-button"
+        isLoading={isLoading}
         text={intl.messages['common.signIn']}
       />
     </Form>
