@@ -17,9 +17,7 @@ const Menu = ({ isAuthenticated }) => {
       await dispatch(signOut());
       history.replace('/sign-in');
     } catch ({ errors }) {
-      if (errors?.length) {
-        alert(errors[0]);
-      }
+      console.error(errors);
     }
   };
 
