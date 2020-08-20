@@ -1,20 +1,24 @@
 import { decamelizeKeys } from 'helpers/decamelize';
 import baseMock from './base';
 
+export const userData = {
+  id: 1,
+  first_name: 'User',
+  last_name: 'Example',
+  email: 'user@example.com',
+};
+
+export const authenticationHeaders = {
+  'Access-Token': 'token',
+  Uid: 'user@example.com',
+  Client: 'client',
+};
+
 const userResponse = {
   data: {
-    user: {
-      id: 1,
-      first_name: 'User',
-      last_name: 'Example',
-      email: 'user@example.com',
-    },
+    user: userData,
   },
-  headers: {
-    'Access-Token': 'token',
-    Uid: 'user@example.com',
-    Client: 'client',
-  },
+  headers: authenticationHeaders,
 };
 
 export const mockSignUpSuccess = (user) =>

@@ -7,7 +7,7 @@ import NoMatch from '.';
 describe('NoMatch', () => {
   test('shows a "404" message', () => {
     const { queryByText } = renderWithRouter(<NoMatch />, {
-      route: '/non-existent-route',
+      history: ['/non-existent-route'],
     });
 
     expect(queryByText('404')).toBeInTheDocument();
