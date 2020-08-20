@@ -42,7 +42,7 @@ describe('SignUp', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(history.location.pathname).toMatch('/');
+      expect(history.location.pathname).toBe('/');
     });
   });
 
