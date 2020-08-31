@@ -29,7 +29,10 @@ const ChangePasswordForm = () => {
     try {
       await AuthService.updateUser({ password }, currentPassword);
       setIsResponseSuccess(true);
-      formMethods.setValue([{ password: '' }, { currentPassword: '' }]);
+      formMethods.reset(
+        { currentPassword: '', password: '' },
+        { errors: true }
+      );
     } catch (error) {
       setIsResponseSuccess(false);
       handleErrors(error, formMethods.setError);
