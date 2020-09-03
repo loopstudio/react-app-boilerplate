@@ -43,14 +43,8 @@ const SignInForm = () => {
       formMethods={formMethods}
       onSubmit={onSubmit}
     >
+      <Form.Input name="email" tabIndex="1" type="email" />
       <Form.Input
-        data-testid="email-input"
-        name="email"
-        tabIndex="1"
-        type="email"
-      />
-      <Form.Input
-        data-testid="password-input"
         helpLinkPath="/forgot-password"
         helpMessage={intl.messages['common.forgotPassword']}
         name="password"
@@ -58,7 +52,6 @@ const SignInForm = () => {
         type="password"
       />
       <Form.Button
-        data-testid="submit-button"
         isLoading={isLoading}
         text={intl.messages['common.signIn']}
       />

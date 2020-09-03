@@ -5,12 +5,12 @@ import { FormattedMessage } from 'react-intl';
 import { HelpLink, Label, LabelContent, Span } from './Form.styles';
 
 const InputLabel = ({ helpLinkPath, helpMessage, htmlFor, name, label }) => (
-  <Label htmlFor={htmlFor}>
-    <LabelContent>
+  <LabelContent>
+    <Label htmlFor={htmlFor}>
       <Span>{label ?? <FormattedMessage id={`common.${name}`} />}</Span>
-      {helpLinkPath && <HelpLink to={helpLinkPath}>{helpMessage}</HelpLink>}
-    </LabelContent>
-  </Label>
+    </Label>
+    {helpLinkPath && <HelpLink to={helpLinkPath}>{helpMessage}</HelpLink>}
+  </LabelContent>
 );
 
 InputLabel.defaultProps = {
