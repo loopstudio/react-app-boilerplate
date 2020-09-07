@@ -73,7 +73,7 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "eslint-plugin-testing-library": "^3.8.0",
     "history": "^5.0.0",
-    "husky": "^4.2.5",
+    "husky": "^4.3.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "map-obj": "^4.1.0",
     "nock": "^13.0.4",
