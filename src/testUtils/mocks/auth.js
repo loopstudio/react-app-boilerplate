@@ -66,3 +66,47 @@ export const mockUpdateUserFailure = (user, passwordCheck) => {
     errors: ['Some scary error'],
   });
 };
+
+export const mockGetVerificationCodeSuccess = (email) =>
+  baseMock
+    .post('/users/password', decamelizeKeys({ email }))
+    .query({ locale: 'en' })
+    .reply(200, userResponse.data, userResponse.headers);
+
+export const mockGetVerificationCodeFailure = (email) =>
+  baseMock
+    .post('/users/password', decamelizeKeys({ email }))
+    .query({ locale: 'en' })
+    .reply(422, {
+      attributes_errors: {
+        email: [`Unable to find user with email ${email}`],
+      },
+    });
+
+export const mockVerifyTokenSuccess = (resetPasswordToken) =>
+  baseMock
+    .get('/users/password/edit')
+    .query(decamelizeKeys({ locale: 'en', resetPasswordToken }))
+    .reply(200, userResponse.data, userResponse.headers);
+
+export const mockVerifyTokenFailure = (resetPasswordToken) =>
+  baseMock
+    .get('/users/password/edit')
+    .query(decamelizeKeys({ locale: 'en', resetPasswordToken }))
+    .reply(404, {
+      errors: null,
+    });
+
+export const mockResetPasswordSuccess = (password, resetPasswordToken) =>
+  baseMock
+    .put('/users/password', decamelizeKeys({ password, resetPasswordToken }))
+    .query(decamelizeKeys({ locale: 'en' }))
+    .reply(200, userResponse.data, userResponse.headers);
+
+export const mockResetPasswordFailure = (password, resetPasswordToken) =>
+  baseMock
+    .put('/users/password', decamelizeKeys({ password, resetPasswordToken }))
+    .query({ locale: 'en' })
+    .reply(500, {
+      errors: ['Connection error'],
+    });
