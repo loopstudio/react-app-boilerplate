@@ -46,17 +46,12 @@ const SignUpForm = () => {
       onSubmit={onSubmit}
       formMethods={formMethods}
     >
-      <Form.Input name="email" type="email" data-testid="email-input" />
-      <Form.Input name="firstName" data-testid="firstName-input" />
-      <Form.Input name="lastName" data-testid="lastName-input" />
-      <Form.Input
-        name="password"
-        type="password"
-        data-testid="password-input"
-      />
+      <Form.Input name="email" type="email" />
+      <Form.Input name="firstName" />
+      <Form.Input name="lastName" />
+      <Form.Input name="password" type="password" />
       <Form.Button
         isLoading={isLoading}
-        data-testid="submit-button"
         text={intl.messages['common.signUp']}
       />
     </Form>

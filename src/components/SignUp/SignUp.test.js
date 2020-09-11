@@ -23,15 +23,16 @@ describe('SignUp', () => {
   it('should submit correctly', async () => {
     const mockedRequest = mockSignUpSuccess(fakeUser);
 
-    const { getByTestId, history } = renderWithRouter(<SignUp />, {
-      history: ['/sign-up'],
-    });
+    const { getByLabelText, getByRole, history } = renderWithRouter(
+      <SignUp />,
+      { history: ['/sign-up'] }
+    );
 
-    const email = getByTestId('email-input');
-    const firstName = getByTestId('firstName-input');
-    const lastName = getByTestId('lastName-input');
-    const password = getByTestId('password-input');
-    const submitButton = getByTestId('submit-button');
+    const email = getByLabelText('Email');
+    const firstName = getByLabelText('First Name');
+    const lastName = getByLabelText('Last Name');
+    const password = getByLabelText('Password');
+    const submitButton = getByRole('button');
 
     fillInput(email, fakeUser.email);
     fillInput(firstName, fakeUser.firstName);
@@ -49,12 +50,12 @@ describe('SignUp', () => {
   it('should show error on response failure', async () => {
     const mockedRequest = mockSignUpFailure(fakeUser);
 
-    const { getByTestId, queryByText } = render(<SignUp />);
-    const email = getByTestId('email-input');
-    const firstName = getByTestId('firstName-input');
-    const lastName = getByTestId('lastName-input');
-    const password = getByTestId('password-input');
-    const submitButton = getByTestId('submit-button');
+    const { getByLabelText, getByRole, getByText } = render(<SignUp />);
+    const email = getByLabelText('Email');
+    const firstName = getByLabelText('First Name');
+    const lastName = getByLabelText('Last Name');
+    const password = getByLabelText('Password');
+    const submitButton = getByRole('button');
 
     fillInput(email, fakeUser.email);
     fillInput(firstName, fakeUser.firstName);
@@ -65,26 +66,27 @@ describe('SignUp', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('Has already been taken')).toBeInTheDocument();
+      expect(getByText('Has already been taken')).toBeInTheDocument();
     });
   });
 
   it('should show errors for invalid values', async () => {
-    const { getByTestId, queryByText } = render(<SignUp />);
-    const email = getByTestId('email-input');
-    const password = getByTestId('password-input');
-    const submitButton = getByTestId('submit-button');
+    const { getByLabelText, getByRole, findByText } = render(<SignUp />);
+    const email = getByLabelText('Email');
+    const password = getByLabelText('Password');
+    const submitButton = getByRole('button');
 
     fillInput(email, 'invalid');
     fillInput(password, 'invalid');
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(queryByText('Invalid email')).toBeInTheDocument();
-      expect(
-        queryByText('Password too short, minimum length is 8 characters')
-      ).toBeInTheDocument();
-    });
+    const emailError = await findByText('Invalid email');
+    const passwordError = await findByText(
+      'Password too short, minimum length is 8 characters'
+    );
+
+    expect(emailError).toBeInTheDocument();
+    expect(passwordError).toBeInTheDocument();
   });
 });

@@ -45,14 +45,14 @@ describe('Settings', () => {
   it('confirms when account settings were changed successfully', async () => {
     const mockedRequest = mockUpdateUserSuccess(fakeSettingsData);
 
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, getByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const firstName = getByTestId('firstName-input');
-    const lastName = getByTestId('lastName-input');
-    const locale = getByTestId('locale-input');
-    const submitButton = getByTestId('submit-settings-button');
+    const firstName = getByLabelText('First Name');
+    const lastName = getByLabelText('Last Name');
+    const locale = getByLabelText('Language');
+    const submitButton = getByRole('button', { name: 'Update Settings' });
 
     fillInput(firstName, fakeSettingsData.firstName);
     fillInput(lastName, fakeSettingsData.lastName);
@@ -63,7 +63,7 @@ describe('Settings', () => {
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
       expect(
-        queryByText('Your settings have been updated successfully')
+        getByText('Your settings have been updated successfully')
       ).toBeInTheDocument();
     });
   });
@@ -71,13 +71,13 @@ describe('Settings', () => {
   it('renders API errors when changing account settings', async () => {
     const mockedRequest = mockUpdateUserFailure(fakeSettingsData);
 
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, getByText } = render(<Settings />, {
       state: fakeState,
     });
-    const firstName = getByTestId('firstName-input');
-    const lastName = getByTestId('lastName-input');
-    const locale = getByTestId('locale-input');
-    const submitButton = getByTestId('submit-settings-button');
+    const firstName = getByLabelText('First Name');
+    const lastName = getByLabelText('Last Name');
+    const locale = getByLabelText('Language');
+    const submitButton = getByRole('button', { name: 'Update Settings' });
 
     fillInput(firstName, fakeSettingsData.firstName);
     fillInput(lastName, fakeSettingsData.lastName);
@@ -87,24 +87,24 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('Some scary error')).toBeInTheDocument();
+      expect(getByText('Some scary error')).toBeInTheDocument();
     });
   });
 
   it('requires the first name when changing account settings', async () => {
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, findByText } = render(<Settings />, {
       state: fakeState,
     });
-    const firstName = getByTestId('firstName-input');
-    const submitButton = getByTestId('submit-settings-button');
+    const firstName = getByLabelText('First Name');
+    const submitButton = getByRole('button', { name: 'Update Settings' });
 
     fillInput(firstName, '');
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(queryByText('Required')).toBeInTheDocument();
-    });
+    const firstNameError = await findByText('Required');
+
+    expect(firstNameError).toBeInTheDocument();
   });
 
   it('confirms when the password was changed successfully', async () => {
@@ -113,13 +113,13 @@ describe('Settings', () => {
       fakePasswordData.passwordCheck
     );
 
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, getByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const currentPasswordInput = getByTestId('current-password-input-settings');
-    const newPasswordInput = getByTestId('password-input-settings');
-    const submitButton = getByTestId('submit-password-button');
+    const currentPasswordInput = getByLabelText('Current Password');
+    const newPasswordInput = getByLabelText('New Password');
+    const submitButton = getByRole('button', { name: 'Update Password' });
 
     fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
     fillInput(newPasswordInput, fakePasswordData.user.password);
@@ -129,7 +129,7 @@ describe('Settings', () => {
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
       expect(
-        queryByText('Your password has been changed successfully')
+        getByText('Your password has been changed successfully')
       ).toBeInTheDocument();
     });
   });
@@ -140,13 +140,13 @@ describe('Settings', () => {
       fakePasswordData.passwordCheck
     );
 
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, getByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const currentPasswordInput = getByTestId('current-password-input-settings');
-    const newPasswordInput = getByTestId('password-input-settings');
-    const submitButton = getByTestId('submit-password-button');
+    const currentPasswordInput = getByLabelText('Current Password');
+    const newPasswordInput = getByLabelText('New Password');
+    const submitButton = getByRole('button', { name: 'Update Password' });
 
     fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
     fillInput(newPasswordInput, fakePasswordData.user.password);
@@ -155,66 +155,66 @@ describe('Settings', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('Some scary error')).toBeInTheDocument();
+      expect(getByText('Some scary error')).toBeInTheDocument();
     });
   });
 
   it('requires a new password when changing the password', async () => {
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, findByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const currentPasswordInput = getByTestId('current-password-input-settings');
-    const newPasswordInput = getByTestId('password-input-settings');
-    const submitButton = getByTestId('submit-password-button');
+    const currentPasswordInput = getByLabelText('Current Password');
+    const newPasswordInput = getByLabelText('New Password');
+    const submitButton = getByRole('button', { name: 'Update Password' });
 
     fillInput(currentPasswordInput, '');
     fillInput(newPasswordInput, fakePasswordData.user.password);
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(queryByText('Required')).toBeInTheDocument();
-    });
+    const currentPasswordError = await findByText('Required');
+
+    expect(currentPasswordError).toBeInTheDocument();
   });
 
   it('requires the new password when changing the password', async () => {
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, findByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const currentPasswordInput = getByTestId('current-password-input-settings');
-    const newPasswordInput = getByTestId('password-input-settings');
-    const submitButton = getByTestId('submit-password-button');
+    const currentPasswordInput = getByLabelText('Current Password');
+    const newPasswordInput = getByLabelText('New Password');
+    const submitButton = getByRole('button', { name: 'Update Password' });
 
     fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
     fillInput(newPasswordInput, '');
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(queryByText('Required')).toBeInTheDocument();
-    });
+    const newPasswordError = await findByText('Required');
+
+    expect(newPasswordError).toBeInTheDocument();
   });
 
   it('requires the current password to be at least 8 chars', async () => {
-    const { getByTestId, queryByText } = render(<Settings />, {
+    const { getByLabelText, getByRole, findByText } = render(<Settings />, {
       state: fakeState,
     });
 
-    const currentPasswordInput = getByTestId('current-password-input-settings');
-    const newPasswordInput = getByTestId('password-input-settings');
-    const submitButton = getByTestId('submit-password-button');
+    const currentPasswordInput = getByLabelText('Current Password');
+    const newPasswordInput = getByLabelText('New Password');
+    const submitButton = getByRole('button', { name: 'Update Password' });
 
     fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
     fillInput(newPasswordInput, 'pass');
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(
-        queryByText('Password too short, minimum length is 8 characters')
-      ).toBeInTheDocument();
-    });
+    const newPasswordError = await findByText(
+      'Password too short, minimum length is 8 characters'
+    );
+
+    expect(newPasswordError).toBeInTheDocument();
   });
 });

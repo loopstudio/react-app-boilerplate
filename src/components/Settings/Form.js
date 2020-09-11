@@ -50,19 +50,17 @@ const SettingsForm = () => {
 
   return (
     <Form formMethods={formMethods} onSubmit={onSubmit} styles={formStyles}>
-      <Form.Input name="firstName" data-testid="firstName-input" />
-      <Form.Input name="lastName" data-testid="lastName-input" />
+      <Form.Input name="firstName" />
+      <Form.Input name="lastName" />
       <Form.Select
         name="locale"
         options={[
           { value: 'en', label: 'English' },
           { value: 'es', label: 'Español' },
         ]}
-        data-testid="locale-input"
       />
       <Form.Button
         isLoading={isLoading}
-        data-testid="submit-settings-button"
         styles={buttonStyles}
         text={intl.messages['common.updateSettings']}
       />

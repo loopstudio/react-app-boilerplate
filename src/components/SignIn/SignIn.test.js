@@ -20,12 +20,13 @@ describe('SignIn', () => {
   it('should submit correctly', async () => {
     const mockedRequest = mockSignInSuccess(fakeCredentials);
 
-    const { getByTestId, history } = renderWithRouter(<SignIn />, {
-      history: ['/sign-in'],
-    });
-    const submitButton = getByTestId('submit-button');
-    const email = getByTestId('email-input');
-    const password = getByTestId('password-input');
+    const { getByLabelText, getByRole, history } = renderWithRouter(
+      <SignIn />,
+      { history: ['/sign-in'] }
+    );
+    const submitButton = getByRole('button');
+    const email = getByLabelText('Email');
+    const password = getByLabelText('Password');
 
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
@@ -41,10 +42,10 @@ describe('SignIn', () => {
   it('should show error on response failure', async () => {
     const mockedRequest = mockSignInFailure(fakeCredentials);
 
-    const { getByTestId, queryByText } = render(<SignIn />);
-    const submitButton = getByTestId('submit-button');
-    const email = getByTestId('email-input');
-    const password = getByTestId('password-input');
+    const { getByLabelText, getByRole, getByText } = render(<SignIn />);
+    const submitButton = getByRole('button');
+    const email = getByLabelText('Email');
+    const password = getByLabelText('Password');
 
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
@@ -53,22 +54,23 @@ describe('SignIn', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(queryByText('The credentials are not valid')).toBeInTheDocument();
+      expect(getByText('The credentials are not valid')).toBeInTheDocument();
     });
   });
 
   it('should show errors for invalid values', async () => {
-    const { getByTestId, queryByText } = render(<SignIn />);
-    const submitButton = getByTestId('submit-button');
-    const email = getByTestId('email-input');
+    const { getByLabelText, getByRole, findByText } = render(<SignIn />);
+    const submitButton = getByRole('button');
+    const email = getByLabelText('Email');
 
     fillInput(email, 'invalid');
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => {
-      expect(queryByText('Invalid email')).toBeInTheDocument();
-      expect(queryByText('Required')).toBeInTheDocument();
-    });
+    const emailError = await findByText('Invalid email');
+    const passwordError = await findByText('Required');
+
+    expect(emailError).toBeInTheDocument();
+    expect(passwordError).toBeInTheDocument();
   });
 });

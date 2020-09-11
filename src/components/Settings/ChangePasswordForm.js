@@ -47,17 +47,14 @@ const ChangePasswordForm = () => {
         label={intl.messages['common.currentPassword']}
         name="currentPassword"
         type="password"
-        data-testid="current-password-input-settings"
       />
       <Form.Input
         label={intl.messages['common.newPassword']}
         name="password"
         type="password"
-        data-testid="password-input-settings"
       />
       <Form.Button
         isLoading={isLoading}
-        data-testid="submit-password-button"
         styles={buttonStyles}
         text={intl.messages['common.updatePassword']}
       />
