@@ -9,7 +9,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@hookform/resolvers": "^0.1.0",
+    "@hookform/resolvers": "^0.1.1",
     "autoprefixer": "^9.8.6",
     "axios": "^0.19.2",
     "axios-case-converter": "^0.6.0",
