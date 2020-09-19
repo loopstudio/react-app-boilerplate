@@ -8,7 +8,7 @@ import {
   Legend,
   ReportButton,
   Wrapper,
-} from './ErrorBoundary.styles';
+} from 'components/ErrorBoundary/ErrorBoundary.styles';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

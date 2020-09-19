@@ -1,7 +1,13 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Content, Wrapper, Title, Legend, GoBackHome } from './NoMatch.styles';
+import {
+  Content,
+  Wrapper,
+  Title,
+  Legend,
+  GoBackHome,
+} from 'components/NoMatch/NoMatch.styles';
 
 const NoMatch = () => (
   <Content>

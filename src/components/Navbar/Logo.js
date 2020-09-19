@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { LogoContainer, Brand } from './NavBar.styles';
+import { LogoContainer, Brand } from 'components/Navbar/NavBar.styles';
 
 const PRODUCT_NAME = 'LoopStudio';
 

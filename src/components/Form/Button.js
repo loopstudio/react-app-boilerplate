@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Loading from '../Loading';
+import Loading from 'components/Loading';
 
-import { Button, loadingStyles } from './Form.styles';
+import { Button, loadingStyles } from 'components/Form/Form.styles';
 
 const FormButton = React.forwardRef(
   ({ isDisabled, isLoading, text, ...rest }, ref) => (

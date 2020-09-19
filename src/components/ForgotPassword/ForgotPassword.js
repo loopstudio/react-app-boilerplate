@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 
 import AuthWrapper from 'components/AuthWrapper';
-import EmailForm from './EmailForm';
-import PasswordForm from './PasswordForm';
-import TokenForm from './TokenForm';
+import EmailForm from 'components/ForgotPassword/EmailForm';
+import PasswordForm from 'components/ForgotPassword/PasswordForm';
+import TokenForm from 'components/ForgotPassword/TokenForm';
 
 export const RESET_PASSWORD_STEPS = {
   initial: 0,

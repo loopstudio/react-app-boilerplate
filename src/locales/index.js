@@ -1,5 +1,5 @@
-import enUSLanguage from './entries/en-US';
-import esESLanguage from './entries/es-ES';
+import enUSLanguage from 'locales/entries/en-US';
+import esESLanguage from 'locales/entries/es-ES';
 
 /*
   • How to get messages from react-intl programmatically

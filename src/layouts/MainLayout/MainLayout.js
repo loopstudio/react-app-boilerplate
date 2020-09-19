@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Navbar from 'components/Navbar';
 
-import { MainContainer } from './MainLayout.styles';
+import { MainContainer } from 'layouts/MainLayout/MainLayout.styles';
 
 const MainLayout = ({ children, noHeader }) => (
   <>

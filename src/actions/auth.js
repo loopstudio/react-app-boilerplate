@@ -1,5 +1,5 @@
+import Types from 'actions/types';
 import AuthService from 'services/AuthService';
-import Types from './types';
 
 export const clearSession = () => ({
   type: Types.CLEAR_SESSION,

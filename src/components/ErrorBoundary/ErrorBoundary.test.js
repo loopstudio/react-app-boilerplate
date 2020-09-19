@@ -3,7 +3,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { render } from 'testUtils';
-import ErrorBoundary from '.';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 const Throw = () => {
   throw new Error('Dummy error');

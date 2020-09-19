@@ -7,9 +7,6 @@ const authenticator = (httpClient, store) => {
     if (session) {
       Object.assign(config.headers, session);
     } else {
-      // Waiting for https://github.com/axios/axios/issues/2190
-      /* eslint-disable no-param-reassign */
-      config.params = config.params || {};
       Object.assign(config.params, { locale: guestLocale });
     }
 

@@ -1,4 +1,4 @@
-import httpClient from './httpClient';
+import httpClient from 'services/httpClient';
 
 class AuthService {
   static signUp(user) {

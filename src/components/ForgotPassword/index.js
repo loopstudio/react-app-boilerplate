@@ -1,1 +1,1 @@
-export { default } from './ForgotPassword';
+export { default } from 'components/ForgotPassword/ForgotPassword';

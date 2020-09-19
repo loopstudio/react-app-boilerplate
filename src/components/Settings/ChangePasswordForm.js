@@ -8,7 +8,11 @@ import Form from 'components/Form';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 
-import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
+import {
+  SuccessText,
+  formStyles,
+  buttonStyles,
+} from 'components/Settings/Settings.styles';
 
 const ChangePasswordForm = () => {
   const intl = useIntl();

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import applyCaseMiddleware from 'axios-case-converter';
 
-import authMiddleware from './middlewares/auth';
+import authMiddleware from 'services/middlewares/auth';
 
 const httpClient = axios.create({
   baseURL: process.env.REACT_APP_API_URL,

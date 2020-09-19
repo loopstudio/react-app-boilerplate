@@ -10,7 +10,11 @@ import { handleErrors } from 'helpers/errors';
 import { useUser } from 'hooks/auth';
 import { updateUser } from 'actions/auth';
 
-import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
+import {
+  SuccessText,
+  formStyles,
+  buttonStyles,
+} from 'components/Settings/Settings.styles';
 
 const SettingsForm = () => {
   const dispatch = useDispatch();

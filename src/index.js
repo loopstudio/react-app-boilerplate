@@ -8,7 +8,7 @@ import App from 'components/App';
 import configureStore from 'store';
 import httpClient, { applyMiddlewares } from 'services/httpClient';
 import * as serviceWorker from 'serviceWorker';
-import theme from './theme';
+import theme from 'theme';
 
 if (process.env.NODE_ENV !== 'production') {
   import('react-axe').then((axe) => axe.default(React, ReactDOM, 1000));

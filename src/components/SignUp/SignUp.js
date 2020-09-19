@@ -6,7 +6,7 @@ import {
   Legend,
   NavigationLink,
 } from 'components/AuthWrapper/AuthWrapper.styles';
-import Form from './Form';
+import Form from 'components/SignUp/Form';
 
 const SignUp = () => {
   const intl = useIntl();

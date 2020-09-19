@@ -1,4 +1,4 @@
-import { decamelizeKeys } from './decamelize';
+import { decamelizeKeys } from 'helpers/decamelize';
 
 describe('decamelizeKey', () => {
   it('should deeply decamelize the keys of an object', () => {
