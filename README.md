@@ -39,13 +39,16 @@
 │   ├── store/
 │   ├── testUtils/
 │   ├── index.js
-│   └── serviceWorker.js
+│   ├── serviceWorker.js
+│   ├── setupTests.js
+│   └── theme.js
 ├── .env
 ├── .gitignore
 ├── .eslintrc
 ├── .prettierrc
 ├── CONTRIBUTING.md
 ├── jsconfig.json
+├── LICENSE
 ├── netlify.toml
 ├── package.json
 ├── README.md
@@ -58,7 +61,7 @@
 ├── MyComponent
 │ ├── index.js
 │ ├── MyComponent.js
-│ ├── MyComponent.module.scss
+│ ├── MyComponent.styles.js
 │ ├── MyComponent.test.js
 ```
 
@@ -70,10 +73,10 @@ If you want to split your component into pieces for readability, maintainability
 ├── MyComponent
 │ ├── index.js
 │ ├── MyComponent.js
-│ ├── MyComponent.module.scss
+│ ├── MyComponent.styles.js
 │ ├── MyComponent.test.js
 │ ├── SecondaryComponent.js
-│ ├── SecondaryComponent.module.scss
+│ ├── SecondaryComponent.styles.js
 ```
 
 ## Features
@@ -134,8 +137,6 @@ If you want to split your component into pieces for readability, maintainability
 
 ### Styling:
 
-- [sass](https://sass-lang.com/guide): "CSS with superpowers", superpowers which allow us for a cleaner syntax when extending or importing variables while using CSS modules.
-- [css-modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet): CSS-Modules helps us to have a more component-based styling avoiding possible conflicts and pollutants of the style across the app.
 - [emotion](https://emotion.sh/docs/introduction): Provides powerful and predictable style composition in addition to a great developer experience with features such as source maps, labels, and testing utilities. Both string and object styles are supported.
 - [font-awesome](https://fontawesome.com/): A comprehensive icon library. Currently, the free version of Font Awesome is added by default to the boilerplate. To upgrade and use the pro version sign in to your Font Awesome account and follow the instructions on this [link](https://fontawesome.com/how-to-use/on-the-web/setup/using-package-managers#installing-pro).
 Imported icons are encouraged to be stored in `assets/icons`, and invoked as a string in each component.
