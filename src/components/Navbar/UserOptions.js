@@ -3,16 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import md5 from 'md5';
 
+import Button from 'components/Navbar/Button';
+import Menu from 'components/Navbar/Menu';
 import { useAuthentication, useUser } from 'hooks/auth';
-import Button from './Button';
-import Menu from './Menu';
 
 import {
   Avatar,
   InlineMenu,
   DesktopDisplay,
   MobileButton,
-} from './NavBar.styles';
+} from 'components/Navbar/NavBar.styles';
 
 const AVATAR_PLACEHOLDER = 'https://i.pravatar.cc/150?img=41';
 

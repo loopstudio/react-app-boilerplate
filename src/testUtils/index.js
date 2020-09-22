@@ -48,7 +48,7 @@ function renderWithRouter(ui, { history, ...options }) {
 
 // re-export everything
 export * from '@testing-library/react';
-export * from './fieldHelpers';
+export * from 'testUtils/fieldHelpers';
 
 // override render method
 export { renderWithProviders as render, renderWithRouter };

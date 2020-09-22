@@ -9,9 +9,13 @@ import Form from 'components/Form';
 import Loading from 'components/Loading';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
-import { RESET_PASSWORD_STEPS } from './ForgotPassword';
+import { RESET_PASSWORD_STEPS } from 'components/ForgotPassword/ForgotPassword';
 
-import { Legend, inputStyles, LinkButton } from './ForgotPassword.styles';
+import {
+  Legend,
+  inputStyles,
+  LinkButton,
+} from 'components/ForgotPassword/ForgotPassword.styles';
 
 const TokenForm = ({ onStepChange, onSaveToken }) => {
   const [loading, setLoading] = useState(false);

@@ -1,5 +1,5 @@
 import { decamelizeKeys } from 'helpers/decamelize';
-import baseMock from './base';
+import baseMock from 'testUtils/mocks/base';
 
 export const userData = {
   id: 1,

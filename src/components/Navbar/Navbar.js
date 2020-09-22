@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Logo from './Logo';
-import UserOptions from './UserOptions';
+import Logo from 'components/Navbar/Logo';
+import UserOptions from 'components/Navbar/UserOptions';
 
-import { Nav, NavContent } from './NavBar.styles';
+import { Nav, NavContent } from 'components/Navbar/NavBar.styles';
 
 const Navbar = () => (
   <Nav>

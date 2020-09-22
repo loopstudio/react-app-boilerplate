@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { HelpLink, Label, LabelContent, Span } from './Form.styles';
+import {
+  HelpLink,
+  Label,
+  LabelContent,
+  Span,
+} from 'components/Form/Form.styles';
 
 const InputLabel = ({ helpLinkPath, helpMessage, htmlFor, name, label }) => (
   <LabelContent>

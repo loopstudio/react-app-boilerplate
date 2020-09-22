@@ -1,1 +1,1 @@
-export { default } from './AuthenticatedApp';
+export { default } from 'components/AuthenticatedApp/AuthenticatedApp';

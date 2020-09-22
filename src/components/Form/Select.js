@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 import { useFormContext } from 'react-hook-form';
 
-import InputLabel from './InputLabel';
+import InputLabel from 'components/Form/InputLabel';
 
-import { Error, InputContainer, Select } from './Form.styles';
+import { Error, InputContainer, Select } from 'components/Form/Form.styles';
 
 const FormSelect = ({
   helpLinkPath,

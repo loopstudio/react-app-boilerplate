@@ -1,10 +1,8 @@
-import esESMessages from '../messages/es-ES';
+import esESMessages from 'locales/messages/es-ES';
 
 const esESLanguage = {
-  messages: {
-    ...esESMessages,
-  },
   locale: 'es-ES',
+  messages: esESMessages,
 };
 
 export default esESLanguage;

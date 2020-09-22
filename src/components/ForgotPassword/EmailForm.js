@@ -9,9 +9,12 @@ import Form from 'components/Form';
 import Loading from 'components/Loading';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
-import { RESET_PASSWORD_STEPS } from './ForgotPassword';
+import { RESET_PASSWORD_STEPS } from 'components/ForgotPassword/ForgotPassword';
 
-import { inputStyles, Legend } from './ForgotPassword.styles';
+import {
+  inputStyles,
+  Legend,
+} from 'components/ForgotPassword/ForgotPassword.styles';
 
 const EmailForm = ({ onStepChange }) => {
   const [loading, setLoading] = useState(false);

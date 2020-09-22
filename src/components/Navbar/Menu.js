@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { signOut } from 'actions/auth';
-import Button from './Button';
+import Button from 'components/Navbar/Button';
 
-import { MenuContainer } from './NavBar.styles';
+import { MenuContainer } from 'components/Navbar/NavBar.styles';
 
 const Menu = ({ isAuthenticated }) => {
   const dispatch = useDispatch();

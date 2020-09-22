@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { setGuestLocale } from 'actions/auth';
 
-import { Select } from './LanguageSelector.styles';
+import { Select } from 'components/LanguageSelector/LanguageSelector.styles';
 
 const LanguageSelector = () => {
   const intl = useIntl();

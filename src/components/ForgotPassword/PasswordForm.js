@@ -12,7 +12,10 @@ import Form from 'components/Form';
 import Loading from 'components/Loading';
 import { handleErrors } from 'helpers/errors';
 
-import { Legend, inputStyles } from './ForgotPassword.styles';
+import {
+  Legend,
+  inputStyles,
+} from 'components/ForgotPassword/ForgotPassword.styles';
 
 const PasswordForm = ({ token }) => {
   const [loading, setLoading] = useState(false);

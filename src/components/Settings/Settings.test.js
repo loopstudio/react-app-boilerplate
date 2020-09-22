@@ -6,7 +6,7 @@ import {
   mockUpdateUserSuccess,
   mockUpdateUserFailure,
 } from 'testUtils/mocks/auth';
-import Settings from '.';
+import Settings from 'components/Settings';
 
 const fakeSettingsData = {
   firstName: 'John',

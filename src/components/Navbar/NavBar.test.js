@@ -2,9 +2,9 @@ import React from 'react';
 import { render } from 'testUtils';
 import '@testing-library/jest-dom/extend-expect';
 
-import Button from './Button';
-import Logo from './Logo';
-import Menu from './Menu';
+import Button from 'components/Navbar/Button';
+import Logo from 'components/Navbar/Logo';
+import Menu from 'components/Navbar/Menu';
 
 describe('Menu', () => {
   describe('Button', () => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Navbar from 'components/Navbar';
 import Footer from 'components/Footer';
 
-import { AuthContainer } from './AuthLayout.styles';
+import { AuthContainer } from 'layouts/AuthLayout/AuthLayout.styles';
 
 const AuthLayout = ({ children, noHeader }) => (
   <>

@@ -1,4 +1,4 @@
-import { capitalize } from './string';
+import { capitalize } from 'helpers/string';
 
 export function handleErrors({ attributesErrors, errors }, setError) {
   if (errors?.length) {

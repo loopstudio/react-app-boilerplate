@@ -7,7 +7,7 @@ import {
   LegendContainer,
   Screen,
   ViewContainer,
-} from './AuthWrapper.styles';
+} from 'components/AuthWrapper/AuthWrapper.styles';
 
 const AuthWrapper = ({ title, children, renderLegend }) => (
   <Screen>

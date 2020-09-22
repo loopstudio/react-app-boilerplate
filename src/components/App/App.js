@@ -12,11 +12,11 @@ import { useAuthentication } from 'hooks/auth';
 import { useLocale } from 'hooks/locale';
 import AppLocale from 'locales';
 
-import { loadingStyles, globalStyles } from './App.styles';
+import { loadingStyles, globalStyles } from 'components/App/App.styles';
 
-const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
+const UnauthenticatedApp = lazy(() => import('components/UnauthenticatedApp'));
 const AuthenticatedApp = lazy(() =>
-  import(/* webpackPrefetch: true */ '../AuthenticatedApp')
+  import(/* webpackPrefetch: true */ 'components/AuthenticatedApp')
 );
 
 library.add(icons);

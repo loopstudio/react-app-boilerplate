@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { render } from 'testUtils';
-import Home from '.';
+import Home from 'components/Home';
 
 test('shows a "Hello World" message', () => {
   const { queryByText } = render(<Home />);
