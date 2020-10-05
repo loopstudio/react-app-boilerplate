@@ -14,16 +14,13 @@ import {
   MobileButton,
 } from 'components/Navbar/NavBar.styles';
 
-const AVATAR_PLACEHOLDER = 'https://i.pravatar.cc/150?img=41';
-
 const RightItem = () => {
   const user = useUser();
   const history = useHistory();
   const isAuthenticated = useAuthentication();
   const [navOpen, setNavOpen] = useState(false);
   const emailHash = md5(user?.email || '');
-  const defaultAvatar = encodeURIComponent(AVATAR_PLACEHOLDER);
-  const gravatarURL = `https://www.gravatar.com/avatar/${emailHash}?default=${defaultAvatar}`;
+  const gravatarURL = `https://www.gravatar.com/avatar/${emailHash}`;
 
   const handleRedirectTo = (path) => history.push(path);
 
