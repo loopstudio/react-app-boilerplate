@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { yupResolver } from '@hookform/resolvers';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
