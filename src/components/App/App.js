@@ -6,8 +6,7 @@ import flatten from 'flat';
 import { Global } from '@emotion/core';
 
 import icons from 'assets/icons';
-import ErrorBoundary from 'components/ErrorBoundary';
-import Loading from 'components/Loading';
+import { ErrorBoundary, Loading } from 'components';
 import { useAuthentication } from 'hooks/auth';
 import { useLocale } from 'hooks/locale';
 import AppLocale from 'locales';

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { object, string } from 'yup';
 import { useIntl, FormattedMessage } from 'react-intl';
 
-import Form from 'components/Form';
+import { Form } from 'components';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 

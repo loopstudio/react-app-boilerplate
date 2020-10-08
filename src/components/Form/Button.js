@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Loading from 'components/Loading';
+import { Loading } from 'components';
 
 import { Button, loadingStyles } from 'components/Form/Form.styles';
 

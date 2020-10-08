@@ -5,8 +5,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 import PropTypes from 'prop-types';
 
-import Form from 'components/Form';
-import Loading from 'components/Loading';
+import { Form, Loading } from 'components';
 import { handleErrors } from 'helpers/errors';
 import AuthService from 'services/AuthService';
 import { RESET_PASSWORD_STEPS } from 'components/ForgotPassword/ForgotPassword';

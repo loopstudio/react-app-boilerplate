@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Settings from 'components/Settings';
+import { Settings } from 'components';
 import MainLayout from 'layouts/MainLayout';
 
 const SettingsPage = () => (

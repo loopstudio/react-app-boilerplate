@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SignIn from 'components/SignIn';
+import { SignIn } from 'components';
 import AuthLayout from 'layouts/AuthLayout';
 
 const SignInPage = () => (

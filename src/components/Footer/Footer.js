@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LanguageSelector from 'components/LanguageSelector';
+import { LanguageSelector } from 'components';
 
 const Footer = () => (
   <footer>

@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { render } from 'testUtils';
-import LanguageSelector from 'components/LanguageSelector';
+import { LanguageSelector } from 'components';
 
 describe('LanguageSelector', () => {
   it('renders the select component with the correct label', () => {

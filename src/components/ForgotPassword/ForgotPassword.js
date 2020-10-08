@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import AuthWrapper from 'components/AuthWrapper';
+import { AuthWrapper } from 'components';
 import EmailForm from 'components/ForgotPassword/EmailForm';
 import PasswordForm from 'components/ForgotPassword/PasswordForm';
 import TokenForm from 'components/ForgotPassword/TokenForm';

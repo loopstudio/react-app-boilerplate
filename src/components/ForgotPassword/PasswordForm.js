@@ -8,8 +8,7 @@ import { object, ref, string } from 'yup';
 import PropTypes from 'prop-types';
 
 import { resetPassword } from 'actions/auth';
-import Form from 'components/Form';
-import Loading from 'components/Loading';
+import { Form, Loading } from 'components';
 import { handleErrors } from 'helpers/errors';
 
 import {

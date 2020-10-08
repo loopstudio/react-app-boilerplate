@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { render } from 'testUtils';
-import AuthWrapper from 'components/AuthWrapper';
+import { AuthWrapper } from 'components';
 
 describe('AuthWrapper', () => {
   it('shows a "Hello World" message on the title', () => {

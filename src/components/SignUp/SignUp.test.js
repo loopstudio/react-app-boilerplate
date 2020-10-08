@@ -9,7 +9,7 @@ import {
   waitFor,
 } from 'testUtils';
 import { mockSignUpSuccess, mockSignUpFailure } from 'testUtils/mocks/auth';
-import SignUp from 'components/SignUp';
+import { SignUp } from 'components';
 
 const fakeUser = {
   email: 'user@example.com',

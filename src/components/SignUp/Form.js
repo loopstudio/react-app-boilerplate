@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import { signUp } from 'actions/auth';
-import Form from 'components/Form';
+import { Form } from 'components';
 import { handleErrors } from 'helpers/errors';
 
 const SignUpForm = () => {

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 
-import Form from 'components/Form';
+import { Form } from 'components';
 import { handleErrors } from 'helpers/errors';
 import { useUser } from 'hooks/auth';
 import { updateUser } from 'actions/auth';
