@@ -22,7 +22,7 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
   const intl = useIntl();
 
   const validationSchema = object().shape({
-    token: string(intl.messages['common.invalidToken'])
+    token: string()
       .length(6, intl.messages['common.lengthToken'])
       .required(intl.messages['common.required']),
   });
@@ -38,10 +38,7 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
       await AuthService.verifyToken(token);
       onSaveToken(token);
       onStepChange(RESET_PASSWORD_STEPS.updatePassword);
-    } catch ({ errors }) {
-      const error = errors?.[0] || {
-        errors: [intl.messages['common.invalidToken']],
-      };
+    } catch (error) {
       handleErrors(error, formMethods.setError);
       setLoading(false);
     }
