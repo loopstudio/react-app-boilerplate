@@ -149,7 +149,7 @@ describe('ForgotPassword', () => {
     await waitFor(() => {
       expect(mockVerifyToken.isDone()).toBeTruthy();
       expect(
-        getByText('the reset password token is invalid')
+        getByText('The reset password token is invalid')
       ).toBeInTheDocument();
     });
   });
