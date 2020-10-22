@@ -93,8 +93,8 @@ export const mockVerifyTokenFailure = (resetPasswordToken) =>
   baseMock
     .get('/users/password/edit')
     .query(decamelizeKeys({ locale: 'en', resetPasswordToken }))
-    .reply(404, {
-      errors: null,
+    .reply(400, {
+      errors: ['the reset password token is invalid'],
     });
 
 export const mockResetPasswordSuccess = (password, resetPasswordToken) =>

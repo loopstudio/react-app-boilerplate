@@ -21,7 +21,6 @@ export default {
       'Paso 1: Ingresa tu correo y te ayudaremos a recuperar tu contraseña',
     goBackHome: 'Volver al inicio',
     invalidEmail: 'Email inválido',
-    invalidToken: 'Código no válido',
     lastName: 'Apellido',
     lengthToken: 'Debe tener seis dígitos',
     locale: 'Idioma',

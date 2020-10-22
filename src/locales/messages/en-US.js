@@ -21,7 +21,6 @@ export default {
       'Step 1: Enter your email and we’ll help you reset your password',
     goBackHome: 'Go back home',
     invalidEmail: 'Invalid email',
-    invalidToken: 'Invalid token',
     lastName: 'Last Name',
     lengthToken: 'Must have six digits',
     locale: 'Language',
