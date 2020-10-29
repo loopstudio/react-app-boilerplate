@@ -11,7 +11,7 @@ jobs:
     - name: set remote url
       run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.DEPENDACOP_LOOPITO_PAT }}@github.com/$GITHUB_REPOSITORY
     - name: Dependacop
-      uses: elestu/actions-dependacop@v1.0.0
+      uses: elestu/actions-dependacop@v1.0.3
       env:
         AUTHOR_EMAIL: hello@loopstudio.dev
         AUTHOR_NAME: Loopito
