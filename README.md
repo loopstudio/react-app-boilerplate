@@ -26,16 +26,9 @@
 ├── .github/
 ├── public/
 ├── src
-│   ├── actions/
 │   ├── assets/
-│   ├── components/
+│   ├── features/
 │   ├── helpers/
-│   ├── hooks/
-│   ├── layouts/
-│   ├── locales/
-│   ├── pages/
-│   ├── reducers/
-│   ├── services/
 │   ├── store/
 │   ├── testUtils/
 │   ├── index.js
@@ -54,6 +47,31 @@
 ├── README.md
 └── yarn.lock
 ```
+
+## Feature Structure
+
+```
+├── features
+│ └── myFeature
+│   ├── components/
+│   ├── hooks/
+│   ├── helpers/
+│   ├── actions.js
+│   ├── reducer.js
+│   ├── types.js
+│   └── index.js
+```
+
+#### What does a feature export?
+
+A feature should export anything that is meant to be consumed from outside the feature
+IE:
+- actions
+- reducer
+- components (if they're meant to be used outside the feature)
+- hooks (if they're meant to be used outside the feature)
+- helpers (if they're meant to be used outside the feature)
+
 
 ## Component Structure
 

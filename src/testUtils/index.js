@@ -9,9 +9,11 @@ import { createMemoryHistory } from 'history';
 import { ThemeProvider } from '@emotion/react';
 import theme from 'theme';
 
-import AppLocale from 'locales';
+import AppLocale from 'features/app/locales';
 import configureStore from 'store';
-import httpClient, { applyMiddlewares } from 'services/httpClient';
+import httpClient, {
+  applyMiddlewares,
+} from 'features/auth/services/httpClient';
 
 const renderWithProviders = (
   ui,

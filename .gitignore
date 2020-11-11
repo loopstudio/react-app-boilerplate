@@ -19,6 +19,7 @@
 .env.production.local
 /.netlify
 /.vscode
+/.idea
 
 # logs
 npm-debug.log*
