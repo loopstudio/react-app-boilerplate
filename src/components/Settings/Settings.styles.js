@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 
 export const SettingsContainer = styled.div`
   background-color: ${(props) => props.theme.color.gray200};
