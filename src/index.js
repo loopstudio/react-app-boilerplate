@@ -2,7 +2,7 @@ import React, { StrictMode } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 
 import App from 'components/App';
 import configureStore from 'store';

@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from '@emotion/react';
 import theme from 'theme';
 
 import AppLocale from 'locales';

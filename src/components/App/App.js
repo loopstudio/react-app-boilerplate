@@ -3,7 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { BrowserRouter } from 'react-router-dom';
 import flatten from 'flat';
-import { Global } from '@emotion/core';
+import { Global } from '@emotion/react';
 
 import icons from 'assets/icons';
 import ErrorBoundary from 'components/ErrorBoundary';
