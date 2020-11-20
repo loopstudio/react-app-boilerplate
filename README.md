@@ -55,7 +55,10 @@
 │ └── myFeature
 │   ├── components/
 │   ├── hooks/
-│   ├── helpers/
+│   ├── layouts/
+│   ├── locales/
+│   ├── pages/
+│   ├── services.js
 │   ├── actions.js
 │   ├── reducer.js
 │   ├── types.js

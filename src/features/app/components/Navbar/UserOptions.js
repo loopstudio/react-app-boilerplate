@@ -3,17 +3,18 @@ import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import md5 from 'md5';
 
-import Button from 'features/app/components/Navbar/Button';
-import Menu from 'features/app/components/Navbar/Menu';
 import { useAuthentication, useUser } from 'features/auth';
-import { useClickAway } from 'hooks/events';
+
+import Button from './Button';
+import Menu from './Menu';
+import { useClickAway } from '../../hooks/events';
 
 import {
   Avatar,
   InlineMenu,
   DesktopDisplay,
   MobileButton,
-} from 'features/app/components/Navbar/NavBar.styles';
+} from './NavBar.styles';
 
 const RightItem = () => {
   const user = useUser();
