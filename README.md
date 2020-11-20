@@ -72,7 +72,6 @@ IE:
 - hooks (if they're meant to be used outside the feature)
 - helpers (if they're meant to be used outside the feature)
 
-
 ## Component Structure
 
 ```
