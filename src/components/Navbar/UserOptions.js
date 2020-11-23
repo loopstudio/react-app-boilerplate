@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import md5 from 'md5';
@@ -6,6 +6,7 @@ import md5 from 'md5';
 import Button from 'components/Navbar/Button';
 import Menu from 'components/Navbar/Menu';
 import { useAuthentication, useUser } from 'hooks/auth';
+import { useClickAway } from 'hooks/events';
 
 import {
   Avatar,
@@ -22,12 +23,18 @@ const RightItem = () => {
   const emailHash = md5(user?.email || '');
   const gravatarURL = `https://www.gravatar.com/avatar/${emailHash}`;
 
+  const ref = useRef();
+
   const handleRedirectTo = (path) => history.push(path);
 
   const toggleNavMenu = () => setNavOpen((prevState) => !prevState);
 
+  useClickAway(ref, () => {
+    setNavOpen(false);
+  });
+
   return (
-    <>
+    <div ref={ref}>
       {isAuthenticated ? (
         <Avatar onClick={toggleNavMenu} type="button">
           <img alt="avatar" src={gravatarURL} />
@@ -52,7 +59,7 @@ const RightItem = () => {
         </>
       )}
       {navOpen && <Menu isAuthenticated={isAuthenticated} />}
-    </>
+    </div>
   );
 };
 
