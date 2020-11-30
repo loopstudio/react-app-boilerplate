@@ -58,7 +58,7 @@
 │   ├── layouts/
 │   ├── locales/
 │   ├── pages/
-│   ├── services.js
+│   ├── services/
 │   ├── actions.js
 │   ├── reducer.js
 │   ├── types.js
