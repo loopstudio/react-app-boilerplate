@@ -37,3 +37,9 @@ jobs:
 
       - name: Run tests
         run: yarn test
+
+      - name: Run test coverage
+        run: yarn test:coverage_output
+
+      - name: Check test coverage
+        run: yarn test:coverage_check
