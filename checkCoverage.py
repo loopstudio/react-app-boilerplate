@@ -5,10 +5,10 @@ threshold=90
 file = open('coverage/action_coverage.txt', "r")
 lines = file.readlines()
 
-coverageTypes= lines[1].split('|')
-coverages= lines[3].split('|')
+coverageTypes = lines[1].split('|')
+coverages = lines[3].split('|')
 
-lowCovFlag=False
+lowCovFlag = False
 for index, rawCoverage in enumerate(coverages):
   coverage = rawCoverage.strip()
   if (index < 5 and index > 0):
