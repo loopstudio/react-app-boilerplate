@@ -1281,10 +1281,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@hookform/resolvers@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.1.1.tgz#20baf66cfd21f0feb65eea4f150ae8693be795f5"
-  integrity sha512-X6OWofkjr7U4Yjb0+OIgOKWttsy2UB8NeLejegGuWgcVad0kHQGezo7S1lhJmGS4icva13gfmGGcW3EOeEEQ5Q==
+"@hookform/resolvers@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-1.1.2.tgz#3e3521a71e701ae133f02d53a6994a1037b0ef22"
+  integrity sha512-I3kYtdj1QX9VkNq4GtC2ZNfoBV13GpoxZCsoA9F3CyAmkQmiznJt6HG8Oc9/R3PLqPrw98FiIzyVs/rG0FnGAA==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -9520,10 +9520,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-hook-form@^6.12.2:
-  version "6.12.2"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.12.2.tgz#aa67f47da4730a7bce44768583bdf5b749eed521"
-  integrity sha512-O72E2DXyk7djFqyy6eYi5yESGweKe0CNHHPS0Mx4JazpLbE4Ox+66ldZ23f0J5ZN/krEjDWRD+hUfg5Shvfhtw==
+react-hook-form@^6.13.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.13.0.tgz#91e6da52cd3a636724b38ad8bc3704d7bd8a2626"
+  integrity sha512-AADO0EtAGEggII3DNhBCwm7MSwkBWCVo72K32NY6YzhSTBL5bJsBfWJ4/PVGBer31js5ppt+I6/qUyLo8o8AvA==
 
 react-intl@^5.10.6:
   version "5.10.6"
@@ -12182,10 +12182,10 @@ yargs@^15.4.1:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-yup@^0.32.1:
-  version "0.32.1"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.32.1.tgz#cf51277e7e058292885a76cb37947c557176d244"
-  integrity sha512-wNXD3lXNLeFHGB/XZufXaXuKzyeruLa5kbb8YY2i1V0O5J3x3+LgeXsVlNp5pAE8XVsqEvPB/gN+0fpOMi0f7g==
+yup@^0.32.8:
+  version "0.32.8"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.32.8.tgz#16e4a949a86a69505abf99fd0941305ac9adfc39"
+  integrity sha512-SZulv5FIZ9d5H99EN5tRCRPXL0eyoYxWIP1AacCrjC9d4DfP13J1dROdKGfpfRHT3eQB6/ikBl5jG21smAfCkA==
   dependencies:
     "@babel/runtime" "^7.10.5"
     "@types/lodash" "^4.14.165"
