@@ -8,10 +8,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
-    "test:coverage": "react-scripts test --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
+    "test:coverage": "react-scripts test --ci --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "lint": "eslint .",
     "eject": "react-scripts eject",
     "pre-push": "eslint ."
+  },
+  "jest": {
+    "coverageReporters": ["text-summary"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 85,
+        "lines": 85,
+        "statements": 85
+      }
+    }
   },
   "browserslist": {
     "production": [
