@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - 'master'
@@ -37,3 +38,6 @@ jobs:
 
       - name: Run tests
         run: yarn test
+
+      - name: Run test coverage
+        run: yarn test:coverage
