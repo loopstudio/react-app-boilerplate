@@ -1,6 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { AuthContext } from '../context';
 
-export const useAuthentication = () =>
-  useSelector(({ auth: { session } }) => session !== null);
+// TODO: check if we want to abstract some stuff here
+// maybe make the AuthProvider more lightweight?
+// maybe convert it to use useReducer and make api requests here?
 
-export const useUser = () => useSelector(({ auth: { user } }) => user);
+export const useAuth = () => useContext(AuthContext);

@@ -3,16 +3,18 @@ import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { signIn } from 'features/auth';
+// import { signIn } from 'features/auth';
+import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 
 const SignInForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const { signIn } = useAuth();
   const intl = useIntl();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
@@ -29,10 +31,11 @@ const SignInForm = () => {
   const onSubmit = async (values) => {
     setIsLoading(true);
     try {
-      await dispatch(signIn(values));
+      await signIn(values);
       history.replace('/');
     } catch (error) {
       setIsLoading(false);
+      console.log(error);
       handleErrors(error, formMethods.setError);
     }
   };

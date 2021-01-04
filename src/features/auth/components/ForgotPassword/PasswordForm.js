@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { object, ref, string } from 'yup';
 import PropTypes from 'prop-types';
 
@@ -19,7 +19,7 @@ import {
 
 const PasswordForm = ({ token }) => {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const history = useHistory();
   const intl = useIntl();
 
@@ -39,7 +39,7 @@ const PasswordForm = ({ token }) => {
     setLoading(true);
 
     try {
-      await dispatch(resetPassword({ password, token }));
+      // await dispatch(resetPassword({ password, token }));
       history.push({
         pathname: '/',
         search: '?resetPassword=success',

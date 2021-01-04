@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
-import { useUser, updateUser } from 'features/auth';
+import { useAuth, updateUser } from 'features/auth';
 
 import {
   SuccessText,
@@ -16,9 +16,9 @@ import {
 } from 'features/app/components/Settings/Settings.styles';
 
 const SettingsForm = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const intl = useIntl();
-  const user = useUser();
+  const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
@@ -42,7 +42,7 @@ const SettingsForm = () => {
   const onSubmit = async (attributes) => {
     setIsLoading(true);
     try {
-      await dispatch(updateUser(attributes));
+      // await dispatch(updateUser(attributes));
       setIsResponseSuccess(true);
     } catch (error) {
       handleErrors(error, formMethods.setError);

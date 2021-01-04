@@ -13,15 +13,19 @@ class AuthService {
     return httpClient.delete('/users/sign_out');
   }
 
-  static getVerificationCode(email) {
-    return httpClient.post('/users/password', { email });
+  static validateToken() {
+    return httpClient.get('/users/validate_token');
   }
 
   static updateUser(user, passwordCheck) {
     return httpClient.patch('/user', { user, passwordCheck });
   }
 
-  static verifyToken(resetPasswordToken) {
+  static getVerificationCode(email) {
+    return httpClient.post('/users/password', { email });
+  }
+
+  static verifyCode(resetPasswordToken) {
     return httpClient.get('users/password/edit', {
       params: { resetPasswordToken },
     });

@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
-export const useLocale = () =>
-  useSelector(({ auth: { user, guestLocale } }) => user?.locale || guestLocale);
+export const useLocale = () => {};
+// useSelector(({ auth: { user, guestLocale } }) => user?.locale || guestLocale);
