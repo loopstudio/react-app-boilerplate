@@ -1,18 +1,16 @@
 import React, { StrictMode } from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { Provider } from 'react-redux';
+// import { PersistGate } from 'redux-persist/integration/react';
 import { ThemeProvider } from '@emotion/react';
 
 import App from 'features/app/components/App';
-import configureStore from 'store';
-import httpClient, {
-  applyMiddlewares,
-} from 'features/auth/services/httpClient';
+// import configureStore from 'store';
+import httpClient from 'features/app/services/httpClient';
 import theme from 'theme';
 
-const { store, persistor } = configureStore();
-applyMiddlewares(httpClient, store);
+// const { store, persistor } = configureStore();
+// applyMiddlewares(httpClient, store);
 
 jest.mock('react-dom', () => ({ render: jest.fn() }));
 
@@ -27,13 +25,13 @@ describe('index.js', () => {
 
     render(
       <StrictMode>
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-            <ThemeProvider theme={theme}>
-              <App />
-            </ThemeProvider>
-          </PersistGate>
-        </Provider>
+        {/* <Provider store={store}> */}
+        {/* <PersistGate persistor={persistor}> */}
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+        {/* </PersistGate> */}
+        {/* // </Provider> */}
       </StrictMode>,
       root
     );

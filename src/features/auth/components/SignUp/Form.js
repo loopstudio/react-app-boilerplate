@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { signUp } from 'features/auth';
+import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 
 const SignUpForm = () => {
-  const dispatch = useDispatch();
+  const { signUp } = useAuth();
   const intl = useIntl();
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +31,7 @@ const SignUpForm = () => {
   const onSubmit = async (values) => {
     setIsLoading(true);
     try {
-      await dispatch(signUp({ locale: intl.locale, ...values }));
+      await signUp({ locale: intl.locale, ...values, email: 'invalid@email' });
       history.replace('/');
     } catch (error) {
       setIsLoading(false);

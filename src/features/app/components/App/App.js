@@ -6,7 +6,7 @@ import flatten from 'flat';
 import { Global } from '@emotion/react';
 
 import icons from 'assets/icons';
-import { useAuthentication } from 'features/auth';
+import { useAuth } from 'features/auth';
 import { useLocale } from '../../hooks/locale';
 import AppLocale from '../../locales';
 
@@ -22,8 +22,9 @@ const AuthenticatedApp = lazy(() =>
 library.add(icons);
 
 const App = () => {
-  const locale = useLocale();
-  const isAuthenticated = useAuthentication();
+  // TODO: move guest locale to a context in app?
+  const locale = 'en'; // useLocale();
+  const { isLoading, isAuthenticated } = useAuth();
   const appLocale = AppLocale[locale] || AppLocale.en;
 
   return (
@@ -31,9 +32,13 @@ const App = () => {
       <BrowserRouter>
         <Global styles={globalStyles} />
         <ErrorBoundary>
-          <Suspense fallback={<Loading styles={loadingStyles} />}>
-            {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-          </Suspense>
+          {isLoading ? (
+            <Loading styles={loadingStyles} />
+          ) : (
+            <Suspense fallback={<Loading styles={loadingStyles} />}>
+              {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+            </Suspense>
+          )}
         </ErrorBoundary>
       </BrowserRouter>
     </IntlProvider>

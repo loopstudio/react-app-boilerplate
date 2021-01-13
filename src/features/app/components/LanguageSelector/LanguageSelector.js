@@ -1,6 +1,5 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
 
 import { setGuestLocale } from 'features/auth';
 
@@ -8,10 +7,10 @@ import { Select } from 'features/app/components/LanguageSelector/LanguageSelecto
 
 const LanguageSelector = () => {
   const intl = useIntl();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = (event) => {
-    dispatch(setGuestLocale(event.target.value));
+    // dispatch(setGuestLocale(event.target.value));
   };
 
   return (
