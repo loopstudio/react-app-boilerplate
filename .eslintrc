@@ -35,6 +35,17 @@
     "react/jsx-filename-extension": "off",
     "prefer-promise-reject-errors": "off",
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          {
+            "name": "react",
+            "importNames": ["default"]
+          }
+        ]
+      }
+    ]
   }
 }
