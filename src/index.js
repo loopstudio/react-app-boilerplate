@@ -1,5 +1,4 @@
-import { StrictMode } from 'react';
-import * as React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM, { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
