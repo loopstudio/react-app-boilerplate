@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Home from 'features/app/components/Home';
 import MainLayout from 'features/app/layouts/MainLayout';
 

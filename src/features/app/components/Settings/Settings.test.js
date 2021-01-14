@@ -1,4 +1,3 @@
-import React from 'react';
 import '@testing-library/jest-dom/extend-expect';
 
 import { fillInput, fireEvent, render, waitFor } from 'testUtils';
