@@ -1,5 +1,3 @@
-import React from 'react';
-
 import LanguageSelector from 'features/app/components/LanguageSelector';
 
 const Footer = () => (

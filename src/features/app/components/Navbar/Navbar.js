@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Logo from 'features/app/components/Navbar/Logo';
 import UserOptions from 'features/app/components/Navbar/UserOptions';
 

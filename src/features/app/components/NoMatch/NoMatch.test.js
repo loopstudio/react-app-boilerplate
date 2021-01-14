@@ -1,4 +1,3 @@
-import React from 'react';
 import { renderWithRouter } from 'testUtils';
 import '@testing-library/jest-dom/extend-expect';
 
