@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import Button from 'features/app/components/Navbar/Button';
 import Logo from 'features/app/components/Navbar/Logo';
 import Menu from 'features/app/components/Navbar/Menu';
+import { AuthProvider } from 'features/auth';
 
 describe('Menu', () => {
   describe('Button', () => {
@@ -24,7 +25,7 @@ describe('Menu', () => {
   });
 
   it('renders the settings and sign out buttons when authenticated', () => {
-    const { queryByText } = render(<Menu isAuthenticated />);
+    const { queryByText } = render(<AuthProvider><Menu isAuthenticated /></AuthProvider>);
     const settingButton = queryByText('Account settings');
     const signOutButton = queryByText('Sign out');
     const signUpButton = queryByText('Sign up');
@@ -37,7 +38,7 @@ describe('Menu', () => {
   });
 
   it('renders the sign in and sign up buttons when it is not authenticated', () => {
-    const { queryByText } = render(<Menu />);
+    const { queryByText } = render(<AuthProvider><Menu /></AuthProvider>);
     const signUpButton = queryByText('Sign up');
     const signInButton = queryByText('Sign in');
     const settingButton = queryByText('Account settings');
