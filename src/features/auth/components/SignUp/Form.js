@@ -31,7 +31,7 @@ const SignUpForm = () => {
   const onSubmit = async (values) => {
     setIsLoading(true);
     try {
-      await signUp({ locale: intl.locale, ...values, email: 'invalid@email' });
+      await signUp({ locale: intl.locale, ...values });
       history.replace('/');
     } catch (error) {
       setIsLoading(false);

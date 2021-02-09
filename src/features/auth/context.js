@@ -1,5 +1,4 @@
 import React, { createContext, useState, useCallback, useEffect } from 'react';
-import Loading from 'features/app/components/Loading';
 import AuthService from './services/AuthService';
 import { applyInterceptors, clearInterceptors } from './services/middleware';
 
@@ -76,9 +75,47 @@ export const AuthProvider = ({ httpClient, children }) => {
     return response;
   }, []);
 
+  const updateUser = useCallback(async (values, passwordCheck = null) => {
+    const response = await AuthService.updateUser(values, passwordCheck);
+    const { data } = response;
+
+    setState((prevState) => ({ ...prevState, user: data.user }));
+
+    return response;
+  }, []);
+
   const signOut = useCallback(async () => {
     setState(defaultState);
     return AuthService.signOut();
+  }, []);
+
+  const requestPasswordReset = useCallback(
+    (email) => AuthService.requestPasswordReset(email),
+    []
+  );
+
+  const verifyPasswordReset = useCallback(
+    (resetPasswordToken) => AuthService.verifyPasswordReset(resetPasswordToken),
+    []
+  );
+
+  const resetPassword = useCallback(async (password, resetPasswordToken) => {
+    const response = await AuthService.resetPassword(
+      password,
+      resetPasswordToken
+    );
+    const {
+      headers: { accessToken, client, uid },
+      data,
+    } = response;
+
+    setState({
+      session: { accessToken, client, uid },
+      user: data.user,
+      isLoading: false,
+    });
+
+    return response;
   }, []);
 
   useEffect(() => {
@@ -107,13 +144,17 @@ export const AuthProvider = ({ httpClient, children }) => {
   return (
     <AuthContext.Provider
       value={{
+        isLoading,
+        isAuthenticated: user !== null,
         session,
         user,
         signIn,
         signUp,
+        updateUser,
         signOut,
-        isLoading,
-        isAuthenticated: user !== null,
+        requestPasswordReset,
+        verifyPasswordReset,
+        resetPassword,
       }}
     >
       {children}

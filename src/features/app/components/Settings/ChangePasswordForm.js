@@ -6,7 +6,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
-import AuthService from 'features/auth/services/AuthService';
+import { useAuth } from 'features/auth';
 
 import {
   SuccessText,
@@ -16,6 +16,7 @@ import {
 
 const ChangePasswordForm = () => {
   const intl = useIntl();
+  const { updateUser } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
@@ -31,7 +32,7 @@ const ChangePasswordForm = () => {
   const onSubmit = async ({ password, currentPassword }) => {
     setIsLoading(true);
     try {
-      await AuthService.updateUser({ password }, currentPassword);
+      await updateUser({ password }, currentPassword);
       setIsResponseSuccess(true);
       formMethods.reset(
         { currentPassword: '', password: '' },

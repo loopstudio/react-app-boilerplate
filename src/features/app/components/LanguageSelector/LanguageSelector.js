@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 
-import { setGuestLocale } from 'features/auth';
+// import { setGuestLocale } from 'features/auth';
 
 import { Select } from 'features/app/components/LanguageSelector/LanguageSelector.styles';
 

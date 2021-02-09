@@ -25,11 +25,11 @@ class AuthService {
     return this.httpClient.patch('/user', { user, passwordCheck });
   }
 
-  static getVerificationCode(email) {
+  static requestPasswordReset(email) {
     return this.httpClient.post('/users/password', { email });
   }
 
-  static verifyCode(resetPasswordToken) {
+  static verifyPasswordReset(resetPasswordToken) {
     return this.httpClient.get('users/password/edit', {
       params: { resetPasswordToken },
     });
