@@ -12,6 +12,7 @@ import theme from 'theme';
 import AppLocale from 'features/app/locales';
 // import configureStore from 'store';
 import httpClient from 'features/app/services/httpClient'; // applyMiddlewares,
+import { GuestLocaleProvider } from '../features/app/context/guestLocale';
 
 const renderWithProviders = (
   ui,
@@ -22,11 +23,13 @@ const renderWithProviders = (
 
   const Wrapper = ({ children }) => (
     // <Provider store={store}>
-    <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
-      <ThemeProvider theme={theme}>
-        <Router history={history}>{children}</Router>
-      </ThemeProvider>
-    </IntlProvider>
+    <GuestLocaleProvider>
+      <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
+        <ThemeProvider theme={theme}>
+          <Router history={history}>{children}</Router>
+        </ThemeProvider>
+      </IntlProvider>
+    </GuestLocaleProvider>
     // </Provider>
   );
 
