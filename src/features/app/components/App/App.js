@@ -26,7 +26,7 @@ const App = () => {
   const { guestLocale } = useGuestLocale();
 
   const locale = user?.locale || guestLocale;
-  const appLocale = AppLocale[locale] || AppLocale.en;
+  const appLocale = AppLocale[locale];
 
   return (
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
