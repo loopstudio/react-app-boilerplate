@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react';
 import ReactDOM, { render } from 'react-dom';
+
 import { AuthProvider } from 'features/auth';
 import { GuestLocaleProvider } from 'features/app/context/guestLocale';
 

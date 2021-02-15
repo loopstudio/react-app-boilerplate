@@ -12,7 +12,7 @@ import theme from 'theme';
 import AppLocale from 'features/app/locales';
 // import configureStore from 'store';
 import httpClient from 'features/app/services/httpClient'; // applyMiddlewares,
-import { GuestLocaleProvider } from '../features/app/context/guestLocale';
+import { GuestLocaleProvider } from 'features/app/context/guestLocale';
 
 const renderWithProviders = (
   ui,
