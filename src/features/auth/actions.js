@@ -11,11 +11,6 @@ export const resetPassword = ({ password, token }) => ({
   payload: AuthService.resetPassword(password, token),
 });
 
-export const setGuestLocale = (locale) => ({
-  type: Types.SET_GUEST_LOCALE,
-  payload: { locale },
-});
-
 export const signIn = (credentials) => ({
   type: Types.SIGN_IN,
   payload: AuthService.signIn(credentials),

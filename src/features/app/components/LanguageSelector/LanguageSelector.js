@@ -1,16 +1,15 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 
-// import { setGuestLocale } from 'features/auth';
-
 import { Select } from 'features/app/components/LanguageSelector/LanguageSelector.styles';
+import { useGuestLocale } from '../../hooks/guestLocale';
 
 const LanguageSelector = () => {
   const intl = useIntl();
-  // const dispatch = useDispatch();
+  const { setGuestLocale } = useGuestLocale();
 
   const handleChange = (event) => {
-    // dispatch(setGuestLocale(event.target.value));
+    setGuestLocale(event.target.value);
   };
 
   return (

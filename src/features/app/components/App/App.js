@@ -7,7 +7,7 @@ import { Global } from '@emotion/react';
 
 import icons from 'assets/icons';
 import { useAuth } from 'features/auth';
-import { useLocale } from '../../hooks/locale';
+import { useGuestLocale } from '../../hooks/guestLocale';
 import AppLocale from '../../locales';
 
 import { loadingStyles, globalStyles } from './App.styles';
@@ -22,10 +22,11 @@ const AuthenticatedApp = lazy(() =>
 library.add(icons);
 
 const App = () => {
-  // TODO: move guest locale to a context in app?
-  const locale = 'en'; // useLocale();
-  const { isLoading, isAuthenticated } = useAuth();
-  const appLocale = AppLocale[locale] || AppLocale.en;
+  const { isLoading, isAuthenticated, user } = useAuth();
+  const { guestLocale } = useGuestLocale();
+
+  const locale = user?.locale || guestLocale;
+  const appLocale = AppLocale[locale];
 
   return (
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>

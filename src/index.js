@@ -1,6 +1,8 @@
 import React, { StrictMode } from 'react';
 import ReactDOM, { render } from 'react-dom';
+
 import { AuthProvider } from 'features/auth';
+import { GuestLocaleProvider } from 'features/app/context/guestLocale';
 
 import { ThemeProvider } from '@emotion/react';
 
@@ -16,9 +18,11 @@ if (process.env.NODE_ENV !== 'production') {
 render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <AuthProvider httpClient={httpClient}>
-        <App />
-      </AuthProvider>
+      <GuestLocaleProvider>
+        <AuthProvider httpClient={httpClient}>
+          <App />
+        </AuthProvider>
+      </GuestLocaleProvider>
     </ThemeProvider>
   </StrictMode>,
   document.getElementById('root')
