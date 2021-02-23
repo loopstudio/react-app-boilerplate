@@ -15,7 +15,6 @@
     "pre-push": "eslint ."
   },
   "jest": {
-    "coverageReporters": ["text-summary"],
     "coverageThreshold": {
       "global": {
         "branches": 85,
