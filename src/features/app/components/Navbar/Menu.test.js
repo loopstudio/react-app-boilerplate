@@ -1,27 +1,18 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { fireEvent, renderWithRouter, waitFor } from 'testUtils';
-import { mockSignOutSuccess } from 'testUtils/mocks/auth';
+import {
+  userData,
+  authenticationHeaders,
+  mockSignOutSuccess,
+} from 'testUtils/mocks/auth';
 import Navbar from './Navbar';
 
 describe('Menu', () => {
   const fakeState = {
     auth: {
-      user: {
-        id: 1,
-        firstName: 'Jane',
-        lastName: 'Doe',
-        email: 'jane.doe@example.com',
-        locale: 'en',
-        createdAt: '2020-04-21T21:20:35.663-04:00',
-        updatedAt: '2020-04-21T22:22:56.291-04:00',
-      },
-      session: {
-        uid: 'jane.doe@example.com',
-        client: 'client',
-        accessToken: 'token',
-      },
-      guestLocale: 'en',
+      user: userData,
+      session: authenticationHeaders,
     },
   };
 
@@ -61,6 +52,40 @@ describe('Menu', () => {
       expect(mockedRequest.isDone()).toBeTruthy();
       expect(signOutButton).toBeInTheDocument();
       expect(history.location.pathname).toEqual('/sign-in');
+    });
+  });
+
+  it('navigates to sign in', async () => {
+    const { history, getAllByText, getByRole } = renderWithRouter(<Navbar />, {
+      history: ['/forgot-password'],
+    });
+
+    const menuButton = getByRole('button');
+    fireEvent.click(menuButton);
+
+    const signInButton = getAllByText('Sign in')[1];
+    fireEvent.click(signInButton);
+
+    await waitFor(() => {
+      expect(signInButton).toBeInTheDocument();
+      expect(history.location.pathname).toEqual('/sign-in');
+    });
+  });
+
+  it('navigates to sign up', async () => {
+    const { history, getAllByText, getByRole } = renderWithRouter(<Navbar />, {
+      history: ['/forgot-password'],
+    });
+
+    const menuButton = getByRole('button');
+    fireEvent.click(menuButton);
+
+    const signUpButton = getAllByText('Sign up')[1];
+    fireEvent.click(signUpButton);
+
+    await waitFor(() => {
+      expect(signUpButton).toBeInTheDocument();
+      expect(history.location.pathname).toEqual('/sign-up');
     });
   });
 });
