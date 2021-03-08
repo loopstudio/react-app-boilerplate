@@ -1,13 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
-import {
-  fireEvent,
-  render,
-  renderWithProviders,
-  renderWithRouter,
-  waitFor,
-} from 'testUtils';
-import Button from 'features/app/components/Navbar/Button';
+import { fireEvent, renderWithRouter, waitFor } from 'testUtils';
+import { mockSignOutSuccess } from 'testUtils/mocks/auth';
 import Navbar from './Navbar';
 
 describe('Menu', () => {
@@ -50,6 +44,8 @@ describe('Menu', () => {
   });
 
   it('logs out', async () => {
+    const mockedRequest = mockSignOutSuccess();
+
     const { history, getByText, getByRole } = renderWithRouter(<Navbar />, {
       history: ['/'],
       state: fakeState,
@@ -62,6 +58,7 @@ describe('Menu', () => {
     fireEvent.click(signOutButton);
 
     await waitFor(() => {
+      expect(mockedRequest.isDone()).toBeTruthy();
       expect(signOutButton).toBeInTheDocument();
       expect(history.location.pathname).toEqual('/sign-in');
     });
