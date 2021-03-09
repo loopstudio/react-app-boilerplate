@@ -1,5 +1,3 @@
-// import { AuthRef } from 'features/auth';
-
 let requestInterceptor;
 let responseInterceptor;
 
@@ -20,17 +18,15 @@ export const applyInterceptors = (client, session) => {
   responseInterceptor = client.interceptors.response.use(
     (response) => response,
     (error) => {
-      console.log('pepe', error.response);
-      // why errors behave like this on signup?
-      if (!error.response) {
+      if (!error.data) {
         return Promise.reject({ errors: ['Connection error'] });
       }
 
-      if (error.response.status === 401) {
+      if (error.status === 401) {
         // AuthRef.current.clearSession();
       }
 
-      return Promise.reject(error.response.data);
+      return Promise.reject(error.data);
     }
   );
 
