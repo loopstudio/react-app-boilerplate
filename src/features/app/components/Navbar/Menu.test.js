@@ -56,14 +56,14 @@ describe('Menu', () => {
   });
 
   it('navigates to sign in', async () => {
-    const { history, getAllByText, getByRole } = renderWithRouter(<Navbar />, {
+    const { history, getByRole } = renderWithRouter(<Navbar />, {
       history: ['/forgot-password'],
     });
 
     const menuButton = getByRole('button');
     fireEvent.click(menuButton);
 
-    const signInButton = getAllByText('Sign in')[1];
+    const signInButton = getByRole('button', { name: 'Sign in' });
     fireEvent.click(signInButton);
 
     await waitFor(() => {
@@ -73,14 +73,14 @@ describe('Menu', () => {
   });
 
   it('navigates to sign up', async () => {
-    const { history, getAllByText, getByRole } = renderWithRouter(<Navbar />, {
+    const { history, getByRole } = renderWithRouter(<Navbar />, {
       history: ['/forgot-password'],
     });
 
     const menuButton = getByRole('button');
     fireEvent.click(menuButton);
 
-    const signUpButton = getAllByText('Sign up')[1];
+    const signUpButton = getByRole('button', { name: 'Sign up' });
     fireEvent.click(signUpButton);
 
     await waitFor(() => {
