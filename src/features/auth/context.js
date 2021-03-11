@@ -1,4 +1,6 @@
 import React, { createContext, useState, useCallback, useEffect } from 'react';
+
+import { useGuestLocale } from 'features/app/hooks/guestLocale';
 import AuthService from './services/AuthService';
 import { applyInterceptors, clearInterceptors } from './services/middleware';
 
@@ -22,6 +24,8 @@ const initialState = () => {
 export const AuthProvider = ({ children, defaultValue, httpClient }) => {
   const [state, setState] = useState(defaultValue || initialState);
   const { user, session, isLoading } = state;
+
+  const { guestLocale } = useGuestLocale();
 
   const validateSession = useCallback(async () => {
     if (isLoading && session) {
@@ -89,6 +93,10 @@ export const AuthProvider = ({ children, defaultValue, httpClient }) => {
     return AuthService.signOut();
   }, []);
 
+  const clearSession = useCallback(async () => {
+    setState(defaultState);
+  }, []);
+
   const requestPasswordReset = useCallback(
     (email) => AuthService.requestPasswordReset(email),
     []
@@ -123,9 +131,15 @@ export const AuthProvider = ({ children, defaultValue, httpClient }) => {
   }, [httpClient]);
 
   useEffect(() => {
-    applyInterceptors(httpClient, session);
-    return () => clearInterceptors(httpClient);
-  }, [httpClient, session]);
+    const interceptors = applyInterceptors(
+      httpClient,
+      session,
+      clearSession,
+      guestLocale
+    );
+
+    return () => clearInterceptors(httpClient, interceptors);
+  }, [httpClient, session, clearSession, guestLocale]);
 
   useEffect(() => {
     validateSession();
@@ -152,6 +166,7 @@ export const AuthProvider = ({ children, defaultValue, httpClient }) => {
         signUp,
         updateUser,
         signOut,
+        clearSession,
         requestPasswordReset,
         verifyPasswordReset,
         resetPassword,
