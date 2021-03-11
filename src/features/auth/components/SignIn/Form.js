@@ -34,7 +34,6 @@ const SignInForm = () => {
       history.replace('/');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
       handleErrors(error, formMethods.setError);
     }
   };

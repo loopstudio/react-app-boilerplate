@@ -6,10 +6,7 @@ export const applyInterceptors = (client, session) => {
     if (session) {
       Object.assign(config.headers, session);
     } else {
-      Object.assign(
-        config.params
-        // { locale: guestLocale }
-      );
+      Object.assign(config.params, { locale: 'en' });
     }
 
     return config;
@@ -18,15 +15,15 @@ export const applyInterceptors = (client, session) => {
   responseInterceptor = client.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (!error.data) {
+      if (!error.response || !error.response.data) {
         return Promise.reject({ errors: ['Connection error'] });
       }
 
-      if (error.status === 401) {
+      if (error.response.status === 401) {
         // AuthRef.current.clearSession();
       }
 
-      return Promise.reject(error.data);
+      return Promise.reject(error.response.data);
     }
   );
 

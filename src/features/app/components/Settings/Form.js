@@ -40,7 +40,7 @@ const SettingsForm = () => {
   const onSubmit = async (attributes) => {
     setIsLoading(true);
     try {
-      updateUser(attributes);
+      await updateUser(attributes);
       setIsResponseSuccess(true);
     } catch (error) {
       handleErrors(error, formMethods.setError);

@@ -19,8 +19,8 @@ const initialState = () => {
 };
 
 // eslint-disable-next-line react/prop-types
-export const AuthProvider = ({ httpClient, children }) => {
-  const [state, setState] = useState(initialState);
+export const AuthProvider = ({ children, defaultValue, httpClient }) => {
+  const [state, setState] = useState(defaultValue || initialState);
   const { user, session, isLoading } = state;
 
   const validateSession = useCallback(async () => {
