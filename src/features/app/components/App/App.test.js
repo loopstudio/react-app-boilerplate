@@ -4,7 +4,7 @@ import { render } from 'testUtils';
 import App from 'features/app/components/App';
 
 describe('App', () => {
-  it('should render without crashing', () => {
+  it('renders without crashing', () => {
     render(<App />);
   });
 });
