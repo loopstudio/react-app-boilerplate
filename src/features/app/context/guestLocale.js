@@ -11,9 +11,9 @@ const getDefaultGuestLocale = () =>
 export const GuestLocaleProvider = ({ children }) => {
   const [guestLocale, setGuestLocale] = useState(getDefaultGuestLocale);
 
-  useEffect(() => localStorage.setItem(STORAGE_KEY, guestLocale), [
-    guestLocale,
-  ]);
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, guestLocale);
+  }, [guestLocale]);
 
   return (
     <GuestLocaleContext.Provider
