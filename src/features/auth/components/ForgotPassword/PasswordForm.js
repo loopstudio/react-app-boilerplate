@@ -3,7 +3,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
 import { object, ref, string } from 'yup';
 import PropTypes from 'prop-types';
 

@@ -21,8 +21,8 @@ const initialState = () => {
 };
 
 // eslint-disable-next-line react/prop-types
-export const AuthProvider = ({ children, defaultValue, httpClient }) => {
-  const [state, setState] = useState(defaultValue || initialState);
+export const AuthProvider = ({ children, prepopulatedState, httpClient }) => {
+  const [state, setState] = useState(prepopulatedState || initialState);
   const { user, session, isLoading } = state;
 
   const { guestLocale } = useGuestLocale();
@@ -144,8 +144,6 @@ export const AuthProvider = ({ children, defaultValue, httpClient }) => {
   useEffect(() => {
     validateSession();
   }, [validateSession]);
-
-  useEffect(() => {});
 
   useEffect(() => {
     if (session) {
