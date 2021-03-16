@@ -1,4 +1,3 @@
-import React from 'react';
 import { useIntl } from 'react-intl';
 
 import { Select } from 'features/app/components/LanguageSelector/LanguageSelector.styles';

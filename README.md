@@ -154,6 +154,7 @@ If you want to split your component into pieces for readability, maintainability
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro): a very light-weight solution for testing React components.
 - [nock](https://github.com/nock/nock): HTTP server mocking and expectations library for Node.js
 - [cypress](https://www.cypress.io/): automated integration tests. This tool isn't installed in our project, but we recommend to use it. You can install it running `yarn add cypress --dev`. For more information about the configuration, you can read [this guide](https://docs.cypress.io/guides/getting-started/installing-cypress.html#System-requirements)
+- [storybook](https://storybook.js.org/docs/react/get-started/introduction): when your app is going to have a set of components that you want to manual test on isolation you should consider Storybook which is not installed on our project but you could simply do so by running `npx sb init`. After running that command you must check out its many addons that will improve your experience using this tool.
 
 ### Styling:
 

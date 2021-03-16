@@ -33,6 +33,19 @@
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-filename-extension": "off",
-    "prefer-promise-reject-errors": "off"
+    "prefer-promise-reject-errors": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          {
+            "name": "react",
+            "importNames": ["default"]
+          }
+        ]
+      }
+    ]
   }
 }

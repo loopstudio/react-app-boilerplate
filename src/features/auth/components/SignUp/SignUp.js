@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import AuthWrapper from 'features/auth/components/AuthWrapper';

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { IntlProvider } from 'react-intl';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { BrowserRouter } from 'react-router-dom';

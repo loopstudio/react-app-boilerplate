@@ -1,4 +1,3 @@
-import React from 'react';
 import flatten from 'flat';
 import PropTypes from 'prop-types';
 import { IntlProvider } from 'react-intl';

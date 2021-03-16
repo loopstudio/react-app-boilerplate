@@ -1,4 +1,3 @@
-import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import queryString from 'query-string';

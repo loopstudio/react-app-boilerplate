@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -10,7 +10,7 @@ import {
   Wrapper,
 } from 'features/app/components/ErrorBoundary/ErrorBoundary.styles';
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = {

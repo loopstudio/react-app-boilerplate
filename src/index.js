@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react';
+import React, { StrictMode } from 'react'; // eslint-disable-line no-restricted-imports
 import ReactDOM, { render } from 'react-dom';
 
 import { AuthProvider } from 'features/auth';
