@@ -21,7 +21,7 @@ const renderWithProviders = (
     <GuestLocaleProvider>
       <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
         <ThemeProvider theme={theme}>
-          <AuthProvider httpClient={httpClient}>
+          <AuthProvider prepopulatedState={state?.auth} httpClient={httpClient}>
             <Router history={history}>{children}</Router>
           </AuthProvider>
         </ThemeProvider>

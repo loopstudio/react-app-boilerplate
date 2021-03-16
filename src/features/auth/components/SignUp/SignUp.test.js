@@ -20,7 +20,7 @@ const fakeUser = {
 };
 
 describe('SignUp', () => {
-  it('should submit correctly', async () => {
+  it('submits correctly', async () => {
     const mockedRequest = mockSignUpSuccess(fakeUser);
 
     const { getByLabelText, getByRole, history } = renderWithRouter(
@@ -47,7 +47,7 @@ describe('SignUp', () => {
     });
   });
 
-  it('should show error on response failure', async () => {
+  it('shows error on response failure', async () => {
     const mockedRequest = mockSignUpFailure(fakeUser);
 
     const { getByLabelText, getByRole, getByText } = render(<SignUp />);
@@ -70,7 +70,7 @@ describe('SignUp', () => {
     });
   });
 
-  it('should show errors for invalid values', async () => {
+  it('shows errors for invalid values', async () => {
     const { getByLabelText, getByRole, findByText } = render(<SignUp />);
     const email = getByLabelText('Email');
     const password = getByLabelText('Password');

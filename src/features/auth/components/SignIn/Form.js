@@ -3,11 +3,9 @@ import React, { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-// import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
-// import { signIn } from 'features/auth';
 import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
@@ -34,7 +32,6 @@ const SignInForm = () => {
       history.replace('/');
     } catch (error) {
       setIsLoading(false);
-      console.log(error);
       handleErrors(error, formMethods.setError);
     }
   };

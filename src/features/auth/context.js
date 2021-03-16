@@ -1,4 +1,6 @@
 import React, { createContext, useState, useCallback, useEffect } from 'react';
+
+import { useGuestLocale } from 'features/app/hooks/guestLocale';
 import AuthService from './services/AuthService';
 import { applyInterceptors, clearInterceptors } from './services/middleware';
 
@@ -19,9 +21,11 @@ const initialState = () => {
 };
 
 // eslint-disable-next-line react/prop-types
-export const AuthProvider = ({ httpClient, children }) => {
-  const [state, setState] = useState(initialState);
+export const AuthProvider = ({ children, prepopulatedState, httpClient }) => {
+  const [state, setState] = useState(prepopulatedState || initialState);
   const { user, session, isLoading } = state;
+
+  const { guestLocale } = useGuestLocale();
 
   const validateSession = useCallback(async () => {
     if (isLoading && session) {
@@ -89,6 +93,10 @@ export const AuthProvider = ({ httpClient, children }) => {
     return AuthService.signOut();
   }, []);
 
+  const clearSession = useCallback(async () => {
+    setState(defaultState);
+  }, []);
+
   const requestPasswordReset = useCallback(
     (email) => AuthService.requestPasswordReset(email),
     []
@@ -123,15 +131,19 @@ export const AuthProvider = ({ httpClient, children }) => {
   }, [httpClient]);
 
   useEffect(() => {
-    applyInterceptors(httpClient, session);
-    return () => clearInterceptors(httpClient);
-  }, [httpClient, session]);
+    const interceptors = applyInterceptors(
+      httpClient,
+      session,
+      clearSession,
+      guestLocale
+    );
+
+    return () => clearInterceptors(httpClient, interceptors);
+  }, [httpClient, session, clearSession, guestLocale]);
 
   useEffect(() => {
     validateSession();
   }, [validateSession]);
-
-  useEffect(() => {});
 
   useEffect(() => {
     if (session) {
@@ -152,6 +164,7 @@ export const AuthProvider = ({ httpClient, children }) => {
         signUp,
         updateUser,
         signOut,
+        clearSession,
         requestPasswordReset,
         verifyPasswordReset,
         resetPassword,

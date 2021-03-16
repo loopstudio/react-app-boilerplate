@@ -1,44 +1,40 @@
-let requestInterceptor;
-let responseInterceptor;
-
-export const applyInterceptors = (client, session) => {
-  requestInterceptor = client.interceptors.request.use((config) => {
+export const applyInterceptors = (
+  client,
+  session,
+  clearSession,
+  guestLocale
+) => {
+  const requestInterceptor = client.interceptors.request.use((request) => {
     if (session) {
-      Object.assign(config.headers, session);
+      Object.assign(request.headers, session);
     } else {
-      Object.assign(
-        config.params
-        // { locale: guestLocale }
-      );
+      Object.assign(request.params, { locale: guestLocale });
     }
 
-    return config;
+    return request;
   });
 
-  responseInterceptor = client.interceptors.response.use(
+  const responseInterceptor = client.interceptors.response.use(
     (response) => response,
     (error) => {
-      if (!error.data) {
+      if (!error.response || !error.response.data) {
         return Promise.reject({ errors: ['Connection error'] });
       }
 
-      if (error.status === 401) {
-        // AuthRef.current.clearSession();
+      if (error.response.status === 401) {
+        clearSession();
       }
 
-      return Promise.reject(error.data);
+      return Promise.reject(error.response.data);
     }
   );
 
-  return client;
+  return [requestInterceptor, responseInterceptor];
 };
 
-export const clearInterceptors = (client) => {
-  if (requestInterceptor) {
-    client.interceptors.request.eject(requestInterceptor);
-  }
+export const clearInterceptors = (client, interceptors) => {
+  const [requestInterceptor, responseInterceptor] = interceptors;
 
-  if (responseInterceptor) {
-    client.interceptors.response.eject(requestInterceptor);
-  }
+  client.interceptors.request.eject(requestInterceptor);
+  client.interceptors.response.eject(responseInterceptor);
 };

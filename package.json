@@ -8,6 +8,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
+    "test:debug-nock": "DEBUG=nock.* react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:coverage": "react-scripts test --ci --env=jest-environment-jsdom-sixteen --coverage --watchAll=false",
     "lint": "eslint .",
     "eject": "react-scripts eject",
