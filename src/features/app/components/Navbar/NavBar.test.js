@@ -1,9 +1,9 @@
 import { render } from 'testUtils';
 import '@testing-library/jest-dom/extend-expect';
 
-import Button from 'features/app/components/Navbar/Button';
-import Logo from 'features/app/components/Navbar/Logo';
-import Menu from 'features/app/components/Navbar/Menu';
+import Button from './Button';
+import Logo from './Logo';
+import Menu from './Menu';
 
 describe('Menu', () => {
   describe('Button', () => {
@@ -25,12 +25,12 @@ describe('Menu', () => {
   describe('when user is authenticated', () => {
     it('renders the settings and sign out buttons', () => {
       const { queryByText } = render(<Menu isAuthenticated />);
-      const settingButton = queryByText('Account settings');
+      const settingsButton = queryByText('Account settings');
       const signOutButton = queryByText('Sign out');
       const signUpButton = queryByText('Sign up');
       const signInButton = queryByText('Sign in');
 
-      expect(settingButton).toBeInTheDocument();
+      expect(settingsButton).toBeInTheDocument();
       expect(signOutButton).toBeInTheDocument();
       expect(signUpButton).toBeNull();
       expect(signInButton).toBeNull();
@@ -42,12 +42,12 @@ describe('Menu', () => {
       const { queryByText } = render(<Menu />);
       const signUpButton = queryByText('Sign up');
       const signInButton = queryByText('Sign in');
-      const settingButton = queryByText('Account settings');
+      const settingsButton = queryByText('Account settings');
       const signOutButton = queryByText('Sign out');
 
       expect(signUpButton).toBeInTheDocument();
       expect(signInButton).toBeInTheDocument();
-      expect(settingButton).toBeNull();
+      expect(settingsButton).toBeNull();
       expect(signOutButton).toBeNull();
     });
   });

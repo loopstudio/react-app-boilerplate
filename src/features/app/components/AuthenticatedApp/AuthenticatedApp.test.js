@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import { renderWithRouter } from 'testUtils';
 import { userData, authenticationHeaders } from 'testUtils/mocks/auth';
-import AuthenticatedApp from 'features/app/components/AuthenticatedApp/index';
+import AuthenticatedApp from './AuthenticatedApp';
 
 const state = {
   auth: {

@@ -1,7 +1,8 @@
 import { useIntl } from 'react-intl';
 
-import { Select } from 'features/app/components/LanguageSelector/LanguageSelector.styles';
 import { useGuestLocale } from '../../hooks/guestLocale';
+
+import { Select } from './LanguageSelector.styles';
 
 const LanguageSelector = () => {
   const intl = useIntl();

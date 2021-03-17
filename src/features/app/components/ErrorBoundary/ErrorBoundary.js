@@ -8,7 +8,7 @@ import {
   Legend,
   ReportButton,
   Wrapper,
-} from 'features/app/components/ErrorBoundary/ErrorBoundary.styles';
+} from './ErrorBoundary.styles';
 
 class ErrorBoundary extends Component {
   constructor(props) {

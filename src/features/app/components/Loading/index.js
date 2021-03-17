@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Loading/Loading';
+export { default } from './Loading';

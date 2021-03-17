@@ -8,11 +8,7 @@ import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 import { useAuth } from 'features/auth';
 
-import {
-  SuccessText,
-  formStyles,
-  buttonStyles,
-} from 'features/app/components/Settings/Settings.styles';
+import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
 
 const SettingsForm = () => {
   const intl = useIntl();

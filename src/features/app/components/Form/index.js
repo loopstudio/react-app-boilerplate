@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Form/Form';
+export { default } from './Form';

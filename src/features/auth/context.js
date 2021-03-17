@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import { createContext, useState, useCallback, useEffect } from 'react';
 
 import { useGuestLocale } from 'features/app/hooks/guestLocale';
 import AuthService from './services/AuthService';

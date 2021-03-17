@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import queryString from 'query-string';
 
-import { Content, SuccessText } from 'features/app/components/Home/Home.styles';
+import { Content, SuccessText } from './Home.styles';
 
 const Home = () => {
   const { location } = useHistory();

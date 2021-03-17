@@ -1,4 +1,4 @@
-import LanguageSelector from 'features/app/components/LanguageSelector';
+import LanguageSelector from '../LanguageSelector';
 
 const Footer = () => (
   <footer>

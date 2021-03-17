@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/UnauthenticatedApp/UnauthenticatedApp';
+export { default } from './UnauthenticatedApp';

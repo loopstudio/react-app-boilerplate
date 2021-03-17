@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { renderWithRouter } from 'testUtils';
-import UnauthenticatedApp from 'features/app/components/UnauthenticatedApp/index';
+import UnauthenticatedApp from './UnauthenticatedApp';
 
 describe('Unauthenticated App', () => {
   it('renders the Sign in Page', () => {

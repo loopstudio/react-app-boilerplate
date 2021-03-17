@@ -1,5 +1,5 @@
 import { render } from 'testUtils';
-import App from 'features/app/components/App';
+import App from './App';
 
 describe('App', () => {
   it('renders without crashing', () => {

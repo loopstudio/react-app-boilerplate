@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/ErrorBoundary/ErrorBoundary';
+export { default } from './ErrorBoundary';

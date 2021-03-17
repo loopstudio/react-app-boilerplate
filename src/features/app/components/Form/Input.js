@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useFormContext } from 'react-hook-form';
 
-import InputLabel from 'features/app/components/Form/InputLabel';
+import InputLabel from './InputLabel';
 
 import { Error, Input, InputContainer } from './Form.styles';
 

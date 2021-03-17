@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Navbar/Navbar';
+export { default } from './Navbar';

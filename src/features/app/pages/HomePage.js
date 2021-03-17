@@ -1,5 +1,5 @@
-import Home from 'features/app/components/Home';
-import MainLayout from 'features/app/layouts/MainLayout';
+import Home from '../components/Home';
+import MainLayout from '../layouts/MainLayout';
 
 const HomePage = () => (
   <MainLayout>
