@@ -1,5 +1,5 @@
-import NoMatch from 'features/app/components/NoMatch';
-import MainLayout from 'features/app/layouts/MainLayout';
+import NoMatch from '../components/NoMatch';
+import MainLayout from '../layouts/MainLayout';
 
 const NoMatchPage = () => (
   <MainLayout noHeader>

@@ -5,10 +5,10 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 import PropTypes from 'prop-types';
 
+import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import Loading from 'features/app/components/Loading';
 import { handleErrors } from 'helpers/errors';
-import AuthService from 'features/auth/services/AuthService';
 import { RESET_PASSWORD_STEPS } from 'features/auth/components/ForgotPassword/ForgotPassword';
 
 import {
@@ -20,6 +20,7 @@ import {
 const TokenForm = ({ onStepChange, onSaveToken }) => {
   const [loading, setLoading] = useState(false);
   const intl = useIntl();
+  const { verifyPasswordReset } = useAuth();
 
   const validationSchema = object().shape({
     token: string()
@@ -35,7 +36,7 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
     setLoading(true);
 
     try {
-      await AuthService.verifyToken(token);
+      await verifyPasswordReset(token);
       onSaveToken(token);
       onStepChange(RESET_PASSWORD_STEPS.updatePassword);
     } catch (error) {

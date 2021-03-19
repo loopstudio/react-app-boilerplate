@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import md5 from 'md5';
 
-import { useAuthentication, useUser } from 'features/auth';
+import { useAuth } from 'features/auth';
 
 import Button from './Button';
 import Menu from './Menu';
@@ -17,9 +17,8 @@ import {
 } from './NavBar.styles';
 
 const RightItem = () => {
-  const user = useUser();
   const history = useHistory();
-  const isAuthenticated = useAuthentication();
+  const { isAuthenticated, user } = useAuth();
   const [navOpen, setNavOpen] = useState(false);
   const emailHash = md5(user?.email || '');
   const gravatarURL = `https://www.gravatar.com/avatar/${emailHash}`;

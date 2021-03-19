@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Settings/Settings';
+export { default } from './Settings';

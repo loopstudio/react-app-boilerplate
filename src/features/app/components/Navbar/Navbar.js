@@ -1,7 +1,7 @@
-import Logo from 'features/app/components/Navbar/Logo';
-import UserOptions from 'features/app/components/Navbar/UserOptions';
+import Logo from './Logo';
+import UserOptions from './UserOptions';
 
-import { Nav, NavContent } from 'features/app/components/Navbar/NavBar.styles';
+import { Nav, NavContent } from './NavBar.styles';
 
 const Navbar = () => (
   <Nav>

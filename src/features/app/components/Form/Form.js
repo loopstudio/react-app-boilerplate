@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { FormProvider } from 'react-hook-form';
 
-import FormButton from 'features/app/components/Form/Button';
-import FormInput from 'features/app/components/Form/Input';
-import FormSelect from 'features/app/components/Form/Select';
+import FormButton from './Button';
+import FormInput from './Input';
+import FormSelect from './Select';
 
-import { Error, FormContent } from 'features/app/components/Form/Form.styles';
+import { Error, FormContent } from './Form.styles';
 
 const Form = ({ children, formMethods, onSubmit, ...props }) => {
   const { errors, handleSubmit } = formMethods;

@@ -3,11 +3,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { object, ref, string } from 'yup';
 import PropTypes from 'prop-types';
 
-import { resetPassword } from 'features/auth';
+import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import Loading from 'features/app/components/Loading';
 import { handleErrors } from 'helpers/errors';
@@ -19,9 +18,9 @@ import {
 
 const PasswordForm = ({ token }) => {
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
   const history = useHistory();
   const intl = useIntl();
+  const { resetPassword } = useAuth();
 
   const validationSchema = object().shape({
     password: string().required(intl.messages['common.required']),
@@ -39,7 +38,7 @@ const PasswordForm = ({ token }) => {
     setLoading(true);
 
     try {
-      await dispatch(resetPassword({ password, token }));
+      await resetPassword(password, token);
       history.push({
         pathname: '/',
         search: '?resetPassword=success',

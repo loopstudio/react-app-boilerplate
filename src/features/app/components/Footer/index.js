@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Footer/Footer';
+export { default } from './Footer';

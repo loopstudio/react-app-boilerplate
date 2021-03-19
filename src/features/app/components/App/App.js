@@ -6,8 +6,8 @@ import flatten from 'flat';
 import { Global } from '@emotion/react';
 
 import icons from 'assets/icons';
-import { useAuthentication } from 'features/auth';
-import { useLocale } from '../../hooks/locale';
+import { useAuth } from 'features/auth';
+import { useGuestLocale } from '../../hooks/guestLocale';
 import AppLocale from '../../locales';
 
 import { loadingStyles, globalStyles } from './App.styles';
@@ -22,18 +22,24 @@ const AuthenticatedApp = lazy(() =>
 library.add(icons);
 
 const App = () => {
-  const locale = useLocale();
-  const isAuthenticated = useAuthentication();
-  const appLocale = AppLocale[locale] || AppLocale.en;
+  const { isLoading, isAuthenticated, user } = useAuth();
+  const { guestLocale } = useGuestLocale();
+
+  const locale = user?.locale || guestLocale;
+  const appLocale = AppLocale[locale];
 
   return (
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
       <BrowserRouter>
         <Global styles={globalStyles} />
         <ErrorBoundary>
-          <Suspense fallback={<Loading styles={loadingStyles} />}>
-            {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-          </Suspense>
+          {isLoading ? (
+            <Loading styles={loadingStyles} />
+          ) : (
+            <Suspense fallback={<Loading styles={loadingStyles} />}>
+              {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+            </Suspense>
+          )}
         </ErrorBoundary>
       </BrowserRouter>
     </IntlProvider>

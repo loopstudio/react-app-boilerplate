@@ -1,34 +1,45 @@
-import httpClient from 'features/auth/services/httpClient';
-
 class AuthService {
+  static httpClient;
+
+  static setHttpClient(client) {
+    this.httpClient = client;
+  }
+
   static signUp(user) {
-    return httpClient.post('/users', { user });
+    return this.httpClient.post('/users', { user });
   }
 
   static signIn(user) {
-    return httpClient.post('/users/sign_in', { user });
+    return this.httpClient.post('/users/sign_in', { user });
   }
 
   static signOut() {
-    return httpClient.delete('/users/sign_out');
+    return this.httpClient.delete('/users/sign_out');
   }
 
-  static getVerificationCode(email) {
-    return httpClient.post('/users/password', { email });
+  static validateToken() {
+    return this.httpClient.get('/users/validate_token');
   }
 
   static updateUser(user, passwordCheck) {
-    return httpClient.patch('/user', { user, passwordCheck });
+    return this.httpClient.patch('/user', { user, passwordCheck });
   }
 
-  static verifyToken(resetPasswordToken) {
-    return httpClient.get('users/password/edit', {
+  static requestPasswordReset(email) {
+    return this.httpClient.post('/users/password', { email });
+  }
+
+  static verifyPasswordReset(resetPasswordToken) {
+    return this.httpClient.get('users/password/edit', {
       params: { resetPasswordToken },
     });
   }
 
   static resetPassword(password, resetPasswordToken) {
-    return httpClient.put('/users/password', { password, resetPasswordToken });
+    return this.httpClient.put('/users/password', {
+      password,
+      resetPasswordToken,
+    });
   }
 }
 

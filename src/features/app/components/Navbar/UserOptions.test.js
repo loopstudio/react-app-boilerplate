@@ -1,7 +1,7 @@
 import { fireEvent, render } from 'testUtils';
 
 import { userData, authenticationHeaders } from 'testUtils/mocks/auth';
-import UserOptions from 'features/app/components/Navbar/UserOptions';
+import UserOptions from './UserOptions';
 
 const state = {
   auth: {

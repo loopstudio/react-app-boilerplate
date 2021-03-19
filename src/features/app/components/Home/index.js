@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/Home/Home';
+export { default } from './Home';

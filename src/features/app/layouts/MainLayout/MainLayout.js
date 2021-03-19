@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-import Navbar from 'features/app/components/Navbar';
+import Navbar from '../../components/Navbar';
 
-import { MainContainer } from 'features/app/layouts/MainLayout/MainLayout.styles';
+import { MainContainer } from './MainLayout.styles';
 
 const MainLayout = ({ children, noHeader }) => (
   <>

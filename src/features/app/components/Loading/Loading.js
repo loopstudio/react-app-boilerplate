@@ -5,7 +5,7 @@ import {
   Spinner,
   DoubleBounce,
   DoubleBounceWithDelay,
-} from 'features/app/components/Loading/Loading.styles';
+} from './Loading.styles';
 
 const Loading = ({ styles }) => (
   <Wrapper styles={styles}>

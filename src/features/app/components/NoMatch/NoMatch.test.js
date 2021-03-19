@@ -1,7 +1,7 @@
 import { renderWithRouter } from 'testUtils';
 import '@testing-library/jest-dom/extend-expect';
 
-import NoMatch from 'features/app/components/NoMatch/index';
+import NoMatch from './NoMatch';
 
 describe('NoMatch', () => {
   test('shows a "404" message', () => {

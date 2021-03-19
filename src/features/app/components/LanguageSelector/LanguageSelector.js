@@ -1,16 +1,15 @@
 import { useIntl } from 'react-intl';
-import { useDispatch } from 'react-redux';
 
-import { setGuestLocale } from 'features/auth';
+import { useGuestLocale } from '../../hooks/guestLocale';
 
-import { Select } from 'features/app/components/LanguageSelector/LanguageSelector.styles';
+import { Select } from './LanguageSelector.styles';
 
 const LanguageSelector = () => {
   const intl = useIntl();
-  const dispatch = useDispatch();
+  const { setGuestLocale } = useGuestLocale();
 
   const handleChange = (event) => {
-    dispatch(setGuestLocale(event.target.value));
+    setGuestLocale(event.target.value);
   };
 
   return (

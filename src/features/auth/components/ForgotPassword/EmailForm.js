@@ -5,10 +5,10 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 import PropTypes from 'prop-types';
 
+import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import Loading from 'features/app/components/Loading';
 import { handleErrors } from 'helpers/errors';
-import AuthService from 'features/auth/services/AuthService';
 import { RESET_PASSWORD_STEPS } from 'features/auth/components/ForgotPassword/ForgotPassword';
 
 import {
@@ -19,6 +19,7 @@ import {
 const EmailForm = ({ onStepChange }) => {
   const [loading, setLoading] = useState(false);
   const intl = useIntl();
+  const { requestPasswordReset } = useAuth();
 
   const validationSchema = object().shape({
     email: string()
@@ -32,7 +33,7 @@ const EmailForm = ({ onStepChange }) => {
     setLoading(true);
 
     try {
-      await AuthService.getVerificationCode(email);
+      await requestPasswordReset(email);
       onStepChange(RESET_PASSWORD_STEPS.emailSent);
     } catch (errors) {
       handleErrors(errors, formMethods.setError);

@@ -1,13 +1,9 @@
 import { FormattedMessage } from 'react-intl';
 
-import Form from 'features/app/components/Settings/Form';
-import ChangePasswordForm from 'features/app/components/Settings/ChangePasswordForm';
+import Form from './Form';
+import ChangePasswordForm from './ChangePasswordForm';
 
-import {
-  SettingsContainer,
-  SettingsTitle,
-  Wrapper,
-} from 'features/app/components/Settings/Settings.styles';
+import { SettingsContainer, SettingsTitle, Wrapper } from './Settings.styles';
 
 const Settings = () => {
   return (

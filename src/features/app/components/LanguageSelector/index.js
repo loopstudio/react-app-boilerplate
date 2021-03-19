@@ -1,1 +1,1 @@
-export { default } from 'features/app/components/LanguageSelector/LanguageSelector';
+export { default } from './LanguageSelector';

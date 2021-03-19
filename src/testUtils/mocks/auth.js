@@ -52,7 +52,9 @@ export const mockSignInFailure = (credentials) =>
     });
 
 export const mockUpdateUserSuccess = (user, passwordCheck) => {
-  const body = passwordCheck ? { user, passwordCheck } : { user };
+  const body = passwordCheck
+    ? { user, passwordCheck }
+    : { user, passwordCheck: null };
 
   return baseMock
     .patch('/user', decamelizeKeys(body))
@@ -60,7 +62,9 @@ export const mockUpdateUserSuccess = (user, passwordCheck) => {
 };
 
 export const mockUpdateUserFailure = (user, passwordCheck) => {
-  const body = passwordCheck ? { user, passwordCheck } : { user };
+  const body = passwordCheck
+    ? { user, passwordCheck }
+    : { user, passwordCheck: null };
 
   return baseMock.patch('/user', decamelizeKeys(body)).reply(400, {
     errors: ['Some scary error'],

@@ -1,5 +1,5 @@
-import Settings from 'features/app/components/Settings';
-import MainLayout from 'features/app/layouts/MainLayout';
+import Settings from '../components/Settings';
+import MainLayout from '../layouts/MainLayout';
 
 const SettingsPage = () => (
   <MainLayout>

@@ -1,23 +1,18 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { signOut } from 'features/auth';
-import Button from 'features/app/components/Navbar/Button';
+import { useAuth } from 'features/auth';
+import Button from './Button';
 
-import { MenuContainer } from 'features/app/components/Navbar/NavBar.styles';
+import { MenuContainer } from './NavBar.styles';
 
 const Menu = ({ isAuthenticated }) => {
-  const dispatch = useDispatch();
+  const { signOut } = useAuth();
   const history = useHistory();
 
-  const handleSignOut = async () => {
-    try {
-      await dispatch(signOut());
-      history.replace('/sign-in');
-    } catch ({ errors }) {
-      console.error(errors);
-    }
+  const handleSignOut = () => {
+    signOut();
+    history.replace('/sign-in');
   };
 
   return (

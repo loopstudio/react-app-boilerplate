@@ -1,7 +1,7 @@
 import { decamelizeKeys } from 'helpers/decamelize';
 
 describe('decamelizeKey', () => {
-  it('should deeply decamelize the keys of an object', () => {
+  it('deeply decamelizes the keys of an object', () => {
     const fakeDate = new Date(2016, 3, 15);
 
     const obj = {
@@ -21,7 +21,7 @@ describe('decamelizeKey', () => {
     });
   });
 
-  it('should raise an error if decamelized key would overwrite existing key of the object', () => {
+  it('raises an error if decamelized key would overwrite existing key of the object', () => {
     const invalidObj = { fooBar: 1, foo_bar: 2 };
     const validObj = { fooBar: 1, fooBaz: 2 };
 
