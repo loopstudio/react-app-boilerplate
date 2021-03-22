@@ -15,7 +15,7 @@
     "pre-push": "eslint ."
   },
   "jest": {
-    "coverageReporters": ["text-summary"],
+    "coverageReporters": ["json", "lcov", "text", "clover", "text-summary"],
     "coverageThreshold": {
       "global": {
         "branches": 85,

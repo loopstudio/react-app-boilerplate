@@ -114,3 +114,6 @@ export const mockResetPasswordFailure = (password, resetPasswordToken) =>
     .reply(500, {
       errors: ['Connection error'],
     });
+
+export const mockSignOutSuccess = () =>
+  baseMock.delete('/users/sign_out').reply(200);
