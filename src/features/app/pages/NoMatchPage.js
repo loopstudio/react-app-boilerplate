@@ -1,10 +1,17 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import NoMatch from '../components/NoMatch';
-import MainLayout from '../layouts/MainLayout';
 
-const NoMatchPage = () => (
-  <MainLayout noHeader>
-    <NoMatch />
-  </MainLayout>
-);
+const NoMatchPage = ({ toggleNoHeader }) => {
+  useEffect(() => {
+    toggleNoHeader();
+    return toggleNoHeader;
+  }, [toggleNoHeader]);
+  return <NoMatch />;
+};
+
+NoMatchPage.propTypes = {
+  toggleNoHeader: PropTypes.func.isRequired,
+};
 
 export default NoMatchPage;
