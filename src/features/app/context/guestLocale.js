@@ -1,4 +1,9 @@
 import { createContext, useState, useEffect } from 'react';
+import httpClient from '../services/httpClient';
+import {
+  applyLocaleInterceptor,
+  clearLocaleInterceptor,
+} from '../services/localeMiddleware';
 
 export const GuestLocaleContext = createContext();
 
@@ -13,6 +18,10 @@ export const GuestLocaleProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, guestLocale);
+    const interceptor = applyLocaleInterceptor(httpClient, guestLocale);
+    console.log('hola', httpClient.interceptors.request.handlers);
+
+    return () => clearLocaleInterceptor(httpClient, interceptor);
   }, [guestLocale]);
 
   return (

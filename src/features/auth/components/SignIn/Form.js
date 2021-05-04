@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/tabindex-no-positive */
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from '@loopstudio/react-auth';
 import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
-import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 

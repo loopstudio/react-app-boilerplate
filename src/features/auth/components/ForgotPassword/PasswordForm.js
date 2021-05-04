@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { object, ref, string } from 'yup';
 import PropTypes from 'prop-types';
 
-import { useAuth } from 'features/auth';
+import { useAuth } from '@loopstudio/react-auth';
 import Form from 'features/app/components/Form';
 import Loading from 'features/app/components/Loading';
 import { handleErrors } from 'helpers/errors';

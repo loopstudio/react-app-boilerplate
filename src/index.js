@@ -1,11 +1,9 @@
 import React, { StrictMode } from 'react'; // eslint-disable-line no-restricted-imports
 import ReactDOM, { render } from 'react-dom';
+import { ThemeProvider } from '@emotion/react';
+import { AuthProvider } from '@loopstudio/react-auth';
 
 import { GuestLocaleProvider } from 'features/app/context/guestLocale';
-import { AuthProvider } from 'features/auth';
-
-import { ThemeProvider } from '@emotion/react';
-
 import App from 'features/app/components/App';
 import httpClient from 'features/app/services/httpClient';
 import * as serviceWorker from 'serviceWorker';

@@ -15,7 +15,13 @@
     "pre-push": "eslint ."
   },
   "jest": {
-    "coverageReporters": ["json", "lcov", "text", "clover", "text-summary"],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "text-summary"
+    ],
     "coverageThreshold": {
       "global": {
         "branches": 85,
@@ -45,6 +51,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@hookform/resolvers": "1.3.6",
+    "@loopstudio/react-auth": "file:../react-auth",
     "axios": "^0.21.1",
     "axios-case-converter": "^0.7.0",
     "emotion": "^11.0.0",

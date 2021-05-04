@@ -5,12 +5,12 @@ import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { ThemeProvider } from '@emotion/react';
+import { AuthProvider } from '@loopstudio/react-auth';
 import theme from 'theme';
 
 import AppLocale from 'features/app/locales';
 import httpClient from 'features/app/services/httpClient';
 import { GuestLocaleProvider } from 'features/app/context/guestLocale';
-import { AuthProvider } from 'features/auth';
 
 const renderWithProviders = (
   ui,

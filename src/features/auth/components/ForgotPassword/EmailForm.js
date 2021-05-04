@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAuth } from '@loopstudio/react-auth';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { object, string } from 'yup';
 import PropTypes from 'prop-types';
 
-import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import Loading from 'features/app/components/Loading';
 import { handleErrors } from 'helpers/errors';
