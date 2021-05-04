@@ -33,8 +33,8 @@ const FormSelect = ({
         id={id ?? name}
         aria-label={intl.messages[`common.${name}`]}
         name={name}
-        ref={register}
-      >
+        {...register()}
+        >
         <option value="">{intl.messages['common.selectOption']}</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>

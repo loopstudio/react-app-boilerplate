@@ -18,7 +18,7 @@ const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
         label={label}
         name={name}
       />
-      <Input {...rest} id={id ?? name} name={name} ref={register} />
+      <Input {...rest} id={id ?? name} name={name} {...register()} />
       <Error>{error?.message}</Error>
     </InputContainer>
   );
