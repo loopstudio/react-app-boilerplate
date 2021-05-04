@@ -9,7 +9,7 @@ import Form from 'features/auth/components/SignIn/Form';
 
 const SignIn = () => {
   const intl = useIntl();
-
+  const title = String(intl.messages['common.signIn']);
   return (
     <AuthWrapper
       renderLegend={() => (
@@ -22,7 +22,7 @@ const SignIn = () => {
           </NavigationLink>
         </>
       )}
-      title={intl.messages['common.signIn']}
+      title={title}
     >
       <Form />
     </AuthWrapper>
