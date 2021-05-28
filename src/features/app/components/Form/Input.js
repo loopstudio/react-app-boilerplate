@@ -6,7 +6,10 @@ import InputLabel from './InputLabel';
 import { Error, Input, InputContainer } from './Form.styles';
 
 const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
-  const { register, formState: { errors } } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   const error = errors[name];
   const { ref, ...registerRest } = register(name);
 

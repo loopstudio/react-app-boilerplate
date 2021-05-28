@@ -16,7 +16,10 @@ const FormSelect = ({
   ...rest
 }) => {
   const intl = useIntl();
-  const { register, formState: { errors } } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   const error = errors[name];
   const { ref, ...registerRest } = register(name);
 
