@@ -16,8 +16,9 @@ const FormSelect = ({
   ...rest
 }) => {
   const intl = useIntl();
-  const { register, errors } = useFormContext();
+  const { register, formState: { errors } } = useFormContext();
   const error = errors[name];
+  const { ref, ...registerRest } = register(name);
 
   return (
     <InputContainer hasError={Boolean(error)}>
@@ -32,8 +33,8 @@ const FormSelect = ({
         {...rest}
         id={id ?? name}
         aria-label={intl.messages[`common.${name}`]}
-        name={name}
-        ref={register}
+        {...registerRest}
+        inputRef={ref}
       >
         <option value="">{intl.messages['common.selectOption']}</option>
         {options.map((option) => (

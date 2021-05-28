@@ -6,8 +6,9 @@ import InputLabel from './InputLabel';
 import { Error, Input, InputContainer } from './Form.styles';
 
 const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
-  const { register, errors } = useFormContext();
+  const { register, formState: { errors } } = useFormContext();
   const error = errors[name];
+  const { ref, ...registerRest } = register(name);
 
   return (
     <InputContainer hasError={Boolean(error)}>
@@ -18,7 +19,7 @@ const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
         label={label}
         name={name}
       />
-      <Input {...rest} id={id ?? name} name={name} ref={register} />
+      <Input {...rest} id={id ?? name} {...registerRest} inputRef={ref} />
       <Error>{error?.message}</Error>
     </InputContainer>
   );
