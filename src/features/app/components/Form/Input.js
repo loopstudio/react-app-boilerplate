@@ -11,7 +11,6 @@ const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
     formState: { errors },
   } = useFormContext();
   const error = errors[name];
-  const { ref, ...registerRest } = register(name);
 
   return (
     <InputContainer hasError={Boolean(error)}>
@@ -22,7 +21,7 @@ const FormInput = ({ helpLinkPath, helpMessage, id, name, label, ...rest }) => {
         label={label}
         name={name}
       />
-      <Input {...rest} id={id ?? name} {...registerRest} inputRef={ref} />
+      <Input {...rest} id={id ?? name} {...register(name)} />
       <Error>{error?.message}</Error>
     </InputContainer>
   );
