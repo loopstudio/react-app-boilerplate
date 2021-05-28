@@ -8,7 +8,10 @@ import FormSelect from './Select';
 import { Error, FormContent } from './Form.styles';
 
 const Form = ({ children, formMethods, onSubmit, ...props }) => {
-  const { errors, handleSubmit } = formMethods;
+  const {
+    formState: { errors },
+    handleSubmit,
+  } = formMethods;
 
   return (
     <FormProvider {...formMethods}>
