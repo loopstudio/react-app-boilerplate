@@ -20,7 +20,8 @@
     "import/ignore": ["/testUtils"],
     "import/resolver": {
       "node": {
-        "moduleDirectory": ["node_modules", "src/"]
+        "moduleDirectory": ["node_modules", "src/"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -29,6 +30,16 @@
     "no-console": "warn",
     "import/no-cycle": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "import/prefer-default-export": "off",
     "react/forbid-prop-types": "off",
     "react/jsx-props-no-spreading": "off",
