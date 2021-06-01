@@ -1,8 +1,9 @@
-export const applyLocaleInterceptor = (client, locale) => {
+export const applyLocaleInterceptor = (client, isAuthenticated, locale) => {
   return client.interceptors.request.use((request) => {
-    alert(JSON.stringify(request.params, null, 2));
-    Object.assign(request.params, { locale });
-    alert(JSON.stringify(request.params, null, 2));
+    if (!isAuthenticated) {
+      Object.assign(request.params, { locale });
+    }
+
     return request;
   });
 };

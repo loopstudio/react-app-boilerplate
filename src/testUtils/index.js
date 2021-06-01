@@ -17,15 +17,15 @@ const renderWithProviders = (
   { state = {}, history = createMemoryHistory(), ...options } = {}
 ) => {
   const Wrapper = ({ children }) => (
-    <GuestLocaleProvider>
-      <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
-        <ThemeProvider theme={theme}>
-          <AuthProvider prepopulatedState={state?.auth} httpClient={httpClient}>
+    <IntlProvider locale="en" messages={flatten(AppLocale.en.messages)}>
+      <ThemeProvider theme={theme}>
+        <AuthProvider prepopulatedState={state?.auth} httpClient={httpClient}>
+          <GuestLocaleProvider>
             <Router history={history}>{children}</Router>
-          </AuthProvider>
-        </ThemeProvider>
-      </IntlProvider>
-    </GuestLocaleProvider>
+          </GuestLocaleProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </IntlProvider>
   );
 
   Wrapper.propTypes = {

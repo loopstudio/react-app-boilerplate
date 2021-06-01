@@ -2342,8 +2342,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@loopstudio/react-auth@file:../react-auth":
-  version "0.0.1"
+"@loopstudio/react-auth@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.pkg.github.com/download/@loopstudio/react-auth/1.0.0/dca6bd813474907b1197632fce4a93bb378930136b2b1a07c1c271bfed0fd68d#6445a813aaa244fb8b9702a22cda69943edfb02d"
+  integrity sha512-gkxrChVhCPPczqOAGOa+2wys4y9HO/09+V00cc61Pzx1Rn6Rk102n132myTFrntOOeJO0Ogkp/8MPhRWFYD02w==
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"

@@ -1,3 +1,6 @@
+# Config for @loopstudio packages under the GH npm registry
+@loopstudio:registry=https://npm.pkg.github.com
+
 # Font Awesome Pro configuration.
 @fortawesome:registry=https://npm.fontawesome.com/
 //npm.fontawesome.com/:_authToken=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX

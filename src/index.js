@@ -16,11 +16,11 @@ if (process.env.NODE_ENV !== 'production') {
 render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <GuestLocaleProvider>
-        <AuthProvider httpClient={httpClient}>
+      <AuthProvider httpClient={httpClient}>
+        <GuestLocaleProvider>
           <App />
-        </AuthProvider>
-      </GuestLocaleProvider>
+        </GuestLocaleProvider>
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
   document.getElementById('root')
