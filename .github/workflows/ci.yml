@@ -22,13 +22,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          npm-registry:
-            - registry: 'https://npm.pkg.github.com'
-              scope: '@loopstudio'
+      # - name: Setup npmrc
+      #   run: echo "@loopstudio:registry=https://npm.pkg.github.com" > .npmrc
 
       - name: Restore cache
         uses: actions/cache@v1

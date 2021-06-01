@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { useAuth } from '@loopstudio/react-auth';
-import httpClient from '../services/httpClient';
 import {
   applyLocaleInterceptor,
   clearLocaleInterceptor,
@@ -20,13 +19,9 @@ export const GuestLocaleProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, guestLocale);
-    const interceptor = applyLocaleInterceptor(
-      httpClient,
-      isAuthenticated,
-      guestLocale
-    );
+    const interceptor = applyLocaleInterceptor(isAuthenticated, guestLocale);
 
-    return () => clearLocaleInterceptor(httpClient, interceptor);
+    return () => clearLocaleInterceptor(interceptor);
   }, [isAuthenticated, guestLocale]);
 
   return (
