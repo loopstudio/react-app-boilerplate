@@ -16,7 +16,10 @@ const FormSelect = ({
   ...rest
 }) => {
   const intl = useIntl();
-  const { register, errors } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
   const error = errors[name];
 
   return (
@@ -32,8 +35,7 @@ const FormSelect = ({
         {...rest}
         id={id ?? name}
         aria-label={intl.messages[`common.${name}`]}
-        name={name}
-        ref={register}
+        {...register(name)}
       >
         <option value="">{intl.messages['common.selectOption']}</option>
         {options.map((option) => (
