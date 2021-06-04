@@ -45,11 +45,9 @@ const SignInForm = () => {
     >
       <Form.Input name="email" type="email" />
       <Form.Input name="password" type="password" />
-      <div>
-        <ForgotPasswordLink to="/forgot-password">
-          <FormattedMessage id="common.forgotPassword" />
-        </ForgotPasswordLink>
-      </div>
+      <ForgotPasswordLink to="/forgot-password">
+        <FormattedMessage id="common.forgotPassword" />
+      </ForgotPasswordLink>
       <Form.Button
         isLoading={isLoading}
         text={intl.messages['common.signIn']}
