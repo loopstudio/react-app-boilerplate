@@ -6,15 +6,7 @@ import InputLabel from './InputLabel';
 
 import { Error, InputContainer, Select } from './Form.styles';
 
-const FormSelect = ({
-  helpLinkPath,
-  helpMessage,
-  id,
-  name,
-  options,
-  label,
-  ...rest
-}) => {
+const FormSelect = ({ id, name, options, label, ...rest }) => {
   const intl = useIntl();
   const {
     register,
@@ -24,13 +16,7 @@ const FormSelect = ({
 
   return (
     <InputContainer hasError={Boolean(error)}>
-      <InputLabel
-        helpLinkPath={helpLinkPath}
-        helpMessage={helpMessage}
-        htmlFor={id ?? name}
-        label={label}
-        name={name}
-      />
+      <InputLabel htmlFor={id ?? name} label={label} name={name} />
       <Select
         {...rest}
         id={id ?? name}
@@ -50,17 +36,13 @@ const FormSelect = ({
 };
 
 FormSelect.defaultProps = {
-  helpLinkPath: '',
   id: null,
-  helpMessage: '',
   label: null,
 };
 
 FormSelect.propTypes = {
   name: PropTypes.string.isRequired,
-  helpLinkPath: PropTypes.string,
   id: PropTypes.string,
-  helpMessage: PropTypes.string,
   label: PropTypes.string,
   options: PropTypes.arrayOf(
     PropTypes.shape({

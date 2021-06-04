@@ -19,7 +19,7 @@ export const AuthContainer = styled.div`
   flex-direction: column;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  max-width: 24rem;
+  max-width: 95vw;
   padding: 2.5rem 3rem;
 `;
 

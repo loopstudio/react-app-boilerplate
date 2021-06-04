@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Link } from 'react-router-dom';
 
 export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
@@ -41,15 +40,6 @@ export const FormContent = styled.form`
   ${(props) => props.styles};
 `;
 
-export const HelpLink = styled(Link)`
-  color: ${(props) => props.theme.color.blue700};
-  margin-bottom: 0.25rem;
-
-  &:hover {
-    color: ${(props) => props.theme.color.blue800};
-  }
-`;
-
 export const Input = styled.input`
   background-color: ${(props) => props.theme.color.gray100};
   border-radius: ${(props) => props.theme.borderRadius.base};
@@ -58,6 +48,7 @@ export const Input = styled.input`
   font-size: ${(props) => props.theme.fontSize.sm};
   height: 2.5rem;
   line-height: 1.25;
+  max-width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   width: 16rem;
@@ -109,6 +100,7 @@ export const Select = styled.select`
   color: ${(props) => props.theme.color.gray700};
   height: 2.5rem;
   line-height: 1.25;
+  max-width: 100%;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   width: 16rem;
