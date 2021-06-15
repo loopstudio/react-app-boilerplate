@@ -1,4 +1,4 @@
-import { forwardRef, Ref } from 'react';
+import { ButtonHTMLAttributes, forwardRef, Ref } from 'react';
 import { MessageFormatElement } from 'react-intl';
 import { SerializedStyles } from '@emotion/react';
 
@@ -6,7 +6,7 @@ import Loading from '../Loading';
 
 import { Button, loadingStyles } from './Form.styles';
 
-interface FormButtonProps {
+interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
   isLoading?: boolean;
   text: string | MessageFormatElement[];
