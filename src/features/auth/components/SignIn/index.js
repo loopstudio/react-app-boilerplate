@@ -1,1 +1,1 @@
-export { default } from 'features/auth/components/SignIn/SignIn.tsx';
+export { default } from 'features/auth/components/SignIn/SignIn';
