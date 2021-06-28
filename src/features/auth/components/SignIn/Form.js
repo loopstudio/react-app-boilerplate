@@ -1,14 +1,15 @@
-/* eslint-disable jsx-a11y/tabindex-no-positive */
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router-dom';
 import { object, string } from 'yup';
 
 import { useAuth } from 'features/auth';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
+
+import { ForgotPasswordLink } from './SignIn.styles';
 
 const SignInForm = () => {
   const { signIn } = useAuth();
@@ -42,14 +43,11 @@ const SignInForm = () => {
       formMethods={formMethods}
       onSubmit={onSubmit}
     >
-      <Form.Input name="email" tabIndex="1" type="email" />
-      <Form.Input
-        helpLinkPath="/forgot-password"
-        helpMessage={intl.messages['common.forgotPassword']}
-        name="password"
-        tabIndex="2"
-        type="password"
-      />
+      <Form.Input name="email" type="email" />
+      <Form.Input name="password" type="password" />
+      <ForgotPasswordLink to="/forgot-password">
+        <FormattedMessage id="common.forgotPassword" />
+      </ForgotPasswordLink>
       <Form.Button
         isLoading={isLoading}
         text={intl.messages['common.signIn']}
