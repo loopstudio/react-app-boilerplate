@@ -22,8 +22,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # - name: Setup npmrc
-      #   run: echo "@loopstudio:registry=https://npm.pkg.github.com" > .npmrc
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@loopstudio'
 
       - name: Restore cache
         uses: actions/cache@v1
@@ -35,6 +39,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
 
       - name: Run linters
         run: yarn lint
