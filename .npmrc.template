@@ -1,4 +1,3 @@
-# Config for @loopstudio packages under the GH npm registry
 # @loopstudio's github packages configuration
 @loopstudio:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR-PERSONAL-ACCESS-TOKEN
