@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { ThemeProvider } from '@emotion/react';
+import { AuthProvider } from '@loopstudio/react-auth';
 
 import App from 'features/app/components/App';
 import httpClient from 'features/app/services/httpClient';
-import { AuthProvider } from 'features/auth';
 import theme from 'theme';
 
 jest.mock('react-dom', () => ({ render: jest.fn() }));

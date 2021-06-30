@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { useAuth } from '@loopstudio/react-auth';
 
-import { useAuth } from 'features/auth';
 import Button from './Button';
 
 import { MenuContainer } from './NavBar.styles';
