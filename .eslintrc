@@ -14,7 +14,8 @@
     "plugin:jest-dom/recommended",
     "plugin:testing-library/react",
     "plugin:prettier/recommended",
-    "prettier/react"
+    "prettier/react",
+    "plugin:styled-components-a11y/strict"
   ],
   "settings": {
     "import/ignore": ["/testUtils"],
@@ -27,6 +28,7 @@
   },
   "parser": "babel-eslint",
   "rules": {
+    "styled-components-a11y/alt-text": "off",
     "no-console": "warn",
     "import/no-cycle": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
