@@ -1,3 +1,7 @@
+# @loopstudio's github packages configuration
+@loopstudio:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR-PERSONAL-ACCESS-TOKEN
+
 # Font Awesome Pro configuration.
 @fortawesome:registry=https://npm.fontawesome.com/
 //npm.fontawesome.com/:_authToken=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
