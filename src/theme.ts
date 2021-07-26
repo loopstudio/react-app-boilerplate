@@ -1,4 +1,6 @@
-const theme = {
+import { Theme } from '@emotion/react';
+
+const theme: Theme = {
   borderRadius: {
     none: '0',
     sm: '0.125rem',
