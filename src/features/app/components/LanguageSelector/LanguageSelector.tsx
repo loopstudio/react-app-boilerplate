@@ -5,18 +5,18 @@ import { useGuestLocale } from '../../hooks/guestLocale';
 import { Select } from './LanguageSelector.styles';
 
 const LanguageSelector = () => {
-  const intl = useIntl();
+  const { formatMessage, locale } = useIntl();
   const { setGuestLocale } = useGuestLocale();
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGuestLocale(event.target.value);
   };
 
   return (
     <Select
-      aria-label={intl.messages['common.selectLanguage']}
+      aria-label={formatMessage({ id: 'common.selectLanguage' })}
       name="localeSelect"
-      value={intl.locale}
+      value={locale}
       onChange={handleChange}
     >
       <option aria-label="English" value="en">

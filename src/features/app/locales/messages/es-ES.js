@@ -1,4 +1,4 @@
-export default {
+const translations = {
   common: {
     accountSettings: 'Ajustes de cuenta',
     alreadyHaveAnAccount: '¿Ya tienes una cuenta?',
@@ -47,3 +47,5 @@ export default {
     updateSettingsSuccess: 'Tus ajustes han sido actualizados con éxito',
   },
 };
+
+export default translations;
