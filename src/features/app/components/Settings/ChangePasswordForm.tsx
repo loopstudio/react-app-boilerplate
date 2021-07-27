@@ -10,6 +10,11 @@ import { handleErrors } from 'helpers/errors';
 
 import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
 
+type FormValues = {
+  currentPassword: string;
+  password: string;
+};
+
 const ChangePasswordForm = () => {
   const intl = useIntl();
   const { updateUser } = useAuth();
@@ -23,16 +28,18 @@ const ChangePasswordForm = () => {
     currentPassword: string().required(intl.messages['common.required']),
   });
 
-  const formMethods = useForm({ resolver: yupResolver(validationSchema) });
+  const formMethods = useForm<FormValues>({
+    resolver: yupResolver(validationSchema),
+  }); // esto es lo q se esta pasando con formMethods
 
-  const onSubmit = async ({ password, currentPassword }) => {
+  const onSubmit = async ({ password, currentPassword }: FormValues) => {
     setIsLoading(true);
     try {
       await updateUser({ password }, currentPassword);
       setIsResponseSuccess(true);
       formMethods.reset(
         { currentPassword: '', password: '' },
-        { errors: true }
+        { keepErrors: true }
       );
     } catch (error) {
       setIsResponseSuccess(false);
