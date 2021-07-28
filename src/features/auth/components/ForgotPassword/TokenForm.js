@@ -13,7 +13,7 @@ import { RESET_PASSWORD_STEPS } from 'features/auth/components/ForgotPassword/Fo
 
 import {
   Legend,
-  inputStyles,
+  FormInput,
   LinkButton,
 } from 'features/auth/components/ForgotPassword/ForgotPassword.styles';
 
@@ -54,7 +54,7 @@ const TokenForm = ({ onStepChange, onSaveToken }) => {
       <Legend>
         <FormattedMessage id="common.forgotPasswordEmailSent" />
       </Legend>
-      <Form.Input styles={inputStyles} name="token" type="number" />
+      <FormInput name="token" type="number" />
       <LinkButton
         type="button"
         onClick={() => onStepChange(RESET_PASSWORD_STEPS.initial)}

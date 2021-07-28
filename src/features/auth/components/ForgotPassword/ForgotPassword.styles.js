@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import Form from 'features/app/components/Form';
 
-export const inputStyles = css`
+export const FormInput = styled(Form.Input)`
   width: 100%;
 `;
 

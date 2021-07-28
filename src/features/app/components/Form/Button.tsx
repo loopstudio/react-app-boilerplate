@@ -2,9 +2,7 @@ import { ButtonHTMLAttributes, forwardRef, Ref } from 'react';
 import { MessageFormatElement } from 'react-intl';
 import { SerializedStyles } from '@emotion/react';
 
-import Loading from '../Loading';
-
-import { Button, loadingStyles } from './Form.styles';
+import { Button, CustomLoading } from './Form.styles';
 
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
@@ -24,7 +22,7 @@ const FormButton = forwardRef(
       disabled={isDisabled || isLoading}
       {...rest}
     >
-      {isLoading ? <Loading styles={loadingStyles} /> : text}
+      {isLoading ? <CustomLoading /> : text}
     </Button>
   )
 );

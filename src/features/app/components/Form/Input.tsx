@@ -1,10 +1,11 @@
+import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import InputLabel from './InputLabel';
 
 import { Error, Input, InputContainer } from './Form.styles';
 
-interface FormInputProps {
+interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
   name: string;
   label: string;

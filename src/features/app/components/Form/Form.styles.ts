@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import Loading from '../Loading';
 
 interface InputContainerProps {
   hasError: boolean;
@@ -9,7 +9,7 @@ interface StylesProps {
   styles?: any;
 }
 
-export const Button = styled.button<StylesProps>`
+export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
   border-radius: ${(props) => props.theme.borderRadius.base};
   box-shadow: ${(props) => props.theme.boxShadow.base};
@@ -33,8 +33,6 @@ export const Button = styled.button<StylesProps>`
     background-color: ${(props) => props.theme.color.indigo200};
     box-shadow: ${(props) => props.theme.boxShadow.none};
   }
-
-  ${(props) => props.styles};
 `;
 
 export const Error = styled.span`
@@ -48,7 +46,7 @@ export const FormContent = styled.form<StylesProps>`
   ${(props) => props.styles};
 `;
 
-export const Input = styled.input<StylesProps>`
+export const Input = styled.input`
   background-color: ${(props) => props.theme.color.gray100};
   border-radius: ${(props) => props.theme.borderRadius.base};
   border-width: 1px;
@@ -65,8 +63,6 @@ export const Input = styled.input<StylesProps>`
     border-color: ${(props) => props.theme.color.gray300};
     outline: 0;
   }
-
-  ${(props) => props.styles};
 `;
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -96,7 +92,7 @@ export const LabelContent = styled.div`
   justify-content: space-between;
 `;
 
-export const loadingStyles = css`
+export const CustomLoading = styled(Loading)`
   margin-top: -0.5rem;
   margin-bottom: -0.5rem;
 `;

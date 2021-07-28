@@ -8,7 +8,7 @@ import { object, string } from 'yup';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 
-import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
+import { SuccessText, StyledForm, FormButton } from './Settings.styles';
 
 const SettingsForm = () => {
   const intl = useIntl();
@@ -46,7 +46,7 @@ const SettingsForm = () => {
   };
 
   return (
-    <Form formMethods={formMethods} onSubmit={onSubmit} styles={formStyles}>
+    <StyledForm formMethods={formMethods} onSubmit={onSubmit}>
       <Form.Input name="firstName" />
       <Form.Input name="lastName" />
       <Form.Select
@@ -56,9 +56,8 @@ const SettingsForm = () => {
           { value: 'es', label: 'Español' },
         ]}
       />
-      <Form.Button
+      <FormButton
         isLoading={isLoading}
-        styles={buttonStyles}
         text={intl.messages['common.updateSettings']}
       />
       {isResponseSuccess && (
@@ -66,7 +65,7 @@ const SettingsForm = () => {
           <FormattedMessage id="common.updateSettingsSuccess" />
         </SuccessText>
       )}
-    </Form>
+    </StyledForm>
   );
 };
 

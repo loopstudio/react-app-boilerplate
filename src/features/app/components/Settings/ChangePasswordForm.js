@@ -8,7 +8,7 @@ import { useIntl, FormattedMessage } from 'react-intl';
 import Form from 'features/app/components/Form';
 import { handleErrors } from 'helpers/errors';
 
-import { SuccessText, formStyles, buttonStyles } from './Settings.styles';
+import { SuccessText, StyledForm, FormButton } from './Settings.styles';
 
 const ChangePasswordForm = () => {
   const intl = useIntl();
@@ -43,7 +43,7 @@ const ChangePasswordForm = () => {
   };
 
   return (
-    <Form formMethods={formMethods} onSubmit={onSubmit} styles={formStyles}>
+    <StyledForm formMethods={formMethods} onSubmit={onSubmit}>
       <Form.Input
         label={intl.messages['common.currentPassword']}
         name="currentPassword"
@@ -54,9 +54,8 @@ const ChangePasswordForm = () => {
         name="password"
         type="password"
       />
-      <Form.Button
+      <FormButton
         isLoading={isLoading}
-        styles={buttonStyles}
         text={intl.messages['common.updatePassword']}
       />
       {isResponseSuccess && (
@@ -64,7 +63,7 @@ const ChangePasswordForm = () => {
           <FormattedMessage id="common.changePasswordSuccess" />
         </SuccessText>
       )}
-    </Form>
+    </StyledForm>
   );
 };
 
