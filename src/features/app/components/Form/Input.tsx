@@ -6,6 +6,9 @@ import InputLabel from './InputLabel';
 import { Error, Input, InputContainer } from './Form.styles';
 
 interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  name: string;
+  label: string;
 }
 
 const FormInput = ({ id, name, label, ...rest }: FormInputProps) => {
