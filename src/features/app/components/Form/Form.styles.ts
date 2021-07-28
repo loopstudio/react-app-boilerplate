@@ -9,15 +9,7 @@ interface StylesProps {
   styles?: any;
 }
 
-interface InputContainerProps {
-  hasError: boolean;
-}
-
-interface StylesProps {
-  styles?: any;
-}
-
-export const Button = styled.button<StylesProps>`
+export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
   border-radius: ${(props) => props.theme.borderRadius.base};
   box-shadow: ${(props) => props.theme.boxShadow.base};
@@ -54,7 +46,7 @@ export const FormContent = styled.form<StylesProps>`
   ${(props) => props.styles};
 `;
 
-export const Input = styled.input<StylesProps>`
+export const Input = styled.input`
   background-color: ${(props) => props.theme.color.gray100};
   border-radius: ${(props) => props.theme.borderRadius.base};
   border-width: 1px;
