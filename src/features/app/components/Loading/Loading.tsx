@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 import {
   Wrapper,
   Spinner,
@@ -7,7 +5,11 @@ import {
   DoubleBounceWithDelay,
 } from './Loading.styles';
 
-const Loading = ({ className }) => (
+interface LoadingProps {
+  className?: string;
+}
+
+const Loading = ({ className }: LoadingProps) => (
   <Wrapper className={className}>
     <Spinner>
       <DoubleBounce />
@@ -15,13 +17,5 @@ const Loading = ({ className }) => (
     </Spinner>
   </Wrapper>
 );
-
-Loading.defaultProps = {
-  className: '',
-};
-
-Loading.propTypes = {
-  className: PropTypes.string,
-};
 
 export default Loading;
