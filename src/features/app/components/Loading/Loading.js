@@ -7,8 +7,8 @@ import {
   DoubleBounceWithDelay,
 } from './Loading.styles';
 
-const Loading = ({ styles, className }) => (
-  <Wrapper styles={styles} className={className}>
+const Loading = ({ className }) => (
+  <Wrapper className={className}>
     <Spinner>
       <DoubleBounce />
       <DoubleBounceWithDelay />
@@ -18,12 +18,10 @@ const Loading = ({ styles, className }) => (
 
 Loading.defaultProps = {
   className: '',
-  styles: {},
 };
 
 Loading.propTypes = {
   className: PropTypes.string,
-  styles: PropTypes.object,
 };
 
 export default Loading;

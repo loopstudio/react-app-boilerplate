@@ -1,6 +1,9 @@
+import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-export const loadingStyles = css`
+import Loading from '../Loading';
+
+export const CustomLoading = styled(Loading)`
   height: 100vh;
 `;
 
