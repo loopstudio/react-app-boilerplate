@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import { SelectHTMLAttributes } from 'react';
 import { useIntl } from 'react-intl';
 import { useFormContext } from 'react-hook-form';
 
@@ -6,8 +6,20 @@ import InputLabel from './InputLabel';
 
 import { Error, InputContainer, Select } from './Form.styles';
 
-const FormSelect = ({ id, name, options, label, ...rest }) => {
-  const intl = useIntl();
+interface Option {
+  label: string;
+  value: string;
+}
+
+interface FormSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+  id: string;
+  name: string;
+  label: string;
+  options: Array<Option>;
+}
+
+const FormSelect = ({ id, name, options, label, ...rest }: FormSelectProps) => {
+  const { formatMessage } = useIntl();
   const {
     register,
     formState: { errors },
@@ -20,10 +32,10 @@ const FormSelect = ({ id, name, options, label, ...rest }) => {
       <Select
         {...rest}
         id={id ?? name}
-        aria-label={intl.messages[`common.${name}`]}
+        aria-label={formatMessage({ id: `common.${name}` })}
         {...register(name)}
       >
-        <option value="">{intl.messages['common.selectOption']}</option>
+        <option value="">{formatMessage({ id: 'common.selectOption' })}</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -33,23 +45,6 @@ const FormSelect = ({ id, name, options, label, ...rest }) => {
       <Error>{error?.message}</Error>
     </InputContainer>
   );
-};
-
-FormSelect.defaultProps = {
-  id: null,
-  label: null,
-};
-
-FormSelect.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string,
-  label: PropTypes.string,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
 };
 
 export default FormSelect;

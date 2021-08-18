@@ -9,14 +9,6 @@ interface StylesProps {
   styles?: any;
 }
 
-interface InputContainerProps {
-  hasError: boolean;
-}
-
-interface StylesProps {
-  styles?: any;
-}
-
 export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
   border-radius: ${(props) => props.theme.borderRadius.base};
