@@ -5,6 +5,8 @@
 ![GitHub Actions Badge](https://github.com/loopstudio/react-app-boilerplate/workflows/CI/badge.svg)
 [![Codebeat Badge](https://codebeat.co/badges/6382173b-82aa-4fe5-9087-87d53bd5595e)](https://codebeat.co/a/loopstudio/projects/github-com-loopstudio-react-app-boilerplate-master)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5ead8491-1da0-4eaa-8739-fdc8971d1d07/deploy-status)](https://app.netlify.com/sites/react-app-boilerplate/deploys)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/loopstudio/react-app-boilerplate.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/loopstudio/react-app-boilerplate/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/loopstudio/react-app-boilerplate.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/loopstudio/react-app-boilerplate/context:javascript)
 
 <sub>Created and maintained with ❤️ by <a href="[https://loopstudio.dev/](https://loopstudio.dev/)">LoopStudio</a></sub>
 
