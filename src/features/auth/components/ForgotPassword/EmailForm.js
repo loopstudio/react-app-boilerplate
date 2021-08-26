@@ -12,7 +12,7 @@ import { handleErrors } from 'helpers/errors';
 import { RESET_PASSWORD_STEPS } from 'features/auth/components/ForgotPassword/ForgotPassword';
 
 import {
-  inputStyles,
+  FormInput,
   Legend,
 } from 'features/auth/components/ForgotPassword/ForgotPassword.styles';
 
@@ -50,7 +50,7 @@ const EmailForm = ({ onStepChange }) => {
       <Legend>
         <FormattedMessage id="common.forgotPasswordLegend" />
       </Legend>
-      <Form.Input styles={inputStyles} name="email" type="email" />
+      <FormInput name="email" type="email" />
       <Form.Button text={intl.messages['common.resetPassword']} />
       {loading && <Loading />}
     </Form>

@@ -1,11 +1,17 @@
-import PropTypes from 'prop-types';
+import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import InputLabel from './InputLabel';
 
 import { Error, Input, InputContainer } from './Form.styles';
 
-const FormInput = ({ id, name, label, ...rest }) => {
+interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  name: string;
+  label: string;
+}
+
+const FormInput = ({ id, name, label, ...rest }: FormInputProps) => {
   const {
     register,
     formState: { errors },
@@ -19,19 +25,6 @@ const FormInput = ({ id, name, label, ...rest }) => {
       <Error>{error?.message}</Error>
     </InputContainer>
   );
-};
-
-FormInput.defaultProps = {
-  id: null,
-  label: null,
-  type: 'text',
-};
-
-FormInput.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string,
 };
 
 export default FormInput;

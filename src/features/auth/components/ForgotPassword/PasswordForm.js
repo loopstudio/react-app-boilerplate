@@ -13,7 +13,7 @@ import { handleErrors } from 'helpers/errors';
 
 import {
   Legend,
-  inputStyles,
+  FormInput,
 } from 'features/auth/components/ForgotPassword/ForgotPassword.styles';
 
 const PasswordForm = ({ token }) => {
@@ -58,8 +58,8 @@ const PasswordForm = ({ token }) => {
       <Legend>
         <FormattedMessage id="common.forgotPasswordChange" />
       </Legend>
-      <Form.Input styles={inputStyles} name="password" type="password" />
-      <Form.Input styles={inputStyles} name="confirmPassword" type="password" />
+      <FormInput name="password" type="password" />
+      <FormInput name="confirmPassword" type="password" />
       <Form.Button text={intl.messages['common.next']} />
       {loading && <Loading />}
     </Form>

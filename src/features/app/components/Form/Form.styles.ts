@@ -1,5 +1,13 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import Loading from '../Loading';
+
+interface InputContainerProps {
+  hasError: boolean;
+}
+
+interface StylesProps {
+  styles?: any;
+}
 
 export const Button = styled.button`
   background-color: ${(props) => props.theme.color.indigo600};
@@ -25,8 +33,6 @@ export const Button = styled.button`
     background-color: ${(props) => props.theme.color.indigo200};
     box-shadow: ${(props) => props.theme.boxShadow.none};
   }
-
-  ${(props) => props.styles};
 `;
 
 export const Error = styled.span`
@@ -36,7 +42,7 @@ export const Error = styled.span`
   max-width: fit-content;
 `;
 
-export const FormContent = styled.form`
+export const FormContent = styled.form<StylesProps>`
   ${(props) => props.styles};
 `;
 
@@ -57,11 +63,9 @@ export const Input = styled.input`
     border-color: ${(props) => props.theme.color.gray300};
     outline: 0;
   }
-
-  ${(props) => props.styles};
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<InputContainerProps>`
   margin-bottom: 0.75rem;
   margin-top: ${({ hasError }) => hasError && '0.25rem'};
 
@@ -88,7 +92,7 @@ export const LabelContent = styled.div`
   justify-content: space-between;
 `;
 
-export const loadingStyles = css`
+export const CustomLoading = styled(Loading)`
   margin-top: -0.5rem;
   margin-bottom: -0.5rem;
 `;

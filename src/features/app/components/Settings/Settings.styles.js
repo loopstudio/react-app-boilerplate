@@ -1,5 +1,19 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
+import Form from 'features/app/components/Form';
+
+export const StyledForm = styled(Form)`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  width: fit-content;
+`;
+
+export const FormButton = styled(Form.Button)`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 16rem;
+`;
 
 export const SettingsContainer = styled.div`
   background-color: ${(props) => props.theme.color.gray200};
@@ -31,18 +45,4 @@ export const SettingsTitle = styled.h2`
 
 export const SuccessText = styled.p`
   color: ${(props) => props.theme.color.green700};
-`;
-
-export const formStyles = css`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
-  width: fit-content;
-`;
-
-export const buttonStyles = css`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  width: 16rem;
 `;
