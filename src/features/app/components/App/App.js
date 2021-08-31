@@ -9,10 +9,9 @@ import { useAuth } from '@loopstudio/react-auth';
 import icons from 'assets/icons';
 import { useGuestLocale } from '../../hooks/guestLocale';
 import AppLocale from '../../locales';
-
-import { loadingStyles, globalStyles } from './App.styles';
-import Loading from '../Loading';
 import ErrorBoundary from '../ErrorBoundary';
+
+import { globalStyles, CustomLoading } from './App.styles';
 
 const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
 const AuthenticatedApp = lazy(() =>
@@ -34,9 +33,9 @@ const App = () => {
         <Global styles={globalStyles} />
         <ErrorBoundary>
           {isLoading ? (
-            <Loading styles={loadingStyles} />
+            <CustomLoading />
           ) : (
-            <Suspense fallback={<Loading styles={loadingStyles} />}>
+            <Suspense fallback={<CustomLoading />}>
               {isAuthenticated ? <AuthenticatedApp /> : <UnauthenticatedApp />}
             </Suspense>
           )}

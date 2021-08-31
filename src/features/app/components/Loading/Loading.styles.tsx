@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
-import { css, keyframes } from '@emotion/react';
+import { css, keyframes, Theme } from '@emotion/react';
 
 export const Wrapper = styled.div`
   align-items: center;
   display: flex;
-  ${(props) => props.styles};
 `;
 
 export const Spinner = styled.div`
@@ -14,7 +13,7 @@ export const Spinner = styled.div`
   width: 2.5rem;
 `;
 
-const doubleBounceStyles = ({ theme }) => css`
+const doubleBounceStyles = (theme: Theme) => css`
   animation: ${bounce} 2s infinite ease-in-out;
   background: ${theme.color.indigo600};
   border-radius: 50%;
@@ -27,11 +26,11 @@ const doubleBounceStyles = ({ theme }) => css`
 `;
 
 export const DoubleBounce = styled.div`
-  ${doubleBounceStyles}
+  ${({ theme }) => doubleBounceStyles(theme)}
 `;
 
 export const DoubleBounceWithDelay = styled.div`
-  ${doubleBounceStyles}
+  ${({ theme }) => doubleBounceStyles(theme)}
   animation-delay: -1s;
 `;
 
