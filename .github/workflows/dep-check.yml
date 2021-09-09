@@ -10,6 +10,12 @@ jobs:
     - uses: actions/checkout@master
     - name: set remote url
       run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.DEPENDACOP_LOOPITO_PAT }}@github.com/$GITHUB_REPOSITORY
+    - name: Setup node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '12.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@loopstudio'
     - name: Dependacop
       uses: elestu/actions-dependacop@v1.0.4
       env:
@@ -19,5 +25,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.DEPENDACOP_LOOPITO_PAT }}
         COMMIT_MESSAGE: "🛠 Update Dependencies"
         LOG_LEVEL: debug
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_GITHUB_TOKEN }}
       with:
         args: -u --packageFile package.json --dep prod
