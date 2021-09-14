@@ -24,14 +24,10 @@ const password = 'password';
 describe('ForgotPassword', () => {
   describe('on success', () => {
     it('submits correctly', async () => {
-      const {
-        getByLabelText,
-        getByRole,
-        getByText,
-        history,
-      } = renderWithRouter(<ForgotPassword />, {
-        history: ['/forgot-password'],
-      });
+      const { getByLabelText, getByRole, getByText, history } =
+        renderWithRouter(<ForgotPassword />, {
+          history: ['/forgot-password'],
+        });
 
       const mockGetVerificationCode = mockGetVerificationCodeSuccess(fakeEmail);
 
