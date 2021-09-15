@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import {
   fillInput,
@@ -19,13 +20,10 @@ describe('SignIn', () => {
   it('submits correctly', async () => {
     const mockedRequest = mockSignInSuccess(fakeCredentials);
 
-    const { getByLabelText, getByRole, history } = renderWithRouter(
-      <SignIn />,
-      { history: ['/sign-in'] }
-    );
-    const submitButton = getByRole('button');
-    const email = getByLabelText('Email');
-    const password = getByLabelText('Password');
+    const { history } = renderWithRouter(<SignIn />, { history: ['/sign-in'] });
+    const submitButton = screen.getByRole('button');
+    const email = screen.getByLabelText('Email');
+    const password = screen.getByLabelText('Password');
 
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
@@ -41,10 +39,10 @@ describe('SignIn', () => {
   it('shows error on response failure', async () => {
     const mockedRequest = mockSignInFailure(fakeCredentials);
 
-    const { getByLabelText, getByRole, getByText } = render(<SignIn />);
-    const submitButton = getByRole('button');
-    const email = getByLabelText('Email');
-    const password = getByLabelText('Password');
+    render(<SignIn />);
+    const submitButton = screen.getByRole('button');
+    const email = screen.getByLabelText('Email');
+    const password = screen.getByLabelText('Password');
 
     fillInput(email, fakeCredentials.email);
     fillInput(password, fakeCredentials.password);
@@ -53,21 +51,23 @@ describe('SignIn', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(getByText('The credentials are not valid')).toBeInTheDocument();
+      expect(
+        screen.getByText('The credentials are not valid')
+      ).toBeInTheDocument();
     });
   });
 
   it('shows errors for invalid values', async () => {
-    const { getByLabelText, getByRole, findByText } = render(<SignIn />);
-    const submitButton = getByRole('button');
-    const email = getByLabelText('Email');
+    render(<SignIn />);
+    const submitButton = screen.getByRole('button');
+    const email = screen.getByLabelText('Email');
 
     fillInput(email, 'invalid');
 
     fireEvent.click(submitButton);
 
-    const emailError = await findByText('Invalid email');
-    const passwordError = await findByText('Required');
+    const emailError = await screen.findByText('Invalid email');
+    const passwordError = await screen.findByText('Required');
 
     expect(emailError).toBeInTheDocument();
     expect(passwordError).toBeInTheDocument();

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import {
   fillInput,
@@ -24,15 +25,16 @@ const password = 'password';
 describe('ForgotPassword', () => {
   describe('on success', () => {
     it('submits correctly', async () => {
-      const { getByLabelText, getByRole, getByText, history } =
-        renderWithRouter(<ForgotPassword />, {
-          history: ['/forgot-password'],
-        });
+      const { history } = renderWithRouter(<ForgotPassword />, {
+        history: ['/forgot-password'],
+      });
 
       const mockGetVerificationCode = mockGetVerificationCodeSuccess(fakeEmail);
 
-      const emailInput = getByLabelText('Email');
-      const resetButton = getByRole('button', { name: 'Reset Password' });
+      const emailInput = screen.getByLabelText('Email');
+      const resetButton = screen.getByRole('button', {
+        name: 'Reset Password',
+      });
 
       fillInput(emailInput, fakeEmail);
 
@@ -41,15 +43,15 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockGetVerificationCode.isDone()).toBeTruthy();
         expect(
-          getByText(
+          screen.getByText(
             'Step 2: Enter the verification code we just sent to your email address'
           )
         ).toBeInTheDocument();
       });
 
       const mockVerifyToken = mockVerifyTokenSuccess(fakeVerificationCode);
-      const code = getByLabelText('Code');
-      const nextButton = getByRole('button', { name: 'Next' });
+      const code = screen.getByLabelText('Code');
+      const nextButton = screen.getByRole('button', { name: 'Next' });
 
       fillInput(code, fakeVerificationCode);
 
@@ -58,7 +60,7 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockVerifyToken.isDone()).toBeTruthy();
         expect(
-          getByText('Step 3: Enter your new password')
+          screen.getByText('Step 3: Enter your new password')
         ).toBeInTheDocument();
       });
 
@@ -67,10 +69,10 @@ describe('ForgotPassword', () => {
         fakeVerificationCode
       );
 
-      const passwordInput = getByLabelText('Password');
-      const confirmPasswordInput = getByLabelText('Confirm password');
+      const passwordInput = screen.getByLabelText('Password');
+      const confirmPasswordInput = screen.getByLabelText('Confirm password');
 
-      const submitButton = getByRole('button', { name: 'Next' });
+      const submitButton = screen.getByRole('button', { name: 'Next' });
 
       fillInput(passwordInput, password);
       fillInput(confirmPasswordInput, password);
@@ -86,31 +88,31 @@ describe('ForgotPassword', () => {
 
   describe('on failure', () => {
     it('shows errors for invalid values', async () => {
-      const { getByLabelText, getByRole, getByText } = render(
-        <ForgotPassword />
-      );
+      render(<ForgotPassword />);
 
-      const email = getByLabelText('Email');
-      const submitButton = getByRole('button', { name: 'Reset Password' });
+      const email = screen.getByLabelText('Email');
+      const submitButton = screen.getByRole('button', {
+        name: 'Reset Password',
+      });
 
       fillInput(email, 'invalid');
 
       fireEvent.click(submitButton);
 
       await waitFor(() => {
-        expect(getByText('Invalid email')).toBeInTheDocument();
+        expect(screen.getByText('Invalid email')).toBeInTheDocument();
       });
     });
 
     it('shows error on email form response failure', async () => {
-      const { getByLabelText, getByRole, getByText } = render(
-        <ForgotPassword />
-      );
+      render(<ForgotPassword />);
 
       const mockedRequest = mockGetVerificationCodeFailure(fakeEmail);
 
-      const email = getByLabelText('Email');
-      const submitButton = getByRole('button', { name: 'Reset Password' });
+      const email = screen.getByLabelText('Email');
+      const submitButton = screen.getByRole('button', {
+        name: 'Reset Password',
+      });
 
       fillInput(email, fakeEmail);
 
@@ -119,19 +121,19 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockedRequest.isDone()).toBeTruthy();
         expect(
-          getByText(`Unable to find user with email ${fakeEmail}`)
+          screen.getByText(`Unable to find user with email ${fakeEmail}`)
         ).toBeInTheDocument();
       });
     });
 
     it('shows error on token form response failure', async () => {
-      const { getByLabelText, getByRole, getByText } = render(
-        <ForgotPassword />
-      );
+      render(<ForgotPassword />);
       const mockGetVerificationCode = mockGetVerificationCodeSuccess(fakeEmail);
 
-      const emailInput = getByLabelText('Email');
-      const resetButton = getByRole('button', { name: 'Reset Password' });
+      const emailInput = screen.getByLabelText('Email');
+      const resetButton = screen.getByRole('button', {
+        name: 'Reset Password',
+      });
 
       fillInput(emailInput, fakeEmail);
 
@@ -140,15 +142,15 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockGetVerificationCode.isDone()).toBeTruthy();
         expect(
-          getByText(
+          screen.getByText(
             'Step 2: Enter the verification code we just sent to your email address'
           )
         ).toBeInTheDocument();
       });
 
       const mockVerifyToken = mockVerifyTokenFailure(fakeVerificationCode);
-      const code = getByLabelText('Code');
-      const nextButton = getByRole('button', { name: 'Next' });
+      const code = screen.getByLabelText('Code');
+      const nextButton = screen.getByRole('button', { name: 'Next' });
 
       fillInput(code, fakeVerificationCode);
 
@@ -157,20 +159,20 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockVerifyToken.isDone()).toBeTruthy();
         expect(
-          getByText('The reset password token is invalid')
+          screen.getByText('The reset password token is invalid')
         ).toBeInTheDocument();
       });
     });
 
     it('shows error on password form response failure', async () => {
-      const { getByLabelText, getByRole, getByText } = render(
-        <ForgotPassword />
-      );
+      render(<ForgotPassword />);
 
       const mockGetVerificationCode = mockGetVerificationCodeSuccess(fakeEmail);
 
-      const emailInput = getByLabelText('Email');
-      const resetButton = getByRole('button', { name: 'Reset Password' });
+      const emailInput = screen.getByLabelText('Email');
+      const resetButton = screen.getByRole('button', {
+        name: 'Reset Password',
+      });
 
       fillInput(emailInput, fakeEmail);
 
@@ -179,7 +181,7 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockGetVerificationCode.isDone()).toBeTruthy();
         expect(
-          getByText(
+          screen.getByText(
             'Step 2: Enter the verification code we just sent to your email address'
           )
         ).toBeInTheDocument();
@@ -187,8 +189,8 @@ describe('ForgotPassword', () => {
 
       const mockVerifyToken = mockVerifyTokenSuccess(fakeVerificationCode);
 
-      const code = getByLabelText('Code');
-      const nextButton = getByRole('button', { name: 'Next' });
+      const code = screen.getByLabelText('Code');
+      const nextButton = screen.getByRole('button', { name: 'Next' });
 
       fillInput(code, fakeVerificationCode);
 
@@ -197,7 +199,7 @@ describe('ForgotPassword', () => {
       await waitFor(() => {
         expect(mockVerifyToken.isDone()).toBeTruthy();
         expect(
-          getByText('Step 3: Enter your new password')
+          screen.getByText('Step 3: Enter your new password')
         ).toBeInTheDocument();
       });
 
@@ -206,10 +208,10 @@ describe('ForgotPassword', () => {
         fakeVerificationCode
       );
 
-      const passwordInput = getByLabelText('Password');
-      const confirmPasswordInput = getByLabelText('Confirm password');
+      const passwordInput = screen.getByLabelText('Password');
+      const confirmPasswordInput = screen.getByLabelText('Confirm password');
 
-      const submitButton = getByRole('button', { name: 'Next' });
+      const submitButton = screen.getByRole('button', { name: 'Next' });
 
       fillInput(passwordInput, password);
       fillInput(confirmPasswordInput, password);
@@ -218,7 +220,7 @@ describe('ForgotPassword', () => {
 
       await waitFor(() => {
         expect(mockResetPassword.isDone()).toBeTruthy();
-        expect(getByText('Connection error')).toBeInTheDocument();
+        expect(screen.getByText('Connection error')).toBeInTheDocument();
       });
     });
   });

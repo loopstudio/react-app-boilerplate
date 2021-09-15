@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import {
   fillInput,
@@ -22,16 +23,13 @@ describe('SignUp', () => {
   it('submits correctly', async () => {
     const mockedRequest = mockSignUpSuccess(fakeUser);
 
-    const { getByLabelText, getByRole, history } = renderWithRouter(
-      <SignUp />,
-      { history: ['/sign-up'] }
-    );
+    const { history } = renderWithRouter(<SignUp />, { history: ['/sign-up'] });
 
-    const email = getByLabelText('Email');
-    const firstName = getByLabelText('First Name');
-    const lastName = getByLabelText('Last Name');
-    const password = getByLabelText('Password');
-    const submitButton = getByRole('button');
+    const email = screen.getByLabelText('Email');
+    const firstName = screen.getByLabelText('First Name');
+    const lastName = screen.getByLabelText('Last Name');
+    const password = screen.getByLabelText('Password');
+    const submitButton = screen.getByRole('button');
 
     fillInput(email, fakeUser.email);
     fillInput(firstName, fakeUser.firstName);
@@ -49,12 +47,12 @@ describe('SignUp', () => {
   it('shows error on response failure', async () => {
     const mockedRequest = mockSignUpFailure(fakeUser);
 
-    const { getByLabelText, getByRole, getByText } = render(<SignUp />);
-    const email = getByLabelText('Email');
-    const firstName = getByLabelText('First Name');
-    const lastName = getByLabelText('Last Name');
-    const password = getByLabelText('Password');
-    const submitButton = getByRole('button');
+    render(<SignUp />);
+    const email = screen.getByLabelText('Email');
+    const firstName = screen.getByLabelText('First Name');
+    const lastName = screen.getByLabelText('Last Name');
+    const password = screen.getByLabelText('Password');
+    const submitButton = screen.getByRole('button');
 
     fillInput(email, fakeUser.email);
     fillInput(firstName, fakeUser.firstName);
@@ -65,23 +63,23 @@ describe('SignUp', () => {
 
     await waitFor(() => {
       expect(mockedRequest.isDone()).toBeTruthy();
-      expect(getByText('Has already been taken')).toBeInTheDocument();
+      expect(screen.getByText('Has already been taken')).toBeInTheDocument();
     });
   });
 
   it('shows errors for invalid values', async () => {
-    const { getByLabelText, getByRole, findByText } = render(<SignUp />);
-    const email = getByLabelText('Email');
-    const password = getByLabelText('Password');
-    const submitButton = getByRole('button');
+    render(<SignUp />);
+    const email = screen.getByLabelText('Email');
+    const password = screen.getByLabelText('Password');
+    const submitButton = screen.getByRole('button');
 
     fillInput(email, 'invalid');
     fillInput(password, 'invalid');
 
     fireEvent.click(submitButton);
 
-    const emailError = await findByText('Invalid email');
-    const passwordError = await findByText(
+    const emailError = await screen.findByText('Invalid email');
+    const passwordError = await screen.findByText(
       'Password too short, minimum length is 8 characters'
     );
 
