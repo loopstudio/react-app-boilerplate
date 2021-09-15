@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import { render } from 'testUtils';
 import ErrorBoundary from './ErrorBoundary';
@@ -20,12 +21,12 @@ describe('ErrorBoundary', () => {
 
     const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});
-    const { queryByText } = render(errorBoundary);
+    render(errorBoundary);
     console.error.mockRestore();
 
-    expect(queryByText('An error occurred')).toBeInTheDocument();
-    expect(queryByText('Dummy error')).toBeInTheDocument();
-    expect(queryByText('Report error')).toBeInTheDocument();
+    expect(screen.queryByText('An error occurred')).toBeInTheDocument();
+    expect(screen.queryByText('Dummy error')).toBeInTheDocument();
+    expect(screen.queryByText('Report error')).toBeInTheDocument();
 
     process.env.NODE_ENV = originalEnv;
   });
@@ -39,11 +40,11 @@ describe('ErrorBoundary', () => {
 
     const spy = jest.spyOn(console, 'error');
     spy.mockImplementation(() => {});
-    const { queryByText } = render(errorBoundary);
+    render(errorBoundary);
     console.error.mockRestore();
 
-    expect(queryByText('An error occurred')).toBeInTheDocument();
-    expect(queryByText('Dummy error')).toBeNull();
-    expect(queryByText('Report error')).toBeNull();
+    expect(screen.queryByText('An error occurred')).toBeInTheDocument();
+    expect(screen.queryByText('Dummy error')).not.toBeInTheDocument();
+    expect(screen.queryByText('Report error')).not.toBeInTheDocument();
   });
 });

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import { render } from 'testUtils';
 import AuthWrapper from 'features/auth/components/AuthWrapper/index';
@@ -11,8 +12,8 @@ describe('AuthWrapper', () => {
       </AuthWrapper>
     );
 
-    const { getByTestId } = render(testedNode);
-    const title = getByTestId('authentication-title');
+    render(testedNode);
+    const title = screen.getByTestId('authentication-title');
 
     expect(title).toHaveTextContent('Hello World');
   });
@@ -24,8 +25,8 @@ describe('AuthWrapper', () => {
       </AuthWrapper>
     );
 
-    const { queryByText } = render(testedNode);
-    expect(queryByText('Child Node')).toBeInTheDocument();
+    render(testedNode);
+    expect(screen.queryByText('Child Node')).toBeInTheDocument();
   });
 
   it('renders the legend properly', () => {
@@ -37,7 +38,7 @@ describe('AuthWrapper', () => {
       </AuthWrapper>
     );
 
-    const { queryByText } = render(testedNode);
-    expect(queryByText('Legend Node')).toBeInTheDocument();
+    render(testedNode);
+    expect(screen.queryByText('Legend Node')).toBeInTheDocument();
   });
 });

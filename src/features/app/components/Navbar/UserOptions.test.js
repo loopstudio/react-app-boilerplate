@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 import { fireEvent, render } from 'testUtils';
 
 import { userData, authenticationHeaders } from 'testUtils/mocks/auth';
@@ -12,34 +14,36 @@ const state = {
 
 describe('UserOptions', () => {
   it('renders an avatar when the user is logged in', () => {
-    const { getByRole } = render(<UserOptions />, { state });
+    render(<UserOptions />, { state });
 
-    getByRole('img', { name: 'avatar' });
+    screen.getByRole('img', { name: 'avatar' });
   });
 
   it('does not render an avatar when the user is not logged in', () => {
-    const { queryByRole } = render(<UserOptions />);
+    render(<UserOptions />);
 
-    expect(queryByRole('img', { name: 'avatar' })).toBeNull();
+    expect(
+      screen.queryByRole('img', { name: 'avatar' })
+    ).not.toBeInTheDocument();
   });
 
   it('opens the menu if the user clicks on the avatar', () => {
-    const { getByRole } = render(<UserOptions />, { state });
+    render(<UserOptions />, { state });
 
-    const avatar = getByRole('button', { name: 'avatar' });
+    const avatar = screen.getByRole('button', { name: 'avatar' });
 
     fireEvent.click(avatar);
 
-    getByRole('button', { name: 'Sign out' });
+    screen.getByRole('button', { name: 'Sign out' });
   });
 
   it('opens the menu when the user is not logged in and clicks on the menu button', () => {
-    const { getByRole } = render(<UserOptions />);
+    render(<UserOptions />);
 
-    const menuButton = getByRole('button');
+    const menuButton = screen.getByRole('button');
 
     fireEvent.click(menuButton);
 
-    getByRole('button', { name: 'Sign in' });
+    screen.getByRole('button', { name: 'Sign in' });
   });
 });
