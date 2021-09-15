@@ -27,7 +27,7 @@ const translations = {
     newPassword: 'New Password',
     next: 'Next',
     pageNotFoundLegend:
-      'It seems like the page you are looking for doesn’t exist',
+      "It seems like the page you are looking for doesn't exist",
     pageNotFoundTitle: '404',
     password: 'Password',
     passwordsDontMatch: 'The passwords don’t match',

@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import { fireEvent, renderWithRouter, waitFor } from 'testUtils';
 import {
@@ -17,15 +18,15 @@ describe('Menu', () => {
   };
 
   it('navigates to settings', async () => {
-    const { history, getByText, getByRole } = renderWithRouter(<Navbar />, {
+    const { history } = renderWithRouter(<Navbar />, {
       history: ['/'],
       state: fakeState,
     });
 
-    const menuButton = getByRole('button');
+    const menuButton = screen.getByRole('button');
     fireEvent.click(menuButton);
 
-    const settingsButton = getByText('Account settings');
+    const settingsButton = screen.getByText('Account settings');
     fireEvent.click(settingsButton);
 
     await waitFor(() => {
@@ -37,15 +38,15 @@ describe('Menu', () => {
   it('logs out', async () => {
     const mockedRequest = mockSignOutSuccess();
 
-    const { history, getByText, getByRole } = renderWithRouter(<Navbar />, {
+    const { history } = renderWithRouter(<Navbar />, {
       history: ['/'],
       state: fakeState,
     });
 
-    const menuButton = getByRole('button');
+    const menuButton = screen.getByRole('button');
     fireEvent.click(menuButton);
 
-    const signOutButton = getByText('Sign out');
+    const signOutButton = screen.getByText('Sign out');
     fireEvent.click(signOutButton);
 
     await waitFor(() => {
@@ -56,14 +57,14 @@ describe('Menu', () => {
   });
 
   it('navigates to sign in', async () => {
-    const { history, getByRole } = renderWithRouter(<Navbar />, {
+    const { history } = renderWithRouter(<Navbar />, {
       history: ['/forgot-password'],
     });
 
-    const menuButton = getByRole('button');
+    const menuButton = screen.getByRole('button');
     fireEvent.click(menuButton);
 
-    const signInButton = getByRole('button', { name: 'Sign in' });
+    const signInButton = screen.getByRole('button', { name: 'Sign in' });
     fireEvent.click(signInButton);
 
     await waitFor(() => {
@@ -73,14 +74,14 @@ describe('Menu', () => {
   });
 
   it('navigates to sign up', async () => {
-    const { history, getByRole } = renderWithRouter(<Navbar />, {
+    const { history } = renderWithRouter(<Navbar />, {
       history: ['/forgot-password'],
     });
 
-    const menuButton = getByRole('button');
+    const menuButton = screen.getByRole('button');
     fireEvent.click(menuButton);
 
-    const signUpButton = getByRole('button', { name: 'Sign up' });
+    const signUpButton = screen.getByRole('button', { name: 'Sign up' });
     fireEvent.click(signUpButton);
 
     await waitFor(() => {

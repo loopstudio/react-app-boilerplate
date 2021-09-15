@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import { fillInput, fireEvent, render, waitFor } from 'testUtils';
 import {
@@ -45,14 +46,16 @@ describe('Settings', () => {
     it('confirms when account settings were changed successfully', async () => {
       const mockedRequest = mockUpdateUserSuccess(fakeSettingsData);
 
-      const { getByLabelText, getByRole, getByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const firstName = getByLabelText('First Name');
-      const lastName = getByLabelText('Last Name');
-      const locale = getByLabelText('Language');
-      const submitButton = getByRole('button', { name: 'Update Settings' });
+      const firstName = screen.getByLabelText('First Name');
+      const lastName = screen.getByLabelText('Last Name');
+      const locale = screen.getByLabelText('Language');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Settings',
+      });
 
       fillInput(firstName, fakeSettingsData.firstName);
       fillInput(lastName, fakeSettingsData.lastName);
@@ -63,7 +66,7 @@ describe('Settings', () => {
       await waitFor(() => {
         expect(mockedRequest.isDone()).toBeTruthy();
         expect(
-          getByText('Your settings have been updated successfully')
+          screen.getByText('Your settings have been updated successfully')
         ).toBeInTheDocument();
       });
     });
@@ -71,13 +74,15 @@ describe('Settings', () => {
     it('renders API errors when changing account settings', async () => {
       const mockedRequest = mockUpdateUserFailure(fakeSettingsData);
 
-      const { getByLabelText, getByRole, getByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
-      const firstName = getByLabelText('First Name');
-      const lastName = getByLabelText('Last Name');
-      const locale = getByLabelText('Language');
-      const submitButton = getByRole('button', { name: 'Update Settings' });
+      const firstName = screen.getByLabelText('First Name');
+      const lastName = screen.getByLabelText('Last Name');
+      const locale = screen.getByLabelText('Language');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Settings',
+      });
 
       fillInput(firstName, fakeSettingsData.firstName);
       fillInput(lastName, fakeSettingsData.lastName);
@@ -87,22 +92,24 @@ describe('Settings', () => {
 
       await waitFor(() => {
         expect(mockedRequest.isDone()).toBeTruthy();
-        expect(getByText('Some scary error')).toBeInTheDocument();
+        expect(screen.getByText('Some scary error')).toBeInTheDocument();
       });
     });
 
     it('requires the first name when changing account settings', async () => {
-      const { getByLabelText, getByRole, findByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
-      const firstName = getByLabelText('First Name');
-      const submitButton = getByRole('button', { name: 'Update Settings' });
+      const firstName = screen.getByLabelText('First Name');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Settings',
+      });
 
       fillInput(firstName, '');
 
       fireEvent.click(submitButton);
 
-      const firstNameError = await findByText('Required');
+      const firstNameError = await screen.findByText('Required');
 
       expect(firstNameError).toBeInTheDocument();
     });
@@ -115,13 +122,15 @@ describe('Settings', () => {
         fakePasswordData.passwordCheck
       );
 
-      const { getByLabelText, getByRole, getByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const currentPasswordInput = getByLabelText('Current Password');
-      const newPasswordInput = getByLabelText('New Password');
-      const submitButton = getByRole('button', { name: 'Update Password' });
+      const currentPasswordInput = screen.getByLabelText('Current Password');
+      const newPasswordInput = screen.getByLabelText('New Password');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Password',
+      });
 
       fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
       fillInput(newPasswordInput, fakePasswordData.user.password);
@@ -131,7 +140,7 @@ describe('Settings', () => {
       await waitFor(() => {
         expect(mockedRequest.isDone()).toBeTruthy();
         expect(
-          getByText('Your password has been changed successfully')
+          screen.getByText('Your password has been changed successfully')
         ).toBeInTheDocument();
       });
     });
@@ -142,13 +151,15 @@ describe('Settings', () => {
         fakePasswordData.passwordCheck
       );
 
-      const { getByLabelText, getByRole, getByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const currentPasswordInput = getByLabelText('Current Password');
-      const newPasswordInput = getByLabelText('New Password');
-      const submitButton = getByRole('button', { name: 'Update Password' });
+      const currentPasswordInput = screen.getByLabelText('Current Password');
+      const newPasswordInput = screen.getByLabelText('New Password');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Password',
+      });
 
       fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
       fillInput(newPasswordInput, fakePasswordData.user.password);
@@ -157,63 +168,69 @@ describe('Settings', () => {
 
       await waitFor(() => {
         expect(mockedRequest.isDone()).toBeTruthy();
-        expect(getByText('Some scary error')).toBeInTheDocument();
+        expect(screen.getByText('Some scary error')).toBeInTheDocument();
       });
     });
 
     it('requires the current password when changing the password', async () => {
-      const { getByLabelText, getByRole, findByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const currentPasswordInput = getByLabelText('Current Password');
-      const newPasswordInput = getByLabelText('New Password');
-      const submitButton = getByRole('button', { name: 'Update Password' });
+      const currentPasswordInput = screen.getByLabelText('Current Password');
+      const newPasswordInput = screen.getByLabelText('New Password');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Password',
+      });
 
       fillInput(currentPasswordInput, '');
       fillInput(newPasswordInput, fakePasswordData.user.password);
 
       fireEvent.click(submitButton);
 
-      const currentPasswordError = await findByText('Required');
+      const currentPasswordError = await screen.findByText('Required');
 
       expect(currentPasswordError).toBeInTheDocument();
     });
 
     it('requires the new password when changing the password', async () => {
-      const { getByLabelText, getByRole, findByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const currentPasswordInput = getByLabelText('Current Password');
-      const newPasswordInput = getByLabelText('New Password');
-      const submitButton = getByRole('button', { name: 'Update Password' });
+      const currentPasswordInput = screen.getByLabelText('Current Password');
+      const newPasswordInput = screen.getByLabelText('New Password');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Password',
+      });
 
       fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
       fillInput(newPasswordInput, '');
 
       fireEvent.click(submitButton);
 
-      const newPasswordError = await findByText('Required');
+      const newPasswordError = await screen.findByText('Required');
 
       expect(newPasswordError).toBeInTheDocument();
     });
 
     it('requires the current password to be at least 8 chars', async () => {
-      const { getByLabelText, getByRole, findByText } = render(<Settings />, {
+      render(<Settings />, {
         state: fakeState,
       });
 
-      const currentPasswordInput = getByLabelText('Current Password');
-      const newPasswordInput = getByLabelText('New Password');
-      const submitButton = getByRole('button', { name: 'Update Password' });
+      const currentPasswordInput = screen.getByLabelText('Current Password');
+      const newPasswordInput = screen.getByLabelText('New Password');
+      const submitButton = screen.getByRole('button', {
+        name: 'Update Password',
+      });
 
       fillInput(currentPasswordInput, fakePasswordData.passwordCheck);
       fillInput(newPasswordInput, 'pass');
 
       fireEvent.click(submitButton);
 
-      const newPasswordError = await findByText(
+      const newPasswordError = await screen.findByText(
         'Password too short, minimum length is 8 characters'
       );
 

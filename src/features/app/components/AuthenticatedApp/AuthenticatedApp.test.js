@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 
 import { renderWithRouter } from 'testUtils';
 import { userData, authenticationHeaders } from 'testUtils/mocks/auth';
@@ -13,29 +14,29 @@ const state = {
 
 describe('Authenticated App', () => {
   it('renders the Home Page', () => {
-    const { getByText } = renderWithRouter(<AuthenticatedApp />, {
+    renderWithRouter(<AuthenticatedApp />, {
       state,
       history: ['/'],
     });
 
-    expect(getByText('Hello World')).toBeInTheDocument();
+    expect(screen.getByText('Hello World')).toBeInTheDocument();
   });
 
   it('renders the Settings Page', () => {
-    const { getByText } = renderWithRouter(<AuthenticatedApp />, {
+    renderWithRouter(<AuthenticatedApp />, {
       state,
       history: ['/settings'],
     });
 
-    expect(getByText('Account settings')).toBeInTheDocument();
+    expect(screen.getByText('Account settings')).toBeInTheDocument();
   });
 
   it('renders the No match Page', () => {
-    const { getByText } = renderWithRouter(<AuthenticatedApp />, {
+    renderWithRouter(<AuthenticatedApp />, {
       state,
       history: ['/no-match'],
     });
 
-    expect(getByText('404')).toBeInTheDocument();
+    expect(screen.getByText('404')).toBeInTheDocument();
   });
 });
