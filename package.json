@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.0.4",
+    "@testing-library/react": "^12.1.0",
     "@types/react-intl": "^3.0.0",
     "@types/react-router-dom": "^5.1.9",
     "decamelize": "^4.0.0",
