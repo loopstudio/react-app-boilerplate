@@ -95,7 +95,7 @@
     "nock": "^13.0.4",
     "prettier": "^2.4.0",
     "react-axe": "^3.5.3",
-    "source-map-explorer": "^2.5.0"
+    "source-map-explorer": "^2.5.2"
   },
   "husky": {
     "hooks": {
