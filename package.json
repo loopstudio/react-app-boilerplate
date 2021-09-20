@@ -54,7 +54,7 @@
     "@loopstudio/react-auth": "^1.0.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^15.12.1",
-    "@types/react": "^17.0.9",
+    "@types/react": "^17.0.22",
     "@types/react-dom": "^17.0.6",
     "axios": "^0.21.4",
     "axios-case-converter": "^0.8.1",
@@ -74,7 +74,7 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "@types/react-intl": "^3.0.0",
     "@types/react-router-dom": "^5.1.9",
