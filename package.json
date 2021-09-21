@@ -55,7 +55,7 @@
     "@types/jest": "^27.0.1",
     "@types/node": "^16.9.4",
     "@types/react": "^17.0.22",
-    "@types/react-dom": "^17.0.6",
+    "@types/react-dom": "^17.0.9",
     "axios": "^0.21.4",
     "axios-case-converter": "^0.8.1",
     "emotion": "^11.0.0",
