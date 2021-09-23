@@ -53,6 +53,7 @@
     "@hookform/resolvers": "2.8.0",
     "@loopstudio/react-auth": "^1.0.0",
     "@types/jest": "^27.0.2",
+    "@types/md5": "^2.3.1",
     "@types/node": "^16.9.4",
     "@types/react": "^17.0.22",
     "@types/react-dom": "^17.0.9",
