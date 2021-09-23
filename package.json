@@ -50,7 +50,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@hookform/resolvers": "2.8.0",
+    "@hookform/resolvers": "2.8.1",
     "@loopstudio/react-auth": "^1.0.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.9.4",
