@@ -22,9 +22,9 @@ const RightItem = () => {
   const emailHash = md5(user?.email || '');
   const gravatarURL = `https://www.gravatar.com/avatar/${emailHash}`;
 
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleRedirectTo = (path) => history.push(path);
+  const handleRedirectTo = (path: string) => history.push(path);
 
   const toggleNavMenu = () => setNavOpen((prevState) => !prevState);
 

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '@loopstudio/react-auth';
 
@@ -6,7 +5,11 @@ import Button from './Button';
 
 import { MenuContainer } from './NavBar.styles';
 
-const Menu = ({ isAuthenticated }) => {
+interface MenuProps {
+  isAuthenticated?: boolean;
+}
+
+const Menu = ({ isAuthenticated }: MenuProps) => {
   const { signOut } = useAuth();
   const history = useHistory();
 
@@ -39,14 +42,6 @@ const Menu = ({ isAuthenticated }) => {
       )}
     </MenuContainer>
   );
-};
-
-Menu.propTypes = {
-  isAuthenticated: PropTypes.bool,
-};
-
-Menu.defaultProps = {
-  isAuthenticated: false,
 };
 
 export default Menu;
