@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useAuth } from '@loopstudio/react-auth';
+import { useAuth } from 'loop-react-auth';
 import { useForm } from 'react-hook-form';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { useHistory } from 'react-router-dom';

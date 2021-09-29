@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { ThemeProvider } from '@emotion/react';
-import { AuthProvider } from '@loopstudio/react-auth';
+import { AuthProvider } from 'loop-react-auth';
 import theme from 'theme';
 
 import AppLocale from 'features/app/locales';

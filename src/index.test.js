@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { ThemeProvider } from '@emotion/react';
-import { AuthProvider } from '@loopstudio/react-auth';
+import { AuthProvider } from 'loop-react-auth';
 
 import App from 'features/app/components/App';
 import httpClient from 'features/app/services/httpClient';

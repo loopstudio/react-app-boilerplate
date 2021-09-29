@@ -4,7 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { BrowserRouter } from 'react-router-dom';
 import flatten from 'flat';
 import { Global } from '@emotion/react';
-import { useAuth } from '@loopstudio/react-auth';
+import { useAuth } from 'loop-react-auth';
 
 import icons from 'assets/icons';
 import { useGuestLocale } from '../../hooks/guestLocale';
