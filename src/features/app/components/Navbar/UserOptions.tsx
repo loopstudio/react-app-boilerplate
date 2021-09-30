@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useAuth } from '@loopstudio/react-auth';
+import { useAuth } from 'loop-react-auth';
 import md5 from 'md5';
 
 import Button from './Button';

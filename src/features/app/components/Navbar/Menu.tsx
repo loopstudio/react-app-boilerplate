@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '@loopstudio/react-auth';
+import { useAuth } from 'loop-react-auth';
 
 import Button from './Button';
 

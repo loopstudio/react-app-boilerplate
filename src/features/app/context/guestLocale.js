@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import { useAuth } from '@loopstudio/react-auth';
+import { useAuth } from 'loop-react-auth';
 import {
   applyLocaleInterceptor,
   clearLocaleInterceptor,
