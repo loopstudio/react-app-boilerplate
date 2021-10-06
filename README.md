@@ -230,8 +230,9 @@ Sublime:
 
 1. Clone this repository and navigate to the folder.
 2. Install all dependencies by running the `yarn install` command in the root directory.
-3. Modify the environment variables files in root folder(.env.dev, .env.staging and .env.prod).
-4. Start the dev server: `yarn start` command.
+3. Install [react-auth](https://github.com/loopstudio/react-auth) running the `yarn add @loopstudio/react-auth` command.
+4. Modify the environment variables files in root folder(.env.dev, .env.staging and .env.prod).
+5. Start the dev server: `yarn start` command.
 
 ## Running the Test Suite
 
