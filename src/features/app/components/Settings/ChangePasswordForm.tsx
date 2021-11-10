@@ -10,6 +10,11 @@ import { handleErrors } from 'helpers/errors';
 
 import { SuccessText, StyledForm, FormButton } from './Settings.styles';
 
+interface OnSubmitPropTypes {
+  password: string;
+  currentPassword: string;
+}
+
 const ChangePasswordForm = () => {
   const intl = useIntl();
   const { updateUser } = useAuth();
@@ -25,7 +30,7 @@ const ChangePasswordForm = () => {
 
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
-  const onSubmit = async ({ password, currentPassword }) => {
+  const onSubmit = async ({ password, currentPassword }: OnSubmitPropTypes) => {
     setIsLoading(true);
     try {
       await updateUser({ password }, currentPassword);

@@ -17,9 +17,9 @@ const SettingsForm = () => {
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
   const defaultValues = {
-    firstName: user.firstName,
-    lastName: user.lastName,
-    locale: user.locale,
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    locale: user?.locale,
   };
 
   const validationSchema = object().shape({
@@ -33,7 +33,7 @@ const SettingsForm = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (attributes) => {
+  const onSubmit = async (attributes: any) => {
     setIsLoading(true);
     try {
       await updateUser(attributes);
