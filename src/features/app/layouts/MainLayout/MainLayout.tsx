@@ -4,7 +4,12 @@ import Navbar from '../../components/Navbar';
 
 import { MainContainer } from './MainLayout.styles';
 
-const MainLayout = ({ children, noHeader }) => (
+interface MainLayoutProps {
+  children: React.ReactNode;
+  noHeader: boolean;
+}
+
+const MainLayout = ({ children, noHeader }: MainLayoutProps) => (
   <>
     {!noHeader && <Navbar />}
     <MainContainer noHeader={noHeader}>{children}</MainContainer>
