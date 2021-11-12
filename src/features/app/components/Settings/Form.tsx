@@ -23,9 +23,11 @@ const SettingsForm = () => {
   };
 
   const validationSchema = object().shape({
-    firstName: string().required(intl.messages['common.required']),
-    lastName: string().required(intl.messages['common.required']),
-    locale: string().nullable().required(intl.messages['common.required']),
+    firstName: string().required(intl.formatMessage({ id: 'common.required' })),
+    lastName: string().required(intl.formatMessage({ id: 'common.required' })),
+    locale: string()
+      .nullable()
+      .required(intl.formatMessage({ id: 'common.required' })),
   });
 
   const formMethods = useForm({
@@ -47,9 +49,10 @@ const SettingsForm = () => {
 
   return (
     <StyledForm formMethods={formMethods} onSubmit={onSubmit}>
-      <Form.Input name="firstName" />
-      <Form.Input name="lastName" />
+      <Form.Input id="firstName" name="firstName" />
+      <Form.Input id="lastName" name="lastName" />
       <Form.Select
+        id="locale"
         name="locale"
         options={[
           { value: 'en', label: 'English' },

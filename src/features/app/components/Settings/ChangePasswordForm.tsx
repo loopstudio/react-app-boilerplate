@@ -23,9 +23,11 @@ const ChangePasswordForm = () => {
 
   const validationSchema = object().shape({
     password: string()
-      .required(intl.messages['common.required'])
-      .min(8, intl.messages['common.shortPassword']),
-    currentPassword: string().required(intl.messages['common.required']),
+      .required(intl.formatMessage({ id: 'common.required' }))
+      .min(8, intl.formatMessage({ id: 'common.shortPassword' })),
+    currentPassword: string().required(
+      intl.formatMessage({ id: 'common.required' })
+    ),
   });
 
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
@@ -35,10 +37,7 @@ const ChangePasswordForm = () => {
     try {
       await updateUser({ password }, currentPassword);
       setIsResponseSuccess(true);
-      formMethods.reset(
-        { currentPassword: '', password: '' },
-        { errors: true }
-      );
+      formMethods.reset({ currentPassword: undefined, password: undefined });
     } catch (error) {
       setIsResponseSuccess(false);
       handleErrors(error, formMethods.setError);
@@ -50,12 +49,14 @@ const ChangePasswordForm = () => {
   return (
     <StyledForm formMethods={formMethods} onSubmit={onSubmit}>
       <Form.Input
-        label={intl.messages['common.currentPassword']}
+        id="currentPassword"
+        label={intl.formatMessage({ id: 'common.currentPassword' })}
         name="currentPassword"
         type="password"
       />
       <Form.Input
-        label={intl.messages['common.newPassword']}
+        id="password"
+        label={intl.formatMessage({ id: 'common.newPassword' })}
         name="password"
         type="password"
       />

@@ -14,7 +14,7 @@ interface Option {
 interface FormSelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   id: string;
   name: string;
-  label: string;
+  label?: string;
   options: Array<Option>;
 }
 
