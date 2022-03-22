@@ -30,7 +30,7 @@ jobs:
           scope: '@loopstudio'
 
       - name: Restore cache
-        uses: actions/cache@v2.1.7
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('**/yarn.lock') }}
