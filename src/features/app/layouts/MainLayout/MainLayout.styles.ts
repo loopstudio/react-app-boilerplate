@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
-export const MainContainer = styled.main`
+interface MainContainerProps {
+  noHeader: boolean;
+}
+
+export const MainContainer = styled.main<MainContainerProps>`
   padding-top: ${({ noHeader, theme }) =>
     noHeader ? null : `${theme.height.header}`};
   min-height: ${({ noHeader, theme }) =>
