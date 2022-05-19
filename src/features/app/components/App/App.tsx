@@ -14,8 +14,8 @@ import ErrorBoundary from '../ErrorBoundary';
 import { globalStyles, CustomLoading } from './App.styles';
 
 const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
-const AuthenticatedApp = lazy(() =>
-  import(/* webpackPrefetch: true */ '../AuthenticatedApp')
+const AuthenticatedApp = lazy(
+  () => import(/* webpackPrefetch: true */ '../AuthenticatedApp')
 );
 
 library.add(icons);
