@@ -2,11 +2,15 @@ import { useEffect, useRef } from 'react';
 
 const defaultEvents = ['mousedown', 'touchstart'];
 
-const on = (obj, ...args) => obj.addEventListener(...args);
+const on = (obj: any, ...args: any) => obj.addEventListener(...args);
 
-const off = (obj, ...args) => obj.removeEventListener(...args);
+const off = (obj: any, ...args: any) => obj.removeEventListener(...args);
 
-export const useClickAway = (ref, onClickAway, events = defaultEvents) => {
+export const useClickAway = (
+  ref: any,
+  onClickAway: any,
+  events = defaultEvents
+) => {
   const savedCallback = useRef(onClickAway);
 
   useEffect(() => {
@@ -14,7 +18,7 @@ export const useClickAway = (ref, onClickAway, events = defaultEvents) => {
   }, [onClickAway]);
 
   useEffect(() => {
-    const handler = (event) => {
+    const handler = (event: { target: any }) => {
       const { current: el } = ref;
       el && !el.contains(event.target) && savedCallback.current(event);
     };

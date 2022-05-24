@@ -5,7 +5,12 @@ import {
   clearLocaleInterceptor,
 } from '../services/localeMiddleware';
 
-export const GuestLocaleContext = createContext();
+interface ContextData {
+  guestLocale: any;
+  setGuestLocale: any;
+}
+
+export const GuestLocaleContext = createContext<ContextData | null>(null);
 
 const STORAGE_KEY = 'guest_locale';
 

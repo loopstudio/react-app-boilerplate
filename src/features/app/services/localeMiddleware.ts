@@ -1,6 +1,9 @@
 import httpClient from './httpClient';
 
-export const applyLocaleInterceptor = (isAuthenticated, locale) => {
+export const applyLocaleInterceptor = (
+  isAuthenticated: boolean,
+  locale: string
+) => {
   return httpClient.interceptors.request.use((request) => {
     if (!isAuthenticated) {
       Object.assign(request.params, { locale });
@@ -10,6 +13,6 @@ export const applyLocaleInterceptor = (isAuthenticated, locale) => {
   });
 };
 
-export const clearLocaleInterceptor = (interceptor) => {
+export const clearLocaleInterceptor = (interceptor: number) => {
   httpClient.interceptors.request.eject(interceptor);
 };
