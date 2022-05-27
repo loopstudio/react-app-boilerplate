@@ -16,7 +16,7 @@ const SettingsForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
-  const defaultValues = {
+  const defaultValues: any = {
     firstName: user?.firstName,
     lastName: user?.lastName,
     locale: user?.locale,
@@ -35,13 +35,13 @@ const SettingsForm = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (attributes: any) => {
+  const onSubmit = async (attributes) => {
     setIsLoading(true);
     try {
       await updateUser(attributes);
       setIsResponseSuccess(true);
-    } catch (error) {
-      handleErrors(error, formMethods.setError);
+    } catch (e) {
+      handleErrors(e, formMethods.setError);
     } finally {
       setIsLoading(false);
     }
