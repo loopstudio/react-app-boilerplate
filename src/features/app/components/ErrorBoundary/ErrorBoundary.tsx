@@ -10,21 +10,26 @@ import {
   Wrapper,
 } from './ErrorBoundary.styles';
 
-class ErrorBoundary extends Component<{}, { hasError: any; error: any }> {
+import { ErrorType, ErrorPropsType } from '../ComponentsTypes';
+
+class ErrorBoundary extends Component<
+  {},
+  { hasError: boolean; error: ErrorType }
+> {
   // eslint-disable-next-line react/static-property-placement
   static propTypes: {
     children: PropTypes.Validator<PropTypes.ReactElementLike>;
   };
 
-  constructor(props: any) {
-    super(props);
+  constructor(errorProps: ErrorPropsType) {
+    super(errorProps);
     this.state = {
       hasError: false,
-      error: {},
+      error: { message: '' },
     };
   }
 
-  static getDerivedStateFromError(error: any) {
+  static getDerivedStateFromError(error: ErrorType) {
     return { hasError: true, error };
   }
 

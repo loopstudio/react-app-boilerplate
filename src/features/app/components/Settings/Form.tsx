@@ -35,13 +35,14 @@ const SettingsForm = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (attributes) => {
+  const onSubmit = async (attributes: any) => {
     setIsLoading(true);
     try {
-      await updateUser(attributes);
+      await updateUser(attributes, '');
       setIsResponseSuccess(true);
     } catch (e) {
-      handleErrors(e, formMethods.setError);
+      const error: any = e;
+      handleErrors(error, formMethods.setError);
     } finally {
       setIsLoading(false);
     }

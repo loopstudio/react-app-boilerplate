@@ -64,7 +64,7 @@ import esESLanguage from 'features/app/locales/entries/es-ES';
       output => 'Hello Patrick!, welcome to your dashboard'
 */
 
-const AppLocale = {
+const AppLocale: any = {
   en: enUSLanguage,
   es: esESLanguage,
 };

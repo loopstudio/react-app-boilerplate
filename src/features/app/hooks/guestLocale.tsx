@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 
-import { GuestLocaleContext } from '../context/guestLocale';
+import { GuestLocaleContext, ContextData } from '../context/guestLocale';
 
-export const useGuestLocale = () => useContext(GuestLocaleContext);
+export const useGuestLocale: () => ContextData | null = () =>
+  useContext(GuestLocaleContext);

@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react';
 
+import { objType } from '../components/ComponentsTypes';
+
 const defaultEvents = ['mousedown', 'touchstart'];
 
-const on = (obj: any, ...args: any) => obj.addEventListener(...args);
+const on = (obj: objType, ...args: any) =>
+  obj.addEventListener.apply(null, args);
 
-const off = (obj: any, ...args: any) => obj.removeEventListener(...args);
+const off = (obj: objType, ...args: any) =>
+  obj.removeEventListener.apply(null, args);
 
 export const useClickAway = (
-  ref: any,
-  onClickAway: any,
+  ref: React.RefObject<HTMLDivElement>,
+  onClickAway: (arg: object) => void,
   events = defaultEvents
 ) => {
   const savedCallback = useRef(onClickAway);
@@ -18,7 +22,7 @@ export const useClickAway = (
   }, [onClickAway]);
 
   useEffect(() => {
-    const handler = (event: { target: any }) => {
+    const handler = (event: { target: Node }) => {
       const { current: el } = ref;
       el && !el.contains(event.target) && savedCallback.current(event);
     };

@@ -12,6 +12,7 @@ import AppLocale from '../../locales';
 import ErrorBoundary from '../ErrorBoundary';
 
 import { globalStyles, CustomLoading } from './App.styles';
+import { AppLocaleType } from '../ComponentsTypes';
 
 const UnauthenticatedApp = lazy(() => import('../UnauthenticatedApp'));
 const AuthenticatedApp = lazy(
@@ -22,10 +23,10 @@ library.add(icons);
 
 const App = () => {
   const { isLoading, isAuthenticated, user } = useAuth();
-  const { guestLocale } = useGuestLocale();
+  const { guestLocale }: any = useGuestLocale();
 
   const locale = user?.locale || guestLocale;
-  const appLocale = AppLocale[locale];
+  const appLocale: AppLocaleType = AppLocale[locale];
 
   return (
     <IntlProvider locale={locale} messages={flatten(appLocale.messages)}>
