@@ -1,11 +1,22 @@
-import { createContext, useState, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  useEffect,
+  SetStateAction,
+  Dispatch,
+} from 'react';
 import { useAuth } from 'loop-react-auth';
 import {
   applyLocaleInterceptor,
   clearLocaleInterceptor,
 } from '../services/localeMiddleware';
 
-export const GuestLocaleContext = createContext();
+export interface ContextData {
+  guestLocale: string;
+  setGuestLocale: Dispatch<SetStateAction<string>>;
+}
+
+export const GuestLocaleContext = createContext<ContextData | null>(null);
 
 const STORAGE_KEY = 'guest_locale';
 
@@ -13,7 +24,7 @@ const getDefaultGuestLocale = () =>
   localStorage.getItem(STORAGE_KEY) || navigator.language.substr(0, 2);
 
 // eslint-disable-next-line react/prop-types
-export const GuestLocaleProvider = ({ children }) => {
+export const GuestLocaleProvider = ({ children }: any) => {
   const { isAuthenticated } = useAuth();
   const [guestLocale, setGuestLocale] = useState(getDefaultGuestLocale);
 

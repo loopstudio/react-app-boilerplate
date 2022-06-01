@@ -16,7 +16,7 @@ const SettingsForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isResponseSuccess, setIsResponseSuccess] = useState(false);
 
-  const defaultValues = {
+  const defaultValues: any = {
     firstName: user?.firstName,
     lastName: user?.lastName,
     locale: user?.locale,
@@ -38,9 +38,10 @@ const SettingsForm = () => {
   const onSubmit = async (attributes: any) => {
     setIsLoading(true);
     try {
-      await updateUser(attributes);
+      await updateUser(attributes, '');
       setIsResponseSuccess(true);
-    } catch (error) {
+    } catch (e) {
+      const error: any = e;
       handleErrors(error, formMethods.setError);
     } finally {
       setIsLoading(false);

@@ -7,7 +7,7 @@ import { Error, FormContent } from './Form.styles';
 
 interface FormProps {
   children: React.ReactNode;
-  onSubmit: Promise<void>;
+  onSubmit: (params: any) => Promise<void>;
   formMethods: any;
 }
 

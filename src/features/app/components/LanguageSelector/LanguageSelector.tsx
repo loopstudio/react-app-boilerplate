@@ -6,7 +6,7 @@ import { Select } from './LanguageSelector.styles';
 
 const LanguageSelector = () => {
   const { formatMessage, locale } = useIntl();
-  const { setGuestLocale } = useGuestLocale();
+  const { setGuestLocale }: any = useGuestLocale();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGuestLocale(event.target.value);
