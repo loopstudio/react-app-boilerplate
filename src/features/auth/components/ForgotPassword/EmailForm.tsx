@@ -16,9 +16,13 @@ import {
   Legend,
 } from 'features/auth/components/ForgotPassword/ForgotPassword.styles';
 
-const EmailForm = ({ onStepChange }) => {
+interface EmailFormProps {
+  onStepChange: (param: number) => void;
+}
+
+const EmailForm = ({ onStepChange }: EmailFormProps) => {
   const [loading, setLoading] = useState(false);
-  const intl = useIntl();
+  const intl: any = useIntl();
   const { requestPasswordReset } = useAuth();
 
   const validationSchema = object().shape({
@@ -29,14 +33,15 @@ const EmailForm = ({ onStepChange }) => {
 
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
-  const onSubmit = async ({ email }) => {
+  const onSubmit = async ({ email }: any) => {
     setLoading(true);
 
     try {
       await requestPasswordReset(email);
       onStepChange(RESET_PASSWORD_STEPS.emailSent);
     } catch (errors) {
-      handleErrors(errors, formMethods.setError);
+      const e: any = errors;
+      handleErrors(e, formMethods.setError);
       setLoading(false);
     }
   };
@@ -50,7 +55,7 @@ const EmailForm = ({ onStepChange }) => {
       <Legend>
         <FormattedMessage id="common.forgotPasswordLegend" />
       </Legend>
-      <FormInput name="email" type="email" />
+      <FormInput name="email" type="email" id="" />
       <Form.Button text={intl.messages['common.resetPassword']} />
       {loading && <Loading />}
     </Form>

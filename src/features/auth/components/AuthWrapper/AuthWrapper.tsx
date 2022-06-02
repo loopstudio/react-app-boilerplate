@@ -7,8 +7,9 @@ import {
   Screen,
   ViewContainer,
 } from 'features/auth/components/AuthWrapper/AuthWrapper.styles';
+import { AuthWrapperProps } from '../AuthComponentsTypes';
 
-const AuthWrapper = ({ title, children, renderLegend }) => (
+const AuthWrapper = ({ title, children, renderLegend }: AuthWrapperProps) => (
   <Screen>
     <ViewContainer>
       <AuthContainer>
