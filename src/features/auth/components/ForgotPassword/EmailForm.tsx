@@ -15,10 +15,7 @@ import {
   FormInput,
   Legend,
 } from 'features/auth/components/ForgotPassword/ForgotPassword.styles';
-
-interface EmailFormProps {
-  onStepChange: (param: number) => void;
-}
+import { EmailFormProps, EmailType } from '../AuthComponentsTypes';
 
 const EmailForm = ({ onStepChange }: EmailFormProps) => {
   const [loading, setLoading] = useState(false);
@@ -33,7 +30,7 @@ const EmailForm = ({ onStepChange }: EmailFormProps) => {
 
   const formMethods = useForm({ resolver: yupResolver(validationSchema) });
 
-  const onSubmit = async ({ email }: any) => {
+  const onSubmit = async ({ email }: EmailType) => {
     setLoading(true);
 
     try {

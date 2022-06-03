@@ -15,11 +15,11 @@ export const RESET_PASSWORD_STEPS = {
 const ForgotPassword = () => {
   const intl = useIntl();
   const [resetStep, setResetStep] = useState(RESET_PASSWORD_STEPS.initial);
-  const [token, setToken] = useState();
+  const [token, setToken] = useState<string>();
 
-  const handleStepChange = (step) => setResetStep(step);
+  const handleStepChange = (step: number) => setResetStep(step);
 
-  const handleSaveToken = (newToken) => setToken(newToken);
+  const handleSaveToken = (newToken: string) => setToken(newToken);
 
   return (
     <AuthWrapper title={intl.messages['common.resetPassword']}>
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
           />
         )}
         {resetStep === RESET_PASSWORD_STEPS.updatePassword && (
-          <PasswordForm token={token} />
+          <PasswordForm token={token || ''} />
         )}
       </>
     </AuthWrapper>
